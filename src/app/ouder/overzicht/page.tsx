@@ -18,8 +18,8 @@ export default function ParentOverviewPage() {
   if (!ready) return <p className="text-center text-gray-500">Even laden…</p>;
 
   return (
-    <main className="flex flex-col gap-8">
-      <h1 className="text-2xl font-bold text-primary-600">Ouderoverzicht</h1>
+    <main className="mx-auto flex max-w-2xl flex-col gap-8 px-4 py-8">
+      <h1 className="text-2xl font-bold text-forest-500">Ouderoverzicht</h1>
 
       {state.children.length === 0 && (
         <p className="text-gray-500">Nog geen kinderprofielen aangemaakt.</p>

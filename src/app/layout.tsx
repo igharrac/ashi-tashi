@@ -15,10 +15,8 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="nl">
-      <body className="min-h-screen text-gray-900 antialiased">
-        <AppStoreProvider>
-          <div className="mx-auto max-w-2xl px-4 py-8">{children}</div>
-        </AppStoreProvider>
+      <body className="min-h-screen bg-cream font-sans text-ink antialiased">
+        <AppStoreProvider>{children}</AppStoreProvider>
       </body>
     </html>
   );

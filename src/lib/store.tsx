@@ -15,6 +15,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import type { AppStateData, ChildProfileData, ExperienceLevel } from "@/types/domain";
 import { evaluateEarnedBadges } from "@/domain/badges";
 import { computeLessonPoints, computeMastery, type ExerciseAttemptRecord } from "@/domain/progress";
+import { recordPracticeDay, todayIso } from "@/domain/streak";
 
 const STORAGE_KEY = "ashi-tashi:mvp-demo-state:v1";
 
@@ -78,6 +79,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       earnedBadgeSlugs: [],
       itemStats: {},
       completedLessonIds: [],
+      practiceDatesIso: [],
       createdAt: new Date().toISOString(),
     };
     setState((prev) => ({ ...prev, children: [...prev.children, child] }));
@@ -137,6 +139,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
           points: child.points + points,
           completedLessonIds,
           earnedBadgeSlugs: Array.from(new Set([...child.earnedBadgeSlugs, ...earnedSlugs])),
+          practiceDatesIso: recordPracticeDay(child.practiceDatesIso, todayIso()),
         };
       }),
     }));

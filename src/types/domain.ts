@@ -61,6 +61,7 @@ export interface ChildProfileData {
   earnedBadgeSlugs: string[];
   itemStats: Record<string, { correct: number; incorrect: number }>;
   completedLessonIds: string[];
+  practiceDatesIso: string[]; // hfst. 16: basis voor de zachte streak
   createdAt: string;
 }
 

@@ -29,8 +29,8 @@ export default function NewChildProfilePage() {
   }
 
   return (
-    <main className="flex flex-col gap-8">
-      <h1 className="text-2xl font-bold text-primary-600">Nieuw kindprofiel</h1>
+    <main className="mx-auto flex max-w-2xl flex-col gap-8 px-4 py-8">
+      <h1 className="text-2xl font-bold text-forest-500">Nieuw kindprofiel</h1>
 
       <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
         <label className="flex flex-col gap-1 text-sm font-medium text-gray-700">

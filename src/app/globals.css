@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
   scroll-behavior: smooth;
+  font-family: "Quicksand", ui-rounded, system-ui, sans-serif;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -18,5 +21,6 @@ html {
 }
 
 body {
-  background-color: #fffaf5;
+  background-color: #fbf9f5;
+  color: #404846;
 }

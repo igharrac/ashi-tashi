@@ -72,6 +72,35 @@ export const DIEREN_THEME: ThemeView = {
   ],
 };
 
+export interface JourneyIsland {
+  slug: string;
+  titleNl: string;
+  emoji: string;
+  /** Alleen "dieren" heeft echt geïmplementeerde lessen in deze MVP-slice. */
+  isImplemented: boolean;
+  isFinalDestination?: boolean;
+}
+
+/**
+ * Vijf demo-thema's in seeddata, één volledig geïmplementeerd (hfst. 54).
+ * De overige vier tonen het reispad-concept en de te verwachten uitbreiding
+ * (hfst. 12) zonder dat er al lessen achter zitten — duidelijk als
+ * "binnenkort" gemarkeerd, geen nepcontent.
+ */
+export const JOURNEY_ISLANDS: JourneyIsland[] = [
+  { slug: "dieren", titleNl: "Dieren", emoji: "🐾", isImplemented: true },
+  { slug: "begroeten", titleNl: "Begroeten", emoji: "👋", isImplemented: false },
+  { slug: "familie", titleNl: "Familie", emoji: "👨‍👩‍👧", isImplemented: false },
+  { slug: "eten-en-drinken", titleNl: "Eten & Drinken", emoji: "🍵", isImplemented: false },
+  {
+    slug: "kleuren-en-getallen",
+    titleNl: "De Grote Kasbah",
+    emoji: "🏰",
+    isImplemented: false,
+    isFinalDestination: true,
+  },
+];
+
 export const DEMO_BADGES: Record<string, { titleNl: string; description: string; emoji: string }> = {
   "eerste-woord": { titleNl: "Eerste woord", description: "Je hebt je eerste woord geleerd!", emoji: "⭐" },
   "goede-luisteraar": { titleNl: "Goede luisteraar", description: "Je hebt goed geluisterd naar de woorden.", emoji: "👂" },
