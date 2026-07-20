@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Pill } from "@/components/ui/Pill";
 import { MascotIllustration } from "@/components/ui/MascotIllustration";
+import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 
 /**
  * Startscherm: ouder-onboarding + profielkeuze (hfst. 55, stap 1-3).
@@ -23,12 +25,14 @@ export default function HomePage() {
 
   if (!state.parentEmail) {
     return (
-      <main className="relative overflow-hidden">
+      <div className="relative flex min-h-screen flex-col overflow-hidden">
         <div aria-hidden className="pointer-events-none absolute -left-16 top-24 h-64 w-40 rounded-full bg-mint-200/60 blur-2xl" />
         <div aria-hidden className="pointer-events-none absolute right-0 top-0 h-72 w-56 rounded-full bg-sky-200/50 blur-2xl" />
         <div aria-hidden className="pointer-events-none absolute bottom-0 left-1/3 h-48 w-40 rounded-full bg-peach-100/60 blur-2xl" />
 
-        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-10 px-6 py-16 text-center lg:flex-row lg:text-left">
+        <SiteHeader />
+
+        <main className="relative mx-auto flex w-full max-w-5xl flex-1 flex-col items-center gap-10 px-6 py-16 text-center lg:flex-row lg:text-left">
           <div className="flex flex-1 flex-col items-center gap-6 lg:items-start">
             <Pill tone="mint" icon="👋">
               Hoi! Klaar voor een nieuw avontuur?
@@ -74,11 +78,27 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="flex flex-1 justify-center">
+          <div className="relative flex flex-1 justify-center">
             <MascotIllustration variant="cloud" />
+
+            {/* Decoratieve micro-interacties, overgenomen uit het Figma-ontwerp. */}
+            <span
+              aria-hidden="true"
+              className="absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full bg-sky-200 text-lg shadow-sm"
+            >
+              ⭐
+            </span>
+            <span aria-hidden="true" className="absolute -left-6 top-1/3 text-2xl text-peach-200">
+              ✨
+            </span>
+            <div className="absolute -bottom-4 right-6 flex items-center gap-2 rounded-full bg-mint-100 px-4 py-2 text-sm font-bold text-forest-700 shadow-sm">
+              <span aria-hidden="true">🎵</span> Tashelhit liedjes!
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+
+        <SiteFooter />
+      </div>
     );
   }
 

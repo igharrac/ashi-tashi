@@ -5,6 +5,7 @@ interface IslandNodeProps {
   island: JourneyIsland;
   status: "start" | "completed" | "locked" | "final";
   href?: string;
+  /** Aan welke kant van het pad dit eiland staat; bepaalt waar de teaser-tekst komt. */
   align: "left" | "right";
 }
 
@@ -15,31 +16,53 @@ const STATUS_RING: Record<IslandNodeProps["status"], string> = {
   final: "bg-gradient-to-br from-clay-500 to-forest-600 text-white shadow-soft",
 };
 
+const STATUS_BADGE_TEXT: Record<IslandNodeProps["status"], string | null> = {
+  start: "START",
+  completed: "Voltooid",
+  locked: "Binnenkort",
+  final: "Einde van de reis",
+};
+
 /** Eén "eiland" op het reispad (hfst. 10: taal > thema > les), gebaseerd op het Figma-ontwerp. */
 export function IslandNode({ island, status, href, align }: IslandNodeProps) {
   const isLocked = status === "locked";
-  const size = status === "final" ? "h-32 w-32 text-4xl" : "h-28 w-28 text-3xl";
+  const circleSize = status === "final" ? "h-32 w-32 text-4xl" : "h-28 w-28 text-3xl";
+  const badgeText = STATUS_BADGE_TEXT[status];
 
-  const content = (
-    <div className={`flex flex-col items-center gap-2 ${align === "right" ? "self-end" : "self-start"}`}>
+  const circle = (
+    <div className="relative shrink-0">
       <div
-        className={`flex ${size} items-center justify-center rounded-full transition-transform
+        className={`flex ${circleSize} items-center justify-center rounded-full border-4 border-white transition-transform
           ${STATUS_RING[status]} ${!isLocked ? "hover:scale-105" : ""}`}
         aria-hidden="true"
       >
         {isLocked ? "🔒" : island.emoji}
       </div>
-      <p className={`text-center text-sm font-bold ${isLocked ? "text-ink-muted" : "text-forest-700"}`}>
-        {island.titleNl}
-      </p>
-      {status === "start" && (
-        <span className="rounded-full bg-forest-500 px-3 py-0.5 text-xs font-bold text-white">START</span>
-      )}
-      {(isLocked || status === "final") && (
-        <span className="rounded-full bg-white px-3 py-0.5 text-xs font-semibold text-ink-muted shadow-sm">
-          {status === "final" ? "Einde van de reis" : "Binnenkort"}
+      {badgeText && (
+        <span
+          className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-white px-3 py-0.5
+            text-xs font-bold text-forest-600 shadow-sm"
+        >
+          {badgeText}
         </span>
       )}
+    </div>
+  );
+
+  const teaser = (
+    <div className={`max-w-[180px] ${align === "right" ? "text-left" : "text-right"}`}>
+      <p className="text-sm font-bold text-forest-600">{island.eyebrow ?? island.titleNl}</p>
+      <p className="text-sm text-ink">{island.teaser}</p>
+    </div>
+  );
+
+  const inner = (
+    <div
+      className={`flex items-center gap-4 ${align === "right" ? "flex-row" : "flex-row-reverse"}
+        ${align === "right" ? "self-end" : "self-start"}`}
+    >
+      {circle}
+      {teaser}
     </div>
   );
 
@@ -48,12 +71,12 @@ export function IslandNode({ island, status, href, align }: IslandNodeProps) {
       <Link
         href={href}
         className="rounded-full focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
-        aria-label={`Open thema ${island.titleNl}`}
+        aria-label={`Open thema ${island.titleNl}: ${island.teaser}`}
       >
-        {content}
+        {inner}
       </Link>
     );
   }
 
-  return content;
+  return inner;
 }
