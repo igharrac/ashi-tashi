@@ -1,0 +1,300 @@
+// Ashi & Tashi — Prisma schema (MVP-subset van het datamodel uit hoofdstuk 39)
+//
+// Dit schema implementeert alleen wat de verticale MVP-slice nodig heeft
+// (hoofdstuk 11 en 55). De overige ~40 entiteiten uit hoofdstuk 39
+// (roles/permissions, content_reviews, offline_packages, sync_events,
+// audio_assets-metadata volledig, enz.) zijn bewust nog niet gemodelleerd,
+// maar de structuur hieronder is zo opgezet dat ze zonder herontwerp kunnen
+// worden toegevoegd: talen/dialecten zijn generiek (niet NL/Tashelhit-only),
+// elk taalitem heeft een reviewStatus, en audio/afbeelding zijn losse entiteiten.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---------------------------------------------------------------------------
+// Identiteit & profielen
+// ---------------------------------------------------------------------------
+
+model ParentAccount {
+  id            String        @id @default(cuid())
+  email         String        @unique
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  childProfiles ChildProfile[]
+
+  @@map("parent_accounts")
+}
+
+enum ExperienceLevel {
+  A_ONTDEKKEN
+  B_OEFENEN
+  C_SPREKEN
+}
+
+model ChildProfile {
+  id               String            @id @default(cuid())
+  parentAccountId  String
+  parentAccount    ParentAccount     @relation(fields: [parentAccountId], references: [id], onDelete: Cascade)
+  displayName      String
+  avatarId         String
+  level            ExperienceLevel   @default(A_ONTDEKKEN)
+  microphoneOptIn  Boolean           @default(false)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  lessonAttempts   LessonAttempt[]
+  exerciseAttempts ExerciseAttempt[]
+  earnedBadges     EarnedBadge[]
+  progressRecords  LearnerProgress[]
+
+  @@index([parentAccountId])
+  @@map("child_profiles")
+}
+
+// ---------------------------------------------------------------------------
+// Taal & content (generiek — geen hardcoded NL/Tashelhit-koppeling, hfst. 4)
+// ---------------------------------------------------------------------------
+
+model Language {
+  id         String      @id @default(cuid())
+  code       String      @unique // bv. "tzm", "nl"
+  name       String
+  isTarget   Boolean     @default(true)  // doeltaal (leren) vs. interfacetaal
+  dialects   Dialect[]
+  themes     Theme[]
+
+  @@map("languages")
+}
+
+model Dialect {
+  id         String            @id @default(cuid())
+  languageId String
+  language   Language          @relation(fields: [languageId], references: [id])
+  code       String            // bv. "tashelhit-ma-souss"
+  region     String?
+  items      VocabularyItem[]
+
+  @@unique([languageId, code])
+  @@map("dialects")
+}
+
+enum ReviewStatus {
+  CONCEPT
+  TE_REVIEWEN
+  AFGEKEURD
+  GOEDGEKEURD
+  GEPUBLICEERD
+  GEARCHIVEERD
+}
+
+enum VocabularyItemType {
+  WOORD
+  ZIN
+  UITDRUKKING
+  DIALOOGREGEL
+}
+
+model VocabularyItem {
+  id                String              @id @default(cuid())
+  dialectId         String
+  dialect           Dialect             @relation(fields: [dialectId], references: [id])
+  type              VocabularyItemType  @default(WOORD)
+  conceptMeaning     String              // interne, taalneutrale betekenis-sleutel
+  latinSpelling     String              // placeholder toegestaan, zie reviewStatus
+  tifinagh          String?
+  translationNl     String
+  literalTranslation String?
+  phoneticHint      String?
+  ageAppropriate    Boolean             @default(true)
+  reviewStatus      ReviewStatus        @default(CONCEPT)
+  reviewNote        String?             // bv. "DEMO — INHOUDELIJKE REVIEW VEREIST"
+  imageAssetId      String?
+  imageAsset        ImageAsset?         @relation(fields: [imageAssetId], references: [id])
+  audioAssetId      String?
+  audioAsset        AudioAsset?         @relation(fields: [audioAssetId], references: [id])
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+
+  exercises         Exercise[]
+  difficultFor       DifficultItem[]
+
+  @@index([dialectId])
+  @@index([reviewStatus])
+  @@map("vocabulary_items")
+}
+
+enum AssetSourceType {
+  MENSELIJKE_OPNAME
+  AI_GEGENEREERD
+  GEKLOOND
+}
+
+model AudioAsset {
+  id            String              @id @default(cuid())
+  url           String              // placeholder-pad in MVP (geen echte opname)
+  sourceType    AssetSourceType     @default(AI_GEGENEREERD)
+  provider      String?             // bv. "mock"
+  reviewStatus  ReviewStatus        @default(CONCEPT)
+  durationMs    Int?
+  createdAt     DateTime            @default(now())
+
+  vocabularyItems VocabularyItem[]
+
+  @@map("audio_assets")
+}
+
+model ImageAsset {
+  id            String              @id @default(cuid())
+  url           String
+  altText       String
+  reviewStatus  ReviewStatus        @default(GOEDGEKEURD) // illustraties zijn geen taalcontent
+  createdAt     DateTime            @default(now())
+
+  vocabularyItems VocabularyItem[]
+
+  @@map("image_assets")
+}
+
+// ---------------------------------------------------------------------------
+// Leerstructuur (hfst. 10): taal > thema > les > oefening
+// ---------------------------------------------------------------------------
+
+model Theme {
+  id          String    @id @default(cuid())
+  languageId  String
+  language    Language  @relation(fields: [languageId], references: [id])
+  slug        String    @unique // bv. "dieren"
+  titleNl     String
+  description String?
+  sortOrder   Int       @default(0)
+  lessons     Lesson[]
+
+  @@map("themes")
+}
+
+model Lesson {
+  id              String            @id @default(cuid())
+  themeId         String
+  theme           Theme             @relation(fields: [themeId], references: [id])
+  titleNl         String
+  sortOrder       Int               @default(0)
+  targetMinutes   Int               @default(5) // hfst. 7.4: 3-7 min per les
+
+  exercises       Exercise[]
+  lessonAttempts  LessonAttempt[]
+
+  @@map("lessons")
+}
+
+enum ExerciseType {
+  LUISTEREN_EN_HERKENNEN
+  AFBEELDING_EN_WOORD
+  WAT_HOOR_JE
+  NAZEGGEN
+}
+
+model Exercise {
+  id               String              @id @default(cuid())
+  lessonId         String
+  lesson           Lesson              @relation(fields: [lessonId], references: [id])
+  vocabularyItemId String
+  vocabularyItem   VocabularyItem      @relation(fields: [vocabularyItemId], references: [id])
+  type             ExerciseType
+  sortOrder        Int                 @default(0)
+
+  exerciseAttempts ExerciseAttempt[]
+
+  @@index([lessonId])
+  @@map("exercises")
+}
+
+// ---------------------------------------------------------------------------
+// Voortgang (hfst. 11.4, 39)
+// ---------------------------------------------------------------------------
+
+model LessonAttempt {
+  id             String        @id @default(cuid())
+  childProfileId String
+  childProfile   ChildProfile  @relation(fields: [childProfileId], references: [id])
+  lessonId       String
+  lesson         Lesson        @relation(fields: [lessonId], references: [id])
+  startedAt      DateTime      @default(now())
+  completedAt    DateTime?
+  pointsEarned   Int           @default(0)
+
+  @@index([childProfileId])
+  @@map("lesson_attempts")
+}
+
+model ExerciseAttempt {
+  id               String         @id @default(cuid())
+  childProfileId   String
+  childProfile     ChildProfile   @relation(fields: [childProfileId], references: [id])
+  exerciseId       String
+  exercise         Exercise       @relation(fields: [exerciseId], references: [id])
+  isCorrect        Boolean
+  attemptNumber    Int            @default(1)
+  usedSlowAudio    Boolean        @default(false)
+  usedRepeat       Boolean        @default(false)
+  createdAt        DateTime       @default(now())
+
+  @@index([childProfileId])
+  @@index([exerciseId])
+  @@map("exercise_attempts")
+}
+
+model LearnerProgress {
+  id             String        @id @default(cuid())
+  childProfileId String
+  childProfile   ChildProfile  @relation(fields: [childProfileId], references: [id])
+  vocabularyItemId String
+  timesCorrect   Int           @default(0)
+  timesIncorrect Int           @default(0)
+  lastPracticedAt DateTime?
+
+  @@unique([childProfileId, vocabularyItemId])
+  @@map("learner_progress")
+}
+
+model DifficultItem {
+  id               String          @id @default(cuid())
+  childProfileId   String
+  vocabularyItemId String
+  vocabularyItem   VocabularyItem  @relation(fields: [vocabularyItemId], references: [id])
+  markedAt         DateTime        @default(now())
+
+  @@unique([childProfileId, vocabularyItemId])
+  @@map("difficult_items")
+}
+
+// ---------------------------------------------------------------------------
+// Gamification (hfst. 16)
+// ---------------------------------------------------------------------------
+
+model Badge {
+  id           String         @id @default(cuid())
+  slug         String         @unique // bv. "eerste-woord"
+  titleNl      String
+  description  String
+  earnedBadges EarnedBadge[]
+
+  @@map("badges")
+}
+
+model EarnedBadge {
+  id             String        @id @default(cuid())
+  childProfileId String
+  childProfile   ChildProfile  @relation(fields: [childProfileId], references: [id])
+  badgeId        String
+  badge          Badge         @relation(fields: [badgeId], references: [id])
+  earnedAt       DateTime      @default(now())
+
+  @@unique([childProfileId, badgeId])
+  @@map("earned_badges")
+}
