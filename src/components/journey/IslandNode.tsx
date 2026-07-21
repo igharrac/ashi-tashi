@@ -26,7 +26,9 @@ const STATUS_BADGE_TEXT: Record<IslandNodeProps["status"], string | null> = {
 /** Eén "eiland" op het reispad (hfst. 10: taal > thema > les), gebaseerd op het Figma-ontwerp. */
 export function IslandNode({ island, status, href, align }: IslandNodeProps) {
   const isLocked = status === "locked";
-  const circleSize = status === "final" ? "h-32 w-32 text-4xl" : "h-28 w-28 text-3xl";
+  // Kleiner op smalle telefoons (hfst. 9: mobile-first) om horizontaal overlopen te voorkomen.
+  const circleSize =
+    status === "final" ? "h-24 w-24 text-3xl sm:h-32 sm:w-32 sm:text-4xl" : "h-20 w-20 text-2xl sm:h-28 sm:w-28 sm:text-3xl";
   const badgeText = STATUS_BADGE_TEXT[status];
 
   const circle = (
@@ -50,15 +52,15 @@ export function IslandNode({ island, status, href, align }: IslandNodeProps) {
   );
 
   const teaser = (
-    <div className={`max-w-[180px] ${align === "right" ? "text-left" : "text-right"}`}>
-      <p className="text-sm font-bold text-forest-600">{island.eyebrow ?? island.titleNl}</p>
-      <p className="text-sm text-ink">{island.teaser}</p>
+    <div className={`max-w-[128px] sm:max-w-[180px] ${align === "right" ? "text-left" : "text-right"}`}>
+      <p className="text-xs font-bold text-forest-600 sm:text-sm">{island.eyebrow ?? island.titleNl}</p>
+      <p className="text-xs text-ink sm:text-sm">{island.teaser}</p>
     </div>
   );
 
   const inner = (
     <div
-      className={`flex items-center gap-4 ${align === "right" ? "flex-row" : "flex-row-reverse"}
+      className={`flex items-center gap-2 sm:gap-4 ${align === "right" ? "flex-row" : "flex-row-reverse"}
         ${align === "right" ? "self-end" : "self-start"}`}
     >
       {circle}

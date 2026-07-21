@@ -33,7 +33,7 @@ export default function HomePage() {
         <SiteHeader />
 
         <main className="relative mx-auto flex w-full max-w-5xl flex-1 flex-col items-center gap-10 px-6 py-16 text-center lg:flex-row lg:text-left">
-          <div className="flex flex-1 flex-col items-center gap-6 lg:items-start">
+          <div className="order-2 flex flex-1 flex-col items-center gap-6 lg:order-1 lg:items-start">
             <Pill tone="mint" icon="👋">
               Hoi! Klaar voor een nieuw avontuur?
             </Pill>
@@ -71,14 +71,16 @@ export default function HomePage() {
               </form>
             </Card>
 
-            <div className="flex w-full max-w-sm items-start justify-center gap-6 border-t border-border-subtle pt-6 text-sm text-ink lg:justify-start">
+            {/* Verborgen op mobiel: het Figma mobile-frame (node 2:229) toont deze
+                rij niet — minder tekst/drukte op kleine schermen (hfst. 9). */}
+            <div className="hidden w-full max-w-sm items-start justify-center gap-6 border-t border-border-subtle pt-6 text-sm text-ink lg:flex lg:justify-start">
               <span>🛡️ 100% Veilig</span>
               <span>🌍 Tashelhit</span>
               <span>😊 Plezier</span>
             </div>
           </div>
 
-          <div className="relative flex flex-1 justify-center">
+          <div className="order-1 relative flex flex-1 justify-center lg:order-2">
             <MascotIllustration variant="cloud" />
 
             {/* Decoratieve micro-interacties, overgenomen uit het Figma-ontwerp. */}
