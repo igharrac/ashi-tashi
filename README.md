@@ -54,11 +54,31 @@ Zie `.env.example` voor hoe een echte provider later aangesloten wordt
 
 ```bash
 npm install
-cp .env.example .env   # pas DATABASE_URL later aan indien je Prisma gebruikt
+cp .env.example .env   # pas DATABASE_URL later aan indien je Prisma gebruikt, en zet STUDIO_PASSWORD
 npm run dev
 ```
 
 App draait op http://localhost:3000.
+
+## Opnamestudio (`/studio/opnames`)
+
+Interne, wachtwoord-beveiligde pagina om zelf audio in te spreken voor
+woorden en zinnen, per persona (man/vrouw/jongen/meisje — hoofdstuk 19.1).
+Volledig technisch ontwerp: [ARCHITECTUUR-OPNAMESTUDIO.md](./ARCHITECTUUR-OPNAMESTUDIO.md).
+
+Kort:
+1. Zet `STUDIO_PASSWORD` in `.env` (verplicht — leeg laten houdt de studio dicht).
+2. `npm run dev`, ga naar `http://localhost:3000/studio/login`.
+3. Per woord/zin en per persona: opnemen, beluisteren, opslaan, en zelf
+   goed- of afkeuren (menselijke review, hoofdstuk 21 — niets wordt
+   automatisch gepubliceerd).
+
+**Belangrijk:** deze tool schrijft audiobestanden naar de lokale schijf
+(`public/audio/recordings/`) en een manifest (`data/recordings-manifest.json`).
+Dat werkt alleen als je de app lokaal draait — **niet** op Vercel, waar het
+bestandssysteem read-only is. Commit de opnames + het manifest naar git zoals
+je gewend bent; op Vercel worden ze dan gewoon als statische bestanden
+meegedeployed voor afspelen (alleen opnemen kan daar niet).
 
 ## Database (optionele volgende stap)
 
@@ -99,9 +119,11 @@ npm run db:seed
 
 ## Wat hier bewust nog niet in zit
 
-Conform hoofdstuk 49: geen auth-systeem, geen echte TTS/STT-koppeling, geen
-CMS, geen betalingen, geen native apps. Zie `analyse-fase0.md` (in de
-projectroot naast deze map) voor de volledige roadmap en scope-afbakening.
+Conform hoofdstuk 49: geen volwaardig auth-systeem (de opnamestudio heeft
+alleen een simpel gedeeld wachtwoord, zie hierboven), geen echte TTS/STT-
+koppeling, geen volwaardig CMS met gebruikersbeheer, geen betalingen, geen
+native apps. Zie `analyse-fase0.md` (in de projectroot naast deze map) voor
+de volledige roadmap en scope-afbakening.
 
 ## Privacy & beveiliging — openstaande punten
 
