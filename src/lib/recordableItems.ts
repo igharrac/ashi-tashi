@@ -1,50 +1,34 @@
-import { DIEREN_THEME } from "@/lib/demoData";
-import type { ThemeView } from "@/types/domain";
+import { getCatalogItems } from "@/lib/contentCatalog";
 
 /**
- * Opnamestudio (zie ARCHITECTUUR-OPNAMESTUDIO.md): welke woorden/zinnen kun
- * je inspreken? Deze lijst wordt automatisch afgeleid uit de bestaande
- * demo-content (src/lib/demoData.ts), zodat er geen aparte, met de hand
- * bijgehouden lijst hoeft te bestaan die uit de pas kan gaan lopen.
- *
- * Nu alleen "Dieren" (het enige thema met echte placeholder-content, hfst.
- * 54). Zodra een nieuw thema content krijgt, hier gewoon toevoegen aan
- * RECORDABLE_THEMES.
+ * Opnamestudio (zie ARCHITECTUUR-OPNAMESTUDIO.md): welke woorden kun je
+ * inspreken? Bron is de volledige content-catalogus (src/lib/contentCatalog.ts,
+ * Level > Categorie > Woord) — dus alle 11 categorieën, niet alleen "Dieren".
  */
-const RECORDABLE_THEMES: ThemeView[] = [DIEREN_THEME];
-
 export interface RecordableItem {
   id: string;
   translationNl: string;
   latinSpelling: string;
-  itemKind: "woord" | "zin";
+  itemKind: "woord";
   imageEmoji: string;
-  themeSlug: string;
-  themeTitleNl: string;
+  levelSlug: string;
+  levelTitleNl: string;
+  categorySlug: string;
+  categoryTitleNl: string;
 }
 
 export function getRecordableItems(): RecordableItem[] {
-  const seen = new Map<string, RecordableItem>();
-
-  for (const theme of RECORDABLE_THEMES) {
-    for (const lesson of theme.lessons) {
-      for (const exercise of lesson.exercises) {
-        const item = exercise.vocabularyItem;
-        if (seen.has(item.id)) continue;
-        seen.set(item.id, {
-          id: item.id,
-          translationNl: item.translationNl,
-          latinSpelling: item.latinSpelling,
-          itemKind: item.itemKind ?? "woord",
-          imageEmoji: item.imageEmoji,
-          themeSlug: theme.slug,
-          themeTitleNl: theme.titleNl,
-        });
-      }
-    }
-  }
-
-  return Array.from(seen.values());
+  return getCatalogItems().map((item) => ({
+    id: item.id,
+    translationNl: item.translationNl,
+    latinSpelling: item.latinSpelling,
+    itemKind: item.itemKind,
+    imageEmoji: item.emoji,
+    levelSlug: item.levelSlug,
+    levelTitleNl: item.levelTitleNl,
+    categorySlug: item.categorySlug,
+    categoryTitleNl: item.categoryTitleNl,
+  }));
 }
 
 /** Persona's zoals bedoeld in hfst. 19.1: man, vrouw, jongen, meisje. */

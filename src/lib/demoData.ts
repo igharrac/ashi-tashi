@@ -108,68 +108,9 @@ export const DIEREN_THEME: ThemeView = {
   ],
 };
 
-export interface JourneyIsland {
-  slug: string;
-  titleNl: string;
-  emoji: string;
-  /** Kleine label boven de teaser, bv. "Les 1" (leeg = geen label). */
-  eyebrow?: string;
-  /** Korte teaser-tekst naast het eiland, overgenomen uit het Figma-ontwerp waar beschikbaar. */
-  teaser: string;
-  /** Alleen "dieren" heeft echt geïmplementeerde lessen in deze MVP-slice. */
-  isImplemented: boolean;
-  isFinalDestination?: boolean;
-}
-
-/**
- * Vijf demo-thema's in seeddata, één volledig geïmplementeerd (hfst. 54).
- * De overige vier tonen het reispad-concept en de te verwachten uitbreiding
- * (hfst. 12) zonder dat er al lessen achter zitten — duidelijk als
- * "binnenkort" gemarkeerd, geen nepcontent. Teaser-teksten voor "De Basis"
- * en "Eten & Thee" zijn 1-op-1 overgenomen uit het Figma/Stitch-ontwerp
- * (bestand Bz60fD3zucFgZvlDJxwBri, nodes 2:8 en 2:41); de overige zijn in
- * dezelfde toon geschreven.
- */
-export const JOURNEY_ISLANDS: JourneyIsland[] = [
-  {
-    slug: "dieren",
-    titleNl: "Dieren",
-    emoji: "🐾",
-    eyebrow: "Les 1",
-    teaser: "Leer je eerste woorden in het Tashelhit.",
-    isImplemented: true,
-  },
-  {
-    slug: "begroeten",
-    titleNl: "Begroeten",
-    emoji: "👋",
-    teaser: "Leer hallo en gedag zeggen op z'n Tashelhit.",
-    isImplemented: false,
-  },
-  {
-    slug: "familie",
-    titleNl: "Familie",
-    emoji: "👨‍👩‍👧",
-    teaser: "Ontdek hoe je opa, oma en je familie noemt.",
-    isImplemented: false,
-  },
-  {
-    slug: "eten-en-drinken",
-    titleNl: "Eten & Thee",
-    emoji: "🍵",
-    eyebrow: "Proef de Cultuur",
-    teaser: "Maak een virtuele muntthee en leer alle ingrediënten kennen.",
-    isImplemented: false,
-  },
-  {
-    slug: "kleuren-en-getallen",
-    titleNl: "De Grote Kasbah",
-    emoji: "🏰",
-    teaser: "Het einde van de reis: een magische oase in de Sahara.",
-    isImplemented: false,
-    isFinalDestination: true,
-  },
-];
+// Het reispad (levels + categorieën) staat sinds de contentcatalogus-update
+// in src/lib/contentCatalog.ts (LEVELS/CATEGORIES) — hier stond eerder een
+// vlakke JOURNEY_ISLANDS-lijst met 5 thema's, die is daardoor vervangen.
 
 export const DEMO_BADGES: Record<string, { titleNl: string; description: string; emoji: string }> = {
   "eerste-woord": { titleNl: "Eerste woord", description: "Je hebt je eerste woord geleerd!", emoji: "⭐" },

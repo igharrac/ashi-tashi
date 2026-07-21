@@ -40,7 +40,7 @@ export default function LearningRoutePage() {
         />
       </div>
 
-      {lesson && <JourneyPath childId={child.id} dierenLessonId={lesson.id} dierenCompleted={isCompleted} />}
+      <JourneyPath childId={child.id} firstLevelCompleted={isCompleted} />
     </AppShell>
   );
 }

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type { JourneyIsland } from "@/lib/demoData";
+import type { LevelDefinition } from "@/lib/contentCatalog";
 
 interface IslandNodeProps {
-  island: JourneyIsland;
+  island: LevelDefinition;
   status: "start" | "completed" | "locked" | "final";
   href?: string;
   /** Aan welke kant van het pad dit eiland staat; bepaalt waar de teaser-tekst komt. */

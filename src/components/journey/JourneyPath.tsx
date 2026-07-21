@@ -1,23 +1,28 @@
 "use client";
 
-import { JOURNEY_ISLANDS } from "@/lib/demoData";
+import { LEVELS } from "@/lib/contentCatalog";
 import { IslandNode } from "./IslandNode";
 
 interface JourneyPathProps {
   childId: string;
-  dierenLessonId: string;
-  dierenCompleted: boolean;
+  /** Is de (enige, tot nu toe echt speelbare) inhoud van het eerste level afgerond? */
+  firstLevelCompleted: boolean;
 }
 
-const ISLAND_COUNT = JOURNEY_ISLANDS.length;
+// Alleen het eerste level heeft nu echt speelbare inhoud (de categorie
+// "dieren" erin) — zie ARCHITECTUUR-OPNAMESTUDIO.md / contentCatalog.ts.
+const UNLOCKED_LEVEL_SLUG = "de-basis";
+
+const ISLAND_COUNT = LEVELS.length;
 const ROW_HEIGHT = 176; // px, moet overeenkomen met de gap tussen eilanden hieronder
 
 /**
  * Reispad-visualisatie (hfst. 10, geïnspireerd op het Figma/Stitch-ontwerp
- * "Jouw Reis"): een vloeiend kronkelend S-pad met wolken, en eilanden per
- * thema die afwisselend links/rechts van het pad liggen.
+ * "Jouw Reis"): een vloeiend kronkelend S-pad met wolken, en één bolletje per
+ * LEVEL (elk level bevat meerdere categorieën, zie contentCatalog.ts) die
+ * afwisselend links/rechts van het pad liggen.
  */
-export function JourneyPath({ childId, dierenLessonId, dierenCompleted }: JourneyPathProps) {
+export function JourneyPath({ childId, firstLevelCompleted }: JourneyPathProps) {
   const svgHeight = ROW_HEIGHT * ISLAND_COUNT;
 
   // Genereer een vloeiende S-curve die door het midden van elke rij zigzagt.
@@ -67,27 +72,27 @@ export function JourneyPath({ childId, dierenLessonId, dierenCompleted }: Journe
       </span>
 
       <div className="relative flex flex-col" style={{ gap: `${ROW_HEIGHT - 112}px` }}>
-        {JOURNEY_ISLANDS.map((island, index) => {
+        {LEVELS.map((level, index) => {
           const align = index % 2 === 0 ? "left" : "right";
 
-          if (island.slug === "dieren") {
+          if (level.slug === UNLOCKED_LEVEL_SLUG) {
             return (
               <IslandNode
-                key={island.slug}
-                island={island}
+                key={level.slug}
+                island={level}
                 align={align}
-                status={dierenCompleted ? "completed" : "start"}
-                href={`/kind/${childId}/les/${dierenLessonId}`}
+                status={firstLevelCompleted ? "completed" : "start"}
+                href={`/kind/${childId}/route/${level.slug}`}
               />
             );
           }
 
           return (
             <IslandNode
-              key={island.slug}
-              island={island}
+              key={level.slug}
+              island={level}
               align={align}
-              status={island.isFinalDestination ? "final" : "locked"}
+              status={level.isFinalDestination ? "final" : "locked"}
             />
           );
         })}
