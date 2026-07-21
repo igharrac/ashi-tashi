@@ -120,6 +120,12 @@ export default function LessonPage() {
     <main className="flex flex-col gap-8">
       <ProgressBar current={index} total={queue.length} />
 
+      {currentExercise.vocabularyItem.itemKind === "zin" && (
+        <p className="text-center text-xs font-bold uppercase tracking-wide text-clay-500">
+          🎉 Bijna klaar — nu in een hele zin!
+        </p>
+      )}
+
       {currentExercise.type === "AFBEELDING_EN_WOORD" && (
         <ImageAndWord item={currentExercise.vocabularyItem} onDone={() => handleAnswer(currentExercise, true)} />
       )}

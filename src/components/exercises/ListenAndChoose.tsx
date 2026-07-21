@@ -34,7 +34,7 @@ export function ListenAndChoose({ item, distractors, onAnswer }: ListenAndChoose
   return (
     <div className="flex flex-col items-center gap-6 text-center">
       <p className="text-lg font-medium text-gray-700">Welk plaatje hoort bij dit woord?</p>
-      <AudioButton text={item.latinSpelling} label="Speel het woord af" />
+      <AudioButton text={item.latinSpelling} fallbackSpokenText={item.translationNl} label="Speel het woord af" />
       <div className="grid grid-cols-3 gap-4" role="group" aria-label="Kies de juiste afbeelding">
         {options.map((option) => {
           const isSelected = selectedId === option.id;

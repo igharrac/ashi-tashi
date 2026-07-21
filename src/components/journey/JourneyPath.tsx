@@ -44,7 +44,15 @@ export function JourneyPath({ childId, dierenLessonId, dierenCompleted }: Journe
         preserveAspectRatio="none"
         className="absolute inset-0 h-full w-full"
       >
-        <path d={pathD} fill="none" stroke="#b2e2d4" strokeWidth={2} strokeDasharray="2 4" strokeLinecap="round" />
+        {/* Duolingo-achtige gestippelde lijn: ronde bolletjes i.p.v. streepjes. */}
+        <path
+          d={pathD}
+          fill="none"
+          stroke="#b2e2d4"
+          strokeWidth={5}
+          strokeDasharray="0 11"
+          strokeLinecap="round"
+        />
       </svg>
 
       {/* Zwevende wolk-decoraties langs het pad, puur ornamenteel. */}

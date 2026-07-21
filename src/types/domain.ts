@@ -25,6 +25,8 @@ export interface VocabularyItemView {
   reviewNote?: string;
   imageAlt: string;
   imageEmoji: string; // eenvoudige visuele placeholder i.p.v. echte illustraties
+  /** "woord" (standaard) of "zin" — hfst. 14: van woordjes naar zinnen. */
+  itemKind?: "woord" | "zin";
 }
 
 export type ExerciseType = "LUISTEREN_EN_HERKENNEN" | "AFBEELDING_EN_WOORD" | "NAZEGGEN";

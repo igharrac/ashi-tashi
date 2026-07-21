@@ -33,8 +33,13 @@ export function ImageAndWord({ item, onDone }: ImageAndWordProps) {
       </p>
       <ReviewNotice note={item.reviewNote ?? "Review vereist"} />
       <div className="flex gap-3">
-        <AudioButton text={item.latinSpelling} onPlayed={() => setHasPlayed(true)} />
-        <AudioButton text={item.latinSpelling} slow onPlayed={() => setHasPlayed(true)} />
+        <AudioButton text={item.latinSpelling} fallbackSpokenText={item.translationNl} onPlayed={() => setHasPlayed(true)} />
+        <AudioButton
+          text={item.latinSpelling}
+          fallbackSpokenText={item.translationNl}
+          slow
+          onPlayed={() => setHasPlayed(true)}
+        />
       </div>
       <Button onClick={onDone} disabled={!hasPlayed}>
         Verder

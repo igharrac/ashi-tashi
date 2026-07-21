@@ -31,6 +31,25 @@ const ANIMALS: AnimalSeed[] = [
 
 export const AVATARS = ["🦊", "🐻", "🐼", "🐯", "🐰", "🐨"];
 
+/**
+ * "Van woordjes naar zinnen" (hfst. 14: conversaties worden stapsgewijs
+ * opgebouwd). Na de losse woorden sluit de les af met een paar eenvoudige
+ * zinnen die dezelfde, net geleerde woorden hergebruiken — het kind zegt de
+ * hele zin na in plaats van alleen een keuze te maken. Placeholder-content,
+ * zelfde reviewregels als losse woorden (hfst. 3).
+ */
+interface SentenceSeed {
+  id: string;
+  translationNl: string;
+  emoji: string;
+}
+
+const SENTENCES: SentenceSeed[] = [
+  { id: "zin-hond", translationNl: "Ik zie een hond.", emoji: "🐕" },
+  { id: "zin-kat", translationNl: "De kat is lief.", emoji: "🐈" },
+  { id: "zin-vis", translationNl: "Waar is de vis?", emoji: "🐟" },
+];
+
 export const DIEREN_THEME: ThemeView = {
   id: "seed-theme-dieren",
   slug: "dieren",
@@ -39,35 +58,52 @@ export const DIEREN_THEME: ThemeView = {
     {
       id: "seed-lesson-dieren-1",
       titleNl: "Dieren op de boerderij",
-      targetMinutes: 5,
-      exercises: ANIMALS.flatMap((animal) => [
-        {
-          id: `exercise-listen-${animal.id}`,
-          type: "LUISTEREN_EN_HERKENNEN" as const,
-          vocabularyItem: {
-            id: `item-${animal.id}`,
-            translationNl: animal.translationNl,
-            latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
-            reviewStatus: "TE_REVIEWEN" as const,
-            reviewNote: DEMO_REVIEW_NOTE,
-            imageAlt: `Illustratie van een ${animal.translationNl}`,
-            imageEmoji: animal.emoji,
+      targetMinutes: 6,
+      exercises: [
+        ...ANIMALS.flatMap((animal) => [
+          {
+            id: `exercise-listen-${animal.id}`,
+            type: "LUISTEREN_EN_HERKENNEN" as const,
+            vocabularyItem: {
+              id: `item-${animal.id}`,
+              translationNl: animal.translationNl,
+              latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
+              reviewStatus: "TE_REVIEWEN" as const,
+              reviewNote: DEMO_REVIEW_NOTE,
+              imageAlt: `Illustratie van een ${animal.translationNl}`,
+              imageEmoji: animal.emoji,
+            },
           },
-        },
-        {
-          id: `exercise-repeat-${animal.id}`,
+          {
+            id: `exercise-repeat-${animal.id}`,
+            type: "NAZEGGEN" as const,
+            vocabularyItem: {
+              id: `item-${animal.id}`,
+              translationNl: animal.translationNl,
+              latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
+              reviewStatus: "TE_REVIEWEN" as const,
+              reviewNote: DEMO_REVIEW_NOTE,
+              imageAlt: `Illustratie van een ${animal.translationNl}`,
+              imageEmoji: animal.emoji,
+            },
+          },
+        ]),
+        // Zinnetjes-afsluiting: dezelfde woorden, nu in een korte zin, alleen nazeggen.
+        ...SENTENCES.map((sentence) => ({
+          id: `exercise-sentence-${sentence.id}`,
           type: "NAZEGGEN" as const,
           vocabularyItem: {
-            id: `item-${animal.id}`,
-            translationNl: animal.translationNl,
-            latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
+            id: `item-${sentence.id}`,
+            translationNl: sentence.translationNl,
+            latinSpelling: `[TASHELHIT_SENTENCE_REVIEW_REQUIRED:${sentence.id}]`,
             reviewStatus: "TE_REVIEWEN" as const,
             reviewNote: DEMO_REVIEW_NOTE,
-            imageAlt: `Illustratie van een ${animal.translationNl}`,
-            imageEmoji: animal.emoji,
+            imageAlt: sentence.translationNl,
+            imageEmoji: sentence.emoji,
+            itemKind: "zin" as const,
           },
-        },
-      ]),
+        })),
+      ],
     },
   ],
 };

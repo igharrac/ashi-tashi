@@ -148,6 +148,42 @@ async function main() {
     });
   }
 
+  // "Van woordjes naar zinnen" (hfst. 14): zelfde soort placeholder-content,
+  // nu als korte zin die de net geleerde woorden hergebruikt.
+  const sentences = [
+    { id: "zin-hond", translationNl: "Ik zie een hond." },
+    { id: "zin-kat", translationNl: "De kat is lief." },
+    { id: "zin-vis", translationNl: "Waar is de vis?" },
+  ];
+  for (const [index, sentence] of sentences.entries()) {
+    const item = await prisma.vocabularyItem.upsert({
+      where: { id: `seed-item-${sentence.id}` },
+      update: {},
+      create: {
+        id: `seed-item-${sentence.id}`,
+        dialectId: dialect.id,
+        type: VocabularyItemType.ZIN,
+        conceptMeaning: sentence.id,
+        latinSpelling: `[TASHELHIT_SENTENCE_REVIEW_REQUIRED:${sentence.id}]`,
+        translationNl: sentence.translationNl,
+        reviewStatus: ReviewStatus.TE_REVIEWEN,
+        reviewNote: DEMO_REVIEW_NOTE,
+      },
+    });
+
+    await prisma.exercise.upsert({
+      where: { id: `seed-exercise-sentence-${sentence.id}` },
+      update: {},
+      create: {
+        id: `seed-exercise-sentence-${sentence.id}`,
+        lessonId: lesson.id,
+        vocabularyItemId: item.id,
+        type: ExerciseType.NAZEGGEN,
+        sortOrder: 1000 + index,
+      },
+    });
+  }
+
   const badges = [
     { slug: "eerste-woord", titleNl: "Eerste woord", description: "Je hebt je eerste woord geleerd!" },
     { slug: "goede-luisteraar", titleNl: "Goede luisteraar", description: "Je hebt goed geluisterd naar alle woorden." },
