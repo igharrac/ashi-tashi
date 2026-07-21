@@ -8,9 +8,11 @@ import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
 import { ListenAndChoose } from "@/components/exercises/ListenAndChoose";
 import { RepeatAfterMe } from "@/components/exercises/RepeatAfterMe";
+import { SpeakFromPicture } from "@/components/exercises/SpeakFromPicture";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
+import { applySpeakFirstMode } from "@/domain/lessonMode";
 import type { ExerciseView } from "@/types/domain";
 
 /**
@@ -24,8 +26,14 @@ export default function LessonPage() {
 
   const lesson = DIEREN_THEME.lessons.find((l) => l.id === params.lessonId);
   const allItems = useMemo(() => DIEREN_THEME.lessons.flatMap((l) => l.exercises.map((e) => e.vocabularyItem)), []);
+  // Child alvast ophalen (kan nog undefined zijn vóór "ready") zodat de
+  // gekozen oefenvorm (hfst. 13.11) direct bij de start van de les geldt.
+  const childForInit = getChild(params.childId);
 
-  const [queue, setQueue] = useState<ExerciseView[]>(() => lesson?.exercises ?? []);
+  const [queue, setQueue] = useState<ExerciseView[]>(() => {
+    const base = lesson?.exercises ?? [];
+    return childForInit?.speakFirstMode ? applySpeakFirstMode(base) : base;
+  });
   const [index, setIndex] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
   const [retryQueue, setRetryQueue] = useState<ExerciseView[]>([]);
@@ -43,7 +51,7 @@ export default function LessonPage() {
       vocabularyItemId: exercise.vocabularyItem.id,
       isCorrect,
       attemptNumber: 1,
-      isSpoken: exercise.type === "NAZEGGEN",
+      isSpoken: exercise.type === "NAZEGGEN" || exercise.type === "ZELFSTANDIG_SPREKEN",
     });
 
     if (isCorrect) {
@@ -140,6 +148,14 @@ export default function LessonPage() {
 
       {currentExercise.type === "NAZEGGEN" && (
         <RepeatAfterMe
+          item={currentExercise.vocabularyItem}
+          microphoneOptIn={child.microphoneOptIn}
+          onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+        />
+      )}
+
+      {currentExercise.type === "ZELFSTANDIG_SPREKEN" && (
+        <SpeakFromPicture
           item={currentExercise.vocabularyItem}
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}

@@ -29,7 +29,11 @@ export interface VocabularyItemView {
   itemKind?: "woord" | "zin";
 }
 
-export type ExerciseType = "LUISTEREN_EN_HERKENNEN" | "AFBEELDING_EN_WOORD" | "NAZEGGEN";
+export type ExerciseType =
+  | "LUISTEREN_EN_HERKENNEN"
+  | "AFBEELDING_EN_WOORD"
+  | "NAZEGGEN"
+  | "ZELFSTANDIG_SPREKEN"; // hfst. 13.11: plaatje zien, zelf inspreken zonder het woord eerst te horen
 
 export interface ExerciseView {
   id: string;
@@ -59,6 +63,8 @@ export interface ChildProfileData {
   avatarId: string;
   level: ExperienceLevel;
   microphoneOptIn: boolean;
+  /** Aan: plaatje zien + zelf inspreken (hfst. 13.11). Uit (standaard): eerst horen, dan nazeggen. */
+  speakFirstMode: boolean;
   points: number;
   earnedBadgeSlugs: string[];
   itemStats: Record<string, { correct: number; incorrect: number }>;

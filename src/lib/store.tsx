@@ -47,6 +47,7 @@ interface AppStore {
   getChild: (childId: string) => ChildProfileData | undefined;
   recordExerciseAttempt: (childId: string, attempt: ExerciseAttemptRecord & { isSpoken: boolean }) => void;
   completeLesson: (childId: string, lessonId: string, input: { totalExercises: number; correctExercises: number }) => string[];
+  setSpeakFirstMode: (childId: string, enabled: boolean) => void;
 }
 
 const StoreContext = createContext<AppStore | null>(null);
@@ -75,6 +76,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       avatarId: input.avatarId,
       level: input.level,
       microphoneOptIn: false,
+      speakFirstMode: false,
       points: 0,
       earnedBadgeSlugs: [],
       itemStats: {},
@@ -146,9 +148,25 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
     return newlyEarned;
   }, []);
 
+  const setSpeakFirstMode = useCallback<AppStore["setSpeakFirstMode"]>((childId, enabled) => {
+    setState((prev) => ({
+      ...prev,
+      children: prev.children.map((child) => (child.id === childId ? { ...child, speakFirstMode: enabled } : child)),
+    }));
+  }, []);
+
   const value = useMemo<AppStore>(
-    () => ({ state, ready, setParentEmail, createChildProfile, getChild, recordExerciseAttempt, completeLesson }),
-    [state, ready, setParentEmail, createChildProfile, getChild, recordExerciseAttempt, completeLesson],
+    () => ({
+      state,
+      ready,
+      setParentEmail,
+      createChildProfile,
+      getChild,
+      recordExerciseAttempt,
+      completeLesson,
+      setSpeakFirstMode,
+    }),
+    [state, ready, setParentEmail, createChildProfile, getChild, recordExerciseAttempt, completeLesson, setSpeakFirstMode],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
