@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
-import { ListenAndChoose } from "@/components/exercises/ListenAndChoose";
+import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
 import { RepeatAfterMe } from "@/components/exercises/RepeatAfterMe";
 import { SpeakFromPicture } from "@/components/exercises/SpeakFromPicture";
 import { ProgressBar } from "@/components/ui/ProgressBar";
@@ -25,7 +25,6 @@ export default function LessonPage() {
   const { getChild, recordExerciseAttempt, completeLesson, ready } = useAppStore();
 
   const lesson = DIEREN_THEME.lessons.find((l) => l.id === params.lessonId);
-  const allItems = useMemo(() => DIEREN_THEME.lessons.flatMap((l) => l.exercises.map((e) => e.vocabularyItem)), []);
   // Child alvast ophalen (kan nog undefined zijn vóór "ready") zodat de
   // gekozen oefenvorm (hfst. 13.11) direct bij de start van de les geldt.
   const childForInit = getChild(params.childId);
@@ -51,7 +50,10 @@ export default function LessonPage() {
       vocabularyItemId: exercise.vocabularyItem.id,
       isCorrect,
       attemptNumber: 1,
-      isSpoken: exercise.type === "NAZEGGEN" || exercise.type === "ZELFSTANDIG_SPREKEN",
+      isSpoken:
+        exercise.type === "NAZEGGEN" ||
+        exercise.type === "ZELFSTANDIG_SPREKEN" ||
+        exercise.type === "LUISTEREN_EN_HERKENNEN",
     });
 
     if (isCorrect) {
@@ -139,10 +141,11 @@ export default function LessonPage() {
       )}
 
       {currentExercise.type === "LUISTEREN_EN_HERKENNEN" && (
-        <ListenAndChoose
+        <ListenAndSpeak
           item={currentExercise.vocabularyItem}
-          distractors={allItems.filter((i) => i.id !== currentExercise.vocabularyItem.id)}
-          onAnswer={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+          childId={child.id}
+          microphoneOptIn={child.microphoneOptIn}
+          onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
         />
       )}
 

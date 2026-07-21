@@ -48,7 +48,12 @@ export function RepeatAfterMe({ item, microphoneOptIn, onDone }: RepeatAfterMePr
         {item.itemKind === "zin" ? "Zeg de zin na:" : "Zeg het woord na:"}
       </p>
       <p className="text-2xl font-bold text-primary-600">{item.translationNl}</p>
-      <AudioButton text={item.latinSpelling} fallbackSpokenText={item.translationNl} label="Luister nog eens" />
+      <AudioButton
+        text={item.latinSpelling}
+        itemId={item.id}
+        fallbackSpokenText={item.translationNl}
+        label="Luister nog eens"
+      />
 
       {useRealValidation ? (
         <>

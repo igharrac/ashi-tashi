@@ -3,11 +3,18 @@
 import { useState } from "react";
 import { mockTtsProvider } from "@/providers/tts/mockTtsProvider";
 import { isBrowserSpeechAvailable, speakDutchFallback } from "@/providers/tts/browserSpeechFallback";
+import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import { Button } from "./Button";
 
 interface AudioButtonProps {
   /** Doeltekst voor de TTS-provider (in de MVP: de Tashelhit-placeholder). */
   text: string;
+  /**
+   * Als dit item een goedgekeurde opname heeft in de opnamestudio, speelt de
+   * knop die écht af in plaats van de NL-fallback. Zonder deze prop (of
+   * zonder gevonden opname) valt de knop terug op het oude gedrag.
+   */
+  itemId?: string;
   /**
    * Nederlandse vertaling om hoorbaar te maken zolang er nog geen echte,
    * gereviewde Tashelhit-audio is (hfst. 21). Zonder deze prop blijft de
@@ -20,21 +27,37 @@ interface AudioButtonProps {
 }
 
 /**
- * Speelt een woord af via de TextToSpeechProvider-interface (mock in de MVP).
- * Ondersteunt normale en vertraagde afspeelsnelheid (hfst. 9).
- *
- * De mock-provider genereert zelf geen geluid (nog geen echte Tashelhit-
- * audio beschikbaar). Als `fallbackSpokenText` is meegegeven, gebruikt de
- * knop de browser's eigen spraaksynthese om die Nederlandse vertaling
- * hoorbaar te maken, zodat de interactie ook echt te horen is tijdens het
- * testen. Dit is een tijdelijke stand-in, geen Tashelhit-uitspraak.
+ * Speelt een woord af. Volgorde: (1) een goedgekeurde opname uit de
+ * opnamestudio, indien beschikbaar voor `itemId` — dan hoor je écht
+ * Tashelhit; anders (2) de TextToSpeechProvider-interface (mock in de MVP,
+ * genereert zelf geen geluid) met (3) een Nederlandse browser-spraaksynthese
+ * als hoorbare tijdelijke stand-in. Ondersteunt normale en vertraagde
+ * afspeelsnelheid (hfst. 9).
  */
-export function AudioButton({ text, fallbackSpokenText, label, slow = false, onPlayed }: AudioButtonProps) {
+export function AudioButton({ text, itemId, fallbackSpokenText, label, slow = false, onPlayed }: AudioButtonProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "played">("idle");
   const speechUnavailable = !isBrowserSpeechAvailable();
 
   async function handlePlay() {
     setStatus("loading");
+
+    if (itemId) {
+      const reference = await getReferenceAudioForItem(itemId);
+      if (reference) {
+        const audio = new Audio(reference.url);
+        audio.playbackRate = slow ? 0.7 : 1.0;
+        try {
+          await audio.play();
+        } catch {
+          // Afspelen kan mislukken (bv. autoplay-restricties) — geen harde fout, gewoon negeren.
+        }
+        setStatus("played");
+        onPlayed?.();
+        window.setTimeout(() => setStatus("idle"), 600);
+        return;
+      }
+    }
+
     await mockTtsProvider.generateSpeech({
       text,
       languageCode: "tzm",
