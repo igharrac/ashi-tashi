@@ -1,9 +1,14 @@
 import type { RecordingPersona } from "@/lib/recordableItems";
 
 /**
- * Client-side cache rond GET /api/audio-catalog (publiek, alleen-lezen):
- * welke woorden hebben al een goedgekeurde admin-opname, en waar staat die?
- * Gebruikt door AudioButton en ListenAndSpeak.
+ * Client-side cache rond /audio-catalog.json — een STATISCH bestand onder
+ * public/ (niet een dynamische API-route), gegenereerd door de opnamestudio
+ * (src/lib/publicCatalogSnapshot.ts). Zie dat bestand voor waarom: zo werkt
+ * dit ook betrouwbaar op Vercel, niet alleen lokaal.
+ *
+ * Gebruikt door AudioButton (echte opname afspelen), ListenAndSpeak
+ * (audio-vergelijking) en de oefencomponenten die de fonetische spelling
+ * tonen i.p.v. het Nederlandse woord zodra die beschikbaar is.
  */
 
 export interface ReferenceAudio {
@@ -11,23 +16,27 @@ export interface ReferenceAudio {
   persona: RecordingPersona;
 }
 
-const PERSONA_PREFERENCE: RecordingPersona[] = ["man", "vrouw", "jongen", "meisje"];
-
-let cachePromise: Promise<Map<string, ReferenceAudio[]>> | null = null;
-
-async function loadCatalog(): Promise<Map<string, ReferenceAudio[]>> {
-  const response = await fetch("/api/audio-catalog");
-  const data = (await response.json()) as { entries: { itemId: string; persona: string; url: string }[] };
-  const map = new Map<string, ReferenceAudio[]>();
-  for (const entry of data.entries) {
-    const list = map.get(entry.itemId) ?? [];
-    list.push({ url: entry.url, persona: entry.persona as RecordingPersona });
-    map.set(entry.itemId, list);
-  }
-  return map;
+interface CatalogItem {
+  phoneticSpelling: string | null;
+  recordings: Record<string, string>;
 }
 
-function getCatalog(): Promise<Map<string, ReferenceAudio[]>> {
+interface CatalogSnapshot {
+  generatedAt: string;
+  items: Record<string, CatalogItem>;
+}
+
+const PERSONA_PREFERENCE: RecordingPersona[] = ["man", "vrouw", "jongen", "meisje"];
+
+let cachePromise: Promise<CatalogSnapshot> | null = null;
+
+async function loadCatalog(): Promise<CatalogSnapshot> {
+  const response = await fetch("/audio-catalog.json", { cache: "no-store" });
+  if (!response.ok) return { generatedAt: "", items: {} };
+  return (await response.json()) as CatalogSnapshot;
+}
+
+function getCatalog(): Promise<CatalogSnapshot> {
   if (!cachePromise) cachePromise = loadCatalog();
   return cachePromise;
 }
@@ -35,13 +44,22 @@ function getCatalog(): Promise<Map<string, ReferenceAudio[]>> {
 /** Beste beschikbare referentie-opname voor dit item (voorkeur man > vrouw > jongen > meisje), of null. */
 export async function getReferenceAudioForItem(itemId: string): Promise<ReferenceAudio | null> {
   const catalog = await getCatalog();
-  const options = catalog.get(itemId);
-  if (!options || options.length === 0) return null;
+  const recordings = catalog.items[itemId]?.recordings;
+  if (!recordings) return null;
+
   for (const persona of PERSONA_PREFERENCE) {
-    const match = options.find((option) => option.persona === persona);
-    if (match) return match;
+    const url = recordings[persona];
+    if (url) return { url, persona };
   }
-  return options[0] ?? null;
+  const fallbackEntry = Object.entries(recordings)[0];
+  if (!fallbackEntry) return null;
+  return { url: fallbackEntry[1], persona: fallbackEntry[0] as RecordingPersona };
+}
+
+/** De door een beheerder ingevoerde fonetische spelling voor dit woord, of null als die er nog niet is. */
+export async function getPhoneticSpellingForItem(itemId: string): Promise<string | null> {
+  const catalog = await getCatalog();
+  return catalog.items[itemId]?.phoneticSpelling ?? null;
 }
 
 /** Voor tests/hertesten: forceer een nieuwe fetch bij de volgende aanroep. */

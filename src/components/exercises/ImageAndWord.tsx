@@ -5,6 +5,7 @@ import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { ReviewNotice } from "@/components/ui/ReviewNotice";
+import { useWordSpelling } from "@/hooks/useWordSpelling";
 
 interface ImageAndWordProps {
   item: VocabularyItemView;
@@ -18,6 +19,7 @@ interface ImageAndWordProps {
  */
 export function ImageAndWord({ item, onDone }: ImageAndWordProps) {
   const [hasPlayed, setHasPlayed] = useState(false);
+  const spelling = useWordSpelling(item.id);
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
@@ -28,9 +30,14 @@ export function ImageAndWord({ item, onDone }: ImageAndWordProps) {
       >
         {item.imageEmoji}
       </div>
-      <p className="text-2xl font-bold text-primary-600" lang="nl">
-        {item.translationNl}
+      <p className="text-2xl font-bold text-primary-600" lang={spelling ? undefined : "nl"}>
+        {spelling ?? item.translationNl}
       </p>
+      {spelling && (
+        <p className="text-sm text-ink-muted" lang="nl">
+          {item.translationNl}
+        </p>
+      )}
       <ReviewNotice note={item.reviewNote ?? "Review vereist"} />
       <div className="flex gap-3">
         <AudioButton

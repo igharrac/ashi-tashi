@@ -5,6 +5,7 @@ import type { VocabularyItemView } from "@/types/domain";
 import { Button } from "@/components/ui/Button";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
+import { useWordSpelling } from "@/hooks/useWordSpelling";
 
 interface SpeakFromPictureProps {
   item: VocabularyItemView;
@@ -25,6 +26,7 @@ interface SpeakFromPictureProps {
  */
 export function SpeakFromPicture({ item, microphoneOptIn, onDone }: SpeakFromPictureProps) {
   const speech = useSpeechCheck(item.translationNl);
+  const spelling = useWordSpelling(item.id);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
   const [fallbackMessage, setFallbackMessage] = useState<string | null>(null);
 
@@ -102,7 +104,8 @@ export function SpeakFromPicture({ item, microphoneOptIn, onDone }: SpeakFromPic
             {speech.status === "correct" ? speech.feedbackMessage : fallbackMessage}
           </p>
           <p className="text-sm text-ink-muted">
-            Het was: <span className="font-bold text-forest-600">{item.translationNl}</span>
+            Het was: <span className="font-bold text-forest-600">{spelling ?? item.translationNl}</span>
+            {spelling && <span className="ml-1">({item.translationNl})</span>}
           </p>
           <Button onClick={() => onDone(true)}>Verder</Button>
         </div>

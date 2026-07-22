@@ -6,6 +6,7 @@ import {
   saveRecording,
   updateReviewStatus,
 } from "@/lib/recordingsManifest";
+import { regeneratePublicCatalog } from "@/lib/publicCatalogSnapshot";
 import type { ReviewStatus } from "@/types/domain";
 
 /**
@@ -24,6 +25,10 @@ const REVIEW_STATUSES_FROM_STUDIO: ReviewStatus[] = ["TE_REVIEWEN", "GOEDGEKEURD
 
 export async function GET() {
   const manifest = await readManifest();
+  // Even meepakken bij het openen van de studio, zodat public/audio-catalog.json
+  // ook bijblijft als iemand alleen kijkt zonder iets te wijzigen (bv. na een
+  // git pull van bestaande opnames die het snapshot nog nooit heeft gezien).
+  await regeneratePublicCatalog();
   return NextResponse.json({ manifest });
 }
 
@@ -54,6 +59,7 @@ export async function POST(request: Request) {
     audio: Buffer.from(arrayBuffer),
     mimeType: audio.type || "audio/webm",
   });
+  await regeneratePublicCatalog();
 
   return NextResponse.json({ entry });
 }
@@ -86,6 +92,7 @@ export async function PATCH(request: Request) {
   if (!entry) {
     return NextResponse.json({ error: "Opname niet gevonden." }, { status: 404 });
   }
+  await regeneratePublicCatalog();
   return NextResponse.json({ entry });
 }
 
@@ -102,5 +109,6 @@ export async function DELETE(request: Request) {
   }
 
   await deleteRecording(itemId, persona as RecordingPersona);
+  await regeneratePublicCatalog();
   return NextResponse.json({ ok: true });
 }

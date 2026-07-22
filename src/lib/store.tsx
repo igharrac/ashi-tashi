@@ -48,6 +48,7 @@ interface AppStore {
   recordExerciseAttempt: (childId: string, attempt: ExerciseAttemptRecord & { isSpoken: boolean }) => void;
   completeLesson: (childId: string, lessonId: string, input: { totalExercises: number; correctExercises: number }) => string[];
   setSpeakFirstMode: (childId: string, enabled: boolean) => void;
+  setMicrophoneOptIn: (childId: string, enabled: boolean) => void;
 }
 
 const StoreContext = createContext<AppStore | null>(null);
@@ -155,6 +156,15 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
     }));
   }, []);
 
+  // Expliciete ouder-toestemming voor microfoongebruik (hfst. 23, 30) — staat
+  // standaard uit bij aanmaken van een profiel; hier zet een ouder 'm aan.
+  const setMicrophoneOptIn = useCallback<AppStore["setMicrophoneOptIn"]>((childId, enabled) => {
+    setState((prev) => ({
+      ...prev,
+      children: prev.children.map((child) => (child.id === childId ? { ...child, microphoneOptIn: enabled } : child)),
+    }));
+  }, []);
+
   const value = useMemo<AppStore>(
     () => ({
       state,
@@ -165,8 +175,19 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       recordExerciseAttempt,
       completeLesson,
       setSpeakFirstMode,
+      setMicrophoneOptIn,
     }),
-    [state, ready, setParentEmail, createChildProfile, getChild, recordExerciseAttempt, completeLesson, setSpeakFirstMode],
+    [
+      state,
+      ready,
+      setParentEmail,
+      createChildProfile,
+      getChild,
+      recordExerciseAttempt,
+      completeLesson,
+      setSpeakFirstMode,
+      setMicrophoneOptIn,
+    ],
   );
 
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;

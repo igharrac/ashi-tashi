@@ -6,6 +6,7 @@ import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
+import { useWordSpelling } from "@/hooks/useWordSpelling";
 
 interface RepeatAfterMeProps {
   item: VocabularyItemView;
@@ -26,6 +27,7 @@ interface RepeatAfterMeProps {
  */
 export function RepeatAfterMe({ item, microphoneOptIn, onDone }: RepeatAfterMeProps) {
   const speech = useSpeechCheck(item.translationNl);
+  const spelling = useWordSpelling(item.id);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
   const [fallbackMessage, setFallbackMessage] = useState<string | null>(null);
 
@@ -47,7 +49,8 @@ export function RepeatAfterMe({ item, microphoneOptIn, onDone }: RepeatAfterMePr
       <p className="text-lg font-medium text-gray-700">
         {item.itemKind === "zin" ? "Zeg de zin na:" : "Zeg het woord na:"}
       </p>
-      <p className="text-2xl font-bold text-primary-600">{item.translationNl}</p>
+      <p className="text-2xl font-bold text-primary-600">{spelling ?? item.translationNl}</p>
+      {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
       <AudioButton
         text={item.latinSpelling}
         itemId={item.id}

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { RecorderControl, type RecordingEntryData } from "@/components/studio/RecorderControl";
+import { SpellingInput } from "@/components/studio/SpellingInput";
 import { LEVELS, getCategoriesForLevel } from "@/lib/contentCatalog";
 import {
   getRecordableItems,
@@ -26,6 +27,7 @@ export default function StudioOpnamesPage() {
   const router = useRouter();
   const items = useMemo(() => getRecordableItems(), []);
   const [manifest, setManifest] = useState<ManifestState>({});
+  const [spellings, setSpellings] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [activePersona, setActivePersona] = useState<RecordingPersona>("man");
   const [activeLevelSlug, setActiveLevelSlug] = useState(LEVELS[0]?.slug ?? "");
@@ -40,10 +42,14 @@ export default function StudioOpnamesPage() {
 
   useEffect(() => {
     let cancelled = false;
-    fetch("/api/studio/recordings")
-      .then((res) => res.json())
-      .then((data: { manifest: ManifestState }) => {
-        if (!cancelled) setManifest(data.manifest);
+    Promise.all([
+      fetch("/api/studio/recordings").then((res) => res.json()) as Promise<{ manifest: ManifestState }>,
+      fetch("/api/studio/spellings").then((res) => res.json()) as Promise<{ spellings: Record<string, string> }>,
+    ])
+      .then(([recordingsData, spellingsData]) => {
+        if (cancelled) return;
+        setManifest(recordingsData.manifest);
+        setSpellings(spellingsData.spellings);
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -198,6 +204,20 @@ export default function StudioOpnamesPage() {
                   <div>
                     <p className="font-semibold text-ink">{item.translationNl}</p>
                     <p className="text-xs text-ink-muted">{item.latinSpelling}</p>
+                    <div className="mt-1">
+                      <SpellingInput
+                        itemId={item.id}
+                        value={spellings[item.id] ?? ""}
+                        onSaved={(value) =>
+                          setSpellings((prev) => {
+                            const next = { ...prev };
+                            if (value) next[item.id] = value;
+                            else delete next[item.id];
+                            return next;
+                          })
+                        }
+                      />
+                    </div>
                     <div className="mt-1 flex gap-1">
                       {RECORDING_PERSONAS.map((persona) => {
                         const otherEntry = manifest[recordingKey(item.id, persona)];

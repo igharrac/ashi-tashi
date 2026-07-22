@@ -10,7 +10,7 @@ import { Toggle } from "@/components/ui/Toggle";
 /** Leerroute-overzicht: het reispad met thema-eilanden (hfst. 10, 55 stap 5-6). */
 export default function LearningRoutePage() {
   const params = useParams<{ childId: string }>();
-  const { getChild, setSpeakFirstMode, ready } = useAppStore();
+  const { getChild, setSpeakFirstMode, setMicrophoneOptIn, ready } = useAppStore();
 
   if (!ready) return <p className="pt-12 text-center text-ink-muted">Even laden…</p>;
 
@@ -27,7 +27,17 @@ export default function LearningRoutePage() {
         <p className="mt-1 text-ink-muted">{child.points} punten verdiend</p>
       </div>
 
-      <div className="mx-auto max-w-md">
+      <div className="mx-auto flex max-w-md flex-col gap-3">
+        <Toggle
+          checked={child.microphoneOptIn}
+          onChange={(enabled) => setMicrophoneOptIn(child.id, enabled)}
+          label="Microfoon gebruiken"
+          description={
+            child.microphoneOptIn
+              ? "Aan: spraakoefeningen nemen echt op en worden vergeleken/beoordeeld."
+              : "Uit: spraakoefeningen worden overgeslagen met een 'ik heb het gezegd'-knop, ook als de microfoon van dit toestel aanstaat."
+          }
+        />
         <Toggle
           checked={child.speakFirstMode}
           onChange={(enabled) => setSpeakFirstMode(child.id, enabled)}
