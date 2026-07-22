@@ -65,7 +65,11 @@ export const DIEREN_THEME: ThemeView = {
             id: `exercise-listen-${animal.id}`,
             type: "LUISTEREN_EN_HERKENNEN" as const,
             vocabularyItem: {
-              id: `item-${animal.id}`,
+              // "item-dieren-<slug>", zelfde ID-formaat als contentCatalog.ts
+              // (getCatalogItems), zodat dit matcht met de keys in
+              // public/audio-catalog.json — anders vindt de opname/spelling
+              // nooit een match en valt de oefening altijd terug op Nederlands.
+              id: `item-dieren-${animal.id}`,
               translationNl: animal.translationNl,
               latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
               reviewStatus: "TE_REVIEWEN" as const,
@@ -78,7 +82,7 @@ export const DIEREN_THEME: ThemeView = {
             id: `exercise-repeat-${animal.id}`,
             type: "NAZEGGEN" as const,
             vocabularyItem: {
-              id: `item-${animal.id}`,
+              id: `item-dieren-${animal.id}`,
               translationNl: animal.translationNl,
               latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
               reviewStatus: "TE_REVIEWEN" as const,
