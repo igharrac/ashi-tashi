@@ -4,7 +4,9 @@
   "private": true,
   "description": "Ashi & Tashi — interactieve Tashelhit-taalapp voor kinderen (verticale MVP-slice)",
   "scripts": {
+    "predev": "tsx scripts/regenerate-audio-catalog.ts",
     "dev": "next dev",
+    "prebuild": "tsx scripts/regenerate-audio-catalog.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

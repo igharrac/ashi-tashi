@@ -1,7 +1,10 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { readManifest } from "@/lib/recordingsManifest";
-import { readSpellings } from "@/lib/wordSpellings";
+// Relatieve imports (i.p.v. @/lib/...): dit bestand wordt ook standalone
+// gedraaid via scripts/regenerate-audio-catalog.ts (predev/prebuild), buiten
+// Next.js' eigen bundelaar om, die de @/-alias niet kent.
+import { readManifest } from "./recordingsManifest";
+import { readSpellings } from "./wordSpellings";
 
 /**
  * Bouwt public/audio-catalog.json opnieuw op vanuit de opname-manifest +
