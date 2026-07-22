@@ -6,6 +6,7 @@ import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilarityProvider";
+import { AnswerReveal } from "./AnswerReveal";
 
 interface ListenAndSpeakProps {
   item: VocabularyItemView;
@@ -32,7 +33,6 @@ const RECORD_DURATION_MS = 4000;
 export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: ListenAndSpeakProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
-  const [attempts, setAttempts] = useState(0);
   // undefined = nog aan het laden, null = geen referentie-opname beschikbaar
   const [referenceUrl, setReferenceUrl] = useState<string | null | undefined>(undefined);
 
@@ -78,7 +78,6 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
   }
 
   async function handleRecordingFinished(blob: Blob) {
-    setAttempts((a) => a + 1);
     void saveAttempt(blob, referenceUrl != null);
 
     if (!referenceUrl) {
@@ -190,14 +189,8 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
           <p aria-live="polite" className="text-lg font-medium text-clay-500">
             {feedbackMessage}
           </p>
-          <div className="flex gap-3">
-            <Button onClick={handleRecord}>Probeer opnieuw</Button>
-            {attempts >= 2 && (
-              <Button variant="ghost" onClick={() => onDone(false)}>
-                Later nog eens
-              </Button>
-            )}
-          </div>
+          <Button onClick={handleRecord}>Probeer opnieuw</Button>
+          <AnswerReveal item={item} onContinue={() => onDone(false)} />
         </div>
       )}
     </div>

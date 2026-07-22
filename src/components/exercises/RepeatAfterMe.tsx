@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
+import { AnswerReveal } from "./AnswerReveal";
 
 interface RepeatAfterMeProps {
   item: VocabularyItemView;
@@ -71,14 +72,8 @@ export function RepeatAfterMe({ item, microphoneOptIn, onDone }: RepeatAfterMePr
               <p aria-live="polite" className="text-lg font-medium text-clay-500">
                 {speech.feedbackMessage}
               </p>
-              <div className="flex gap-3">
-                <Button onClick={speech.attempt}>Probeer opnieuw</Button>
-                {speech.attempts >= 2 && (
-                  <Button variant="ghost" onClick={() => onDone(false)}>
-                    Later nog eens
-                  </Button>
-                )}
-              </div>
+              <Button onClick={speech.attempt}>Probeer opnieuw</Button>
+              <AnswerReveal item={item} onContinue={() => onDone(false)} />
             </div>
           )}
           {speech.status === "correct" && (
