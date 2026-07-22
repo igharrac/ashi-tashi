@@ -48,8 +48,22 @@ export class AudioSimilarityProvider implements PronunciationAssessmentProvider 
       };
     }
 
+    // eslint-disable-next-line no-console
+    console.error("[uitspraakvergelijking] start, referentie:", input.referenceAudioUrl);
+
     try {
       const referenceResponse = await fetch(input.referenceAudioUrl);
+      if (!referenceResponse.ok) {
+        const info = `kon referentie-audio niet ophalen (HTTP ${referenceResponse.status})`;
+        // eslint-disable-next-line no-console
+        console.error("[uitspraakvergelijking]", info);
+        return {
+          feedbackLevel: "aanmoediging",
+          feedbackMessageNl: "Ik kon de opname niet goed verwerken — probeer het nog eens.",
+          shouldOfferRetry: true,
+          debugInfo: info,
+        };
+      }
       const referenceBlob = await referenceResponse.blob();
 
       const [referenceSequence, learnerSequence] = await Promise.all([
@@ -58,10 +72,14 @@ export class AudioSimilarityProvider implements PronunciationAssessmentProvider 
       ]);
 
       if (referenceSequence.length === 0 || learnerSequence.length === 0) {
+        const info = `MFCC-extractie leverde niets op (referentie: ${referenceSequence.length} frames, leerling: ${learnerSequence.length} frames) — vermoedelijk kan deze browser het audioformaat niet decoderen`;
+        // eslint-disable-next-line no-console
+        console.error("[uitspraakvergelijking]", info);
         return {
           feedbackLevel: "aanmoediging",
           feedbackMessageNl: "Ik kon de opname niet goed verwerken — probeer het nog eens.",
           shouldOfferRetry: true,
+          debugInfo: info,
         };
       }
 
@@ -75,24 +93,34 @@ export class AudioSimilarityProvider implements PronunciationAssessmentProvider 
       // Tijdelijke diagnose-log (geen kindgegevens, alleen een getal) — zo
       // kunnen STRONG_THRESHOLD/GOOD_THRESHOLD hierboven met echte cijfers
       // bijgesteld worden i.p.v. blind gokken. Mag later weg als de
-      // drempels eenmaal kloppen. console.log i.p.v. console.debug: die
-      // laatste wordt in Chrome/Edge DevTools standaard weggefilterd tenzij
-      // je handmatig "Verbose" aanvinkt in de console — console.log niet.
+      // drempels eenmaal kloppen. console.error i.p.v. console.log/debug:
+      // die worden in sommige browsers standaard weggefilterd — een error
+      // wordt altijd getoond.
+      const info = `genormaliseerde afstand: ${distance.toFixed(2)} (drempels: sterk<=${STRONG_THRESHOLD}, goed<=${GOOD_THRESHOLD})`;
       // eslint-disable-next-line no-console
-      console.log("[uitspraakvergelijking] genormaliseerde afstand:", distance.toFixed(2));
+      console.error("[uitspraakvergelijking]", info);
 
       if (distance <= STRONG_THRESHOLD) {
-        return { feedbackLevel: "sterk", feedbackMessageNl: pick(STRONG_MESSAGES), shouldOfferRetry: false };
+        return { feedbackLevel: "sterk", feedbackMessageNl: pick(STRONG_MESSAGES), shouldOfferRetry: false, debugInfo: info };
       }
       if (distance <= GOOD_THRESHOLD) {
-        return { feedbackLevel: "goed_geprobeerd", feedbackMessageNl: pick(GOOD_MESSAGES), shouldOfferRetry: false };
+        return {
+          feedbackLevel: "goed_geprobeerd",
+          feedbackMessageNl: pick(GOOD_MESSAGES),
+          shouldOfferRetry: false,
+          debugInfo: info,
+        };
       }
-      return { feedbackLevel: "aanmoediging", feedbackMessageNl: pick(RETRY_MESSAGES), shouldOfferRetry: true };
-    } catch {
+      return { feedbackLevel: "aanmoediging", feedbackMessageNl: pick(RETRY_MESSAGES), shouldOfferRetry: true, debugInfo: info };
+    } catch (err) {
+      const info = `onverwachte fout: ${err instanceof Error ? err.message : String(err)}`;
+      // eslint-disable-next-line no-console
+      console.error("[uitspraakvergelijking]", info, err);
       return {
         feedbackLevel: "aanmoediging",
         feedbackMessageNl: "Er ging iets mis bij het vergelijken — probeer het nog eens.",
         shouldOfferRetry: true,
+        debugInfo: info,
       };
     }
   }

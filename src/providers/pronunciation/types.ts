@@ -22,6 +22,13 @@ export interface PronunciationAssessmentResult {
   feedbackLevel: PronunciationFeedbackLevel;
   feedbackMessageNl: string; // vriendelijke tekst, nooit een percentage (hfst. 22)
   shouldOfferRetry: boolean;
+  /**
+   * Alleen voor kalibratie/diagnose tijdens ontwikkeling (bv. de ruwe
+   * DTW-afstand, of een foutmelding als de vergelijking mislukte). Nooit aan
+   * een kind tonen — de aanroepende UI mag dit alleen zichtbaar maken achter
+   * een expliciete debug-modus (zie ListenAndSpeak.tsx, ?debug=1).
+   */
+  debugInfo?: string;
 }
 
 export interface PronunciationAssessmentProvider {

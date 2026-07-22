@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
@@ -33,6 +34,11 @@ const RECORD_DURATION_MS = 4000;
 export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: ListenAndSpeakProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+  // Alleen voor kalibratie tijdens ontwikkeling (?debug=1 in de URL) — nooit
+  // aan een kind tonen, zie PronunciationAssessmentResult.debugInfo.
+  const [debugInfo, setDebugInfo] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+  const isDebugMode = searchParams.get("debug") === "1";
   // undefined = nog aan het laden, null = geen referentie-opname beschikbaar
   const [referenceUrl, setReferenceUrl] = useState<string | null | undefined>(undefined);
 
@@ -95,6 +101,7 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
     });
 
     setFeedbackMessage(result.feedbackMessageNl);
+    setDebugInfo(result.debugInfo ?? null);
     setStatus(result.shouldOfferRetry ? "retry" : "correct");
   }
 
@@ -180,6 +187,11 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
           <p aria-live="polite" className="text-lg font-medium text-success-500">
             {feedbackMessage}
           </p>
+          {isDebugMode && debugInfo && (
+            <p className="max-w-xs break-words rounded bg-gray-100 px-2 py-1 font-mono text-xs text-gray-500">
+              debug: {debugInfo}
+            </p>
+          )}
           <Button onClick={() => onDone(true)}>Verder</Button>
         </div>
       )}
@@ -189,6 +201,11 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
           <p aria-live="polite" className="text-lg font-medium text-clay-500">
             {feedbackMessage}
           </p>
+          {isDebugMode && debugInfo && (
+            <p className="max-w-xs break-words rounded bg-gray-100 px-2 py-1 font-mono text-xs text-gray-500">
+              debug: {debugInfo}
+            </p>
+          )}
           <Button onClick={handleRecord}>Probeer opnieuw</Button>
           <AnswerReveal item={item} onContinue={() => onDone(false)} />
         </div>
