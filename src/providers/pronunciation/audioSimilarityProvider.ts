@@ -75,9 +75,11 @@ export class AudioSimilarityProvider implements PronunciationAssessmentProvider 
       // Tijdelijke diagnose-log (geen kindgegevens, alleen een getal) — zo
       // kunnen STRONG_THRESHOLD/GOOD_THRESHOLD hierboven met echte cijfers
       // bijgesteld worden i.p.v. blind gokken. Mag later weg als de
-      // drempels eenmaal kloppen.
+      // drempels eenmaal kloppen. console.log i.p.v. console.debug: die
+      // laatste wordt in Chrome/Edge DevTools standaard weggefilterd tenzij
+      // je handmatig "Verbose" aanvinkt in de console — console.log niet.
       // eslint-disable-next-line no-console
-      console.debug("[uitspraakvergelijking] genormaliseerde afstand:", distance.toFixed(2));
+      console.log("[uitspraakvergelijking] genormaliseerde afstand:", distance.toFixed(2));
 
       if (distance <= STRONG_THRESHOLD) {
         return { feedbackLevel: "sterk", feedbackMessageNl: pick(STRONG_MESSAGES), shouldOfferRetry: false };
