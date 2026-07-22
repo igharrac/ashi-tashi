@@ -1,0 +1,167 @@
+{
+  "generatedAt": "2026-07-22T09:11:39.361Z",
+  "items": {
+    "item-dieren-hond": {
+      "phoneticSpelling": "Ij~di",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-hond__man.webm"
+      }
+    },
+    "item-dieren-kat": {
+      "phoneticSpelling": "Mosh",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-kat__man.webm"
+      }
+    },
+    "item-dieren-vogel": {
+      "phoneticSpelling": "Ajdid",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-vogel__man.webm"
+      }
+    },
+    "item-dieren-vis": {
+      "phoneticSpelling": "I~slem",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-vis__man.webm"
+      }
+    },
+    "item-dieren-koe": {
+      "phoneticSpelling": "Tafoenast",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-koe__man.webm"
+      }
+    },
+    "item-dieren-schaap": {
+      "phoneticSpelling": "Anojoed",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-schaap__man.webm"
+      }
+    },
+    "item-dieren-kip": {
+      "phoneticSpelling": "Afloulus",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-kip__man.webm"
+      }
+    },
+    "item-dieren-ezel": {
+      "phoneticSpelling": "Agjuul",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-ezel__man.webm"
+      }
+    },
+    "item-dieren-kameel": {
+      "phoneticSpelling": "Elghom",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-kameel__man.webm"
+      }
+    },
+    "item-dieren-paard": {
+      "phoneticSpelling": "Aserduun",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-paard__man.webm"
+      }
+    },
+    "item-dieren-varken": {
+      "phoneticSpelling": "Ahelouf",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-varken__man.webm"
+      }
+    },
+    "item-dieren-eend": {
+      "phoneticSpelling": "Ajdid n~wamaan",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-eend__man.webm"
+      }
+    },
+    "item-dieren-konijn": {
+      "phoneticSpelling": "Aknien",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-konijn__man.webm"
+      }
+    },
+    "item-dieren-muis": {
+      "phoneticSpelling": "Agherdaay",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-muis__man.webm"
+      }
+    },
+    "item-dieren-olifant": {
+      "phoneticSpelling": "Lfiel",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-olifant__man.webm"
+      }
+    },
+    "item-dieren-leeuw": {
+      "phoneticSpelling": "Izem",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-leeuw__man.webm"
+      }
+    },
+    "item-dieren-tijger": {
+      "phoneticSpelling": "Nnmer",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-tijger__man.webm"
+      }
+    },
+    "item-dieren-beer": {
+      "phoneticSpelling": "Ifies",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-beer__man.webm"
+      }
+    },
+    "item-dieren-aap": {
+      "phoneticSpelling": "Zaatot",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-aap__man.webm"
+      }
+    },
+    "item-dieren-giraffe": {
+      "phoneticSpelling": "Zarrafa",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-giraffe__man.webm"
+      }
+    },
+    "item-dieren-vos": {
+      "phoneticSpelling": null,
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-vos__man.webm"
+      }
+    },
+    "item-dieren-hert": {
+      "phoneticSpelling": "Temlaalt",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-hert__man.webm"
+      }
+    },
+    "item-dieren-egel": {
+      "phoneticSpelling": "Boumhaamd",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-egel__man.webm"
+      }
+    },
+    "item-dieren-slang": {
+      "phoneticSpelling": "Tifighra",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-slang__man.webm"
+      }
+    },
+    "item-dieren-kikker": {
+      "phoneticSpelling": "Ajerou",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-kikker__man.webm"
+      }
+    },
+    "item-dieren-bij": {
+      "phoneticSpelling": "Tizwa",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-bij__man.webm"
+      }
+    },
+    "item-dieren-spin": {
+      "phoneticSpelling": "Tabagha",
+      "recordings": {
+        "man": "/audio/recordings/item-dieren-spin__man.webm"
+      }
+    }
+  }
+}
