@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { dtwDistance, normalizedDtwDistance } from "@/domain/dtw";
+import { cepstralMeanNormalize, dtwDistance, normalizedDtwDistance } from "@/domain/dtw";
 
 describe("dtwDistance", () => {
   it("geeft 0 voor identieke reeksen", () => {
@@ -70,5 +70,42 @@ describe("normalizedDtwDistance", () => {
 
   it("geeft Infinity door bij een lege reeks", () => {
     expect(normalizedDtwDistance([], [[1, 1]])).toBe(Infinity);
+  });
+});
+
+describe("cepstralMeanNormalize", () => {
+  it("maakt twee reeksen die alleen in een constante offset verschillen identiek", () => {
+    // Simuleert twee opnames van hetzelfde woord met verschillend
+    // opnamevolume: reeks B is reeks A + een vaste offset per frame.
+    const a = [
+      [1, 2],
+      [3, 1],
+      [2, 3],
+    ];
+    const offset = [10, -5];
+    const b = a.map(([x, y]) => [(x ?? 0) + offset[0]!, (y ?? 0) + offset[1]!]);
+
+    const normalizedA = cepstralMeanNormalize(a);
+    const normalizedB = cepstralMeanNormalize(b);
+
+    expect(dtwDistance(normalizedA, normalizedB)).toBeCloseTo(0, 10);
+  });
+
+  it("trekt het gemiddelde per dimensie eraf", () => {
+    const series = [
+      [0, 10],
+      [2, 20],
+      [4, 30],
+    ];
+    const normalized = cepstralMeanNormalize(series);
+    expect(normalized).toEqual([
+      [-2, -10],
+      [0, 0],
+      [2, 10],
+    ]);
+  });
+
+  it("geeft een lege reeks ongewijzigd terug", () => {
+    expect(cepstralMeanNormalize([])).toEqual([]);
   });
 });

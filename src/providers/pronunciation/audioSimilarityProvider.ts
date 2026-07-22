@@ -4,18 +4,21 @@ import type {
   PronunciationAssessmentResult,
 } from "./types";
 import { extractMfccSequence } from "@/domain/audioFeatures";
-import { normalizedDtwDistance } from "@/domain/dtw";
+import { cepstralMeanNormalize, normalizedDtwDistance } from "@/domain/dtw";
 
 const STRONG_MESSAGES = ["Dat klonk heel dichtbij!", "Heel goed uitgesproken!"];
 const GOOD_MESSAGES = ["Goed geprobeerd, dat lijkt al veel!", "Mooi, je komt dichtbij."];
 const RETRY_MESSAGES = ["Bijna! Luister nog eens en probeer opnieuw.", "Nog niet helemaal — nog een keertje?"];
 
 // Empirische drempels op de genormaliseerde DTW-afstand tussen twee
-// MFCC-reeksen. Niet wetenschappelijk gekalibreerd (daarvoor is een dataset
-// met echte Tashelhit-opnames nodig) — bewust aan de milde kant, conform
-// hfst. 22: liever een keer te positief dan een kind onterecht ontmoedigen.
-const STRONG_THRESHOLD = 6;
-const GOOD_THRESHOLD = 11;
+// (cepstraal genormaliseerde) MFCC-reeksen. Niet wetenschappelijk
+// gekalibreerd (daarvoor is een dataset met echte Tashelhit-opnames nodig)
+// — bewust ruim aan de milde kant, conform hfst. 22: liever een keer te
+// positief dan een kind onterecht ontmoedigen. De echte afstand wordt ook
+// naar de browserconsole gelogd (zie hieronder) zodat deze drempels met
+// echte cijfers bijgesteld kunnen worden i.p.v. gokken.
+const STRONG_THRESHOLD = 10;
+const GOOD_THRESHOLD = 20;
 
 function pick(messages: string[]): string {
   return messages[Math.floor(Math.random() * messages.length)] ?? messages[0]!;
@@ -62,7 +65,19 @@ export class AudioSimilarityProvider implements PronunciationAssessmentProvider 
         };
       }
 
-      const distance = normalizedDtwDistance(referenceSequence, learnerSequence);
+      // CMN vóór DTW: maakt de vergelijking ongevoelig voor volumeverschillen
+      // tussen twee apart opgenomen fragmenten (zie cepstralMeanNormalize).
+      const distance = normalizedDtwDistance(
+        cepstralMeanNormalize(referenceSequence),
+        cepstralMeanNormalize(learnerSequence),
+      );
+
+      // Tijdelijke diagnose-log (geen kindgegevens, alleen een getal) — zo
+      // kunnen STRONG_THRESHOLD/GOOD_THRESHOLD hierboven met echte cijfers
+      // bijgesteld worden i.p.v. blind gokken. Mag later weg als de
+      // drempels eenmaal kloppen.
+      // eslint-disable-next-line no-console
+      console.debug("[uitspraakvergelijking] genormaliseerde afstand:", distance.toFixed(2));
 
       if (distance <= STRONG_THRESHOLD) {
         return { feedbackLevel: "sterk", feedbackMessageNl: pick(STRONG_MESSAGES), shouldOfferRetry: false };

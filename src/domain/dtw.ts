@@ -51,3 +51,26 @@ export function normalizedDtwDistance(seriesA: FeatureVector[], seriesB: Feature
   if (!Number.isFinite(distance)) return Infinity;
   return distance / (seriesA.length + seriesB.length);
 }
+
+/**
+ * Cepstral mean normalization (CMN): trekt per dimensie het gemiddelde van
+ * de hele reeks eraf, vóór DTW. MFCC-coëfficiënt 0 volgt ongeveer de
+ * (log-)energie van het fragment — die verschilt van nature tussen twee
+ * apart opgenomen fragmenten (afstand tot de microfoon, opnameapparaat,
+ * automatische gain) ook al is het exact hetzelfde woord door dezelfde stem.
+ * Zonder CMN domineert dat volumeverschil de afstand, waardoor zelfs een
+ * geslaagde poging als "bijna" wordt beoordeeld. CMN maakt de vergelijking
+ * ongevoelig voor dat soort constante verschillen per opname, en behoudt de
+ * relatieve variatie binnen het fragment (het deel dat er akoestisch toe doet).
+ */
+export function cepstralMeanNormalize(series: FeatureVector[]): FeatureVector[] {
+  if (series.length === 0) return series;
+  const dimensions = series[0]!.length;
+  const mean = new Array<number>(dimensions).fill(0);
+  for (const vector of series) {
+    for (let d = 0; d < dimensions; d++) {
+      mean[d] = (mean[d] ?? 0) + (vector[d] ?? 0) / series.length;
+    }
+  }
+  return series.map((vector) => vector.map((value, d) => value - (mean[d] ?? 0)));
+}
