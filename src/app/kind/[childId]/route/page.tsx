@@ -5,7 +5,7 @@ import { useAppStore } from "@/lib/store";
 import { DIEREN_THEME } from "@/lib/demoData";
 import { AppShell } from "@/components/layout/AppShell";
 import { JourneyPath } from "@/components/journey/JourneyPath";
-import { Toggle } from "@/components/ui/Toggle";
+import { JourneySettingsMenu } from "@/components/journey/JourneySettingsMenu";
 
 /** Leerroute-overzicht: het reispad met thema-eilanden (hfst. 10, 55 stap 5-6). */
 export default function LearningRoutePage() {
@@ -22,32 +22,14 @@ export default function LearningRoutePage() {
 
   return (
     <AppShell child={child}>
-      <div className="mx-auto max-w-md text-center">
+      <div className="relative mx-auto max-w-md text-center">
+        <JourneySettingsMenu
+          child={child}
+          onMicrophoneOptInChange={(enabled) => setMicrophoneOptIn(child.id, enabled)}
+          onSpeakFirstModeChange={(enabled) => setSpeakFirstMode(child.id, enabled)}
+        />
         <h1 className="text-2xl font-bold text-forest-500">Jouw Reis</h1>
         <p className="mt-1 text-ink-muted">{child.points} punten verdiend</p>
-      </div>
-
-      <div className="mx-auto flex max-w-md flex-col gap-3">
-        <Toggle
-          checked={child.microphoneOptIn}
-          onChange={(enabled) => setMicrophoneOptIn(child.id, enabled)}
-          label="Microfoon gebruiken"
-          description={
-            child.microphoneOptIn
-              ? "Aan: spraakoefeningen nemen echt op en worden vergeleken/beoordeeld."
-              : "Uit: spraakoefeningen worden overgeslagen met een 'ik heb het gezegd'-knop, ook als de microfoon van dit toestel aanstaat."
-          }
-        />
-        <Toggle
-          checked={child.speakFirstMode}
-          onChange={(enabled) => setSpeakFirstMode(child.id, enabled)}
-          label="Zelfstandig spreken"
-          description={
-            child.speakFirstMode
-              ? "Aan: plaatje zien en zelf inspreken, zonder het woord eerst te horen."
-              : "Uit: eerst het woord horen, dan nazeggen. Geldt vanaf de volgende les."
-          }
-        />
       </div>
 
       <JourneyPath childId={child.id} firstLevelCompleted={isCompleted} />

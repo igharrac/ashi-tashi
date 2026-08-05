@@ -49,13 +49,17 @@ export function JourneyPath({ childId, firstLevelCompleted }: JourneyPathProps) 
         preserveAspectRatio="none"
         className="absolute inset-0 h-full w-full"
       >
-        {/* Duolingo-achtige gestippelde lijn: ronde bolletjes i.p.v. streepjes. */}
+        {/* Duolingo-achtige gestippelde lijn: ronde bolletjes i.p.v. streepjes.
+            Bewust subtiel (dunner, lagere dekking, meer ruimte tussen de
+            stippen) — decoratie die de route aangeeft, niet iets dat om
+            aandacht/leesbaarheid van de teksten ernaast moet concurreren. */}
         <path
           d={pathD}
           fill="none"
           stroke="#b2e2d4"
-          strokeWidth={5}
-          strokeDasharray="0 11"
+          strokeOpacity={0.55}
+          strokeWidth={3.5}
+          strokeDasharray="0 15"
           strokeLinecap="round"
         />
       </svg>

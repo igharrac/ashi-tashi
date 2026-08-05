@@ -14,11 +14,12 @@ const RETRY_MESSAGES = ["Bijna! Luister nog eens en probeer opnieuw.", "Nog niet
 // (cepstraal genormaliseerde) MFCC-reeksen. Niet wetenschappelijk
 // gekalibreerd (daarvoor is een dataset met echte Tashelhit-opnames nodig)
 // — bewust ruim aan de milde kant, conform hfst. 22: liever een keer te
-// positief dan een kind onterecht ontmoedigen. De echte afstand wordt ook
-// naar de browserconsole gelogd (zie hieronder) zodat deze drempels met
-// echte cijfers bijgesteld kunnen worden i.p.v. gokken.
-const STRONG_THRESHOLD = 10;
-const GOOD_THRESHOLD = 20;
+// positief dan een kind onterecht ontmoedigen. Nogmaals verruimd na
+// terugkoppeling dat zelfs een goede poging nog te vaak "bijna" opleverde.
+// Gebruik ?debug=1 (zie ListenAndSpeak.tsx) om de echte afstand te zien en
+// deze drempels met cijfers bij te stellen i.p.v. te gokken.
+const STRONG_THRESHOLD = 16;
+const GOOD_THRESHOLD = 32;
 
 function pick(messages: string[]): string {
   return messages[Math.floor(Math.random() * messages.length)] ?? messages[0]!;

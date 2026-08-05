@@ -52,7 +52,16 @@ export function IslandNode({ island, status, href, align }: IslandNodeProps) {
   );
 
   const teaser = (
-    <div className={`max-w-[128px] sm:max-w-[180px] ${align === "right" ? "text-left" : "text-right"}`}>
+    // Ondoorzichtige achtergrond (paginakleur): het gestippelde pad ligt
+    // hier soms net achter/onder de tekst (hfst. 10-ontwerp is geen exacte
+    // wiskundige koppeling tussen lijn en bolletjes) — met een dekkend
+    // kaartje eronder blijft de tekst altijd leesbaar, ongeacht waar de
+    // lijn precies loopt.
+    <div
+      className={`max-w-[128px] rounded-xl2 bg-cream px-2 py-1 sm:max-w-[180px] ${
+        align === "right" ? "text-left" : "text-right"
+      }`}
+    >
       <p className="text-xs font-bold text-forest-600 sm:text-sm">{island.eyebrow ?? island.titleNl}</p>
       <p className="text-xs text-ink sm:text-sm">{island.teaser}</p>
     </div>
