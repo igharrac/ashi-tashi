@@ -34,11 +34,22 @@ export function WordGrid({ items, onSelect }: WordGridProps) {
           type="button"
           onClick={() => handleSelect(item)}
           aria-label={`${item.translationNl} — luister en zeg na`}
-          className="flex flex-col items-center gap-2 rounded-xl2 border border-border-subtle bg-white p-4 text-center
-            shadow-sm transition-transform hover:scale-105 focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+          className="group flex flex-col items-center gap-1.5 rounded-xl2 p-1 text-center transition-transform
+            hover:scale-105 focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
         >
-          <span className="text-5xl" aria-hidden="true">
-            {item.imageEmoji}
+          {/* Het plaatje zelf is het volledige, enige klikdoel — de mic-badge
+              staat er altijd (niet pas bij hover) overheen, want op een
+              tablet/telefoon bestaat geen hover-status voor een kind om te
+              zien. Bij hover/focus (muis) wordt 'm iets nadrukkelijker. */}
+          <span className="relative flex h-20 w-20 items-center justify-center rounded-full bg-mint-100 text-4xl sm:h-24 sm:w-24 sm:text-5xl">
+            <span aria-hidden="true">{item.imageEmoji}</span>
+            <span
+              aria-hidden="true"
+              className="absolute -bottom-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full
+                bg-clay-500 text-sm text-white shadow-sm transition-transform group-hover:scale-110 group-focus-visible:scale-110"
+            >
+              🎤
+            </span>
           </span>
           <span className="text-sm font-semibold text-ink">{item.translationNl}</span>
         </button>
