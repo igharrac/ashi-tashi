@@ -49,6 +49,7 @@ interface AppStore {
   completeLesson: (childId: string, lessonId: string, input: { totalExercises: number; correctExercises: number }) => string[];
   setSpeakFirstMode: (childId: string, enabled: boolean) => void;
   setMicrophoneOptIn: (childId: string, enabled: boolean) => void;
+  setLessonProgress: (childId: string, progress: { lessonId: string; index: number } | null) => void;
 }
 
 const StoreContext = createContext<AppStore | null>(null);
@@ -146,6 +147,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
           completedLessonIds,
           earnedBadgeSlugs: Array.from(new Set([...child.earnedBadgeSlugs, ...earnedSlugs])),
           practiceDatesIso: recordPracticeDay(child.practiceDatesIso, todayIso()),
+          lessonProgress: null, // les is afgerond, geen hervatpunt meer nodig
         };
       }),
     }));
@@ -160,11 +162,22 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Expliciete ouder-toestemming voor microfoongebruik (hfst. 23, 30) — staat
-  // standaard uit bij aanmaken van een profiel; hier zet een ouder 'm aan.
+  // standaard aan bij aanmaken van een profiel; hier kan een ouder 'm uitzetten.
   const setMicrophoneOptIn = useCallback<AppStore["setMicrophoneOptIn"]>((childId, enabled) => {
     setState((prev) => ({
       ...prev,
       children: prev.children.map((child) => (child.id === childId ? { ...child, microphoneOptIn: enabled } : child)),
+    }));
+  }, []);
+
+  // Onthoudt waar een kind gebleven was in een niet-afgemaakte les (bv. na
+  // sluiten van de browser tussendoor), zodat de les hervat kan worden i.p.v.
+  // steeds opnieuw te beginnen. Wordt gewist zodra de les wél is afgerond
+  // (zie completeLesson) of expliciet overgeslagen naar een andere les.
+  const setLessonProgress = useCallback<AppStore["setLessonProgress"]>((childId, progress) => {
+    setState((prev) => ({
+      ...prev,
+      children: prev.children.map((child) => (child.id === childId ? { ...child, lessonProgress: progress } : child)),
     }));
   }, []);
 
@@ -179,6 +192,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       completeLesson,
       setSpeakFirstMode,
       setMicrophoneOptIn,
+      setLessonProgress,
     }),
     [
       state,
@@ -190,6 +204,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       completeLesson,
       setSpeakFirstMode,
       setMicrophoneOptIn,
+      setLessonProgress,
     ],
   );
 

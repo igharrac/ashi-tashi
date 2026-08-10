@@ -71,6 +71,8 @@ export interface ChildProfileData {
   completedLessonIds: string[];
   practiceDatesIso: string[]; // hfst. 16: basis voor de zachte streak
   createdAt: string;
+  /** Waar het kind gebleven was in een niet-afgemaakte les, zodat een tussentijds afgesloten les hervat kan worden i.p.v. opnieuw te beginnen. */
+  lessonProgress?: { lessonId: string; index: number } | null;
 }
 
 export interface AppStateData {

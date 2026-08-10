@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { mockTtsProvider } from "@/providers/tts/mockTtsProvider";
-import { isBrowserSpeechAvailable, speakDutchFallback } from "@/providers/tts/browserSpeechFallback";
-import { getReferenceAudioForItem } from "@/lib/referenceAudio";
+import { isBrowserSpeechAvailable } from "@/providers/tts/browserSpeechFallback";
+import { playWordAudio } from "@/lib/playWordAudio";
 import { Button } from "./Button";
 
 interface AudioButtonProps {
@@ -40,35 +39,7 @@ export function AudioButton({ text, itemId, fallbackSpokenText, label, slow = fa
 
   async function handlePlay() {
     setStatus("loading");
-
-    if (itemId) {
-      const reference = await getReferenceAudioForItem(itemId);
-      if (reference) {
-        const audio = new Audio(reference.url);
-        audio.playbackRate = slow ? 0.7 : 1.0;
-        try {
-          await audio.play();
-        } catch {
-          // Afspelen kan mislukken (bv. autoplay-restricties) — geen harde fout, gewoon negeren.
-        }
-        setStatus("played");
-        onPlayed?.();
-        window.setTimeout(() => setStatus("idle"), 600);
-        return;
-      }
-    }
-
-    await mockTtsProvider.generateSpeech({
-      text,
-      languageCode: "tzm",
-      voiceId: "demo-voice",
-      speakingRate: slow ? 0.7 : 1.0,
-    });
-
-    if (fallbackSpokenText) {
-      speakDutchFallback(fallbackSpokenText, slow ? 0.7 : 1.0);
-    }
-
+    await playWordAudio({ itemId, text, fallbackSpokenText, slow });
     setStatus("played");
     onPlayed?.();
     window.setTimeout(() => setStatus("idle"), 600);

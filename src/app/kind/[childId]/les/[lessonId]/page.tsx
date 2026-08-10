@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
@@ -22,7 +22,7 @@ import type { ExerciseView } from "@/types/domain";
  */
 export default function LessonPage() {
   const params = useParams<{ childId: string; lessonId: string }>();
-  const { getChild, recordExerciseAttempt, completeLesson, ready } = useAppStore();
+  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, ready } = useAppStore();
 
   const lesson = DIEREN_THEME.lessons.find((l) => l.id === params.lessonId);
   // Child alvast ophalen (kan nog undefined zijn vóór "ready") zodat de
@@ -33,11 +33,25 @@ export default function LessonPage() {
     const base = lesson?.exercises ?? [];
     return childForInit?.speakFirstMode ? applySpeakFirstMode(base) : base;
   });
-  const [index, setIndex] = useState(0);
+  // Bij een tussentijds afgesloten les: hervat waar het kind gebleven was
+  // i.p.v. steeds bij het begin te beginnen (zie setLessonProgress).
+  const [index, setIndex] = useState(() => {
+    const saved = childForInit?.lessonProgress;
+    if (saved && saved.lessonId === lesson?.id) {
+      return Math.min(Math.max(saved.index, 0), Math.max((lesson?.exercises.length ?? 1) - 1, 0));
+    }
+    return 0;
+  });
   const [correctCount, setCorrectCount] = useState(0);
   const [retryQueue, setRetryQueue] = useState<ExerciseView[]>([]);
   const [wrongCounts, setWrongCounts] = useState<Record<string, number>>({});
   const [finished, setFinished] = useState<{ points: number; newBadges: string[] } | null>(null);
+
+  useEffect(() => {
+    if (!childForInit || !lesson || finished) return;
+    setLessonProgress(childForInit.id, { lessonId: lesson.id, index });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, lesson?.id, childForInit?.id, finished]);
 
   if (!ready) return <p className="text-center text-gray-500">Even laden…</p>;
   const child = getChild(params.childId);
@@ -67,6 +81,15 @@ export default function LessonPage() {
       setRetryQueue((prev) => [...prev, exercise]);
     }
     goToNext();
+  }
+
+  /** Woord overslaan zonder te scoren — telt niet als goed of fout (hfst. 22: nooit dwingen). */
+  function handleSkip() {
+    goToNext();
+  }
+
+  function goToPrevious() {
+    if (index > 0) setIndex((i) => i - 1);
   }
 
   function goToNext() {
@@ -127,8 +150,41 @@ export default function LessonPage() {
   }
 
   return (
-    <main className="flex flex-col gap-8">
-      <ProgressBar current={index} total={queue.length} />
+    <main className="flex flex-col gap-4">
+      <div className="flex items-center gap-3">
+        <Link
+          href={`/kind/${child.id}/route`}
+          aria-label="Terug naar de leerroute (je voortgang wordt bewaard)"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg text-ink-muted
+            hover:bg-cream focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+        >
+          <span aria-hidden="true">←</span>
+        </Link>
+
+        <div className="flex-1">
+          <ProgressBar current={index} total={queue.length} />
+        </div>
+
+        <button
+          type="button"
+          onClick={goToPrevious}
+          disabled={index === 0}
+          aria-label="Vorig woord"
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg text-ink-muted
+            hover:bg-cream focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500 disabled:opacity-30"
+        >
+          <span aria-hidden="true">↩</span>
+        </button>
+        <button
+          type="button"
+          onClick={handleSkip}
+          aria-label="Dit woord overslaan"
+          className="flex h-9 items-center gap-1 rounded-full px-3 text-sm font-semibold text-ink-muted
+            hover:bg-cream focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+        >
+          Overslaan <span aria-hidden="true">→</span>
+        </button>
+      </div>
 
       {currentExercise.vocabularyItem.itemKind === "zin" && (
         <p className="text-center text-xs font-bold uppercase tracking-wide text-clay-500">
