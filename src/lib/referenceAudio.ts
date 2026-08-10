@@ -62,6 +62,21 @@ export async function getPhoneticSpellingForItem(itemId: string): Promise<string
   return catalog.items[itemId]?.phoneticSpelling ?? null;
 }
 
+/**
+ * Alle item-id's die minstens één goedgekeurde opname hebben — gebruikt door
+ * MatchGame.tsx om alleen woorden met écht Tashelhit-geluid in de rondes te
+ * stoppen (i.p.v. items die zonder opname op de Nederlandse fallback zouden
+ * terugvallen, wat het spel minder zinvol maakt).
+ */
+export async function getItemIdsWithRecordings(): Promise<Set<string>> {
+  const catalog = await getCatalog();
+  return new Set(
+    Object.entries(catalog.items)
+      .filter(([, item]) => Object.keys(item.recordings).length > 0)
+      .map(([itemId]) => itemId),
+  );
+}
+
 /** Voor tests/hertesten: forceer een nieuwe fetch bij de volgende aanroep. */
 export function resetReferenceAudioCache(): void {
   cachePromise = null;
