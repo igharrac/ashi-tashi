@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
+import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilarityProvider";
 import { AnswerReveal } from "./AnswerReveal";
@@ -174,10 +175,13 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
       {status === "requesting" && <p aria-live="polite">Microfoon aanvragen…</p>}
 
       {status === "recording" && (
-        <p aria-live="polite" className="flex items-center gap-2 text-lg font-medium text-clay-500">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-clay-500" aria-hidden="true" /> Ik luister… zeg het
-          maar!
-        </p>
+        <div className="flex flex-col items-center gap-2">
+          <p aria-live="polite" className="flex items-center gap-2 text-lg font-medium text-clay-500">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-clay-500" aria-hidden="true" /> Ik luister… zeg het
+            maar!
+          </p>
+          <MicLevelIndicator active stream={streamRef.current} />
+        </div>
       )}
 
       {status === "assessing" && <p aria-live="polite">Even luisteren…</p>}

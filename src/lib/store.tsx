@@ -76,7 +76,10 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       displayName: input.displayName,
       avatarId: input.avatarId,
       level: input.level,
-      microphoneOptIn: false,
+      // Standaard aan (op verzoek) — de ouder kan 'm alsnog uitzetten via
+      // het instellingenmenu op het reispad (hfst. 23, 30: opt-out blijft
+      // mogelijk, blokkeert de les nooit).
+      microphoneOptIn: true,
       speakFirstMode: false,
       points: 0,
       earnedBadgeSlugs: [],

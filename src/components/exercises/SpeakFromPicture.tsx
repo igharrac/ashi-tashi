@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { Button } from "@/components/ui/Button";
+import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
@@ -64,7 +65,12 @@ export function SpeakFromPicture({ item, microphoneOptIn, onDone }: SpeakFromPic
               <span aria-hidden="true">🎙️</span> Neem op
             </Button>
           )}
-          {speech.status === "listening" && <p aria-live="polite">Ik luister… zeg het maar!</p>}
+          {speech.status === "listening" && (
+            <div className="flex flex-col items-center gap-2">
+              <p aria-live="polite">Ik luister… zeg het maar!</p>
+              <MicLevelIndicator active />
+            </div>
+          )}
           {speech.status === "retry" && (
             <div className="flex flex-col items-center gap-4">
               <p aria-live="polite" className="text-lg font-medium text-clay-500">
