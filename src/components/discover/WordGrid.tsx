@@ -1,39 +1,33 @@
 "use client";
 
 import type { VocabularyItemView } from "@/types/domain";
-import { playWordAudio } from "@/lib/playWordAudio";
 
 interface WordGridProps {
   items: VocabularyItemView[];
-  onSelect: (item: VocabularyItemView) => void;
+  /** Index binnen `items` van het aangetikte woord, i.p.v. alleen het item zelf — zo kan de aanroeper vorige/volgende bepalen. */
+  onSelect: (index: number) => void;
 }
 
 /**
  * Responsief overzicht van alle woorden ("Ontdekken", hfst. 10) om vrij te
- * browsen los van de gestructureerde lessen. Eén tik op een plaatje speelt
- * meteen het woord af én opent een klein oefenscherm om het zelf na te
- * zeggen (zie WordDetailModal) — bewust één simpel gebaar per plaatje in
- * plaats van aparte "luister"- en "neem op"-knopjes die een kind eerst zou
- * moeten leren onderscheiden.
+ * browsen los van de gestructureerde lessen. Tikken op een plaatje speelt
+ * bewust GEEN geluid af — dat gebeurt pas via de expliciete knop in het
+ * oefenscherm dat opent (WordDetailModal/ListenAndSpeak), zodat het kind
+ * zelf de regie heeft over wanneer het geluid komt.
  */
 export function WordGrid({ items, onSelect }: WordGridProps) {
-  function handleSelect(item: VocabularyItemView) {
-    void playWordAudio({ itemId: item.id, text: item.latinSpelling, fallbackSpokenText: item.translationNl });
-    onSelect(item);
-  }
-
   if (items.length === 0) {
     return <p className="text-center text-ink-muted">Hier komen binnenkort woorden te staan.</p>;
   }
 
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <button
           key={item.id}
           type="button"
-          onClick={() => handleSelect(item)}
-          aria-label={`${item.translationNl} — luister en zeg na`}
+          onClick={() => onSelect(index)}
+          aria-label={`${item.translationNl} — oefenen`}
           className="group flex flex-col items-center gap-1.5 rounded-xl2 p-1 text-center transition-transform
             hover:scale-105 focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
         >

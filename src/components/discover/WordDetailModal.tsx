@@ -5,9 +5,12 @@ import type { VocabularyItemView } from "@/types/domain";
 import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
 
 interface WordDetailModalProps {
-  item: VocabularyItemView;
+  /** Alle woorden van het grid, zodat er zonder sluiten doorheen gebladerd kan worden. */
+  items: VocabularyItemView[];
+  currentIndex: number;
   childId: string;
   microphoneOptIn: boolean;
+  onNavigate: (index: number) => void;
   onClose: () => void;
 }
 
@@ -15,17 +18,35 @@ interface WordDetailModalProps {
  * Vrij oefenen op één woord vanuit het "Ontdekken"-grid (WordGrid.tsx) —
  * hergebruikt dezelfde luister/opnemen/vergelijk-flow als in de lessen
  * (ListenAndSpeak, inclusief de live microfoon-indicator en escape-knop),
- * maar los van lesvolgorde of score: een woord uitkiezen, oefenen, en
- * sluiten wanneer je wilt.
+ * maar los van lesvolgorde of score. Vorige/volgende-pijltjes laten je door
+ * alle woorden bladeren zonder tussendoor te hoeven sluiten en opnieuw een
+ * plaatje aan te tikken. `key={item.id}` op <ListenAndSpeak> zorgt dat de
+ * opname-/feedbackstatus bij elke navigatie schoon begint (geen "bijna!"
+ * van het vorige woord dat blijft hangen op het volgende).
  */
-export function WordDetailModal({ item, childId, microphoneOptIn, onClose }: WordDetailModalProps) {
+export function WordDetailModal({
+  items,
+  currentIndex,
+  childId,
+  microphoneOptIn,
+  onNavigate,
+  onClose,
+}: WordDetailModalProps) {
+  const item = items[currentIndex];
+  const hasPrevious = currentIndex > 0;
+  const hasNext = currentIndex < items.length - 1;
+
   useEffect(() => {
-    function handleEscape(event: KeyboardEvent) {
+    function handleKeydown(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
+      if (event.key === "ArrowLeft" && hasPrevious) onNavigate(currentIndex - 1);
+      if (event.key === "ArrowRight" && hasNext) onNavigate(currentIndex + 1);
     }
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
+    document.addEventListener("keydown", handleKeydown);
+    return () => document.removeEventListener("keydown", handleKeydown);
+  }, [onClose, onNavigate, currentIndex, hasPrevious, hasNext]);
+
+  if (!item) return null;
 
   return (
     <div
@@ -48,7 +69,33 @@ export function WordDetailModal({ item, childId, microphoneOptIn, onClose }: Wor
         >
           <span aria-hidden="true">×</span>
         </button>
-        <ListenAndSpeak item={item} childId={childId} microphoneOptIn={microphoneOptIn} onDone={onClose} />
+
+        {hasPrevious && (
+          <button
+            type="button"
+            onClick={() => onNavigate(currentIndex - 1)}
+            aria-label="Vorig woord"
+            className="absolute left-0 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center
+              rounded-full bg-white text-xl text-ink-muted shadow-sm hover:bg-cream
+              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+          >
+            <span aria-hidden="true">‹</span>
+          </button>
+        )}
+        {hasNext && (
+          <button
+            type="button"
+            onClick={() => onNavigate(currentIndex + 1)}
+            aria-label="Volgend woord"
+            className="absolute right-0 top-1/2 flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center
+              rounded-full bg-white text-xl text-ink-muted shadow-sm hover:bg-cream
+              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+          >
+            <span aria-hidden="true">›</span>
+          </button>
+        )}
+
+        <ListenAndSpeak key={item.id} item={item} childId={childId} microphoneOptIn={microphoneOptIn} onDone={onClose} />
       </div>
     </div>
   );

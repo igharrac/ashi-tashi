@@ -35,7 +35,7 @@ function toVocabularyItemView(item: CatalogItem): VocabularyItemView {
 export default function DiscoverPage() {
   const params = useParams<{ childId: string }>();
   const { getChild, ready } = useAppStore();
-  const [selected, setSelected] = useState<VocabularyItemView | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   if (!ready) return <p className="pt-12 text-center text-ink-muted">Even laden…</p>;
   const child = getChild(params.childId);
@@ -58,15 +58,17 @@ export default function DiscoverPage() {
       </div>
 
       <div className="mx-auto mt-6 max-w-4xl">
-        <WordGrid items={items} onSelect={setSelected} />
+        <WordGrid items={items} onSelect={setSelectedIndex} />
       </div>
 
-      {selected && (
+      {selectedIndex !== null && (
         <WordDetailModal
-          item={selected}
+          items={items}
+          currentIndex={selectedIndex}
           childId={child.id}
           microphoneOptIn={child.microphoneOptIn}
-          onClose={() => setSelected(null)}
+          onNavigate={setSelectedIndex}
+          onClose={() => setSelectedIndex(null)}
         />
       )}
     </AppShell>
