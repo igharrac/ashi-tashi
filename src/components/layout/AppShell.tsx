@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Sidebar } from "./Sidebar";
 import { BottomTabBar } from "./BottomTabBar";
 import { StreakPill } from "@/components/ui/StreakPill";
+import { ThemeSwitcher } from "@/components/theme/ThemeSwitcher";
 import { computeStreakDays, todayIso } from "@/domain/streak";
 import type { ChildProfileData } from "@/types/domain";
 
@@ -25,6 +26,7 @@ export function AppShell({ child, children }: AppShellProps) {
       <div className="flex-1 pb-20 md:pb-0">
         <header className="flex items-center justify-end gap-3 px-6 py-4">
           <StreakPill days={streakDays} />
+          <ThemeSwitcher />
         </header>
         <div className="px-6 pb-10">{children}</div>
       </div>

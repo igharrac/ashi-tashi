@@ -4,6 +4,145 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Kleurthema's (design tokens) — zie tailwind.config.ts voor hoe deze
+ * variabelen gekoppeld worden aan Tailwind-klassen (primary/secondary/
+ * accent/background, plus de bestaande namen forest/clay/success/mint/
+ * sky/peach/cream die er intern naar verwijzen zodat geen enkel component
+ * hoeft te veranderen). Elke shade is een RGB-triplet (zonder komma's,
+ * zonder rgb()) zodat Tailwind's opacity-modifiers (bv. bg-mint-100/40)
+ * blijven werken via rgb(var(--x) / <alpha-value>).
+ *
+ * data-theme wordt gezet door src/components/theme/ThemeProvider.tsx en
+ * (vóór hydratie, tegen flitsen) door het inline script in layout.tsx.
+ * Nieuw thema toevoegen = hier een nieuw [data-theme="..."]-blok + een
+ * entry in src/lib/theme.ts.
+ *
+ * Kleuren die bewust NIET per thema wisselen (ink/border-subtle/info,
+ * hieronder verderop in dit bestand resp. in tailwind.config.ts): dat is
+ * leesbaarheid/toegankelijkheid (hfst. 22) — lichaamstekst en de
+ * focus-ring blijven overal precies even goed leesbaar, ongeacht thema.
+ */
+[data-theme="berry"] {
+  /* Meiden – Berry (3–10 jaar): speels, warm, vrolijk */
+  --color-primary-50: 241 238 248;
+  --color-primary-100: 233 228 243;
+  --color-primary-200: 212 200 240;
+  --color-primary-300: 190 171 233;
+  --color-primary-400: 160 122 248;
+  --color-primary-500: 139 92 246;
+  --color-primary-600: 96 29 248;
+  --color-primary-700: 69 6 210;
+  --color-primary-800: 49 5 151;
+  --color-primary-900: 32 3 98;
+  --color-secondary-50: 248 239 243;
+  --color-secondary-100: 244 230 237;
+  --color-secondary-200: 241 206 224;
+  --color-secondary-300: 234 181 209;
+  --color-secondary-400: 246 139 195;
+  --color-secondary-500: 244 114 182;
+  --color-secondary-600: 244 50 151;
+  --color-secondary-700: 217 12 119;
+  --color-secondary-800: 156 8 86;
+  --color-secondary-900: 102 5 56;
+  --color-accent-50: 247 244 235;
+  --color-accent-100: 242 236 222;
+  --color-accent-200: 239 223 183;
+  --color-accent-300: 253 216 122;
+  --color-accent-400: 252 203 77;
+  --color-accent-500: 251 191 36;
+  --color-accent-600: 235 170 0;
+  --color-accent-700: 184 132 0;
+  --color-accent-800: 132 95 0;
+  --color-accent-900: 86 62 0;
+  --color-background: 255 247 252;
+  /* clay/success: bewust GEEN 1-op-1 kopie van secondary/accent — dit zijn
+     de exacte shades die na WCAG-contrastcontrole zijn gekozen voor
+     leesbare tekst/knoppen op dit thema (zie tailwind.config.ts). */
+  --color-clay-400: 244 50 151; /* secondary-600 */
+  --color-clay-500: 217 12 119; /* secondary-700 */
+  --color-clay-600: 156 8 86; /* secondary-800 */
+  --color-success-500: 132 95 0; /* accent-800 */
+}
+
+[data-theme="ocean"] {
+  /* Jongens – Ocean (3–10 jaar): fris, energiek, avontuurlijk */
+  --color-primary-50: 231 244 244;
+  --color-primary-100: 207 240 241;
+  --color-primary-200: 140 243 245;
+  --color-primary-300: 73 237 240;
+  --color-primary-400: 19 222 226;
+  --color-primary-500: 14 165 168;
+  --color-primary-600: 8 138 141;
+  --color-primary-700: 6 108 110;
+  --color-primary-800: 5 78 79;
+  --color-primary-900: 3 51 52;
+  --color-secondary-50: 236 240 247;
+  --color-secondary-100: 224 231 242;
+  --color-secondary-200: 190 208 238;
+  --color-secondary-300: 135 179 249;
+  --color-secondary-400: 95 153 248;
+  --color-secondary-500: 59 130 246;
+  --color-secondary-600: 5 96 245;
+  --color-secondary-700: 4 75 191;
+  --color-secondary-800: 3 54 137;
+  --color-secondary-900: 2 35 90;
+  --color-accent-50: 247 240 235;
+  --color-accent-100: 241 229 220;
+  --color-accent-200: 237 203 179;
+  --color-accent-300: 251 170 114;
+  --color-accent-400: 250 141 66;
+  --color-accent-500: 249 115 22;
+  --color-accent-600: 222 91 0;
+  --color-accent-700: 173 71 0;
+  --color-accent-800: 124 51 0;
+  --color-accent-900: 81 33 0;
+  --color-background: 244 250 252;
+  --color-clay-400: 59 130 246; /* secondary-500 */
+  --color-clay-500: 5 96 245; /* secondary-600 */
+  --color-clay-600: 4 75 191; /* secondary-700 */
+  --color-success-500: 173 71 0; /* accent-700 */
+}
+
+[data-theme="atlas"] {
+  /* Ouder – Atlas: rustiger/volwassener, standaardthema */
+  --color-primary-50: 234 236 239;
+  --color-primary-100: 214 219 227;
+  --color-primary-200: 167 181 202;
+  --color-primary-300: 115 138 171;
+  --color-primary-400: 78 99 130;
+  --color-primary-500: 51 65 85;
+  --color-primary-600: 41 53 70;
+  --color-primary-700: 32 42 55;
+  --color-primary-800: 23 30 39;
+  --color-primary-900: 15 19 26;
+  --color-secondary-50: 230 243 242;
+  --color-secondary-100: 203 238 235;
+  --color-secondary-200: 129 239 230;
+  --color-secondary-300: 55 230 216;
+  --color-secondary-400: 23 182 170;
+  --color-secondary-500: 15 118 110;
+  --color-secondary-600: 10 99 92;
+  --color-secondary-700: 8 77 72;
+  --color-secondary-800: 6 55 52;
+  --color-secondary-900: 4 36 34;
+  --color-accent-50: 246 242 234;
+  --color-accent-100: 245 233 214;
+  --color-accent-200: 235 213 176;
+  --color-accent-300: 249 196 107;
+  --color-accent-400: 247 176 57;
+  --color-accent-500: 245 158 11;
+  --color-accent-600: 206 131 3;
+  --color-accent-700: 161 102 3;
+  --color-accent-800: 116 73 2;
+  --color-accent-900: 76 48 1;
+  --color-background: 248 250 252;
+  --color-clay-400: 15 118 110; /* secondary-500 */
+  --color-clay-500: 15 118 110; /* secondary-500 (Atlas' secondary is al donker genoeg om ook als 400 goed contrast te geven) */
+  --color-clay-600: 10 99 92; /* secondary-600 */
+  --color-success-500: 161 102 3; /* accent-700 */
+}
+
 html {
   scroll-behavior: smooth;
   font-family: "Quicksand", ui-rounded, system-ui, sans-serif;
@@ -18,9 +157,4 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-body {
-  background-color: #fbf9f5;
-  color: #404846;
 }
