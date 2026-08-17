@@ -41,11 +41,26 @@ function getCatalog(): Promise<CatalogSnapshot> {
   return cachePromise;
 }
 
-/** Beste beschikbare referentie-opname voor dit item (voorkeur man > vrouw > jongen > meisje), of null. */
-export async function getReferenceAudioForItem(itemId: string): Promise<ReferenceAudio | null> {
+/**
+ * Beste beschikbare referentie-opname voor dit item.
+ * - Met `preferredPersona`: die stem als er een opname voor bestaat.
+ * - Zonder (of als de gekozen stem ontbreekt voor dit specifieke woord):
+ *   terugvallen op de vaste voorkeursvolgorde man > vrouw > jongen > meisje,
+ *   zodat een gekozen stem nooit een woord laat "verdwijnen" dat wel in een
+ *   andere stem is ingesproken.
+ */
+export async function getReferenceAudioForItem(
+  itemId: string,
+  preferredPersona?: RecordingPersona | null,
+): Promise<ReferenceAudio | null> {
   const catalog = await getCatalog();
   const recordings = catalog.items[itemId]?.recordings;
   if (!recordings) return null;
+
+  if (preferredPersona) {
+    const url = recordings[preferredPersona];
+    if (url) return { url, persona: preferredPersona };
+  }
 
   for (const persona of PERSONA_PREFERENCE) {
     const url = recordings[persona];

@@ -193,7 +193,11 @@ export default function LessonPage() {
       )}
 
       {currentExercise.type === "AFBEELDING_EN_WOORD" && (
-        <ImageAndWord item={currentExercise.vocabularyItem} onDone={() => handleAnswer(currentExercise, true)} />
+        <ImageAndWord
+          item={currentExercise.vocabularyItem}
+          onDone={() => handleAnswer(currentExercise, true)}
+          preferredPersona={child.preferredVoicePersona}
+        />
       )}
 
       {currentExercise.type === "LUISTEREN_EN_HERKENNEN" && (
@@ -202,6 +206,7 @@ export default function LessonPage() {
           childId={child.id}
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+          preferredPersona={child.preferredVoicePersona}
         />
       )}
 
@@ -210,6 +215,7 @@ export default function LessonPage() {
           item={currentExercise.vocabularyItem}
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+          preferredPersona={child.preferredVoicePersona}
         />
       )}
 
@@ -218,6 +224,7 @@ export default function LessonPage() {
           item={currentExercise.vocabularyItem}
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+          preferredPersona={child.preferredVoicePersona}
         />
       )}
     </main>

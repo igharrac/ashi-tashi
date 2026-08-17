@@ -6,10 +6,12 @@ import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { ReviewNotice } from "@/components/ui/ReviewNotice";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
+import type { RecordingPersona } from "@/lib/recordableItems";
 
 interface ImageAndWordProps {
   item: VocabularyItemView;
   onDone: () => void;
+  preferredPersona?: RecordingPersona | null;
 }
 
 /**
@@ -17,7 +19,7 @@ interface ImageAndWordProps {
  * speel het bijbehorende woord af. Eén primaire taak (hfst. 7.3): luisteren
  * en doorgaan.
  */
-export function ImageAndWord({ item, onDone }: ImageAndWordProps) {
+export function ImageAndWord({ item, onDone, preferredPersona }: ImageAndWordProps) {
   const [hasPlayed, setHasPlayed] = useState(false);
   const spelling = useWordSpelling(item.id);
 
@@ -44,12 +46,14 @@ export function ImageAndWord({ item, onDone }: ImageAndWordProps) {
           text={item.latinSpelling}
           itemId={item.id}
           fallbackSpokenText={item.translationNl}
+          preferredPersona={preferredPersona}
           onPlayed={() => setHasPlayed(true)}
         />
         <AudioButton
           text={item.latinSpelling}
           itemId={item.id}
           fallbackSpokenText={item.translationNl}
+          preferredPersona={preferredPersona}
           slow
           onPlayed={() => setHasPlayed(true)}
         />

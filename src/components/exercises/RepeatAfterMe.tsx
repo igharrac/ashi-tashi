@@ -8,12 +8,14 @@ import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
+import type { RecordingPersona } from "@/lib/recordableItems";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface RepeatAfterMeProps {
   item: VocabularyItemView;
   microphoneOptIn: boolean;
   onDone: (isCorrect: boolean) => void;
+  preferredPersona?: RecordingPersona | null;
 }
 
 /**
@@ -27,7 +29,7 @@ interface RepeatAfterMeProps {
  * aan te nemen: bij een mismatch krijgt het kind vriendelijke
  * "probeer nog eens"-feedback, nooit een harde afkeuring (hfst. 22).
  */
-export function RepeatAfterMe({ item, microphoneOptIn, onDone }: RepeatAfterMeProps) {
+export function RepeatAfterMe({ item, microphoneOptIn, onDone, preferredPersona }: RepeatAfterMeProps) {
   const speech = useSpeechCheck(item.translationNl);
   const spelling = useWordSpelling(item.id);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
@@ -57,6 +59,7 @@ export function RepeatAfterMe({ item, microphoneOptIn, onDone }: RepeatAfterMePr
         text={item.latinSpelling}
         itemId={item.id}
         fallbackSpokenText={item.translationNl}
+        preferredPersona={preferredPersona}
         label="Luister nog eens"
       />
 
@@ -79,7 +82,7 @@ export function RepeatAfterMe({ item, microphoneOptIn, onDone }: RepeatAfterMePr
                 {speech.feedbackMessage}
               </p>
               <Button onClick={speech.attempt}>Probeer opnieuw</Button>
-              <AnswerReveal item={item} onContinue={() => onDone(false)} />
+              <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
             </div>
           )}
           {speech.status === "correct" && (

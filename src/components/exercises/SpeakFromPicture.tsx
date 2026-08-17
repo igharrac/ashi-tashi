@@ -7,12 +7,14 @@ import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
+import type { RecordingPersona } from "@/lib/recordableItems";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface SpeakFromPictureProps {
   item: VocabularyItemView;
   microphoneOptIn: boolean;
   onDone: (isCorrect: boolean) => void;
+  preferredPersona?: RecordingPersona | null;
 }
 
 /**
@@ -26,7 +28,7 @@ interface SpeakFromPictureProps {
  * te nemen — zie RepeatAfterMe voor dezelfde aanpak en de beperkingen
  * daarvan (Nederlandse validatie, nog geen Tashelhit-spraakherkenning).
  */
-export function SpeakFromPicture({ item, microphoneOptIn, onDone }: SpeakFromPictureProps) {
+export function SpeakFromPicture({ item, microphoneOptIn, onDone, preferredPersona }: SpeakFromPictureProps) {
   const speech = useSpeechCheck(item.translationNl);
   const spelling = useWordSpelling(item.id);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
@@ -77,7 +79,7 @@ export function SpeakFromPicture({ item, microphoneOptIn, onDone }: SpeakFromPic
                 {speech.feedbackMessage}
               </p>
               <Button onClick={speech.attempt}>Probeer opnieuw</Button>
-              <AnswerReveal item={item} onContinue={() => onDone(false)} />
+              <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
             </div>
           )}
         </>

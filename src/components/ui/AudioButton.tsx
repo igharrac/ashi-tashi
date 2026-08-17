@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { isBrowserSpeechAvailable } from "@/providers/tts/browserSpeechFallback";
 import { playWordAudio } from "@/lib/playWordAudio";
+import type { RecordingPersona } from "@/lib/recordableItems";
 import { Button } from "./Button";
 
 interface AudioButtonProps {
@@ -20,6 +21,8 @@ interface AudioButtonProps {
    * knop stil, net als voorheen.
    */
   fallbackSpokenText?: string;
+  /** Door de gebruiker gekozen stem (child.preferredVoicePersona) — zie getReferenceAudioForItem voor het terugvalgedrag. */
+  preferredPersona?: RecordingPersona | null;
   label?: string;
   slow?: boolean;
   onPlayed?: () => void;
@@ -33,13 +36,21 @@ interface AudioButtonProps {
  * als hoorbare tijdelijke stand-in. Ondersteunt normale en vertraagde
  * afspeelsnelheid (hfst. 9).
  */
-export function AudioButton({ text, itemId, fallbackSpokenText, label, slow = false, onPlayed }: AudioButtonProps) {
+export function AudioButton({
+  text,
+  itemId,
+  fallbackSpokenText,
+  preferredPersona,
+  label,
+  slow = false,
+  onPlayed,
+}: AudioButtonProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "played">("idle");
   const speechUnavailable = !isBrowserSpeechAvailable();
 
   async function handlePlay() {
     setStatus("loading");
-    await playWordAudio({ itemId, text, fallbackSpokenText, slow });
+    await playWordAudio({ itemId, text, fallbackSpokenText, slow, preferredPersona });
     setStatus("played");
     onPlayed?.();
     window.setTimeout(() => setStatus("idle"), 600);

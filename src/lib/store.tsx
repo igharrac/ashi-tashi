@@ -12,7 +12,7 @@
  */
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import type { AppStateData, ChildProfileData, ExperienceLevel } from "@/types/domain";
+import type { AppStateData, ChildProfileData, ExperienceLevel, VoicePersona } from "@/types/domain";
 import { evaluateEarnedBadges } from "@/domain/badges";
 import { computeLessonPoints, computeMastery, type ExerciseAttemptRecord } from "@/domain/progress";
 import { recordPracticeDay, todayIso } from "@/domain/streak";
@@ -50,6 +50,7 @@ interface AppStore {
   setSpeakFirstMode: (childId: string, enabled: boolean) => void;
   setMicrophoneOptIn: (childId: string, enabled: boolean) => void;
   setLessonProgress: (childId: string, progress: { lessonId: string; index: number } | null) => void;
+  setPreferredVoicePersona: (childId: string, persona: VoicePersona | null) => void;
 }
 
 const StoreContext = createContext<AppStore | null>(null);
@@ -81,6 +82,9 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       // het instellingenmenu op het reispad (hfst. 23, 30: opt-out blijft
       // mogelijk, blokkeert de les nooit).
       microphoneOptIn: true,
+      // null = automatisch (bestaande voorkeursvolgorde); de ouder/het kind
+      // kan later een vaste stem kiezen via het instellingenmenu.
+      preferredVoicePersona: null,
       speakFirstMode: false,
       points: 0,
       earnedBadgeSlugs: [],
@@ -181,6 +185,19 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
     }));
   }, []);
 
+  // Laat de gebruiker zelf kiezen welke opgenomen stem (man/vrouw/jongen/
+  // meisje) gebruikt wordt, i.p.v. altijd automatisch de vaste
+  // voorkeursvolgorde in referenceAudio.ts — nuttig zodra er voor
+  // hetzelfde woord meerdere persona's zijn ingesproken.
+  const setPreferredVoicePersona = useCallback<AppStore["setPreferredVoicePersona"]>((childId, persona) => {
+    setState((prev) => ({
+      ...prev,
+      children: prev.children.map((child) =>
+        child.id === childId ? { ...child, preferredVoicePersona: persona } : child,
+      ),
+    }));
+  }, []);
+
   const value = useMemo<AppStore>(
     () => ({
       state,
@@ -193,6 +210,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       setSpeakFirstMode,
       setMicrophoneOptIn,
       setLessonProgress,
+      setPreferredVoicePersona,
     }),
     [
       state,
@@ -205,6 +223,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       setSpeakFirstMode,
       setMicrophoneOptIn,
       setLessonProgress,
+      setPreferredVoicePersona,
     ],
   );
 

@@ -15,7 +15,7 @@ import { JourneySettingsMenu } from "@/components/journey/JourneySettingsMenu";
  */
 export default function LearningRoutePage() {
   const params = useParams<{ childId: string }>();
-  const { getChild, setSpeakFirstMode, setMicrophoneOptIn, ready } = useAppStore();
+  const { getChild, setSpeakFirstMode, setMicrophoneOptIn, setPreferredVoicePersona, ready } = useAppStore();
 
   if (!ready) return <p className="pt-12 text-center text-ink-muted">Even laden…</p>;
 
@@ -32,6 +32,7 @@ export default function LearningRoutePage() {
           child={child}
           onMicrophoneOptInChange={(enabled) => setMicrophoneOptIn(child.id, enabled)}
           onSpeakFirstModeChange={(enabled) => setSpeakFirstMode(child.id, enabled)}
+          onPreferredVoicePersonaChange={(persona) => setPreferredVoicePersona(child.id, persona)}
         />
         <h1 className="text-2xl font-bold text-forest-500">Jouw Reis</h1>
         <p className="mt-1 text-ink-muted">{child.points} punten verdiend</p>

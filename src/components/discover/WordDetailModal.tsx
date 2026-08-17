@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
+import type { RecordingPersona } from "@/lib/recordableItems";
 
 interface WordDetailModalProps {
   /** Alle woorden van het grid, zodat er zonder sluiten doorheen gebladerd kan worden. */
@@ -12,6 +13,7 @@ interface WordDetailModalProps {
   microphoneOptIn: boolean;
   onNavigate: (index: number) => void;
   onClose: () => void;
+  preferredPersona?: RecordingPersona | null;
 }
 
 /**
@@ -31,6 +33,7 @@ export function WordDetailModal({
   microphoneOptIn,
   onNavigate,
   onClose,
+  preferredPersona,
 }: WordDetailModalProps) {
   const item = items[currentIndex];
   const hasPrevious = currentIndex > 0;
@@ -95,7 +98,14 @@ export function WordDetailModal({
           </button>
         )}
 
-        <ListenAndSpeak key={item.id} item={item} childId={childId} microphoneOptIn={microphoneOptIn} onDone={onClose} />
+        <ListenAndSpeak
+          key={item.id}
+          item={item}
+          childId={childId}
+          microphoneOptIn={microphoneOptIn}
+          onDone={onClose}
+          preferredPersona={preferredPersona}
+        />
       </div>
     </div>
   );

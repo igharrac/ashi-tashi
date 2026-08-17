@@ -5,7 +5,8 @@
     "fileName": "item-dieren-hond__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:40.159Z"
+    "recordedAt": "2026-07-21T14:05:40.159Z",
+    "denoised": true
   },
   "item-dieren-kat__man": {
     "itemId": "item-dieren-kat",
@@ -13,7 +14,8 @@
     "fileName": "item-dieren-kat__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:41.700Z"
+    "recordedAt": "2026-07-21T14:05:41.700Z",
+    "denoised": true
   },
   "item-dieren-vogel__man": {
     "itemId": "item-dieren-vogel",
@@ -21,7 +23,8 @@
     "fileName": "item-dieren-vogel__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:43.073Z"
+    "recordedAt": "2026-07-21T14:05:43.073Z",
+    "denoised": true
   },
   "item-dieren-vis__man": {
     "itemId": "item-dieren-vis",
@@ -29,7 +32,8 @@
     "fileName": "item-dieren-vis__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:44.363Z"
+    "recordedAt": "2026-07-21T14:05:44.363Z",
+    "denoised": true
   },
   "item-dieren-koe__man": {
     "itemId": "item-dieren-koe",
@@ -37,7 +41,8 @@
     "fileName": "item-dieren-koe__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:45.546Z"
+    "recordedAt": "2026-07-21T14:05:45.546Z",
+    "denoised": true
   },
   "item-dieren-schaap__man": {
     "itemId": "item-dieren-schaap",
@@ -45,7 +50,8 @@
     "fileName": "item-dieren-schaap__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:46.884Z"
+    "recordedAt": "2026-07-21T14:05:46.884Z",
+    "denoised": true
   },
   "item-dieren-kip__man": {
     "itemId": "item-dieren-kip",
@@ -53,7 +59,8 @@
     "fileName": "item-dieren-kip__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:48.108Z"
+    "recordedAt": "2026-07-21T14:05:48.108Z",
+    "denoised": true
   },
   "item-dieren-ezel__man": {
     "itemId": "item-dieren-ezel",
@@ -61,7 +68,8 @@
     "fileName": "item-dieren-ezel__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:49.491Z"
+    "recordedAt": "2026-07-21T14:05:49.491Z",
+    "denoised": true
   },
   "item-dieren-kameel__man": {
     "itemId": "item-dieren-kameel",
@@ -69,7 +77,8 @@
     "fileName": "item-dieren-kameel__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:50.918Z"
+    "recordedAt": "2026-07-21T14:05:50.918Z",
+    "denoised": true
   },
   "item-dieren-paard__man": {
     "itemId": "item-dieren-paard",
@@ -77,7 +86,8 @@
     "fileName": "item-dieren-paard__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:52.204Z"
+    "recordedAt": "2026-07-21T14:05:52.204Z",
+    "denoised": true
   },
   "item-dieren-varken__man": {
     "itemId": "item-dieren-varken",
@@ -85,7 +95,8 @@
     "fileName": "item-dieren-varken__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:53.943Z"
+    "recordedAt": "2026-07-21T14:05:53.943Z",
+    "denoised": true
   },
   "item-dieren-eend__man": {
     "itemId": "item-dieren-eend",
@@ -93,7 +104,8 @@
     "fileName": "item-dieren-eend__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:55.123Z"
+    "recordedAt": "2026-07-21T14:05:55.123Z",
+    "denoised": true
   },
   "item-dieren-konijn__man": {
     "itemId": "item-dieren-konijn",
@@ -101,7 +113,8 @@
     "fileName": "item-dieren-konijn__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:56.355Z"
+    "recordedAt": "2026-07-21T14:05:56.355Z",
+    "denoised": true
   },
   "item-dieren-muis__man": {
     "itemId": "item-dieren-muis",
@@ -109,7 +122,8 @@
     "fileName": "item-dieren-muis__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:05:57.687Z"
+    "recordedAt": "2026-07-21T14:05:57.687Z",
+    "denoised": true
   },
   "item-dieren-olifant__man": {
     "itemId": "item-dieren-olifant",
@@ -117,7 +131,8 @@
     "fileName": "item-dieren-olifant__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:06:03.291Z"
+    "recordedAt": "2026-07-21T14:06:03.291Z",
+    "denoised": true
   },
   "item-dieren-leeuw__man": {
     "itemId": "item-dieren-leeuw",
@@ -125,7 +140,8 @@
     "fileName": "item-dieren-leeuw__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:06:14.288Z"
+    "recordedAt": "2026-07-21T14:06:14.288Z",
+    "denoised": true
   },
   "item-dieren-tijger__man": {
     "itemId": "item-dieren-tijger",
@@ -133,7 +149,8 @@
     "fileName": "item-dieren-tijger__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:06:15.401Z"
+    "recordedAt": "2026-07-21T14:06:15.401Z",
+    "denoised": true
   },
   "item-dieren-beer__man": {
     "itemId": "item-dieren-beer",
@@ -141,7 +158,8 @@
     "fileName": "item-dieren-beer__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:06:20.398Z"
+    "recordedAt": "2026-07-21T14:06:20.398Z",
+    "denoised": true
   },
   "item-dieren-aap__man": {
     "itemId": "item-dieren-aap",
@@ -149,7 +167,8 @@
     "fileName": "item-dieren-aap__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:06:30.489Z"
+    "recordedAt": "2026-07-21T14:06:30.489Z",
+    "denoised": true
   },
   "item-dieren-giraffe__man": {
     "itemId": "item-dieren-giraffe",
@@ -157,7 +176,8 @@
     "fileName": "item-dieren-giraffe__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:11:41.642Z"
+    "recordedAt": "2026-07-21T14:11:41.642Z",
+    "denoised": true
   },
   "item-dieren-vos__man": {
     "itemId": "item-dieren-vos",
@@ -165,7 +185,8 @@
     "fileName": "item-dieren-vos__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:11:58.389Z"
+    "recordedAt": "2026-07-21T14:11:58.389Z",
+    "denoised": true
   },
   "item-dieren-hert__man": {
     "itemId": "item-dieren-hert",
@@ -173,7 +194,8 @@
     "fileName": "item-dieren-hert__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:12:05.794Z"
+    "recordedAt": "2026-07-21T14:12:05.794Z",
+    "denoised": true
   },
   "item-dieren-egel__man": {
     "itemId": "item-dieren-egel",
@@ -181,7 +203,8 @@
     "fileName": "item-dieren-egel__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:12:12.989Z"
+    "recordedAt": "2026-07-21T14:12:12.989Z",
+    "denoised": true
   },
   "item-dieren-slang__man": {
     "itemId": "item-dieren-slang",
@@ -189,7 +212,8 @@
     "fileName": "item-dieren-slang__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:12:17.729Z"
+    "recordedAt": "2026-07-21T14:12:17.729Z",
+    "denoised": true
   },
   "item-dieren-kikker__man": {
     "itemId": "item-dieren-kikker",
@@ -197,7 +221,8 @@
     "fileName": "item-dieren-kikker__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:12:32.341Z"
+    "recordedAt": "2026-07-21T14:12:32.341Z",
+    "denoised": true
   },
   "item-dieren-bij__man": {
     "itemId": "item-dieren-bij",
@@ -205,7 +230,8 @@
     "fileName": "item-dieren-bij__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:12:48.528Z"
+    "recordedAt": "2026-07-21T14:12:48.528Z",
+    "denoised": true
   },
   "item-dieren-spin__man": {
     "itemId": "item-dieren-spin",
@@ -213,6 +239,7 @@
     "fileName": "item-dieren-spin__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-07-21T14:13:03.635Z"
+    "recordedAt": "2026-07-21T14:13:03.635Z",
+    "denoised": true
   }
 }

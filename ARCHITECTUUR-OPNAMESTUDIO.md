@@ -82,6 +82,26 @@ de database is nog niet aangesloten in deze fase (hfst. 55/README). Een
 bestand is de kleinste stap die vandaag al echt werkt, zonder dat we een
 databaseverbinding hoeven te forceren om te kunnen opnemen.
 
+## 3.1 Ruisonderdrukking (RNNoise)
+
+Elke nieuwe opname wordt automatisch door RNNoise gehaald vóór opslag
+(`src/lib/audio/denoise.ts`, aangeroepen vanuit `saveRecording()` in
+`recordingsManifest.ts`). Dit gebruikt de echte RNNoise-DSP (Xiph/Mozilla,
+BSD) via de WASM-build uit het MIT-pakket `@sapphi-red/web-noise-suppressor`,
+rechtstreeks aangeroepen (geen los modelbestand nodig — het ingebouwde
+standaardmodel wordt gebruikt).
+
+Vereist lokaal een werkende `ffmpeg` op het PATH (bv. `brew install ffmpeg`)
+— alleen voor decode/encode, geen speciale ffmpeg-filter nodig. Ontbreekt
+ffmpeg, dan wordt de opname gewoon ongefilterd opgeslagen (nooit blokkerend,
+zie `DenoiseResult.applied`/`.reason`). Het manifest houdt per opname bij of
+ruisonderdrukking is toegepast (`RecordingEntry.denoised`).
+
+Bestaande opnames eenmalig alsnog verwerken: `npm run denoise:existing`
+(`scripts/denoise-existing-recordings.ts`). Maakt eerst een backup van elk
+origineel in `data/audio-backups/originals/` voordat het bestand wordt
+overschreven.
+
 ## 4. Databronnen: welke items kun je opnemen
 
 `src/lib/recordableItems.ts` haalt alle unieke woorden/zinnen uit de

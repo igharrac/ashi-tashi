@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { playWordAudio } from "@/lib/playWordAudio";
 import { shuffleArray } from "@/domain/matchGame";
+import type { RecordingPersona } from "@/lib/recordableItems";
 import { Button } from "@/components/ui/Button";
 
 interface MatchGameProps {
   /** Items voor dit ene rondje (al gekozen door de aanroepende pagina, zie ontdekken/spel/page.tsx). */
   items: VocabularyItemView[];
   onPlayAgain: () => void;
+  preferredPersona?: RecordingPersona | null;
 }
 
 interface SelectionState {
@@ -25,7 +27,7 @@ interface SelectionState {
  * Geen score, geen tijdsdruk, geen teller van foute pogingen (hfst. 22) —
  * bij een mismatch hoor je het geluid nog eens en probeer je gewoon opnieuw.
  */
-export function MatchGame({ items, onPlayAgain }: MatchGameProps) {
+export function MatchGame({ items, onPlayAgain, preferredPersona }: MatchGameProps) {
   const [soundOrder] = useState(() => shuffleArray(items));
   const [selection, setSelection] = useState<SelectionState>({ pictureId: null, soundId: null });
   const [matchedIds, setMatchedIds] = useState<Set<string>>(new Set());
@@ -58,7 +60,12 @@ export function MatchGame({ items, onPlayAgain }: MatchGameProps) {
 
   function handleSoundTap(item: VocabularyItemView) {
     if (matchedIds.has(item.id) || isMismatchPending) return;
-    void playWordAudio({ itemId: item.id, text: item.latinSpelling, fallbackSpokenText: item.translationNl });
+    void playWordAudio({
+      itemId: item.id,
+      text: item.latinSpelling,
+      fallbackSpokenText: item.translationNl,
+      preferredPersona,
+    });
     setSelection((prev) => ({ ...prev, soundId: item.id }));
   }
 

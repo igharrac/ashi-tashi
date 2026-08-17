@@ -69,6 +69,7 @@ export default function DiscoverPage() {
           microphoneOptIn={child.microphoneOptIn}
           onNavigate={setSelectedIndex}
           onClose={() => setSelectedIndex(null)}
+          preferredPersona={child.preferredVoicePersona}
         />
       )}
     </AppShell>

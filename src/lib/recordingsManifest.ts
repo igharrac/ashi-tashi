@@ -2,6 +2,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import type { ReviewStatus } from "@/types/domain";
 import { recordingKey, type RecordingPersona } from "@/lib/recordableItems";
+import { denoiseAudioBuffer } from "@/lib/audio/denoise";
 
 /**
  * Server-only opslag voor de opnamestudio (zie ARCHITECTUUR-OPNAMESTUDIO.md).
@@ -18,6 +19,8 @@ export interface RecordingEntry {
   mimeType: string;
   reviewStatus: ReviewStatus;
   recordedAt: string;
+  /** Is ruisonderdrukking (RNNoise, zie lib/audio/denoise.ts) toegepast op dit bestand? */
+  denoised?: boolean;
 }
 
 export type RecordingsManifest = Record<string, RecordingEntry>;
@@ -39,7 +42,7 @@ export async function readManifest(): Promise<RecordingsManifest> {
   }
 }
 
-async function writeManifest(manifest: RecordingsManifest): Promise<void> {
+export async function writeManifest(manifest: RecordingsManifest): Promise<void> {
   await fs.mkdir(path.dirname(MANIFEST_PATH), { recursive: true });
   await fs.writeFile(MANIFEST_PATH, `${JSON.stringify(manifest, null, 2)}\n`, "utf-8");
 }
@@ -62,8 +65,16 @@ export async function saveRecording(params: {
   const key = recordingKey(params.itemId, params.persona);
   const fileName = `${key}.${extension}`;
 
+  // Ruis onderdrukken vóór opslag (hfst. 19: audio moet rustig/professioneel
+  // klinken) — lukt dit niet (bv. ffmpeg niet geïnstalleerd), dan wordt
+  // gewoon de originele opname bewaard; nooit blokkeren op deze stap.
+  const denoiseResult = await denoiseAudioBuffer(params.audio, params.mimeType);
+  if (!denoiseResult.applied && denoiseResult.reason) {
+    console.warn(`[ruisonderdrukking] overgeslagen voor ${key}: ${denoiseResult.reason}`);
+  }
+
   await fs.mkdir(AUDIO_DIR, { recursive: true });
-  await fs.writeFile(path.join(AUDIO_DIR, fileName), params.audio);
+  await fs.writeFile(path.join(AUDIO_DIR, fileName), denoiseResult.buffer);
 
   const manifest = await readManifest();
 
@@ -83,6 +94,7 @@ export async function saveRecording(params: {
     mimeType: params.mimeType,
     reviewStatus: "TE_REVIEWEN",
     recordedAt: new Date().toISOString(),
+    denoised: denoiseResult.applied,
   };
   manifest[key] = entry;
   await writeManifest(manifest);

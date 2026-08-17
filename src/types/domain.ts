@@ -57,12 +57,17 @@ export interface ThemeView {
 
 export type ExperienceLevel = "A_ONTDEKKEN" | "B_OEFENEN" | "C_SPREKEN";
 
+/** Zelfde persona's als in de opnamestudio (src/lib/recordableItems.ts), hier los gedefinieerd om een import-cyclus te vermijden. */
+export type VoicePersona = "man" | "vrouw" | "jongen" | "meisje";
+
 export interface ChildProfileData {
   id: string;
   displayName: string;
   avatarId: string;
   level: ExperienceLevel;
   microphoneOptIn: boolean;
+  /** null = automatisch (bestaande voorkeursvolgorde man > vrouw > jongen > meisje); anders expliciete keuze van de gebruiker. */
+  preferredVoicePersona: VoicePersona | null;
   /** Aan: plaatje zien + zelf inspreken (hfst. 13.11). Uit (standaard): eerst horen, dan nazeggen. */
   speakFirstMode: boolean;
   points: number;

@@ -5,10 +5,12 @@ import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
+import type { RecordingPersona } from "@/lib/recordableItems";
 
 interface AnswerRevealProps {
   item: VocabularyItemView;
   onContinue: () => void;
+  preferredPersona?: RecordingPersona | null;
 }
 
 /**
@@ -18,7 +20,7 @@ interface AnswerRevealProps {
  * Telt mee als "nog niet gelukt" (komt aan het eind van de les terug,
  * hfst. 13.13) i.p.v. stiekem als "goed".
  */
-export function AnswerReveal({ item, onContinue }: AnswerRevealProps) {
+export function AnswerReveal({ item, onContinue, preferredPersona }: AnswerRevealProps) {
   const [revealed, setRevealed] = useState(false);
   const spelling = useWordSpelling(item.id);
 
@@ -39,6 +41,7 @@ export function AnswerReveal({ item, onContinue }: AnswerRevealProps) {
         text={item.latinSpelling}
         itemId={item.id}
         fallbackSpokenText={item.translationNl}
+        preferredPersona={preferredPersona}
         label="Beluister het antwoord"
       />
       <Button onClick={onContinue}>Verder</Button>

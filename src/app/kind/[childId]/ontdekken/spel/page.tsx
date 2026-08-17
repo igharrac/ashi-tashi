@@ -83,7 +83,12 @@ export default function MatchGamePage() {
             Er zijn nog niet genoeg ingesproken woorden om dit spel te spelen.
           </p>
         ) : (
-          <MatchGame key={roundKey} items={roundItems} onPlayAgain={() => setRoundKey((k) => k + 1)} />
+          <MatchGame
+            key={roundKey}
+            items={roundItems}
+            onPlayAgain={() => setRoundKey((k) => k + 1)}
+            preferredPersona={child.preferredVoicePersona}
+          />
         )}
       </div>
     </AppShell>

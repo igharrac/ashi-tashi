@@ -7,6 +7,7 @@ import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
+import type { RecordingPersona } from "@/lib/recordableItems";
 import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilarityProvider";
 import { AnswerReveal } from "./AnswerReveal";
 
@@ -15,6 +16,7 @@ interface ListenAndSpeakProps {
   childId: string;
   microphoneOptIn: boolean;
   onDone: (isCorrect: boolean) => void;
+  preferredPersona?: RecordingPersona | null;
 }
 
 type Status = "idle" | "requesting" | "recording" | "assessing" | "correct" | "retry" | "saved-for-review";
@@ -32,7 +34,7 @@ const RECORD_DURATION_MS = 4000;
  *   (src/lib/childAttempts.ts) en gaat het kind gewoon door — geen nep-
  *   "goed" en geen blokkade (hfst. 21, 22).
  */
-export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: ListenAndSpeakProps) {
+export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone, preferredPersona }: ListenAndSpeakProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
   // Alleen voor kalibratie tijdens ontwikkeling (?debug=1 in de URL) — nooit
@@ -49,13 +51,13 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
 
   useEffect(() => {
     let cancelled = false;
-    getReferenceAudioForItem(item.id).then((reference) => {
+    getReferenceAudioForItem(item.id, preferredPersona).then((reference) => {
       if (!cancelled) setReferenceUrl(reference?.url ?? null);
     });
     return () => {
       cancelled = true;
     };
-  }, [item.id]);
+  }, [item.id, preferredPersona]);
 
   useEffect(() => {
     return () => {
@@ -153,6 +155,7 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
         text={item.latinSpelling}
         itemId={item.id}
         fallbackSpokenText={item.translationNl}
+        preferredPersona={preferredPersona}
         label="Speel het woord af"
       />
 
@@ -211,7 +214,7 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone }: Liste
             </p>
           )}
           <Button onClick={handleRecord}>Probeer opnieuw</Button>
-          <AnswerReveal item={item} onContinue={() => onDone(false)} />
+          <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
         </div>
       )}
     </div>
