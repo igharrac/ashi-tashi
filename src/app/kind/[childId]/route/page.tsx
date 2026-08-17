@@ -4,10 +4,15 @@ import { notFound, useParams } from "next/navigation";
 import { useAppStore } from "@/lib/store";
 import { DIEREN_THEME } from "@/lib/demoData";
 import { AppShell } from "@/components/layout/AppShell";
-import { JourneyPath } from "@/components/journey/JourneyPath";
+import { StepGrid } from "@/components/journey/StepGrid";
 import { JourneySettingsMenu } from "@/components/journey/JourneySettingsMenu";
 
-/** Leerroute-overzicht: het reispad met thema-eilanden (hfst. 10, 55 stap 5-6). */
+/**
+ * Leerroute-overzicht (hfst. 10, 55 stap 5-6): responsive grid met één stap
+ * per categorie, i.p.v. het eerdere kronkelende S-pad met een aparte
+ * "level"-laag ertussen — op verzoek vervangen voor meer overzicht en
+ * ruimte voor veel meer (kleinere, steeds moeilijkere) stappen.
+ */
 export default function LearningRoutePage() {
   const params = useParams<{ childId: string }>();
   const { getChild, setSpeakFirstMode, setMicrophoneOptIn, ready } = useAppStore();
@@ -32,7 +37,7 @@ export default function LearningRoutePage() {
         <p className="mt-1 text-ink-muted">{child.points} punten verdiend</p>
       </div>
 
-      <JourneyPath childId={child.id} firstLevelCompleted={isCompleted} />
+      {lesson && <StepGrid childId={child.id} dierenLessonId={lesson.id} dierenCompleted={isCompleted} />}
     </AppShell>
   );
 }

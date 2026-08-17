@@ -47,6 +47,14 @@ export interface CategoryDefinition {
   /** Heeft deze categorie al echte, speelbare lesoefeningen? Nu alleen "dieren". */
   isImplemented: boolean;
   words: WordSeed[];
+  /**
+   * Moeilijkheidsopbouw van de stap (hfst. 10: van losse woorden, via korte
+   * zinnetjes, naar gesprekjes). Nu structureel klaargezet maar nog niet
+   * benut — alle bestaande categorieën zijn "woorden"; content en
+   * oefenvormen voor "zinnen"/"gesprek" zijn een apart vervolg. Ontbreekt
+   * dit veld, dan geldt "woorden" als standaard.
+   */
+  stepType?: "woorden" | "zinnen" | "gesprek";
 }
 
 export const LEVELS: LevelDefinition[] = [
