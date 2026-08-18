@@ -9,6 +9,7 @@ import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilarityProvider";
+import { LENIENT_PRONUNCIATION_ATTEMPTS, leniencyDoneMessage, leniencyRetryMessage } from "@/domain/pronunciationLeniency";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface ListenAndSpeakProps {
@@ -17,6 +18,8 @@ interface ListenAndSpeakProps {
   microphoneOptIn: boolean;
   onDone: (isCorrect: boolean) => void;
   preferredPersona?: RecordingPersona | null;
+  /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
+  lenientPronunciationMode?: boolean;
 }
 
 type Status = "idle" | "requesting" | "recording" | "assessing" | "correct" | "retry" | "saved-for-review";
@@ -34,9 +37,17 @@ const RECORD_DURATION_MS = 4000;
  *   (src/lib/childAttempts.ts) en gaat het kind gewoon door — geen nep-
  *   "goed" en geen blokkade (hfst. 21, 22).
  */
-export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone, preferredPersona }: ListenAndSpeakProps) {
+export function ListenAndSpeak({
+  item,
+  childId,
+  microphoneOptIn,
+  onDone,
+  preferredPersona,
+  lenientPronunciationMode = true,
+}: ListenAndSpeakProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
+  const [attempts, setAttempts] = useState(0);
   // Alleen voor kalibratie tijdens ontwikkeling (?debug=1 in de URL) — nooit
   // aan een kind tonen, zie PronunciationAssessmentResult.debugInfo.
   const [debugInfo, setDebugInfo] = useState<string | null>(null);
@@ -88,6 +99,8 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone, preferr
 
   async function handleRecordingFinished(blob: Blob) {
     void saveAttempt(blob, referenceUrl != null);
+    const nextAttempts = attempts + 1;
+    setAttempts(nextAttempts);
 
     if (!referenceUrl) {
       setStatus("saved-for-review");
@@ -102,9 +115,24 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone, preferr
       referenceAudioUrl: referenceUrl,
       languageCode: "tzm",
     });
+    setDebugInfo(result.debugInfo ?? null);
+
+    if (lenientPronunciationMode) {
+      // Coulante modus (standaard aan, zie pronunciationLeniency.ts): na
+      // LENIENT_PRONUNCIATION_ATTEMPTS pogingen is de oefening altijd klaar,
+      // ongeacht de akoestische score — zelfde regel als bij Nazeggen/Zelf
+      // zeggen, zodat het voor het kind overal consistent is.
+      if (nextAttempts >= LENIENT_PRONUNCIATION_ATTEMPTS) {
+        setFeedbackMessage(leniencyDoneMessage());
+        setStatus("correct");
+      } else {
+        setFeedbackMessage(leniencyRetryMessage(nextAttempts, LENIENT_PRONUNCIATION_ATTEMPTS));
+        setStatus("retry");
+      }
+      return;
+    }
 
     setFeedbackMessage(result.feedbackMessageNl);
-    setDebugInfo(result.debugInfo ?? null);
     setStatus(result.shouldOfferRetry ? "retry" : "correct");
   }
 
@@ -205,7 +233,10 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone, preferr
 
       {status === "retry" && (
         <div className="flex flex-col items-center gap-4">
-          <p aria-live="polite" className="text-lg font-medium text-clay-500">
+          <p
+            aria-live="polite"
+            className={`text-lg font-medium ${lenientPronunciationMode ? "text-forest-600" : "text-clay-500"}`}
+          >
             {feedbackMessage}
           </p>
           {isDebugMode && debugInfo && (
@@ -213,7 +244,7 @@ export function ListenAndSpeak({ item, childId, microphoneOptIn, onDone, preferr
               debug: {debugInfo}
             </p>
           )}
-          <Button onClick={handleRecord}>Probeer opnieuw</Button>
+          <Button onClick={handleRecord}>{lenientPronunciationMode ? "Nog een keer" : "Probeer opnieuw"}</Button>
           <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
         </div>
       )}

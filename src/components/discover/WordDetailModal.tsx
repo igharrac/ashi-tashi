@@ -14,6 +14,8 @@ interface WordDetailModalProps {
   onNavigate: (index: number) => void;
   onClose: () => void;
   preferredPersona?: RecordingPersona | null;
+  /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
+  lenientPronunciationMode?: boolean;
 }
 
 /**
@@ -34,6 +36,7 @@ export function WordDetailModal({
   onNavigate,
   onClose,
   preferredPersona,
+  lenientPronunciationMode,
 }: WordDetailModalProps) {
   const item = items[currentIndex];
   const hasPrevious = currentIndex > 0;
@@ -105,6 +108,7 @@ export function WordDetailModal({
           microphoneOptIn={microphoneOptIn}
           onDone={onClose}
           preferredPersona={preferredPersona}
+          lenientPronunciationMode={lenientPronunciationMode}
         />
       </div>
     </div>

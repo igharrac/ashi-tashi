@@ -10,6 +10,7 @@ interface JourneySettingsMenuProps {
   child: ChildProfileData;
   onMicrophoneOptInChange: (enabled: boolean) => void;
   onSpeakFirstModeChange: (enabled: boolean) => void;
+  onLenientPronunciationModeChange: (enabled: boolean) => void;
   onPreferredVoicePersonaChange: (persona: RecordingPersona | null) => void;
 }
 
@@ -24,6 +25,7 @@ export function JourneySettingsMenu({
   child,
   onMicrophoneOptInChange,
   onSpeakFirstModeChange,
+  onLenientPronunciationModeChange,
   onPreferredVoicePersonaChange,
 }: JourneySettingsMenuProps) {
   const [open, setOpen] = useState(false);
@@ -81,6 +83,16 @@ export function JourneySettingsMenu({
                 child.speakFirstMode
                   ? "Aan: plaatje zien en zelf inspreken, zonder het woord eerst te horen."
                   : "Uit: eerst het woord horen, dan nazeggen. Geldt vanaf de volgende les."
+              }
+            />
+            <Toggle
+              checked={child.lenientPronunciationMode}
+              onChange={onLenientPronunciationModeChange}
+              label="3x inspreken is genoeg"
+              description={
+                child.lenientPronunciationMode
+                  ? "Aan: een spreekoefening is klaar zodra het woord 3x is ingesproken, ongeacht of de uitspraak precies matcht."
+                  : "Uit: het kind moet net zo vaak proberen tot de uitspraak echt herkend wordt (onbeperkt proberen)."
               }
             />
 

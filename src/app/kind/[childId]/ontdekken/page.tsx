@@ -92,6 +92,7 @@ export default function DiscoverPage() {
           onNavigate={setSelectedIndex}
           onClose={() => setSelectedIndex(null)}
           preferredPersona={child.preferredVoicePersona}
+          lenientPronunciationMode={child.lenientPronunciationMode}
         />
       )}
     </AppShell>

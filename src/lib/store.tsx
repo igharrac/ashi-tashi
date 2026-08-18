@@ -28,7 +28,17 @@ function loadState(): AppStateData {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return createEmptyState();
-    return JSON.parse(raw) as AppStateData;
+    const parsed = JSON.parse(raw) as AppStateData;
+    return {
+      ...parsed,
+      // lenientPronunciationMode is nieuw en staat standaard aan — profielen
+      // die al bestonden vóór deze instelling er was, krijgen 'm hier alsnog
+      // (anders zou "ontbreekt" ongewild als "uit" gelezen worden).
+      children: parsed.children.map((child) => ({
+        ...child,
+        lenientPronunciationMode: child.lenientPronunciationMode ?? true,
+      })),
+    };
   } catch {
     return createEmptyState();
   }
@@ -48,6 +58,7 @@ interface AppStore {
   recordExerciseAttempt: (childId: string, attempt: ExerciseAttemptRecord & { isSpoken: boolean }) => void;
   completeLesson: (childId: string, lessonId: string, input: { totalExercises: number; correctExercises: number }) => string[];
   setSpeakFirstMode: (childId: string, enabled: boolean) => void;
+  setLenientPronunciationMode: (childId: string, enabled: boolean) => void;
   setMicrophoneOptIn: (childId: string, enabled: boolean) => void;
   setLessonProgress: (childId: string, progress: { lessonId: string; index: number } | null) => void;
   setPreferredVoicePersona: (childId: string, persona: VoicePersona | null) => void;
@@ -86,6 +97,10 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       // kan later een vaste stem kiezen via het instellingenmenu.
       preferredVoicePersona: null,
       speakFirstMode: false,
+      // Standaard aan (op verzoek): een spreekoefening is klaar na 3x
+      // inspreken, ongeacht of het (bijna) exact matchte — zie
+      // src/domain/pronunciationLeniency.ts.
+      lenientPronunciationMode: true,
       points: 0,
       earnedBadgeSlugs: [],
       itemStats: {},
@@ -165,6 +180,15 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
     }));
   }, []);
 
+  const setLenientPronunciationMode = useCallback<AppStore["setLenientPronunciationMode"]>((childId, enabled) => {
+    setState((prev) => ({
+      ...prev,
+      children: prev.children.map((child) =>
+        child.id === childId ? { ...child, lenientPronunciationMode: enabled } : child,
+      ),
+    }));
+  }, []);
+
   // Expliciete ouder-toestemming voor microfoongebruik (hfst. 23, 30) — staat
   // standaard aan bij aanmaken van een profiel; hier kan een ouder 'm uitzetten.
   const setMicrophoneOptIn = useCallback<AppStore["setMicrophoneOptIn"]>((childId, enabled) => {
@@ -208,6 +232,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       recordExerciseAttempt,
       completeLesson,
       setSpeakFirstMode,
+      setLenientPronunciationMode,
       setMicrophoneOptIn,
       setLessonProgress,
       setPreferredVoicePersona,
@@ -221,6 +246,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       recordExerciseAttempt,
       completeLesson,
       setSpeakFirstMode,
+      setLenientPronunciationMode,
       setMicrophoneOptIn,
       setLessonProgress,
       setPreferredVoicePersona,

@@ -9,6 +9,7 @@ import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunc
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
 import type { RecordingPersona } from "@/lib/recordableItems";
+import { LENIENT_PRONUNCIATION_ATTEMPTS } from "@/domain/pronunciationLeniency";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface RepeatAfterMeProps {
@@ -16,6 +17,8 @@ interface RepeatAfterMeProps {
   microphoneOptIn: boolean;
   onDone: (isCorrect: boolean) => void;
   preferredPersona?: RecordingPersona | null;
+  /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
+  lenientPronunciationMode?: boolean;
 }
 
 /**
@@ -29,8 +32,17 @@ interface RepeatAfterMeProps {
  * aan te nemen: bij een mismatch krijgt het kind vriendelijke
  * "probeer nog eens"-feedback, nooit een harde afkeuring (hfst. 22).
  */
-export function RepeatAfterMe({ item, microphoneOptIn, onDone, preferredPersona }: RepeatAfterMeProps) {
-  const speech = useSpeechCheck(item.translationNl);
+export function RepeatAfterMe({
+  item,
+  microphoneOptIn,
+  onDone,
+  preferredPersona,
+  lenientPronunciationMode = true,
+}: RepeatAfterMeProps) {
+  const speech = useSpeechCheck(
+    item.translationNl,
+    lenientPronunciationMode ? { passAfterAttempts: LENIENT_PRONUNCIATION_ATTEMPTS } : undefined,
+  );
   const spelling = useWordSpelling(item.id);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
   const [fallbackMessage, setFallbackMessage] = useState<string | null>(null);
@@ -78,10 +90,13 @@ export function RepeatAfterMe({ item, microphoneOptIn, onDone, preferredPersona 
           )}
           {speech.status === "retry" && (
             <div className="flex flex-col items-center gap-4">
-              <p aria-live="polite" className="text-lg font-medium text-clay-500">
+              <p
+                aria-live="polite"
+                className={`text-lg font-medium ${lenientPronunciationMode ? "text-forest-600" : "text-clay-500"}`}
+              >
                 {speech.feedbackMessage}
               </p>
-              <Button onClick={speech.attempt}>Probeer opnieuw</Button>
+              <Button onClick={speech.attempt}>{lenientPronunciationMode ? "Nog een keer" : "Probeer opnieuw"}</Button>
               <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
             </div>
           )}

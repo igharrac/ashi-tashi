@@ -8,6 +8,7 @@ import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunc
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
 import type { RecordingPersona } from "@/lib/recordableItems";
+import { LENIENT_PRONUNCIATION_ATTEMPTS } from "@/domain/pronunciationLeniency";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface SpeakFromPictureProps {
@@ -15,6 +16,8 @@ interface SpeakFromPictureProps {
   microphoneOptIn: boolean;
   onDone: (isCorrect: boolean) => void;
   preferredPersona?: RecordingPersona | null;
+  /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
+  lenientPronunciationMode?: boolean;
 }
 
 /**
@@ -28,8 +31,17 @@ interface SpeakFromPictureProps {
  * te nemen — zie RepeatAfterMe voor dezelfde aanpak en de beperkingen
  * daarvan (Nederlandse validatie, nog geen Tashelhit-spraakherkenning).
  */
-export function SpeakFromPicture({ item, microphoneOptIn, onDone, preferredPersona }: SpeakFromPictureProps) {
-  const speech = useSpeechCheck(item.translationNl);
+export function SpeakFromPicture({
+  item,
+  microphoneOptIn,
+  onDone,
+  preferredPersona,
+  lenientPronunciationMode = true,
+}: SpeakFromPictureProps) {
+  const speech = useSpeechCheck(
+    item.translationNl,
+    lenientPronunciationMode ? { passAfterAttempts: LENIENT_PRONUNCIATION_ATTEMPTS } : undefined,
+  );
   const spelling = useWordSpelling(item.id);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
   const [fallbackMessage, setFallbackMessage] = useState<string | null>(null);
@@ -75,10 +87,13 @@ export function SpeakFromPicture({ item, microphoneOptIn, onDone, preferredPerso
           )}
           {speech.status === "retry" && (
             <div className="flex flex-col items-center gap-4">
-              <p aria-live="polite" className="text-lg font-medium text-clay-500">
+              <p
+                aria-live="polite"
+                className={`text-lg font-medium ${lenientPronunciationMode ? "text-forest-600" : "text-clay-500"}`}
+              >
                 {speech.feedbackMessage}
               </p>
-              <Button onClick={speech.attempt}>Probeer opnieuw</Button>
+              <Button onClick={speech.attempt}>{lenientPronunciationMode ? "Nog een keer" : "Probeer opnieuw"}</Button>
               <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
             </div>
           )}

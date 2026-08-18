@@ -250,6 +250,7 @@ export default function LessonPage() {
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
           preferredPersona={child.preferredVoicePersona}
+          lenientPronunciationMode={child.lenientPronunciationMode}
         />
       )}
 
@@ -259,6 +260,7 @@ export default function LessonPage() {
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
           preferredPersona={child.preferredVoicePersona}
+          lenientPronunciationMode={child.lenientPronunciationMode}
         />
       )}
 
@@ -268,6 +270,7 @@ export default function LessonPage() {
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
           preferredPersona={child.preferredVoicePersona}
+          lenientPronunciationMode={child.lenientPronunciationMode}
         />
       )}
     </main>

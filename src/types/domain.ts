@@ -70,6 +70,15 @@ export interface ChildProfileData {
   preferredVoicePersona: VoicePersona | null;
   /** Aan: plaatje zien + zelf inspreken (hfst. 13.11). Uit (standaard): eerst horen, dan nazeggen. */
   speakFirstMode: boolean;
+  /**
+   * Aan (standaard): een spreekoefening is klaar zodra het woord
+   * LENIENT_PRONUNCIATION_ATTEMPTS keer is ingesproken, ongeacht of de
+   * uitspraak (bijna) exact matchte — voorkomt dat een kind vastloopt op
+   * een score die het nooit haalt. Uit: de oefening vraagt om een echte
+   * match/goede beoordeling voordat het kind door kan (met onbeperkt
+   * "probeer opnieuw").
+   */
+  lenientPronunciationMode: boolean;
   points: number;
   earnedBadgeSlugs: string[];
   itemStats: Record<string, { correct: number; incorrect: number }>;
