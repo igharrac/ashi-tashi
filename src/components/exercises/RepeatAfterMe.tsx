@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
@@ -10,6 +10,8 @@ import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { LENIENT_PRONUNCIATION_ATTEMPTS } from "@/domain/pronunciationLeniency";
+import { playSuccessChime } from "@/lib/playSuccessChime";
+import { AttemptStars } from "./AttemptStars";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface RepeatAfterMeProps {
@@ -49,6 +51,16 @@ export function RepeatAfterMe({
 
   const useRealValidation = microphoneOptIn && speech.isAvailable;
 
+  // Vrolijk geluidje zodra de oefening klaar is — precies één keer per
+  // afronding, niet bij elke re-render (hfst. 22: duidelijk positief
+  // signaal i.p.v. een getal).
+  useEffect(() => {
+    if (speech.status === "correct") playSuccessChime();
+  }, [speech.status]);
+  useEffect(() => {
+    if (fallbackStatus === "feedback") playSuccessChime();
+  }, [fallbackStatus]);
+
   async function handleFallbackRecord() {
     setFallbackStatus("recording");
     const result = await mockPronunciationProvider.assess({
@@ -67,20 +79,41 @@ export function RepeatAfterMe({
       </p>
       <p className="text-2xl font-bold text-primary-600">{spelling ?? item.translationNl}</p>
       {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
-      <AudioButton
-        text={item.latinSpelling}
-        itemId={item.id}
-        fallbackSpokenText={item.translationNl}
-        preferredPersona={preferredPersona}
-        label="Luister nog eens"
-      />
 
       {useRealValidation ? (
         <>
-          {speech.status === "idle" && (
-            <Button onClick={speech.attempt} className="flex items-center gap-2">
-              <span aria-hidden="true">🎙️</span> Neem op
-            </Button>
+          {(speech.status === "idle" || speech.status === "retry") && (
+            <div className="flex flex-col items-center gap-4">
+              {/* Twee gelijkwaardige, altijd beschikbare keuzes i.p.v. één
+                  primaire "Neem op"-knop — afspelen mag zo vaak als nodig,
+                  ook vóór poging 2 en 3. */}
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                <AudioButton
+                  text={item.latinSpelling}
+                  itemId={item.id}
+                  fallbackSpokenText={item.translationNl}
+                  preferredPersona={preferredPersona}
+                  label="1. Afspelen"
+                />
+                <Button variant="secondary" onClick={speech.attempt} className="flex items-center gap-2">
+                  <span aria-hidden="true">🎙️</span> 2. Zeg het woord
+                </Button>
+              </div>
+              {lenientPronunciationMode && speech.attempts > 0 && (
+                <AttemptStars attempts={speech.attempts} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
+              )}
+              {speech.status === "retry" && (
+                <>
+                  <p
+                    aria-live="polite"
+                    className={`text-lg font-medium ${lenientPronunciationMode ? "text-forest-600" : "text-clay-500"}`}
+                  >
+                    {speech.feedbackMessage}
+                  </p>
+                  <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
+                </>
+              )}
+            </div>
           )}
           {speech.status === "listening" && (
             <div className="flex flex-col items-center gap-2">
@@ -88,20 +121,14 @@ export function RepeatAfterMe({
               <MicLevelIndicator active />
             </div>
           )}
-          {speech.status === "retry" && (
-            <div className="flex flex-col items-center gap-4">
-              <p
-                aria-live="polite"
-                className={`text-lg font-medium ${lenientPronunciationMode ? "text-forest-600" : "text-clay-500"}`}
-              >
-                {speech.feedbackMessage}
-              </p>
-              <Button onClick={speech.attempt}>{lenientPronunciationMode ? "Nog een keer" : "Probeer opnieuw"}</Button>
-              <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
-            </div>
-          )}
           {speech.status === "correct" && (
             <div className="flex flex-col items-center gap-4">
+              {lenientPronunciationMode && (
+                <AttemptStars attempts={LENIENT_PRONUNCIATION_ATTEMPTS} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
+              )}
+              <p aria-hidden="true" className="text-4xl">
+                🎉
+              </p>
               <p aria-live="polite" className="text-lg font-medium text-success-500">
                 {speech.feedbackMessage}
               </p>

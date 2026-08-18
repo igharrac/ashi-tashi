@@ -237,6 +237,7 @@ export default function LessonPage() {
 
       {currentExercise.type === "AFBEELDING_EN_WOORD" && (
         <ImageAndWord
+          key={currentExercise.id}
           item={currentExercise.vocabularyItem}
           onDone={() => handleAnswer(currentExercise, true)}
           preferredPersona={child.preferredVoicePersona}
@@ -245,6 +246,7 @@ export default function LessonPage() {
 
       {currentExercise.type === "LUISTEREN_EN_HERKENNEN" && (
         <ListenAndSpeak
+          key={currentExercise.id}
           item={currentExercise.vocabularyItem}
           childId={child.id}
           microphoneOptIn={child.microphoneOptIn}
@@ -256,6 +258,7 @@ export default function LessonPage() {
 
       {currentExercise.type === "NAZEGGEN" && (
         <RepeatAfterMe
+          key={currentExercise.id}
           item={currentExercise.vocabularyItem}
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
@@ -266,6 +269,7 @@ export default function LessonPage() {
 
       {currentExercise.type === "ZELFSTANDIG_SPREKEN" && (
         <SpeakFromPicture
+          key={currentExercise.id}
           item={currentExercise.vocabularyItem}
           microphoneOptIn={child.microphoneOptIn}
           onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}

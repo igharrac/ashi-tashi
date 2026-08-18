@@ -10,6 +10,8 @@ import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilarityProvider";
 import { LENIENT_PRONUNCIATION_ATTEMPTS, leniencyDoneMessage, leniencyRetryMessage } from "@/domain/pronunciationLeniency";
+import { playSuccessChime } from "@/lib/playSuccessChime";
+import { AttemptStars } from "./AttemptStars";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface ListenAndSpeakProps {
@@ -24,18 +26,27 @@ interface ListenAndSpeakProps {
 
 type Status = "idle" | "requesting" | "recording" | "assessing" | "correct" | "retry" | "saved-for-review";
 
-const RECORD_DURATION_MS = 4000;
+// Vaste opnameduur (geen stilte-detectie/auto-stop) — voor een los woord is
+// 4s onnodig lang wachten voordat er iets gebeurt; voor een hele zin is meer
+// ruimte nodig. Dit is de belangrijkste resterende wachttijd nu de
+// akoestische validatie zelf wordt overgeslagen in coulante modus.
+const RECORD_DURATION_MS_WORD = 2500;
+const RECORD_DURATION_MS_SENTENCE = 4000;
 
 /**
  * Oefentype "Luisteren en herkennen" (hfst. 13.1) — herzien op verzoek: één
  * plaatje (geen keuze meer tussen meerdere afbeeldingen), het kind luistert
  * en spreekt het woord zelf na. Validatie:
- * - Is er een goedgekeurde referentie-opname in de opnamestudio? Dan
- *   vergelijkt audioSimilarityProvider de opname van het kind daar écht
- *   akoestisch mee (MFCC + DTW — geen omweg via het Nederlands).
- * - Zo niet, dan wordt de opname bewaard voor latere menselijke beoordeling
- *   (src/lib/childAttempts.ts) en gaat het kind gewoon door — geen nep-
- *   "goed" en geen blokkade (hfst. 21, 22).
+ * - In coulante modus (standaard aan, zie pronunciationLeniency.ts) wordt de
+ *   akoestische vergelijking helemaal overgeslagen — die kost merkbare tijd
+ *   (referentie-opname ophalen + MFCC/DTW) en het resultaat werd toch
+ *   genegeerd, dus alleen wachten maken zonder nut. Gewoon 3x inspreken telt.
+ * - Uit coulante modus, mét een goedgekeurde referentie-opname in de
+ *   opnamestudio: audioSimilarityProvider vergelijkt de opname van het kind
+ *   daar écht akoestisch mee (MFCC + DTW — geen omweg via het Nederlands).
+ * - Geen referentie-opname: de opname wordt bewaard voor latere menselijke
+ *   beoordeling (src/lib/childAttempts.ts) en het kind gaat gewoon door —
+ *   geen nep-"goed" en geen blokkade (hfst. 21, 22).
  */
 export function ListenAndSpeak({
   item,
@@ -83,6 +94,12 @@ export function ListenAndSpeak({
     typeof MediaRecorder !== "undefined";
   const useRealCapture = microphoneOptIn && isSupported;
 
+  // Vrolijk geluidje zodra de oefening klaar is — precies één keer per
+  // afronding (hfst. 22: duidelijk positief signaal i.p.v. een getal).
+  useEffect(() => {
+    if (status === "correct" || status === "saved-for-review") playSuccessChime();
+  }, [status]);
+
   async function saveAttempt(blob: Blob, hadReference: boolean) {
     try {
       const formData = new FormData();
@@ -108,20 +125,11 @@ export function ListenAndSpeak({
       return;
     }
 
-    setStatus("assessing");
-    const result = await audioSimilarityProvider.assess({
-      learnerAudio: blob,
-      expectedText: item.latinSpelling,
-      referenceAudioUrl: referenceUrl,
-      languageCode: "tzm",
-    });
-    setDebugInfo(result.debugInfo ?? null);
-
     if (lenientPronunciationMode) {
-      // Coulante modus (standaard aan, zie pronunciationLeniency.ts): na
-      // LENIENT_PRONUNCIATION_ATTEMPTS pogingen is de oefening altijd klaar,
-      // ongeacht de akoestische score — zelfde regel als bij Nazeggen/Zelf
-      // zeggen, zodat het voor het kind overal consistent is.
+      // Coulante modus (standaard aan, zie pronunciationLeniency.ts): het
+      // akoestische oordeel wordt toch genegeerd, dus audioSimilarityProvider
+      // hoeft hier niet aangeroepen te worden — scheelt merkbare wachttijd
+      // (referentie-opname ophalen + MFCC/DTW-verwerking).
       if (nextAttempts >= LENIENT_PRONUNCIATION_ATTEMPTS) {
         setFeedbackMessage(leniencyDoneMessage());
         setStatus("correct");
@@ -132,6 +140,14 @@ export function ListenAndSpeak({
       return;
     }
 
+    setStatus("assessing");
+    const result = await audioSimilarityProvider.assess({
+      learnerAudio: blob,
+      expectedText: item.latinSpelling,
+      referenceAudioUrl: referenceUrl,
+      languageCode: "tzm",
+    });
+    setDebugInfo(result.debugInfo ?? null);
     setFeedbackMessage(result.feedbackMessageNl);
     setStatus(result.shouldOfferRetry ? "retry" : "correct");
   }
@@ -156,9 +172,10 @@ export function ListenAndSpeak({
       mediaRecorderRef.current = recorder;
       recorder.start();
       setStatus("recording");
+      const duration = item.itemKind === "zin" ? RECORD_DURATION_MS_SENTENCE : RECORD_DURATION_MS_WORD;
       window.setTimeout(() => {
         if (mediaRecorderRef.current?.state === "recording") mediaRecorderRef.current.stop();
-      }, RECORD_DURATION_MS);
+      }, duration);
     } catch {
       setFeedbackMessage("Kon microfoon niet gebruiken. Check de browserpermissie.");
       setStatus("retry");
@@ -179,29 +196,42 @@ export function ListenAndSpeak({
         {item.imageEmoji}
       </div>
 
-      <AudioButton
-        text={item.latinSpelling}
-        itemId={item.id}
-        fallbackSpokenText={item.translationNl}
-        preferredPersona={preferredPersona}
-        label="Speel het woord af"
-      />
-
-      {status === "idle" &&
-        (useRealCapture ? (
-          <Button onClick={handleRecord} className="flex items-center gap-2">
-            <span aria-hidden="true">🎙️</span> Neem op
+      {(status === "idle" || status === "retry") && useRealCapture && (
+        <div className="flex flex-wrap items-center justify-center gap-3">
+          <AudioButton
+            text={item.latinSpelling}
+            itemId={item.id}
+            fallbackSpokenText={item.translationNl}
+            preferredPersona={preferredPersona}
+            label="1. Afspelen"
+          />
+          <Button variant="secondary" onClick={handleRecord} className="flex items-center gap-2">
+            <span aria-hidden="true">🎙️</span> 2. Zeg het woord
           </Button>
-        ) : (
-          <div className="flex flex-col items-center gap-3">
-            <p className="max-w-xs text-sm text-gray-500">
-              {microphoneOptIn
-                ? "Opnemen lukt niet in deze browser — zeg het woord toch hardop en ga dan verder."
-                : "Microfoon staat uit. Zeg het woord toch hardop en ga dan verder."}
-            </p>
-            <Button onClick={() => onDone(true)}>Ik heb het gezegd</Button>
-          </div>
-        ))}
+        </div>
+      )}
+
+      {status === "idle" && !useRealCapture && (
+        <div className="flex flex-col items-center gap-3">
+          <AudioButton
+            text={item.latinSpelling}
+            itemId={item.id}
+            fallbackSpokenText={item.translationNl}
+            preferredPersona={preferredPersona}
+            label="Speel het woord af"
+          />
+          <p className="max-w-xs text-sm text-gray-500">
+            {microphoneOptIn
+              ? "Opnemen lukt niet in deze browser — zeg het woord toch hardop en ga dan verder."
+              : "Microfoon staat uit. Zeg het woord toch hardop en ga dan verder."}
+          </p>
+          <Button onClick={() => onDone(true)}>Ik heb het gezegd</Button>
+        </div>
+      )}
+
+      {lenientPronunciationMode && attempts > 0 && (status === "idle" || status === "retry") && (
+        <AttemptStars attempts={attempts} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
+      )}
 
       {status === "requesting" && <p aria-live="polite">Microfoon aanvragen…</p>}
 
@@ -219,6 +249,12 @@ export function ListenAndSpeak({
 
       {showAnswer && (
         <div className="flex flex-col items-center gap-4">
+          {status === "correct" && lenientPronunciationMode && (
+            <AttemptStars attempts={LENIENT_PRONUNCIATION_ATTEMPTS} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
+          )}
+          <p aria-hidden="true" className="text-4xl">
+            🎉
+          </p>
           <p aria-live="polite" className="text-lg font-medium text-success-500">
             {feedbackMessage}
           </p>
@@ -244,7 +280,7 @@ export function ListenAndSpeak({
               debug: {debugInfo}
             </p>
           )}
-          <Button onClick={handleRecord}>{lenientPronunciationMode ? "Nog een keer" : "Probeer opnieuw"}</Button>
+          {!useRealCapture && <Button onClick={handleRecord}>Probeer opnieuw</Button>}
           <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
         </div>
       )}

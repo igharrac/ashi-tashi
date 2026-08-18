@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
@@ -9,6 +9,8 @@ import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { LENIENT_PRONUNCIATION_ATTEMPTS } from "@/domain/pronunciationLeniency";
+import { playSuccessChime } from "@/lib/playSuccessChime";
+import { AttemptStars } from "./AttemptStars";
 import { AnswerReveal } from "./AnswerReveal";
 
 interface SpeakFromPictureProps {
@@ -48,6 +50,15 @@ export function SpeakFromPicture({
 
   const useRealValidation = microphoneOptIn && speech.isAvailable;
 
+  // Vrolijk geluidje zodra de oefening klaar is — precies één keer per
+  // afronding (hfst. 22: duidelijk positief signaal i.p.v. een getal).
+  useEffect(() => {
+    if (speech.status === "correct") playSuccessChime();
+  }, [speech.status]);
+  useEffect(() => {
+    if (fallbackStatus === "feedback") playSuccessChime();
+  }, [fallbackStatus]);
+
   async function handleFallbackRecord() {
     setFallbackStatus("recording");
     const result = await mockPronunciationProvider.assess({
@@ -85,6 +96,9 @@ export function SpeakFromPicture({
               <MicLevelIndicator active />
             </div>
           )}
+          {lenientPronunciationMode && speech.attempts > 0 && speech.status !== "listening" && (
+            <AttemptStars attempts={speech.attempts} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
+          )}
           {speech.status === "retry" && (
             <div className="flex flex-col items-center gap-4">
               <p
@@ -118,6 +132,12 @@ export function SpeakFromPicture({
 
       {showAnswer && (
         <div className="flex flex-col items-center gap-4">
+          {speech.status === "correct" && lenientPronunciationMode && (
+            <AttemptStars attempts={LENIENT_PRONUNCIATION_ATTEMPTS} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
+          )}
+          <p aria-hidden="true" className="text-4xl">
+            🎉
+          </p>
           <p aria-live="polite" className="text-lg font-medium text-success-500">
             {speech.status === "correct" ? speech.feedbackMessage : fallbackMessage}
           </p>
