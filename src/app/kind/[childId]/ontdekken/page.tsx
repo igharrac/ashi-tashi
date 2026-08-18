@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
 import { useAppStore } from "@/lib/store";
@@ -9,6 +9,7 @@ import { WordGrid } from "@/components/discover/WordGrid";
 import { WordDetailModal } from "@/components/discover/WordDetailModal";
 import { Button } from "@/components/ui/Button";
 import { getCatalogItems, type CatalogItem } from "@/lib/contentCatalog";
+import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { VocabularyItemView } from "@/types/domain";
 
 // Alleen "dieren" heeft nu echt speelbare inhoud (zie ARCHITECTUUR-OPNAMESTUDIO.md
@@ -36,14 +37,31 @@ export default function DiscoverPage() {
   const params = useParams<{ childId: string }>();
   const { getChild, ready } = useAppStore();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    getItemIdsWithRecordings().then((ids) => {
+      if (!cancelled) setRecordedIds(ids);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Alleen woorden met een écht ingesproken opname worden getoond — anders
+  // zou het kind bij een tik gewoon Nederlandse TTS te horen krijgen
+  // (zelfde regel als het matchspel, zie getItemIdsWithRecordings).
+  const items = useMemo(() => {
+    if (!recordedIds) return [];
+    return getCatalogItems()
+      .filter((item) => item.categorySlug === DISCOVER_CATEGORY_SLUG && recordedIds.has(item.id))
+      .map(toVocabularyItemView);
+  }, [recordedIds]);
 
   if (!ready) return <p className="pt-12 text-center text-ink-muted">Even laden…</p>;
   const child = getChild(params.childId);
   if (!child) return notFound();
-
-  const items = getCatalogItems()
-    .filter((item) => item.categorySlug === DISCOVER_CATEGORY_SLUG)
-    .map(toVocabularyItemView);
 
   return (
     <AppShell child={child}>
@@ -58,7 +76,11 @@ export default function DiscoverPage() {
       </div>
 
       <div className="mx-auto mt-6 max-w-4xl">
-        <WordGrid items={items} onSelect={setSelectedIndex} />
+        {recordedIds === null ? (
+          <p className="text-center text-ink-muted">Even laden…</p>
+        ) : (
+          <WordGrid items={items} onSelect={setSelectedIndex} />
+        )}
       </div>
 
       {selectedIndex !== null && (

@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
+import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
 import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
 import { RepeatAfterMe } from "@/components/exercises/RepeatAfterMe";
@@ -29,35 +30,65 @@ export default function LessonPage() {
   // gekozen oefenvorm (hfst. 13.11) direct bij de start van de les geldt.
   const childForInit = getChild(params.childId);
 
-  const [queue, setQueue] = useState<ExerciseView[]>(() => {
-    const base = lesson?.exercises ?? [];
-    return childForInit?.speakFirstMode ? applySpeakFirstMode(base) : base;
-  });
-  // Bij een tussentijds afgesloten les: hervat waar het kind gebleven was
-  // i.p.v. steeds bij het begin te beginnen (zie setLessonProgress).
-  const [index, setIndex] = useState(() => {
+  const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    getItemIdsWithRecordings().then((ids) => {
+      if (!cancelled) setRecordedIds(ids);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  // Alleen oefeningen met een écht ingesproken opname horen thuis in de les
+  // — anders zou het kind bij een woord of zin gewoon Nederlandse TTS te
+  // horen krijgen (zelfde regel als Ontdekken/het matchspel, zie
+  // getItemIdsWithRecordings).
+  const lessonExercises = useMemo(() => {
+    if (!lesson || !recordedIds) return null;
+    return lesson.exercises.filter((exercise) => recordedIds.has(exercise.vocabularyItem.id));
+  }, [lesson, recordedIds]);
+
+  const [queue, setQueue] = useState<ExerciseView[] | null>(null);
+  const [index, setIndex] = useState(0);
+
+  // Queue/index pas invullen zodra de opnamen bekend zijn (recordedIds) —
+  // niet meteen bij mount, anders zit de ongefilterde lijst er al in vóór
+  // het filter kan draaien.
+  useEffect(() => {
+    if (queue !== null || !lessonExercises) return;
+    const base = childForInit?.speakFirstMode ? applySpeakFirstMode(lessonExercises) : lessonExercises;
+    setQueue(base);
+    // Bij een tussentijds afgesloten les: hervat waar het kind gebleven was
+    // i.p.v. steeds bij het begin te beginnen (zie setLessonProgress).
     const saved = childForInit?.lessonProgress;
-    if (saved && saved.lessonId === lesson?.id) {
-      return Math.min(Math.max(saved.index, 0), Math.max((lesson?.exercises.length ?? 1) - 1, 0));
+    if (saved && lesson && saved.lessonId === lesson.id) {
+      setIndex(Math.min(Math.max(saved.index, 0), Math.max(base.length - 1, 0)));
     }
-    return 0;
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [queue, lessonExercises]);
+
   const [correctCount, setCorrectCount] = useState(0);
   const [retryQueue, setRetryQueue] = useState<ExerciseView[]>([]);
   const [wrongCounts, setWrongCounts] = useState<Record<string, number>>({});
   const [finished, setFinished] = useState<{ points: number; newBadges: string[] } | null>(null);
 
   useEffect(() => {
-    if (!childForInit || !lesson || finished) return;
+    if (!childForInit || !lesson || finished || queue === null) return;
     setLessonProgress(childForInit.id, { lessonId: lesson.id, index });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [index, lesson?.id, childForInit?.id, finished]);
+  }, [index, lesson?.id, childForInit?.id, finished, queue]);
 
   if (!ready) return <p className="text-center text-gray-500">Even laden…</p>;
   const child = getChild(params.childId);
   if (!child || !lesson) return notFound();
+  if (!recordedIds || queue === null) return <p className="text-center text-gray-500">Even laden…</p>;
 
-  const currentExercise = queue[index];
+  // Losse, expliciet niet-nullable naam zodat TypeScript de null-check ook
+  // binnen de onderstaande geneste functies (goToNext e.d.) kan volgen.
+  const currentQueue: ExerciseView[] = queue;
+  const currentExercise = currentQueue[index];
 
   function handleAnswer(exercise: ExerciseView, isCorrect: boolean) {
     recordExerciseAttempt(child!.id, {
@@ -93,7 +124,7 @@ export default function LessonPage() {
   }
 
   function goToNext() {
-    if (index + 1 < queue.length) {
+    if (index + 1 < currentQueue.length) {
       setIndex((i) => i + 1);
       return;
     }
@@ -103,7 +134,7 @@ export default function LessonPage() {
       setIndex(0);
       return;
     }
-    const totalExercises = (lesson?.exercises.length ?? 0);
+    const totalExercises = lessonExercises?.length ?? 0;
     const points = totalExercises; // grove indicatie; exacte score via computeLessonPoints in store
     const newBadges = completeLesson(child!.id, lesson!.id, {
       totalExercises,
@@ -146,7 +177,19 @@ export default function LessonPage() {
   }
 
   if (!currentExercise) {
-    return <p className="text-center text-gray-500">Geen oefeningen gevonden.</p>;
+    // Kan gebeuren als er (nog) geen enkel woord in deze les een ingesproken
+    // opname heeft — het kind mag hier nooit vast komen te zitten (hfst. 22).
+    return (
+      <main className="flex flex-col items-center gap-4 pt-12 text-center">
+        <p className="text-4xl" aria-hidden="true">
+          🎤
+        </p>
+        <p className="text-gray-500">Deze les heeft nog geen ingesproken woorden.</p>
+        <Link href={`/kind/${child.id}/route`}>
+          <Button>Naar leerroute</Button>
+        </Link>
+      </main>
+    );
   }
 
   return (
@@ -162,7 +205,7 @@ export default function LessonPage() {
         </Link>
 
         <div className="flex-1">
-          <ProgressBar current={index} total={queue.length} />
+          <ProgressBar current={index} total={currentQueue.length} />
         </div>
 
         <button
