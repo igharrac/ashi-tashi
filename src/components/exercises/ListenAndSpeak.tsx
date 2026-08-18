@@ -197,16 +197,17 @@ export function ListenAndSpeak({
       </div>
 
       {(status === "idle" || status === "retry") && useRealCapture && (
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-row items-center justify-center gap-4">
           <AudioButton
             text={item.latinSpelling}
             itemId={item.id}
             fallbackSpokenText={item.translationNl}
             preferredPersona={preferredPersona}
-            label="1. Afspelen"
+            label="Afspelen"
+            iconOnly
           />
-          <Button variant="secondary" onClick={handleRecord} className="flex items-center gap-2">
-            <span aria-hidden="true">🎙️</span> 2. Zeg het woord
+          <Button onClick={handleRecord} className="flex items-center gap-2">
+            <span aria-hidden="true">🎙️</span> Zeg het woord
           </Button>
         </div>
       )}

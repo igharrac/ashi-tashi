@@ -60,38 +60,29 @@ export const DIEREN_THEME: ThemeView = {
       titleNl: "Dieren op de boerderij",
       targetMinutes: 6,
       exercises: [
-        ...ANIMALS.flatMap((animal) => [
-          {
-            id: `exercise-listen-${animal.id}`,
-            type: "LUISTEREN_EN_HERKENNEN" as const,
-            vocabularyItem: {
-              // "item-dieren-<slug>", zelfde ID-formaat als contentCatalog.ts
-              // (getCatalogItems), zodat dit matcht met de keys in
-              // public/audio-catalog.json — anders vindt de opname/spelling
-              // nooit een match en valt de oefening altijd terug op Nederlands.
-              id: `item-dieren-${animal.id}`,
-              translationNl: animal.translationNl,
-              latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
-              reviewStatus: "TE_REVIEWEN" as const,
-              reviewNote: DEMO_REVIEW_NOTE,
-              imageAlt: `Illustratie van een ${animal.translationNl}`,
-              imageEmoji: animal.emoji,
-            },
+        // Eén oefening per woord (op verzoek samengevoegd — voorheen eerst
+        // "Luisteren en herkennen" én daarna apart "Nazeggen" voor hetzelfde
+        // woord, wat met de coulante 3x-modus (pronunciationLeniency.ts)
+        // dubbel voelde: 3x + 3x voor hetzelfde woord vóór het volgende aan
+        // bod kwam. ListenAndSpeak bevat al plaatje + geluid + opnemen in
+        // één scherm, dus die volstaat als enige stap.
+        ...ANIMALS.map((animal) => ({
+          id: `exercise-listen-${animal.id}`,
+          type: "LUISTEREN_EN_HERKENNEN" as const,
+          vocabularyItem: {
+            // "item-dieren-<slug>", zelfde ID-formaat als contentCatalog.ts
+            // (getCatalogItems), zodat dit matcht met de keys in
+            // public/audio-catalog.json — anders vindt de opname/spelling
+            // nooit een match en valt de oefening altijd terug op Nederlands.
+            id: `item-dieren-${animal.id}`,
+            translationNl: animal.translationNl,
+            latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
+            reviewStatus: "TE_REVIEWEN" as const,
+            reviewNote: DEMO_REVIEW_NOTE,
+            imageAlt: `Illustratie van een ${animal.translationNl}`,
+            imageEmoji: animal.emoji,
           },
-          {
-            id: `exercise-repeat-${animal.id}`,
-            type: "NAZEGGEN" as const,
-            vocabularyItem: {
-              id: `item-dieren-${animal.id}`,
-              translationNl: animal.translationNl,
-              latinSpelling: `[TASHELHIT_WORD_REVIEW_REQUIRED:${animal.id}]`,
-              reviewStatus: "TE_REVIEWEN" as const,
-              reviewNote: DEMO_REVIEW_NOTE,
-              imageAlt: `Illustratie van een ${animal.translationNl}`,
-              imageEmoji: animal.emoji,
-            },
-          },
-        ]),
+        })),
         // Zinnetjes-afsluiting: dezelfde woorden, nu in een korte zin, alleen nazeggen.
         ...SENTENCES.map((sentence) => ({
           id: `exercise-sentence-${sentence.id}`,

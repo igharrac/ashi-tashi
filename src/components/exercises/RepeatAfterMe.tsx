@@ -87,16 +87,17 @@ export function RepeatAfterMe({
               {/* Twee gelijkwaardige, altijd beschikbare keuzes i.p.v. één
                   primaire "Neem op"-knop — afspelen mag zo vaak als nodig,
                   ook vóór poging 2 en 3. */}
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex flex-row items-center justify-center gap-4">
                 <AudioButton
                   text={item.latinSpelling}
                   itemId={item.id}
                   fallbackSpokenText={item.translationNl}
                   preferredPersona={preferredPersona}
-                  label="1. Afspelen"
+                  label="Afspelen"
+                  iconOnly
                 />
-                <Button variant="secondary" onClick={speech.attempt} className="flex items-center gap-2">
-                  <span aria-hidden="true">🎙️</span> 2. Zeg het woord
+                <Button onClick={speech.attempt} className="flex items-center gap-2">
+                  <span aria-hidden="true">🎙️</span> Zeg het woord
                 </Button>
               </div>
               {lenientPronunciationMode && speech.attempts > 0 && (

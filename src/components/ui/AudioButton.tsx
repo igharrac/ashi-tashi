@@ -26,6 +26,8 @@ interface AudioButtonProps {
   label?: string;
   slow?: boolean;
   onPlayed?: () => void;
+  /** Toon alleen het luidsprekericoon (ronde knop, geen tekstlabel) — voor krappe of erg symmetrische lay-outs; de aria-label blijft wel het volledige label. */
+  iconOnly?: boolean;
 }
 
 /**
@@ -44,9 +46,11 @@ export function AudioButton({
   label,
   slow = false,
   onPlayed,
+  iconOnly = false,
 }: AudioButtonProps) {
   const [status, setStatus] = useState<"idle" | "loading" | "played">("idle");
   const speechUnavailable = !isBrowserSpeechAvailable();
+  const accessibleLabel = label ?? (slow ? "Speel vertraagd af" : "Speel geluid af");
 
   async function handlePlay() {
     setStatus("loading");
@@ -56,13 +60,24 @@ export function AudioButton({
     window.setTimeout(() => setStatus("idle"), 600);
   }
 
+  if (iconOnly) {
+    return (
+      <Button
+        variant={slow ? "secondary" : "primary"}
+        size="icon"
+        onClick={handlePlay}
+        aria-label={accessibleLabel}
+      >
+        <span aria-hidden="true">{status === "loading" ? "…" : slow ? "🐢" : "🔊"}</span>
+        {speechUnavailable && fallbackSpokenText && (
+          <span className="sr-only"> (geluid niet ondersteund in deze browser)</span>
+        )}
+      </Button>
+    );
+  }
+
   return (
-    <Button
-      variant={slow ? "secondary" : "primary"}
-      onClick={handlePlay}
-      aria-label={label ?? (slow ? "Speel vertraagd af" : "Speel geluid af")}
-      className="flex items-center gap-2"
-    >
+    <Button variant={slow ? "secondary" : "primary"} onClick={handlePlay} aria-label={accessibleLabel} className="flex items-center gap-2">
       <span aria-hidden="true">{slow ? "🐢" : "🔊"}</span>
       {status === "loading" ? "…" : label ?? (slow ? "Langzaam" : "Luister")}
       {speechUnavailable && fallbackSpokenText && (

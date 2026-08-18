@@ -1,11 +1,11 @@
 import type { ButtonHTMLAttributes } from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
-type Size = "md" | "sm";
+type Size = "md" | "sm" | "icon";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
-  /** "md" (standaard, hfst. 9 grote touch targets) of "sm" voor compacte UI zoals de opnamestudio. */
+  /** "md" (standaard, hfst. 9 grote touch targets), "sm" voor compacte UI zoals de opnamestudio, of "icon" voor een ronde knop met alleen een icoon. */
   size?: Size;
 }
 
@@ -21,6 +21,7 @@ const VARIANT_CLASSES: Record<Variant, string> = {
 const SIZE_CLASSES: Record<Size, string> = {
   md: "min-h-[56px] min-w-[56px] rounded-full px-8 py-3 text-lg",
   sm: "min-h-[36px] min-w-[36px] rounded-full px-4 py-1 text-sm",
+  icon: "flex h-14 w-14 items-center justify-center rounded-full p-0 text-2xl",
 };
 
 /**
