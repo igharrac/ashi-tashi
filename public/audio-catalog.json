@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T09:04:27.445Z",
+  "generatedAt": "2026-08-18T09:13:50.003Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -161,6 +161,168 @@
       "phoneticSpelling": "Tabagha",
       "recordings": {
         "man": "/audio/recordings/item-dieren-spin__man.webm"
+      }
+    },
+    "item-lichaam-mond": {
+      "phoneticSpelling": "Imi",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-mond__man.webm"
+      }
+    },
+    "item-lichaam-tand": {
+      "phoneticSpelling": "Toeghmaas",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-tand__man.webm"
+      }
+    },
+    "item-lichaam-tong": {
+      "phoneticSpelling": "Ils",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-tong__man.webm"
+      }
+    },
+    "item-lichaam-hand": {
+      "phoneticSpelling": "Afoes",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-hand__man.webm"
+      }
+    },
+    "item-lichaam-been": {
+      "phoneticSpelling": "Adaar",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-been__man.webm"
+      }
+    },
+    "item-lichaam-hart": {
+      "phoneticSpelling": "oel",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-hart__man.webm"
+      }
+    },
+    "item-lichaam-hersenen": {
+      "phoneticSpelling": "la~kaal",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-hersenen__man.webm"
+      }
+    },
+    "item-lichaam-longen": {
+      "phoneticSpelling": "Turien",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-longen__man.webm"
+      }
+    },
+    "item-lichaam-bot": {
+      "phoneticSpelling": "Akjij",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-bot__man.webm"
+      }
+    },
+    "item-lichaam-nagel": {
+      "phoneticSpelling": "Iskarn",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-nagel__man.webm"
+      }
+    },
+    "item-lichaam-schedel": {
+      "phoneticSpelling": "Agsaas",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-schedel__man.webm"
+      }
+    },
+    "item-lichaam-oog": {
+      "phoneticSpelling": "Eln",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-oog__man.webm"
+      }
+    },
+    "item-lichaam-oor": {
+      "phoneticSpelling": "Amezogh",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-oor__man.webm"
+      }
+    },
+    "item-lichaam-neus": {
+      "phoneticSpelling": "Agemoeij",
+      "recordings": {
+        "man": "/audio/recordings/item-lichaam-neus__man.webm"
+      }
+    },
+    "item-kleding-shirt": {
+      "phoneticSpelling": "tishirt",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-shirt__man.webm"
+      }
+    },
+    "item-kleding-broek": {
+      "phoneticSpelling": "serwal",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-broek__man.webm"
+      }
+    },
+    "item-kleding-jurk": {
+      "phoneticSpelling": "saya",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-jurk__man.webm"
+      }
+    },
+    "item-kleding-jas": {
+      "phoneticSpelling": "lkaboet",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-jas__man.webm"
+      }
+    },
+    "item-kleding-sjaal": {
+      "phoneticSpelling": "lkechni",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-sjaal__man.webm"
+      }
+    },
+    "item-kleding-handschoenen": {
+      "phoneticSpelling": "ligaat",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-handschoenen__man.webm"
+      }
+    },
+    "item-kleding-sokken": {
+      "phoneticSpelling": "takkachar",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-sokken__man.webm"
+      }
+    },
+    "item-kleding-schoenen": {
+      "phoneticSpelling": "sabbaat",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-schoenen__man.webm"
+      }
+    },
+    "item-kleding-laarzen": {
+      "phoneticSpelling": "labolaat",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-laarzen__man.webm"
+      }
+    },
+    "item-kleding-sandalen": {
+      "phoneticSpelling": "sandala",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-sandalen__man.webm"
+      }
+    },
+    "item-kleding-pet": {
+      "phoneticSpelling": "taklabot",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-pet__man.webm"
+      }
+    },
+    "item-kleding-ring": {
+      "phoneticSpelling": "lghatem",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-ring__man.webm"
+      }
+    },
+    "item-kleding-horloge": {
+      "phoneticSpelling": "tessaat",
+      "recordings": {
+        "man": "/audio/recordings/item-kleding-horloge__man.webm"
       }
     }
   }

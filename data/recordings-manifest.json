@@ -241,5 +241,248 @@
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-07-21T14:13:03.635Z",
     "denoised": true
+  },
+  "item-lichaam-mond__man": {
+    "itemId": "item-lichaam-mond",
+    "persona": "man",
+    "fileName": "item-lichaam-mond__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:07:33.638Z",
+    "denoised": false
+  },
+  "item-lichaam-tand__man": {
+    "itemId": "item-lichaam-tand",
+    "persona": "man",
+    "fileName": "item-lichaam-tand__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:07:40.807Z",
+    "denoised": false
+  },
+  "item-lichaam-tong__man": {
+    "itemId": "item-lichaam-tong",
+    "persona": "man",
+    "fileName": "item-lichaam-tong__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:07:51.987Z",
+    "denoised": false
+  },
+  "item-lichaam-hand__man": {
+    "itemId": "item-lichaam-hand",
+    "persona": "man",
+    "fileName": "item-lichaam-hand__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:07:56.064Z",
+    "denoised": false
+  },
+  "item-lichaam-been__man": {
+    "itemId": "item-lichaam-been",
+    "persona": "man",
+    "fileName": "item-lichaam-been__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:08:53.395Z",
+    "denoised": false
+  },
+  "item-lichaam-hart__man": {
+    "itemId": "item-lichaam-hart",
+    "persona": "man",
+    "fileName": "item-lichaam-hart__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:09:23.101Z",
+    "denoised": false
+  },
+  "item-lichaam-hersenen__man": {
+    "itemId": "item-lichaam-hersenen",
+    "persona": "man",
+    "fileName": "item-lichaam-hersenen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:09:43.025Z",
+    "denoised": false
+  },
+  "item-lichaam-longen__man": {
+    "itemId": "item-lichaam-longen",
+    "persona": "man",
+    "fileName": "item-lichaam-longen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:09:51.681Z",
+    "denoised": false
+  },
+  "item-lichaam-bot__man": {
+    "itemId": "item-lichaam-bot",
+    "persona": "man",
+    "fileName": "item-lichaam-bot__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:10:04.632Z",
+    "denoised": false
+  },
+  "item-lichaam-nagel__man": {
+    "itemId": "item-lichaam-nagel",
+    "persona": "man",
+    "fileName": "item-lichaam-nagel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:10:19.682Z",
+    "denoised": false
+  },
+  "item-lichaam-schedel__man": {
+    "itemId": "item-lichaam-schedel",
+    "persona": "man",
+    "fileName": "item-lichaam-schedel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:10:30.128Z",
+    "denoised": false
+  },
+  "item-lichaam-oog__man": {
+    "itemId": "item-lichaam-oog",
+    "persona": "man",
+    "fileName": "item-lichaam-oog__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:10:44.520Z",
+    "denoised": false
+  },
+  "item-lichaam-oor__man": {
+    "itemId": "item-lichaam-oor",
+    "persona": "man",
+    "fileName": "item-lichaam-oor__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:10:46.497Z",
+    "denoised": false
+  },
+  "item-lichaam-neus__man": {
+    "itemId": "item-lichaam-neus",
+    "persona": "man",
+    "fileName": "item-lichaam-neus__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:10:48.593Z",
+    "denoised": false
+  },
+  "item-kleding-shirt__man": {
+    "itemId": "item-kleding-shirt",
+    "persona": "man",
+    "fileName": "item-kleding-shirt__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:11:07.087Z",
+    "denoised": false
+  },
+  "item-kleding-broek__man": {
+    "itemId": "item-kleding-broek",
+    "persona": "man",
+    "fileName": "item-kleding-broek__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:11:23.695Z",
+    "denoised": false
+  },
+  "item-kleding-jurk__man": {
+    "itemId": "item-kleding-jurk",
+    "persona": "man",
+    "fileName": "item-kleding-jurk__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:11:35.119Z",
+    "denoised": false
+  },
+  "item-kleding-jas__man": {
+    "itemId": "item-kleding-jas",
+    "persona": "man",
+    "fileName": "item-kleding-jas__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:11:43.932Z",
+    "denoised": false
+  },
+  "item-kleding-sjaal__man": {
+    "itemId": "item-kleding-sjaal",
+    "persona": "man",
+    "fileName": "item-kleding-sjaal__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:12:05.829Z",
+    "denoised": false
+  },
+  "item-kleding-handschoenen__man": {
+    "itemId": "item-kleding-handschoenen",
+    "persona": "man",
+    "fileName": "item-kleding-handschoenen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:12:06.600Z",
+    "denoised": false
+  },
+  "item-kleding-sokken__man": {
+    "itemId": "item-kleding-sokken",
+    "persona": "man",
+    "fileName": "item-kleding-sokken__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:12:16.060Z",
+    "denoised": false
+  },
+  "item-kleding-schoenen__man": {
+    "itemId": "item-kleding-schoenen",
+    "persona": "man",
+    "fileName": "item-kleding-schoenen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:12:23.615Z",
+    "denoised": false
+  },
+  "item-kleding-laarzen__man": {
+    "itemId": "item-kleding-laarzen",
+    "persona": "man",
+    "fileName": "item-kleding-laarzen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:12:39.147Z",
+    "denoised": false
+  },
+  "item-kleding-sandalen__man": {
+    "itemId": "item-kleding-sandalen",
+    "persona": "man",
+    "fileName": "item-kleding-sandalen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:12:46.389Z",
+    "denoised": false
+  },
+  "item-kleding-pet__man": {
+    "itemId": "item-kleding-pet",
+    "persona": "man",
+    "fileName": "item-kleding-pet__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:12:55.546Z",
+    "denoised": false
+  },
+  "item-kleding-ring__man": {
+    "itemId": "item-kleding-ring",
+    "persona": "man",
+    "fileName": "item-kleding-ring__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:13:10.616Z",
+    "denoised": false
+  },
+  "item-kleding-horloge__man": {
+    "itemId": "item-kleding-horloge",
+    "persona": "man",
+    "fileName": "item-kleding-horloge__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-18T09:13:30.503Z",
+    "denoised": false
   }
 }
