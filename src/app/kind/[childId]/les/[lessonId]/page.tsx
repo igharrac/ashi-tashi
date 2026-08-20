@@ -5,6 +5,7 @@ import { notFound, useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
+import { getGenericLessonById } from "@/lib/lessonCatalog";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
 import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
@@ -25,7 +26,14 @@ export default function LessonPage() {
   const params = useParams<{ childId: string; lessonId: string }>();
   const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, ready } = useAppStore();
 
-  const lesson = DIEREN_THEME.lessons.find((l) => l.id === params.lessonId);
+  // Dieren blijft op zijn handmatig samengestelde thema (met zinnetjes-
+  // afsluiting); alle andere categorieën met genoeg opnames krijgen een
+  // gegenereerde les (zie src/lib/lessonCatalog.ts). "isDierenLesson"
+  // bepaalt of het themabadge ("Dierenkenner") mag worden toegekend — die
+  // hoort niet bij een andere categorie (zie completeLesson hieronder).
+  const dierenLesson = DIEREN_THEME.lessons.find((l) => l.id === params.lessonId);
+  const lesson = dierenLesson ?? getGenericLessonById(params.lessonId);
+  const isDierenLesson = Boolean(dierenLesson);
   // Child alvast ophalen (kan nog undefined zijn vóór "ready") zodat de
   // gekozen oefenvorm (hfst. 13.11) direct bij de start van de les geldt.
   const childForInit = getChild(params.childId);
@@ -139,6 +147,7 @@ export default function LessonPage() {
     const newBadges = completeLesson(child!.id, lesson!.id, {
       totalExercises,
       correctExercises: correctCount + 1,
+      awardThemeBadge: isDierenLesson,
     });
     setFinished({ points, newBadges });
   }

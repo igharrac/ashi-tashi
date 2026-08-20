@@ -8,7 +8,9 @@ import type { ThemeView } from "@/types/domain";
  * met reviewStatus "TE_REVIEWEN" en een zichtbare reviewNote.
  */
 
-const DEMO_REVIEW_NOTE = "DEMO — INHOUDELIJKE REVIEW VEREIST";
+// Ook gebruikt door src/lib/lessonCatalog.ts (generieke lesopbouw voor
+// categorieën buiten dieren), vandaar exported i.p.v. lokaal.
+export const DEMO_REVIEW_NOTE = "DEMO — INHOUDELIJKE REVIEW VEREIST";
 
 interface AnimalSeed {
   id: string;

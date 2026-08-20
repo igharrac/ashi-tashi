@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { RecorderControl, type RecordingEntryData } from "@/components/studio/RecorderControl";
@@ -114,9 +115,16 @@ export default function StudioOpnamesPage() {
             ARCHITECTUUR-OPNAMESTUDIO.md.
           </p>
         </div>
-        <Button variant="ghost" size="sm" onClick={handleLogout}>
-          Uitloggen
-        </Button>
+        <div className="flex items-center gap-2">
+          <Link href="/studio/deel-link">
+            <Button variant="ghost" size="sm">
+              Deel-link
+            </Button>
+          </Link>
+          <Button variant="ghost" size="sm" onClick={handleLogout}>
+            Uitloggen
+          </Button>
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-2">

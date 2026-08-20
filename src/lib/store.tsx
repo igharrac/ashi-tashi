@@ -56,7 +56,11 @@ interface AppStore {
   createChildProfile: (input: { displayName: string; avatarId: string; level: ExperienceLevel }) => ChildProfileData;
   getChild: (childId: string) => ChildProfileData | undefined;
   recordExerciseAttempt: (childId: string, attempt: ExerciseAttemptRecord & { isSpoken: boolean }) => void;
-  completeLesson: (childId: string, lessonId: string, input: { totalExercises: number; correctExercises: number }) => string[];
+  completeLesson: (
+    childId: string,
+    lessonId: string,
+    input: { totalExercises: number; correctExercises: number; awardThemeBadge?: boolean },
+  ) => string[];
   setSpeakFirstMode: (childId: string, enabled: boolean) => void;
   setLenientPronunciationMode: (childId: string, enabled: boolean) => void;
   setMicrophoneOptIn: (childId: string, enabled: boolean) => void;
@@ -154,7 +158,10 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
         const earnedSlugs = evaluateEarnedBadges({
           totalCorrectAnswers: totalCorrect,
           totalSpokenAttempts: 1, // demo: nazegoefening is onderdeel van elke les
-          themeCompleted: true, // demo heeft één les = hele thema
+          // "Dierenkenner" hoort alleen bij het dieren-thema — bij een
+          // gegenereerde les voor een andere categorie (lessonCatalog.ts)
+          // wordt dit themabadge dus niet toegekend (input.awardThemeBadge).
+          themeCompleted: input.awardThemeBadge ?? true,
           isFirstCompletedExercise,
         });
 

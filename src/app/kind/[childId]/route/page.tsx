@@ -30,7 +30,6 @@ export default function LearningRoutePage() {
   if (!child) return notFound();
 
   const lesson = DIEREN_THEME.lessons[0];
-  const isCompleted = lesson ? child.completedLessonIds.includes(lesson.id) : false;
 
   return (
     <AppShell child={child}>
@@ -46,7 +45,7 @@ export default function LearningRoutePage() {
         <p className="mt-1 text-ink-muted">{child.points} punten verdiend</p>
       </div>
 
-      {lesson && <StepGrid childId={child.id} dierenLessonId={lesson.id} dierenCompleted={isCompleted} />}
+      {lesson && <StepGrid childId={child.id} child={child} dierenLessonId={lesson.id} />}
     </AppShell>
   );
 }
