@@ -39,9 +39,14 @@ export function StepGrid({ childId, child, dierenLessonId }: StepGridProps) {
     return <p className="py-6 text-center text-ink-muted">Even laden…</p>;
   }
 
-  // Wordt op de eerste niet-afgeronde categorie definitief true, en blokkeert
-  // dan alle daaropvolgende categorieën — bewust géén "later inhalen":
-  // streng op volgorde, zoals gekozen.
+  // Wordt op de eerste niet-afgeronde SPEELBARE categorie definitief true, en
+  // blokkeert dan alle daaropvolgende categorieën — streng op volgorde, zoals
+  // gekozen. Categorieën zonder genoeg opnames (hasEnoughContent false) tellen
+  // hier bewust NIET in mee: zo'n categorie kan nooit "afgerond" worden (er is
+  // geen les om te spelen), dus zou de keten anders voorgoed blokkeren voor
+  // alles wat erna komt. Ze blijven zelf altijd op slot, maar breken de keten
+  // niet voor categorieën die wél al content hebben (bv. dieren/lichaam/
+  // kleding, die in CATEGORIES na een aantal nog-lege categorieën staan).
   let chainBroken = false;
 
   return (
@@ -56,10 +61,15 @@ export function StepGrid({ childId, child, dierenLessonId }: StepGridProps) {
         ).length;
         const hasEnoughContent = recordedCount >= MIN_RECORDED_WORDS_FOR_LESSON;
 
-        const canPlay = !chainBroken && hasEnoughContent;
-        if (!isCompleted) chainBroken = true; // volgende categorie blokkeren tenzij deze al klaar was
-
-        const status: StepStatus = isCompleted ? "completed" : canPlay ? "active" : "locked";
+        let status: StepStatus;
+        if (!hasEnoughContent) {
+          // Nog geen les om te spelen — altijd op slot, telt niet mee in de keten.
+          status = "locked";
+        } else {
+          const canPlay = !chainBroken;
+          status = isCompleted ? "completed" : canPlay ? "active" : "locked";
+          if (!isCompleted) chainBroken = true; // volgende speelbare categorie blokkeren tenzij deze al klaar was
+        }
 
         return (
           <StepTile
