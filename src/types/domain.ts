@@ -27,6 +27,13 @@ export interface VocabularyItemView {
   imageEmoji: string; // eenvoudige visuele placeholder i.p.v. echte illustraties
   /** "woord" (standaard) of "zin" — hfst. 14: van woordjes naar zinnen. */
   itemKind?: "woord" | "zin";
+  /**
+   * Korte Nederlandse aanleiding ("Als je dorst hebt, zeg je:"), alleen bij
+   * losstaande dagelijkse zinnen (dailySentences.ts) — geeft een kind dat nog
+   * niet leest de situatie erbij, want één emoji is bij een hele zin (anders
+   * dan bij een enkel woord als "hond") niet altijd vanzelfsprekend genoeg.
+   */
+  contextNl?: string;
 }
 
 export type ExerciseType =

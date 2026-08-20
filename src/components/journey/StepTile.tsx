@@ -4,7 +4,8 @@ import type { CategoryDefinition } from "@/lib/contentCatalog";
 export type StepStatus = "active" | "completed" | "locked";
 
 interface StepTileProps {
-  category: CategoryDefinition;
+  /** Meestal een echte categorie; de losstaande "Dagelijkse zinnen"-tegel (StepGrid.tsx) geeft alleen deze drie velden mee, geen volledige CategoryDefinition. */
+  category: Pick<CategoryDefinition, "emoji" | "titleNl" | "teaser">;
   status: StepStatus;
   href?: string;
 }

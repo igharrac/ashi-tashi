@@ -5,7 +5,7 @@ import { notFound, useParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
-import { getGenericLessonById } from "@/lib/lessonCatalog";
+import { DAILY_SENTENCES_LESSON_ID, getGenericLessonById } from "@/lib/lessonCatalog";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
 import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
@@ -238,7 +238,7 @@ export default function LessonPage() {
         </button>
       </div>
 
-      {currentExercise.vocabularyItem.itemKind === "zin" && (
+      {currentExercise.vocabularyItem.itemKind === "zin" && lesson.id !== DAILY_SENTENCES_LESSON_ID && (
         <p className="text-center text-xs font-bold uppercase tracking-wide text-clay-500">
           🎉 Bijna klaar — nu in een hele zin!
         </p>

@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { CATEGORIES, getCatalogItems } from "@/lib/contentCatalog";
-import { lessonIdForCategory, MIN_RECORDED_WORDS_FOR_LESSON } from "@/lib/lessonCatalog";
+import {
+  DAILY_SENTENCES_LESSON_ID,
+  lessonIdForCategory,
+  MIN_RECORDED_SENTENCES_FOR_LESSON,
+  MIN_RECORDED_WORDS_FOR_LESSON,
+} from "@/lib/lessonCatalog";
+import { getDailySentenceItems } from "@/lib/dailySentences";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { ChildProfileData } from "@/types/domain";
 import { StepTile, type StepStatus } from "./StepTile";
@@ -49,8 +55,25 @@ export function StepGrid({ childId, child, dierenLessonId }: StepGridProps) {
   // kleding, die in CATEGORIES na een aantal nog-lege categorieën staan).
   let chainBroken = false;
 
+  // "Dagelijkse zinnen" staat bewust los van de keten hierboven (op verzoek:
+  // niet gekoppeld aan een woordcategorie, dus ook niet aan de streng-
+  // opeenvolgende volgorde). Alleen zichtbaar zodra er genoeg zinnen echt
+  // zijn ingesproken — anders leidt de tegel naar een lege les.
+  const recordedSentenceCount = getDailySentenceItems().filter((sentence) =>
+    recordedIds.has(sentence.id),
+  ).length;
+  const showDailySentencesTile = recordedSentenceCount >= MIN_RECORDED_SENTENCES_FOR_LESSON;
+  const dailySentencesCompleted = child.completedLessonIds.includes(DAILY_SENTENCES_LESSON_ID);
+
   return (
     <div className="mx-auto grid max-w-3xl grid-cols-3 gap-x-3 gap-y-6 py-6 sm:grid-cols-4 sm:gap-x-4 md:grid-cols-5">
+      {showDailySentencesTile && (
+        <StepTile
+          category={{ emoji: "💬", titleNl: "Dagelijkse zinnen", teaser: "Zinnen die je elke dag gebruikt — altijd beschikbaar" }}
+          status={dailySentencesCompleted ? "completed" : "active"}
+          href={`/kind/${childId}/les/${DAILY_SENTENCES_LESSON_ID}`}
+        />
+      )}
       {CATEGORIES.map((category) => {
         const isDieren = category.slug === "dieren";
         const lessonId = isDieren ? dierenLessonId : lessonIdForCategory(category.slug);

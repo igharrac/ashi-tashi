@@ -74,8 +74,17 @@ export function RepeatAfterMe({
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
+      {item.itemKind === "zin" && (
+        <div
+          role="img"
+          aria-label={item.imageAlt}
+          className="flex h-32 w-32 items-center justify-center rounded-xl2 bg-primary-50 text-6xl"
+        >
+          {item.imageEmoji}
+        </div>
+      )}
       <p className="text-lg font-medium text-gray-700">
-        {item.itemKind === "zin" ? "Zeg de zin na:" : "Zeg het woord na:"}
+        {item.contextNl ?? (item.itemKind === "zin" ? "Zeg de zin na:" : "Zeg het woord na:")}
       </p>
       <p className="text-2xl font-bold text-primary-600">{spelling ?? item.translationNl}</p>
       {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}

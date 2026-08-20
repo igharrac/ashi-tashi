@@ -1,6 +1,7 @@
 import type { ExerciseView, LessonView } from "@/types/domain";
 import { CATEGORIES, getCatalogItems, getCategoryBySlug } from "@/lib/contentCatalog";
 import { DEMO_REVIEW_NOTE } from "@/lib/demoData";
+import { getDailySentenceItems } from "@/lib/dailySentences";
 
 /**
  * Generieke lesopbouw voor elke categorie buiten "dieren" (die blijft op
@@ -58,8 +59,48 @@ function buildLessonForCategory(categorySlug: string): LessonView | null {
   };
 }
 
-/** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat, of null als de categorie niet bestaat. */
+/**
+ * Losstaande "Dagelijkse zinnen" (dailySentences.ts) — op verzoek NIET
+ * onderdeel van de streng-opeenvolgende categorie-keten (StepGrid.tsx):
+ * deze zinnen horen niet bij één woordcategorie en moeten altijd
+ * beschikbaar zijn zodra er genoeg van zijn ingesproken. Alle oefeningen
+ * zijn NAZEGGEN (RepeatAfterMe toont bij itemKind "zin" een plaatje +
+ * contextNl als aanleiding, zie RepeatAfterMe.tsx) — geen vergelijkbaar
+ * "luister en herken"-scherm nodig zoals bij losse woorden.
+ */
+export const DAILY_SENTENCES_LESSON_ID = "lesson-dagelijkse-zinnen";
+
+/** Lager dan MIN_RECORDED_WORDS_FOR_LESSON: zinnen zijn trager te produceren en hoeven niet met 5 tegelijk te komen om al de moeite waard te zijn. */
+export const MIN_RECORDED_SENTENCES_FOR_LESSON = 3;
+
+function buildDailySentencesLesson(): LessonView {
+  const exercises: ExerciseView[] = getDailySentenceItems().map((sentence) => ({
+    id: `exercise-zin-${sentence.id}`,
+    type: "NAZEGGEN" as const,
+    vocabularyItem: {
+      id: sentence.id,
+      translationNl: sentence.translationNl,
+      contextNl: sentence.contextNl,
+      latinSpelling: `[TASHELHIT_SENTENCE_REVIEW_REQUIRED:${sentence.id}]`,
+      reviewStatus: "TE_REVIEWEN" as const,
+      reviewNote: DEMO_REVIEW_NOTE,
+      imageAlt: sentence.translationNl,
+      imageEmoji: sentence.emoji,
+      itemKind: "zin" as const,
+    },
+  }));
+
+  return {
+    id: DAILY_SENTENCES_LESSON_ID,
+    titleNl: "Dagelijkse zinnen",
+    targetMinutes: Math.max(3, Math.round(exercises.length * 0.5)),
+    exercises,
+  };
+}
+
+/** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat (of de vaste dagelijkse-zinnen-les-id), of null als er niets bij past. */
 export function getGenericLessonById(lessonId: string): LessonView | null {
+  if (lessonId === DAILY_SENTENCES_LESSON_ID) return buildDailySentencesLesson();
   const categorySlug = categorySlugFromLessonId(lessonId);
   if (!categorySlug) return null;
   return buildLessonForCategory(categorySlug);

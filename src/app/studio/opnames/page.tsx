@@ -15,8 +15,13 @@ import {
   recordingKey,
   type RecordingPersona,
 } from "@/lib/recordableItems";
+import { DAILY_SENTENCE_CATEGORIES, getRecordableSentences, type RecordableSentenceItem } from "@/lib/dailySentences";
+import type { RecordableItem } from "@/lib/recordableItems";
 
 type ManifestState = Record<string, RecordingEntryData>;
+type StudioMode = "woorden" | "zinnen";
+/** Gemeenschappelijke velden die de item-lijst hieronder nodig heeft — zowel RecordableItem (woorden) als RecordableSentenceItem (zinnen) voldoen hieraan. */
+type StudioListItem = Pick<RecordableItem | RecordableSentenceItem, "id" | "translationNl" | "latinSpelling" | "imageEmoji">;
 
 /**
  * Opnamestudio-hoofdpagina (ARCHITECTUUR-OPNAMESTUDIO.md). Beschermd door
@@ -27,14 +32,17 @@ type ManifestState = Record<string, RecordingEntryData>;
 export default function StudioOpnamesPage() {
   const router = useRouter();
   const items = useMemo(() => getRecordableItems(), []);
+  const sentenceItems = useMemo(() => getRecordableSentences(), []);
   const [manifest, setManifest] = useState<ManifestState>({});
   const [spellings, setSpellings] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [activePersona, setActivePersona] = useState<RecordingPersona>("man");
+  const [mode, setMode] = useState<StudioMode>("woorden");
   const [activeLevelSlug, setActiveLevelSlug] = useState(LEVELS[0]?.slug ?? "");
 
   const categoriesForLevel = useMemo(() => getCategoriesForLevel(activeLevelSlug), [activeLevelSlug]);
   const [activeCategorySlug, setActiveCategorySlug] = useState(categoriesForLevel[0]?.slug ?? "");
+  const [activeSentenceCategorySlug, setActiveSentenceCategorySlug] = useState(DAILY_SENTENCE_CATEGORIES[0]?.slug ?? "");
 
   useEffect(() => {
     const first = getCategoriesForLevel(activeLevelSlug)[0];
@@ -83,13 +91,17 @@ export default function StudioOpnamesPage() {
     () => items.filter((item) => item.categorySlug === activeCategorySlug),
     [items, activeCategorySlug]
   );
+  const sentencesForActiveCategory = useMemo(
+    () => sentenceItems.filter((item) => item.categorySlug === activeSentenceCategorySlug),
+    [sentenceItems, activeSentenceCategorySlug]
+  );
+  const itemsForActiveSelection: StudioListItem[] = mode === "woorden" ? itemsForActiveCategory : sentencesForActiveCategory;
 
-  function countsFor(categorySlug: string, persona: RecordingPersona) {
+  function countsFor(pool: StudioListItem[], categorySlug: string, persona: RecordingPersona) {
     let recorded = 0;
     let approved = 0;
     let total = 0;
-    for (const item of items) {
-      if (item.categorySlug !== categorySlug) continue;
+    for (const item of pool) {
       total += 1;
       const entry = manifest[recordingKey(item.id, persona)];
       if (entry) {
@@ -101,9 +113,19 @@ export default function StudioOpnamesPage() {
   }
 
   const activeCategory = categoriesForLevel.find((category) => category.slug === activeCategorySlug);
-  const activeCounts = activeCategory
-    ? countsFor(activeCategory.slug, activePersona)
-    : { recorded: 0, approved: 0, total: 0 };
+  const activeSentenceCategory = DAILY_SENTENCE_CATEGORIES.find((category) => category.slug === activeSentenceCategorySlug);
+  const activeCounts =
+    mode === "woorden"
+      ? activeCategory
+        ? countsFor(
+            items.filter((item) => item.categorySlug === activeCategory.slug),
+            activeCategory.slug,
+            activePersona,
+          )
+        : { recorded: 0, approved: 0, total: 0 }
+      : activeSentenceCategory
+        ? countsFor(sentencesForActiveCategory, activeSentenceCategory.slug, activePersona)
+        : { recorded: 0, approved: 0, total: 0 };
 
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-6 px-4 py-8">
@@ -111,8 +133,10 @@ export default function StudioOpnamesPage() {
         <div>
           <h1 className="text-2xl font-bold text-forest-500">Opnamestudio</h1>
           <p className="text-sm text-ink-muted">
-            {items.length} woorden in {LEVELS.length} levels. Draai dit lokaal (npm run dev) — zie
-            ARCHITECTUUR-OPNAMESTUDIO.md.
+            {mode === "woorden"
+              ? `${items.length} woorden in ${LEVELS.length} levels.`
+              : `${sentenceItems.length} dagelijkse zinnen in ${DAILY_SENTENCE_CATEGORIES.length} categorieën.`}{" "}
+            Draai dit lokaal (npm run dev) — zie ARCHITECTUUR-OPNAMESTUDIO.md.
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -127,44 +151,89 @@ export default function StudioOpnamesPage() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {LEVELS.map((level) => (
+      <div className="flex gap-2">
+        {(["woorden", "zinnen"] as const).map((option) => (
           <button
-            key={level.slug}
+            key={option}
             type="button"
-            onClick={() => setActiveLevelSlug(level.slug)}
+            onClick={() => setMode(option)}
             className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors
               focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
               ${
-                level.slug === activeLevelSlug
-                  ? "border-forest-500 bg-forest-500 text-white"
-                  : "border-border-subtle bg-white text-ink hover:border-forest-400"
+                option === mode
+                  ? "border-primary-600 bg-primary-600 text-white"
+                  : "border-border-subtle bg-white text-ink hover:border-primary-400"
               }`}
           >
-            <span aria-hidden="true">{level.emoji}</span> {level.titleNl}
+            {option === "woorden" ? "Woorden" : "Zinnen"}
           </button>
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-2">
-        {categoriesForLevel.map((category) => (
-          <button
-            key={category.slug}
-            type="button"
-            onClick={() => setActiveCategorySlug(category.slug)}
-            className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
-              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
-              ${
-                category.slug === activeCategorySlug
-                  ? "border-clay-500 bg-clay-500 text-white"
-                  : "border-border-subtle bg-white text-ink hover:border-clay-400"
-              }`}
-          >
-            <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
-            <span className="ml-1 opacity-70">({category.words.length})</span>
-          </button>
-        ))}
-      </div>
+      {mode === "woorden" ? (
+        <>
+          <div className="flex flex-wrap gap-2">
+            {LEVELS.map((level) => (
+              <button
+                key={level.slug}
+                type="button"
+                onClick={() => setActiveLevelSlug(level.slug)}
+                className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors
+                  focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
+                  ${
+                    level.slug === activeLevelSlug
+                      ? "border-forest-500 bg-forest-500 text-white"
+                      : "border-border-subtle bg-white text-ink hover:border-forest-400"
+                  }`}
+              >
+                <span aria-hidden="true">{level.emoji}</span> {level.titleNl}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {categoriesForLevel.map((category) => (
+              <button
+                key={category.slug}
+                type="button"
+                onClick={() => setActiveCategorySlug(category.slug)}
+                className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
+                  focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
+                  ${
+                    category.slug === activeCategorySlug
+                      ? "border-clay-500 bg-clay-500 text-white"
+                      : "border-border-subtle bg-white text-ink hover:border-clay-400"
+                  }`}
+              >
+                <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
+                <span className="ml-1 opacity-70">({category.words.length})</span>
+              </button>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="flex flex-wrap gap-2">
+          {DAILY_SENTENCE_CATEGORIES.map((category) => (
+            <button
+              key={category.slug}
+              type="button"
+              onClick={() => setActiveSentenceCategorySlug(category.slug)}
+              className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
+                focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
+                ${
+                  category.slug === activeSentenceCategorySlug
+                    ? "border-clay-500 bg-clay-500 text-white"
+                    : "border-border-subtle bg-white text-ink hover:border-clay-400"
+                }`}
+            >
+              <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
+              <span className="ml-1 opacity-70">
+                ({sentenceItems.filter((item) => item.categorySlug === category.slug).length})
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
 
       <Card>
         <div className="flex flex-wrap gap-2">
@@ -188,10 +257,11 @@ export default function StudioOpnamesPage() {
             );
           })}
         </div>
-        {activeCategory && (
+        {(mode === "woorden" ? activeCategory : activeSentenceCategory) && (
           <p className="mt-3 text-sm text-ink-muted">
-            {activeCategory.titleNl} · {activeCounts.recorded}/{activeCounts.total} opgenomen voor{" "}
-            {PERSONA_LABELS[activePersona].toLowerCase()} · {activeCounts.approved} goedgekeurd
+            {(mode === "woorden" ? activeCategory : activeSentenceCategory)?.titleNl} · {activeCounts.recorded}/
+            {activeCounts.total} opgenomen voor {PERSONA_LABELS[activePersona].toLowerCase()} · {activeCounts.approved}{" "}
+            goedgekeurd
           </p>
         )}
       </Card>
@@ -200,7 +270,7 @@ export default function StudioOpnamesPage() {
 
       {!loading && (
         <div className="flex flex-col gap-3">
-          {itemsForActiveCategory.map((item) => {
+          {itemsForActiveSelection.map((item) => {
             const key = recordingKey(item.id, activePersona);
             const entry = manifest[key];
             return (
