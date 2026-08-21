@@ -71,8 +71,8 @@ export const LEVELS: LevelDefinition[] = [
     titleNl: "Thuis & Eten",
     emoji: "🏠",
     eyebrow: "Level 2",
-    teaser: "Eten en drinken, spullen in huis, en hoe je je voelt.",
-    categorySlugs: ["eten-en-drinken", "huis-en-spullen", "gevoelens"],
+    teaser: "Eten en drinken, en spullen in huis.",
+    categorySlugs: ["eten-en-drinken", "huis-en-spullen"],
   },
   {
     slug: "buiten-en-natuur",
@@ -301,32 +301,15 @@ export const CATEGORIES: CategoryDefinition[] = [
       ["wekker", "wekker", "⏰"],
     ],
   },
-  {
-    slug: "gevoelens",
-    levelSlug: "thuis-en-eten",
-    titleNl: "Gevoelens",
-    emoji: "😊",
-    teaser: "Hoe voel jij je vandaag?",
-    isImplemented: false,
-    words: [
-      ["blij", "blij", "😄"],
-      ["verdrietig", "verdrietig", "😢"],
-      ["boos", "boos", "😠"],
-      ["bang", "bang", "😨"],
-      ["geschokt", "geschokt", "😱"],
-      ["verrast", "verrast", "😲"],
-      ["moe", "moe", "😴"],
-      ["verliefd", "verliefd", "😍"],
-      ["ziek", "ziek", "🤒"],
-      ["verveeld", "verveeld", "🥱"],
-      ["nieuwsgierig", "nieuwsgierig", "🤔"],
-      ["koud", "koud", "🥶"],
-      ["warm", "warm", "🥵"],
-      ["beschaamd", "beschaamd", "😳"],
-      ["walging", "walging", "🤢"],
-      ["trots", "trots", "😎"],
-    ],
-  },
+  // "Gevoelens" bewust GEEN losse woordcategorie meer (was hier eerder wel,
+  // isImplemented: false, nooit ingesproken). Emoties laten zich in veel
+  // talen — waarschijnlijk ook Tashelhit — niet los vertalen zoals een
+  // zelfstandig naamwoord: "blij"/"bang"/"verdrietig" zijn in het Nederlands
+  // koppelwerkwoord + bijvoeglijk naamwoord, maar dat patroon bestaat niet
+  // overal (zelfde soort geval als "ik heb dorst", geen "ik ben dorstig").
+  // Op verzoek verplaatst naar dailySentences.ts (categorie "zin-gevoelens")
+  // — daar wordt om een hele natuurlijke zin gevraagd i.p.v. een los woord,
+  // wat een native speaker daadwerkelijk kan invullen.
   {
     slug: "natuur-en-weer",
     levelSlug: "buiten-en-natuur",
