@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-18T09:13:50.003Z",
+  "generatedAt": "2026-08-21T16:24:05.138Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -230,7 +230,7 @@
       }
     },
     "item-lichaam-oog": {
-      "phoneticSpelling": "Eln",
+      "phoneticSpelling": "Tit",
       "recordings": {
         "man": "/audio/recordings/item-lichaam-oog__man.webm"
       }
@@ -323,6 +323,546 @@
       "phoneticSpelling": "tessaat",
       "recordings": {
         "man": "/audio/recordings/item-kleding-horloge__man.webm"
+      }
+    },
+    "item-eten-en-drinken-appel": {
+      "phoneticSpelling": "Tefaah",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-appel__man.webm"
+      }
+    },
+    "item-eten-en-drinken-banaan": {
+      "phoneticSpelling": "lbenaan",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-banaan__man.webm"
+      }
+    },
+    "item-eten-en-drinken-sinaasappel": {
+      "phoneticSpelling": "Limoen",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-sinaasappel__man.webm"
+      }
+    },
+    "item-eten-en-drinken-druiven": {
+      "phoneticSpelling": "Adil",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-druiven__man.webm"
+      }
+    },
+    "item-eten-en-drinken-aardbei": {
+      "phoneticSpelling": "etoet",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-aardbei__man.webm"
+      }
+    },
+    "item-eten-en-drinken-watermeloen": {
+      "phoneticSpelling": "Dellaah",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-watermeloen__man.webm"
+      }
+    },
+    "item-eten-en-drinken-peer": {
+      "phoneticSpelling": "baouied",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-peer__man.webm"
+      }
+    },
+    "item-eten-en-drinken-citroen": {
+      "phoneticSpelling": "lhamd",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-citroen__man.webm"
+      }
+    },
+    "item-eten-en-drinken-perzik": {
+      "phoneticSpelling": "lgog",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-perzik__man.webm"
+      }
+    },
+    "item-eten-en-drinken-brood": {
+      "phoneticSpelling": "Aghrom",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-brood__man.webm"
+      }
+    },
+    "item-eten-en-drinken-kaas": {
+      "phoneticSpelling": "lformaag",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-kaas__man.webm"
+      }
+    },
+    "item-eten-en-drinken-ei": {
+      "phoneticSpelling": "Tajlayt",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-ei__man.webm"
+      }
+    },
+    "item-eten-en-drinken-melk": {
+      "phoneticSpelling": "Lahlieb",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-melk__man.webm"
+      }
+    },
+    "item-eten-en-drinken-water": {
+      "phoneticSpelling": "Amaan",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-water__man.webm"
+      }
+    },
+    "item-eten-en-drinken-thee": {
+      "phoneticSpelling": "Ateej",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-thee__man.webm"
+      }
+    },
+    "item-eten-en-drinken-honing": {
+      "phoneticSpelling": "Tamiemt",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-honing__man.webm"
+      }
+    },
+    "item-eten-en-drinken-boter": {
+      "phoneticSpelling": "Ezabdja",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-boter__man.webm"
+      }
+    },
+    "item-eten-en-drinken-rijst": {
+      "phoneticSpelling": "Roz",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-rijst__man.webm"
+      }
+    },
+    "item-eten-en-drinken-pasta": {
+      "phoneticSpelling": "sharia",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-pasta__man.webm"
+      }
+    },
+    "item-eten-en-drinken-koekje": {
+      "phoneticSpelling": "lgato",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-koekje__man.webm"
+      }
+    },
+    "item-eten-en-drinken-wortel": {
+      "phoneticSpelling": "Gizzoe",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-wortel__man.webm"
+      }
+    },
+    "item-eten-en-drinken-tomaat": {
+      "phoneticSpelling": "Matischa",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-tomaat__man.webm"
+      }
+    },
+    "item-eten-en-drinken-komkommer": {
+      "phoneticSpelling": "Komkom",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-komkommer__man.webm"
+      }
+    },
+    "item-eten-en-drinken-paprika": {
+      "phoneticSpelling": "Tifelfalt taromiet",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-paprika__man.webm"
+      }
+    },
+    "item-eten-en-drinken-aardappel": {
+      "phoneticSpelling": "Batata",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-aardappel__man.webm"
+      }
+    },
+    "item-eten-en-drinken-ui": {
+      "phoneticSpelling": "Azaliem",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-ui__man.webm"
+      }
+    },
+    "item-eten-en-drinken-knoflook": {
+      "phoneticSpelling": "Tiskert",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-knoflook__man.webm"
+      }
+    },
+    "item-eten-en-drinken-mais": {
+      "phoneticSpelling": "Killo",
+      "recordings": {
+        "man": "/audio/recordings/item-eten-en-drinken-mais__man.webm"
+      }
+    },
+    "item-huis-en-spullen-stoel": {
+      "phoneticSpelling": "Lkorsie",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-stoel__man.webm"
+      }
+    },
+    "item-huis-en-spullen-bed": {
+      "phoneticSpelling": "Lbayas",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-bed__man.webm"
+      }
+    },
+    "item-huis-en-spullen-deur": {
+      "phoneticSpelling": "Lbaab",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-deur__man.webm"
+      }
+    },
+    "item-huis-en-spullen-raam": {
+      "phoneticSpelling": "Charjam",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-raam__man.webm"
+      }
+    },
+    "item-huis-en-spullen-lamp": {
+      "phoneticSpelling": "Edow",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-lamp__man.webm"
+      }
+    },
+    "item-huis-en-spullen-klok": {
+      "phoneticSpelling": "Lmaghana",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-klok__man.webm"
+      }
+    },
+    "item-huis-en-spullen-spiegel": {
+      "phoneticSpelling": "Lemri",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-spiegel__man.webm"
+      }
+    },
+    "item-huis-en-spullen-boek": {
+      "phoneticSpelling": "Lekonaash",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-boek__man.webm"
+      }
+    },
+    "item-huis-en-spullen-pen": {
+      "phoneticSpelling": "Stillo",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-pen__man.webm"
+      }
+    },
+    "item-huis-en-spullen-potlood": {
+      "phoneticSpelling": "Lkalaam",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-potlood__man.webm"
+      }
+    },
+    "item-huis-en-spullen-schaar": {
+      "phoneticSpelling": "Tuzlien",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-schaar__man.webm"
+      }
+    },
+    "item-huis-en-spullen-telefoon": {
+      "phoneticSpelling": "Tilifon",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-telefoon__man.webm"
+      }
+    },
+    "item-huis-en-spullen-televisie": {
+      "phoneticSpelling": "Telfaza",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-televisie__man.webm"
+      }
+    },
+    "item-huis-en-spullen-bord": {
+      "phoneticSpelling": "Tahwart",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-bord__man.webm"
+      }
+    },
+    "item-huis-en-spullen-lepel": {
+      "phoneticSpelling": "Taghenzawt",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-lepel__man.webm"
+      }
+    },
+    "item-huis-en-spullen-vork": {
+      "phoneticSpelling": "Lforshita",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-vork__man.webm"
+      }
+    },
+    "item-huis-en-spullen-mes": {
+      "phoneticSpelling": "Lmoes",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-mes__man.webm"
+      }
+    },
+    "item-huis-en-spullen-pan": {
+      "phoneticSpelling": "Lmeklaa",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-pan__man.webm"
+      }
+    },
+    "item-huis-en-spullen-douche": {
+      "phoneticSpelling": "Edouch",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-douche__man.webm"
+      }
+    },
+    "item-huis-en-spullen-wc": {
+      "phoneticSpelling": "Bit elmaa",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-wc__man.webm"
+      }
+    },
+    "item-huis-en-spullen-sleutel": {
+      "phoneticSpelling": "Tesarut",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-sleutel__man.webm"
+      }
+    },
+    "item-huis-en-spullen-tas": {
+      "phoneticSpelling": "Lmozit",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-tas__man.webm"
+      }
+    },
+    "item-huis-en-spullen-bezem": {
+      "phoneticSpelling": "Ashetaab",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-bezem__man.webm"
+      }
+    },
+    "item-huis-en-spullen-emmer": {
+      "phoneticSpelling": "Talkobt",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-emmer__man.webm"
+      }
+    },
+    "item-huis-en-spullen-zeep": {
+      "phoneticSpelling": "Sabon",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-zeep__man.webm"
+      }
+    },
+    "item-huis-en-spullen-kaars": {
+      "phoneticSpelling": "Shmaagh",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-kaars__man.webm"
+      }
+    },
+    "item-huis-en-spullen-koffer": {
+      "phoneticSpelling": "Lbaliza",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-koffer__man.webm"
+      }
+    },
+    "item-huis-en-spullen-wekker": {
+      "phoneticSpelling": "Errafain",
+      "recordings": {
+        "man": "/audio/recordings/item-huis-en-spullen-wekker__man.webm"
+      }
+    },
+    "item-natuur-en-weer-zon": {
+      "phoneticSpelling": "Tafoejt",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-zon__man.webm"
+      }
+    },
+    "item-natuur-en-weer-maan": {
+      "phoneticSpelling": "Eyuur",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-maan__man.webm"
+      }
+    },
+    "item-natuur-en-weer-ster": {
+      "phoneticSpelling": "Itr",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-ster__man.webm"
+      }
+    },
+    "item-natuur-en-weer-wolk": {
+      "phoneticSpelling": "Isijniuew",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-wolk__man.webm"
+      }
+    },
+    "item-natuur-en-weer-regen": {
+      "phoneticSpelling": "Tagoet",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-regen__man.webm"
+      }
+    },
+    "item-natuur-en-weer-sneeuw": {
+      "phoneticSpelling": "Atfel",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-sneeuw__man.webm"
+      }
+    },
+    "item-natuur-en-weer-wind": {
+      "phoneticSpelling": "Azwoe",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-wind__man.webm"
+      }
+    },
+    "item-natuur-en-weer-regenboog": {
+      "phoneticSpelling": "Tislit n igana",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-regenboog__man.webm"
+      }
+    },
+    "item-natuur-en-weer-bliksem": {
+      "phoneticSpelling": "Ismawn",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-bliksem__man.webm"
+      }
+    },
+    "item-natuur-en-weer-berg": {
+      "phoneticSpelling": "Jbal",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-berg__man.webm"
+      }
+    },
+    "item-natuur-en-weer-zee": {
+      "phoneticSpelling": "lbhar",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-zee__man.webm"
+      }
+    },
+    "item-natuur-en-weer-boom": {
+      "phoneticSpelling": "Aseklu",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-boom__man.webm"
+      }
+    },
+    "item-natuur-en-weer-bloem": {
+      "phoneticSpelling": "Aledjhi",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-bloem__man.webm"
+      }
+    },
+    "item-natuur-en-weer-bos": {
+      "phoneticSpelling": "lghaba",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-bos__man.webm"
+      }
+    },
+    "item-natuur-en-weer-grot": {
+      "phoneticSpelling": "Ighir",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-grot__man.webm"
+      }
+    },
+    "item-natuur-en-weer-vuur": {
+      "phoneticSpelling": "Ava",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-vuur__man.webm"
+      }
+    },
+    "item-natuur-en-weer-ijs": {
+      "phoneticSpelling": "taljg",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-ijs__man.webm"
+      }
+    },
+    "item-natuur-en-weer-mist": {
+      "phoneticSpelling": "dbaab",
+      "recordings": {
+        "man": "/audio/recordings/item-natuur-en-weer-mist__man.webm"
+      }
+    },
+    "item-vervoer-auto": {
+      "phoneticSpelling": "Tomobil",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-auto__man.webm"
+      }
+    },
+    "item-vervoer-bus": {
+      "phoneticSpelling": "Tobis",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-bus__man.webm"
+      }
+    },
+    "item-vervoer-trein": {
+      "phoneticSpelling": "Tren",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-trein__man.webm"
+      }
+    },
+    "item-vervoer-vliegtuig": {
+      "phoneticSpelling": "Tayara",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-vliegtuig__man.webm"
+      }
+    },
+    "item-vervoer-fiets": {
+      "phoneticSpelling": "Bashklit",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-fiets__man.webm"
+      }
+    },
+    "item-vervoer-motor": {
+      "phoneticSpelling": "Lmotor",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-motor__man.webm"
+      }
+    },
+    "item-vervoer-boot": {
+      "phoneticSpelling": "Lbato",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-boot__man.webm"
+      }
+    },
+    "item-vervoer-vrachtwagen": {
+      "phoneticSpelling": "Lcamio",
+      "recordings": {
+        "man": "/audio/recordings/item-vervoer-vrachtwagen__man.webm"
+      }
+    },
+    "item-speelgoed-en-spel-bal": {
+      "phoneticSpelling": "Takort",
+      "recordings": {
+        "man": "/audio/recordings/item-speelgoed-en-spel-bal__man.webm"
+      }
+    },
+    "item-speelgoed-en-spel-pop": {
+      "phoneticSpelling": "Lmonika",
+      "recordings": {
+        "man": "/audio/recordings/item-speelgoed-en-spel-pop__man.webm"
+      }
+    },
+    "item-speelgoed-en-spel-kaartspel": {
+      "phoneticSpelling": "Lkarta",
+      "recordings": {
+        "man": "/audio/recordings/item-speelgoed-en-spel-kaartspel__man.webm"
+      }
+    },
+    "item-speelgoed-en-spel-magneet": {
+      "phoneticSpelling": "Dinamoe",
+      "recordings": {
+        "man": "/audio/recordings/item-speelgoed-en-spel-magneet__man.webm"
+      }
+    },
+    "item-speelgoed-en-spel-vlag": {
+      "phoneticSpelling": "Eraya",
+      "recordings": {
+        "man": "/audio/recordings/item-speelgoed-en-spel-vlag__man.webm"
+      }
+    },
+    "item-speelgoed-en-spel-schat": {
+      "phoneticSpelling": "Leknz",
+      "recordings": {
+        "man": "/audio/recordings/item-speelgoed-en-spel-schat__man.webm"
+      }
+    },
+    "item-beroepen-dokter": {
+      "phoneticSpelling": "Atbib",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-dokter__man.webm"
+      }
+    },
+    "item-beroepen-leraar": {
+      "phoneticSpelling": null,
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-leraar__man.webm"
       }
     }
   }

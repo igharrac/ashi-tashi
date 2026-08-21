@@ -347,8 +347,8 @@
     "fileName": "item-lichaam-oog__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-18T09:10:44.520Z",
-    "denoised": false
+    "recordedAt": "2026-08-21T16:02:54.885Z",
+    "denoised": true
   },
   "item-lichaam-oor__man": {
     "itemId": "item-lichaam-oor",
@@ -484,5 +484,815 @@
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-18T09:13:30.503Z",
     "denoised": false
+  },
+  "item-eten-en-drinken-appel__man": {
+    "itemId": "item-eten-en-drinken-appel",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-appel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:03:32.572Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-banaan__man": {
+    "itemId": "item-eten-en-drinken-banaan",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-banaan__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:03:49.866Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-sinaasappel__man": {
+    "itemId": "item-eten-en-drinken-sinaasappel",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-sinaasappel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:04:03.429Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-druiven__man": {
+    "itemId": "item-eten-en-drinken-druiven",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-druiven__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:04:13.826Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-aardbei__man": {
+    "itemId": "item-eten-en-drinken-aardbei",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-aardbei__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:04:24.982Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-watermeloen__man": {
+    "itemId": "item-eten-en-drinken-watermeloen",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-watermeloen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:04:35.890Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-peer__man": {
+    "itemId": "item-eten-en-drinken-peer",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-peer__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:04:47.511Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-citroen__man": {
+    "itemId": "item-eten-en-drinken-citroen",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-citroen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:05:00.009Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-perzik__man": {
+    "itemId": "item-eten-en-drinken-perzik",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-perzik__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:05:15.416Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-brood__man": {
+    "itemId": "item-eten-en-drinken-brood",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-brood__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:05:26.215Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-kaas__man": {
+    "itemId": "item-eten-en-drinken-kaas",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-kaas__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:05:38.302Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-ei__man": {
+    "itemId": "item-eten-en-drinken-ei",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-ei__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:05:49.915Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-melk__man": {
+    "itemId": "item-eten-en-drinken-melk",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-melk__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:05:59.194Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-water__man": {
+    "itemId": "item-eten-en-drinken-water",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-water__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:06:08.348Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-thee__man": {
+    "itemId": "item-eten-en-drinken-thee",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-thee__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:06:16.469Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-honing__man": {
+    "itemId": "item-eten-en-drinken-honing",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-honing__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:06:25.018Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-boter__man": {
+    "itemId": "item-eten-en-drinken-boter",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-boter__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:06:37.579Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-rijst__man": {
+    "itemId": "item-eten-en-drinken-rijst",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-rijst__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:06:44.397Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-pasta__man": {
+    "itemId": "item-eten-en-drinken-pasta",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-pasta__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:06:54.358Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-koekje__man": {
+    "itemId": "item-eten-en-drinken-koekje",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-koekje__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:07:05.437Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-wortel__man": {
+    "itemId": "item-eten-en-drinken-wortel",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-wortel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:07:15.794Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-tomaat__man": {
+    "itemId": "item-eten-en-drinken-tomaat",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-tomaat__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:07:25.248Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-komkommer__man": {
+    "itemId": "item-eten-en-drinken-komkommer",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-komkommer__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:07:34.098Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-paprika__man": {
+    "itemId": "item-eten-en-drinken-paprika",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-paprika__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:07:52.894Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-aardappel__man": {
+    "itemId": "item-eten-en-drinken-aardappel",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-aardappel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:08:01.029Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-ui__man": {
+    "itemId": "item-eten-en-drinken-ui",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-ui__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:08:12.752Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-knoflook__man": {
+    "itemId": "item-eten-en-drinken-knoflook",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-knoflook__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:08:21.733Z",
+    "denoised": true
+  },
+  "item-eten-en-drinken-mais__man": {
+    "itemId": "item-eten-en-drinken-mais",
+    "persona": "man",
+    "fileName": "item-eten-en-drinken-mais__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:08:29.368Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-stoel__man": {
+    "itemId": "item-huis-en-spullen-stoel",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-stoel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:08:53.461Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-bed__man": {
+    "itemId": "item-huis-en-spullen-bed",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-bed__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:09:01.070Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-deur__man": {
+    "itemId": "item-huis-en-spullen-deur",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-deur__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:09:14.971Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-raam__man": {
+    "itemId": "item-huis-en-spullen-raam",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-raam__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:09:33.412Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-lamp__man": {
+    "itemId": "item-huis-en-spullen-lamp",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-lamp__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:09:49.703Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-klok__man": {
+    "itemId": "item-huis-en-spullen-klok",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-klok__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:10:03.418Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-spiegel__man": {
+    "itemId": "item-huis-en-spullen-spiegel",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-spiegel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:10:11.796Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-boek__man": {
+    "itemId": "item-huis-en-spullen-boek",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-boek__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:10:31.359Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-pen__man": {
+    "itemId": "item-huis-en-spullen-pen",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-pen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:10:39.653Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-potlood__man": {
+    "itemId": "item-huis-en-spullen-potlood",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-potlood__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:10:49.091Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-schaar__man": {
+    "itemId": "item-huis-en-spullen-schaar",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-schaar__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:10:57.373Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-telefoon__man": {
+    "itemId": "item-huis-en-spullen-telefoon",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-telefoon__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:11:05.859Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-televisie__man": {
+    "itemId": "item-huis-en-spullen-televisie",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-televisie__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:11:15.236Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-bord__man": {
+    "itemId": "item-huis-en-spullen-bord",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-bord__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:11:27.869Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-lepel__man": {
+    "itemId": "item-huis-en-spullen-lepel",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-lepel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:11:37.878Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-vork__man": {
+    "itemId": "item-huis-en-spullen-vork",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-vork__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:11:47.630Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-mes__man": {
+    "itemId": "item-huis-en-spullen-mes",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-mes__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:11:57.258Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-pan__man": {
+    "itemId": "item-huis-en-spullen-pan",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-pan__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:12:06.946Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-douche__man": {
+    "itemId": "item-huis-en-spullen-douche",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-douche__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:12:22.070Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-wc__man": {
+    "itemId": "item-huis-en-spullen-wc",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-wc__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:12:35.268Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-sleutel__man": {
+    "itemId": "item-huis-en-spullen-sleutel",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-sleutel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:12:47.473Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-tas__man": {
+    "itemId": "item-huis-en-spullen-tas",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-tas__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:13:01.490Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-bezem__man": {
+    "itemId": "item-huis-en-spullen-bezem",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-bezem__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:13:13.681Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-emmer__man": {
+    "itemId": "item-huis-en-spullen-emmer",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-emmer__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:13:23.001Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-zeep__man": {
+    "itemId": "item-huis-en-spullen-zeep",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-zeep__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:13:30.513Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-kaars__man": {
+    "itemId": "item-huis-en-spullen-kaars",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-kaars__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:13:41.209Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-koffer__man": {
+    "itemId": "item-huis-en-spullen-koffer",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-koffer__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:13:50.234Z",
+    "denoised": true
+  },
+  "item-huis-en-spullen-wekker__man": {
+    "itemId": "item-huis-en-spullen-wekker",
+    "persona": "man",
+    "fileName": "item-huis-en-spullen-wekker__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:14:01.762Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-zon__man": {
+    "itemId": "item-natuur-en-weer-zon",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-zon__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:17:15.772Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-maan__man": {
+    "itemId": "item-natuur-en-weer-maan",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-maan__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:17:29.953Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-ster__man": {
+    "itemId": "item-natuur-en-weer-ster",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-ster__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:17:39.932Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-wolk__man": {
+    "itemId": "item-natuur-en-weer-wolk",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-wolk__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:17:56.861Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-regen__man": {
+    "itemId": "item-natuur-en-weer-regen",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-regen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:18:06.781Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-sneeuw__man": {
+    "itemId": "item-natuur-en-weer-sneeuw",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-sneeuw__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:18:14.117Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-wind__man": {
+    "itemId": "item-natuur-en-weer-wind",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-wind__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:18:21.224Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-regenboog__man": {
+    "itemId": "item-natuur-en-weer-regenboog",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-regenboog__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:18:33.278Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-bliksem__man": {
+    "itemId": "item-natuur-en-weer-bliksem",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-bliksem__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:18:46.622Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-berg__man": {
+    "itemId": "item-natuur-en-weer-berg",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-berg__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:18:56.939Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-zee__man": {
+    "itemId": "item-natuur-en-weer-zee",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-zee__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:19:09.156Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-boom__man": {
+    "itemId": "item-natuur-en-weer-boom",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-boom__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:19:20.158Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-bloem__man": {
+    "itemId": "item-natuur-en-weer-bloem",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-bloem__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:19:31.712Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-bos__man": {
+    "itemId": "item-natuur-en-weer-bos",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-bos__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:19:49.815Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-grot__man": {
+    "itemId": "item-natuur-en-weer-grot",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-grot__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:19:59.607Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-vuur__man": {
+    "itemId": "item-natuur-en-weer-vuur",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-vuur__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:20:07.337Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-ijs__man": {
+    "itemId": "item-natuur-en-weer-ijs",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-ijs__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:20:19.362Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-mist__man": {
+    "itemId": "item-natuur-en-weer-mist",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-mist__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:20:31.109Z",
+    "denoised": true
+  },
+  "item-vervoer-auto__man": {
+    "itemId": "item-vervoer-auto",
+    "persona": "man",
+    "fileName": "item-vervoer-auto__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:20:48.206Z",
+    "denoised": true
+  },
+  "item-vervoer-bus__man": {
+    "itemId": "item-vervoer-bus",
+    "persona": "man",
+    "fileName": "item-vervoer-bus__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:20:56.617Z",
+    "denoised": true
+  },
+  "item-vervoer-trein__man": {
+    "itemId": "item-vervoer-trein",
+    "persona": "man",
+    "fileName": "item-vervoer-trein__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:21:03.793Z",
+    "denoised": true
+  },
+  "item-vervoer-vliegtuig__man": {
+    "itemId": "item-vervoer-vliegtuig",
+    "persona": "man",
+    "fileName": "item-vervoer-vliegtuig__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:21:11.920Z",
+    "denoised": true
+  },
+  "item-vervoer-fiets__man": {
+    "itemId": "item-vervoer-fiets",
+    "persona": "man",
+    "fileName": "item-vervoer-fiets__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:21:20.597Z",
+    "denoised": true
+  },
+  "item-vervoer-motor__man": {
+    "itemId": "item-vervoer-motor",
+    "persona": "man",
+    "fileName": "item-vervoer-motor__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:21:29.712Z",
+    "denoised": true
+  },
+  "item-vervoer-boot__man": {
+    "itemId": "item-vervoer-boot",
+    "persona": "man",
+    "fileName": "item-vervoer-boot__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:21:37.014Z",
+    "denoised": true
+  },
+  "item-vervoer-vrachtwagen__man": {
+    "itemId": "item-vervoer-vrachtwagen",
+    "persona": "man",
+    "fileName": "item-vervoer-vrachtwagen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:21:54.193Z",
+    "denoised": true
+  },
+  "item-speelgoed-en-spel-bal__man": {
+    "itemId": "item-speelgoed-en-spel-bal",
+    "persona": "man",
+    "fileName": "item-speelgoed-en-spel-bal__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:22:12.217Z",
+    "denoised": true
+  },
+  "item-speelgoed-en-spel-pop__man": {
+    "itemId": "item-speelgoed-en-spel-pop",
+    "persona": "man",
+    "fileName": "item-speelgoed-en-spel-pop__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:22:21.607Z",
+    "denoised": true
+  },
+  "item-speelgoed-en-spel-kaartspel__man": {
+    "itemId": "item-speelgoed-en-spel-kaartspel",
+    "persona": "man",
+    "fileName": "item-speelgoed-en-spel-kaartspel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:22:32.676Z",
+    "denoised": true
+  },
+  "item-speelgoed-en-spel-magneet__man": {
+    "itemId": "item-speelgoed-en-spel-magneet",
+    "persona": "man",
+    "fileName": "item-speelgoed-en-spel-magneet__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:22:51.564Z",
+    "denoised": true
+  },
+  "item-speelgoed-en-spel-vlag__man": {
+    "itemId": "item-speelgoed-en-spel-vlag",
+    "persona": "man",
+    "fileName": "item-speelgoed-en-spel-vlag__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:23:02.836Z",
+    "denoised": true
+  },
+  "item-speelgoed-en-spel-schat__man": {
+    "itemId": "item-speelgoed-en-spel-schat",
+    "persona": "man",
+    "fileName": "item-speelgoed-en-spel-schat__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:23:11.283Z",
+    "denoised": true
+  },
+  "item-beroepen-dokter__man": {
+    "itemId": "item-beroepen-dokter",
+    "persona": "man",
+    "fileName": "item-beroepen-dokter__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:23:30.283Z",
+    "denoised": true
+  },
+  "item-beroepen-leraar__man": {
+    "itemId": "item-beroepen-leraar",
+    "persona": "man",
+    "fileName": "item-beroepen-leraar__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-21T16:23:51.092Z",
+    "denoised": true
   }
 }
