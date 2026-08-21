@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { AppStoreProvider } from "@/lib/store";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { DEFAULT_THEME_ID, THEME_STORAGE_KEY } from "@/lib/theme";
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider>
           <AppStoreProvider>{children}</AppStoreProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
