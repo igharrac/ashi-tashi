@@ -1,23 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CATEGORIES, getCatalogItems } from "@/lib/contentCatalog";
+import { CATEGORIES } from "@/lib/contentCatalog";
 import {
   DAILY_SENTENCES_LESSON_ID,
-  lessonIdForCategory,
+  getCategoryUnlockStatuses,
   MIN_RECORDED_SENTENCES_FOR_LESSON,
-  MIN_RECORDED_WORDS_FOR_LESSON,
 } from "@/lib/lessonCatalog";
 import { getDailySentenceItems } from "@/lib/dailySentences";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { ChildProfileData } from "@/types/domain";
-import { StepTile, type StepStatus } from "./StepTile";
+import { StepTile } from "./StepTile";
 
 interface StepGridProps {
   childId: string;
   child: ChildProfileData;
-  /** Dieren behoudt zijn eigen, handmatig samengestelde les-id (met zinnetjes-afsluiting) i.p.v. het generieke "lesson-<categorySlug>"-schema — zie lessonCatalog.ts. */
-  dierenLessonId: string;
 }
 
 /**
@@ -28,7 +25,7 @@ interface StepGridProps {
  * een categorie ontgrendelt pas als de vorige categorie in de vaste
  * volgorde (CATEGORIES) écht is afgerond — geen los-van-elkaar-open grid.
  */
-export function StepGrid({ childId, child, dierenLessonId }: StepGridProps) {
+export function StepGrid({ childId, child }: StepGridProps) {
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
 
   useEffect(() => {
@@ -45,15 +42,11 @@ export function StepGrid({ childId, child, dierenLessonId }: StepGridProps) {
     return <p className="py-6 text-center text-ink-muted">Even laden…</p>;
   }
 
-  // Wordt op de eerste niet-afgeronde SPEELBARE categorie definitief true, en
-  // blokkeert dan alle daaropvolgende categorieën — streng op volgorde, zoals
-  // gekozen. Categorieën zonder genoeg opnames (hasEnoughContent false) tellen
-  // hier bewust NIET in mee: zo'n categorie kan nooit "afgerond" worden (er is
-  // geen les om te spelen), dus zou de keten anders voorgoed blokkeren voor
-  // alles wat erna komt. Ze blijven zelf altijd op slot, maar breken de keten
-  // niet voor categorieën die wél al content hebben (bv. dieren/lichaam/
-  // kleding, die in CATEGORIES na een aantal nog-lege categorieën staan).
-  let chainBroken = false;
+  // Streng-opeenvolgende ontgrendeling, gedeeld met Ontdekken/matchspel (zie
+  // getCategoryUnlockStatuses in lessonCatalog.ts) zodat die schermen precies
+  // dezelfde "welke categorie mag dit kind al zien"-regels gebruiken i.p.v.
+  // een eigen kopie.
+  const unlockStatuses = getCategoryUnlockStatuses(child.completedLessonIds, recordedIds);
 
   // "Dagelijkse zinnen" staat bewust los van de keten hierboven (op verzoek:
   // niet gekoppeld aan een woordcategorie, dus ook niet aan de streng-
@@ -74,29 +67,12 @@ export function StepGrid({ childId, child, dierenLessonId }: StepGridProps) {
           href={`/kind/${childId}/les/${DAILY_SENTENCES_LESSON_ID}`}
         />
       )}
-      {CATEGORIES.map((category) => {
-        const isDieren = category.slug === "dieren";
-        const lessonId = isDieren ? dierenLessonId : lessonIdForCategory(category.slug);
-        const isCompleted = child.completedLessonIds.includes(lessonId);
-
-        const recordedCount = getCatalogItems().filter(
-          (item) => item.categorySlug === category.slug && recordedIds.has(item.id),
-        ).length;
-        const hasEnoughContent = recordedCount >= MIN_RECORDED_WORDS_FOR_LESSON;
-
-        let status: StepStatus;
-        if (!hasEnoughContent) {
-          // Nog geen les om te spelen — altijd op slot, telt niet mee in de keten.
-          status = "locked";
-        } else {
-          const canPlay = !chainBroken;
-          status = isCompleted ? "completed" : canPlay ? "active" : "locked";
-          if (!isCompleted) chainBroken = true; // volgende speelbare categorie blokkeren tenzij deze al klaar was
-        }
-
+      {unlockStatuses.map(({ categorySlug, status, lessonId }) => {
+        const category = CATEGORIES.find((c) => c.slug === categorySlug);
+        if (!category) return null;
         return (
           <StepTile
-            key={category.slug}
+            key={categorySlug}
             category={category}
             status={status}
             href={status !== "locked" ? `/kind/${childId}/les/${lessonId}` : undefined}

@@ -1,6 +1,6 @@
 import type { ExerciseView, LessonView } from "@/types/domain";
 import { CATEGORIES, getCatalogItems, getCategoryBySlug } from "@/lib/contentCatalog";
-import { DEMO_REVIEW_NOTE } from "@/lib/demoData";
+import { DEMO_REVIEW_NOTE, DIEREN_THEME } from "@/lib/demoData";
 import { getDailySentenceItems } from "@/lib/dailySentences";
 
 /**
@@ -109,4 +109,55 @@ export function getGenericLessonById(lessonId: string): LessonView | null {
 /** Categorieslugs in de vaste, bedoelde volgorde (Level > Categorie, zie CATEGORIES) — bepaalt de strenge, opeenvolgende ontgrendeling op het reispad. */
 export function getOrderedCategorySlugs(): string[] {
   return CATEGORIES.map((category) => category.slug);
+}
+
+export interface CategoryUnlockStatus {
+  categorySlug: string;
+  status: "active" | "completed" | "locked";
+  lessonId: string;
+}
+
+/**
+ * Zelfde streng-opeenvolgende ontgrendelingslogica als StepGrid.tsx (op
+ * verzoek "Streng na elkaar"), maar hier op één plek gedeeld zodat andere
+ * schermen — Ontdekken en het matchspel (zie ontdekken/page.tsx en
+ * ontdekken/spel/page.tsx) — precies dezelfde "welke categorie mag deze
+ * kind al zien"-regels gebruiken i.p.v. een eigen kopie die kan afwijken
+ * (zoals eerder gebeurde: die twee stonden nog hardcoded vast op "dieren").
+ */
+export function getCategoryUnlockStatuses(
+  completedLessonIds: string[],
+  recordedIds: Set<string>,
+): CategoryUnlockStatus[] {
+  const dierenLessonId = DIEREN_THEME.lessons[0]?.id ?? lessonIdForCategory("dieren");
+  let chainBroken = false;
+
+  return CATEGORIES.map((category) => {
+    const isDieren = category.slug === "dieren";
+    const lessonId = isDieren ? dierenLessonId : lessonIdForCategory(category.slug);
+    const isCompleted = completedLessonIds.includes(lessonId);
+
+    const recordedCount = getCatalogItems().filter(
+      (item) => item.categorySlug === category.slug && recordedIds.has(item.id),
+    ).length;
+    const hasEnoughContent = recordedCount >= MIN_RECORDED_WORDS_FOR_LESSON;
+
+    let status: CategoryUnlockStatus["status"];
+    if (!hasEnoughContent) {
+      status = "locked";
+    } else {
+      const canPlay = !chainBroken;
+      status = isCompleted ? "completed" : canPlay ? "active" : "locked";
+      if (!isCompleted) chainBroken = true;
+    }
+
+    return { categorySlug: category.slug, status, lessonId };
+  });
+}
+
+/** Categorieslugs die het kind al mag zien (voltooid of nu actief) — voor Ontdekken/matchspel, zie getCategoryUnlockStatuses hierboven. */
+export function getUnlockedCategorySlugs(completedLessonIds: string[], recordedIds: Set<string>): string[] {
+  return getCategoryUnlockStatuses(completedLessonIds, recordedIds)
+    .filter((entry) => entry.status !== "locked")
+    .map((entry) => entry.categorySlug);
 }

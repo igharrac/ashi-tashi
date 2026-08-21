@@ -2,7 +2,6 @@
 
 import { notFound, useParams } from "next/navigation";
 import { useAppStore } from "@/lib/store";
-import { DIEREN_THEME } from "@/lib/demoData";
 import { AppShell } from "@/components/layout/AppShell";
 import { StepGrid } from "@/components/journey/StepGrid";
 import { JourneySettingsMenu } from "@/components/journey/JourneySettingsMenu";
@@ -29,8 +28,6 @@ export default function LearningRoutePage() {
   const child = getChild(params.childId);
   if (!child) return notFound();
 
-  const lesson = DIEREN_THEME.lessons[0];
-
   return (
     <AppShell child={child}>
       <div className="relative mx-auto max-w-md text-center">
@@ -45,7 +42,7 @@ export default function LearningRoutePage() {
         <p className="mt-1 text-ink-muted">{child.points} punten verdiend</p>
       </div>
 
-      {lesson && <StepGrid childId={child.id} child={child} dierenLessonId={lesson.id} />}
+      <StepGrid childId={child.id} child={child} />
     </AppShell>
   );
 }

@@ -8,13 +8,10 @@ import { AppShell } from "@/components/layout/AppShell";
 import { WordGrid } from "@/components/discover/WordGrid";
 import { WordDetailModal } from "@/components/discover/WordDetailModal";
 import { Button } from "@/components/ui/Button";
-import { getCatalogItems, type CatalogItem } from "@/lib/contentCatalog";
+import { CATEGORIES, getCatalogItems, type CatalogItem } from "@/lib/contentCatalog";
+import { getUnlockedCategorySlugs } from "@/lib/lessonCatalog";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { VocabularyItemView } from "@/types/domain";
-
-// Alleen "dieren" heeft nu echt speelbare inhoud (zie ARCHITECTUUR-OPNAMESTUDIO.md
-// en demoData.ts) — dezelfde beperking als de gestructureerde lessen.
-const DISCOVER_CATEGORY_SLUG = "dieren";
 
 function toVocabularyItemView(item: CatalogItem): VocabularyItemView {
   return {
@@ -38,6 +35,7 @@ export default function DiscoverPage() {
   const { getChild, ready } = useAppStore();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
+  const [activeCategorySlug, setActiveCategorySlug] = useState<string | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -49,35 +47,82 @@ export default function DiscoverPage() {
     };
   }, []);
 
+  const child = getChild(params.childId);
+
+  // Ontdekken toont elke categorie die het kind ook op het reispad al mag
+  // spelen (zelfde regels als StepGrid.tsx, zie getUnlockedCategorySlugs) —
+  // niet meer alleen "dieren". Nog op slot betekent hier ook nog niet
+  // beschikbaar om vrij te browsen.
+  const unlockedCategorySlugs = useMemo(() => {
+    if (!recordedIds || !child) return [];
+    return getUnlockedCategorySlugs(child.completedLessonIds, recordedIds);
+  }, [recordedIds, child]);
+
+  useEffect(() => {
+    if (activeCategorySlug && unlockedCategorySlugs.includes(activeCategorySlug)) return;
+    setActiveCategorySlug(unlockedCategorySlugs[0] ?? null);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [unlockedCategorySlugs]);
+
   // Alleen woorden met een écht ingesproken opname worden getoond — anders
   // zou het kind bij een tik gewoon Nederlandse TTS te horen krijgen
   // (zelfde regel als het matchspel, zie getItemIdsWithRecordings).
   const items = useMemo(() => {
-    if (!recordedIds) return [];
+    if (!recordedIds || !activeCategorySlug) return [];
     return getCatalogItems()
-      .filter((item) => item.categorySlug === DISCOVER_CATEGORY_SLUG && recordedIds.has(item.id))
+      .filter((item) => item.categorySlug === activeCategorySlug && recordedIds.has(item.id))
       .map(toVocabularyItemView);
-  }, [recordedIds]);
+  }, [recordedIds, activeCategorySlug]);
 
   if (!ready) return <p className="pt-12 text-center text-ink-muted">Even laden…</p>;
-  const child = getChild(params.childId);
   if (!child) return notFound();
+
+  const loading = recordedIds === null;
 
   return (
     <AppShell child={child}>
       <div className="mx-auto max-w-4xl text-center">
         <h1 className="text-2xl font-bold text-forest-500">Ontdekken</h1>
         <p className="mt-1 text-ink-muted">Tik op een plaatje om het woord te horen en zelf na te zeggen.</p>
-        <Link href={`/kind/${child.id}/ontdekken/spel`} className="mt-4 inline-block">
-          <Button variant="secondary" className="flex items-center gap-2">
-            <span aria-hidden="true">🎮</span> Speel: Match het geluid
-          </Button>
-        </Link>
+        {activeCategorySlug && (
+          <Link href={`/kind/${child.id}/ontdekken/spel?categorie=${activeCategorySlug}`} className="mt-4 inline-block">
+            <Button variant="secondary" className="flex items-center gap-2">
+              <span aria-hidden="true">🎮</span> Speel: Match het geluid
+            </Button>
+          </Link>
+        )}
       </div>
 
+      {!loading && unlockedCategorySlugs.length > 1 && (
+        <div className="mx-auto mt-4 flex max-w-4xl flex-wrap justify-center gap-2">
+          {unlockedCategorySlugs.map((slug) => {
+            const category = CATEGORIES.find((c) => c.slug === slug);
+            if (!category) return null;
+            return (
+              <button
+                key={slug}
+                type="button"
+                onClick={() => setActiveCategorySlug(slug)}
+                className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
+                  focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
+                  ${
+                    slug === activeCategorySlug
+                      ? "border-clay-500 bg-clay-500 text-white"
+                      : "border-border-subtle bg-white text-ink hover:border-clay-400"
+                  }`}
+              >
+                <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
+              </button>
+            );
+          })}
+        </div>
+      )}
+
       <div className="mx-auto mt-6 max-w-4xl">
-        {recordedIds === null ? (
+        {loading ? (
           <p className="text-center text-ink-muted">Even laden…</p>
+        ) : !activeCategorySlug ? (
+          <p className="text-center text-ink-muted">Er is nog geen categorie met genoeg ingesproken woorden.</p>
         ) : (
           <WordGrid items={items} onSelect={setSelectedIndex} />
         )}
