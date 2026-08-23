@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { notFound, useParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
 import { DAILY_SENTENCES_LESSON_ID, getGenericLessonById } from "@/lib/lessonCatalog";
@@ -88,6 +88,29 @@ export default function LessonPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, lesson?.id, childForInit?.id, finished, queue]);
 
+  // Pijltjestoetsen op desktop (← vorige, → overslaan) en swipen op mobiel
+  // (zelfde acties). "Latest ref"-patroon i.p.v. de handlers rechtstreeks in
+  // de dependency-array: goToPrevious/handleSkip worden pas verderop in deze
+  // component gedefinieerd (en zijn alleen zinvol als de les echt klaar
+  // staat), dus wordt de ref alleen gevuld op het moment dat het lesscherm
+  // ook daadwerkelijk interactief getoond wordt (zie verderop) — op elk
+  // ander scherm (laden/klaar/leeg) blijft hij null en doet een toets niets.
+  const keyboardHandlersRef = useRef<{ onPrevious: () => void; onSkip: () => void } | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    function handleKeyDown(event: KeyboardEvent) {
+      const handlers = keyboardHandlersRef.current;
+      if (!handlers) return;
+      const target = event.target as HTMLElement | null;
+      if (target && ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName)) return;
+      if (event.key === "ArrowLeft") handlers.onPrevious();
+      else if (event.key === "ArrowRight") handlers.onSkip();
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   if (!ready) return <p className="text-center text-gray-500">Even laden…</p>;
   const child = getChild(params.childId);
   if (!child || !lesson) return notFound();
@@ -153,6 +176,10 @@ export default function LessonPage() {
   }
 
   if (finished) {
+    // Geen navigatie meer mogelijk (of zinvol) op het afrondingsscherm —
+    // anders zou een pijltoets/swipe hier per ongeluk de les nogmaals
+    // kunnen "voltooien" via handleSkip -> goToNext.
+    keyboardHandlersRef.current = null;
     return (
       <main className="flex flex-col items-center gap-6 pt-8 text-center">
         <p className="text-6xl" aria-hidden="true">
@@ -188,6 +215,7 @@ export default function LessonPage() {
   if (!currentExercise) {
     // Kan gebeuren als er (nog) geen enkel woord in deze les een ingesproken
     // opname heeft — het kind mag hier nooit vast komen te zitten (hfst. 22).
+    keyboardHandlersRef.current = null;
     return (
       <main className="flex flex-col items-center gap-4 pt-12 text-center">
         <p className="text-4xl" aria-hidden="true">
@@ -201,8 +229,36 @@ export default function LessonPage() {
     );
   }
 
+  // Nu pas vullen: alleen op dit scherm (echte les, geen laad/klaar/leeg-
+  // toestand) doen pijltoetsen/swipes ook echt iets.
+  keyboardHandlersRef.current = { onPrevious: goToPrevious, onSkip: handleSkip };
+
+  const SWIPE_THRESHOLD_PX = 60;
+
+  function handleTouchStart(event: TouchEvent<HTMLElement>) {
+    const touch = event.touches[0];
+    touchStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  }
+
+  function handleTouchEnd(event: TouchEvent<HTMLElement>) {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    const touch = event.changedTouches[0];
+    if (!start || !touch) return;
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    // Duidelijk horizontaal én lang genoeg, anders telt het als scrollen/tikken.
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD_PX || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) return;
+    if (deltaX < 0) handleSkip(); // swipe naar links = volgende/overslaan
+    else goToPrevious(); // swipe naar rechts = vorige
+  }
+
   return (
-    <main className="flex flex-col gap-4">
+    <main
+      className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 py-6 sm:px-6"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="flex items-center gap-3">
         <Link
           href={`/kind/${child.id}/route`}
