@@ -216,26 +216,6 @@ export default function LessonPage() {
         <div className="flex-1">
           <ProgressBar current={index} total={currentQueue.length} />
         </div>
-
-        <button
-          type="button"
-          onClick={goToPrevious}
-          disabled={index === 0}
-          aria-label="Vorig woord"
-          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-lg text-ink-muted
-            hover:bg-cream focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500 disabled:opacity-30"
-        >
-          <span aria-hidden="true">↩</span>
-        </button>
-        <button
-          type="button"
-          onClick={handleSkip}
-          aria-label="Dit woord overslaan"
-          className="flex h-9 items-center gap-1 rounded-full px-3 text-sm font-semibold text-ink-muted
-            hover:bg-cream focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
-        >
-          Overslaan <span aria-hidden="true">→</span>
-        </button>
       </div>
 
       {currentExercise.vocabularyItem.itemKind === "zin" && lesson.id !== DAILY_SENTENCES_LESSON_ID && (
@@ -244,48 +224,80 @@ export default function LessonPage() {
         </p>
       )}
 
-      {currentExercise.type === "AFBEELDING_EN_WOORD" && (
-        <ImageAndWord
-          key={currentExercise.id}
-          item={currentExercise.vocabularyItem}
-          onDone={() => handleAnswer(currentExercise, true)}
-          preferredPersona={child.preferredVoicePersona}
-        />
-      )}
+      {/* Vorige/overslaan als duidelijke pijlknoppen naast de oefening zelf
+          i.p.v. subtiel bovenin naast de voortgangsbalk (op verzoek) —
+          secundair qua stijl (dunne rand, gedempte kleur) t.o.v. de primaire
+          "Zeg het woord"/"Afspelen"-knoppen in de oefening, maar wel groot
+          genoeg om als duidelijk klikbaar te herkennen. */}
+      <div className="flex items-center gap-2 sm:gap-4">
+        <button
+          type="button"
+          onClick={goToPrevious}
+          disabled={index === 0}
+          aria-label="Vorige oefening"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-border-subtle
+            bg-white text-xl text-ink-muted transition-colors hover:border-clay-400 hover:text-clay-500
+            focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500 disabled:cursor-not-allowed disabled:opacity-30"
+        >
+          <span aria-hidden="true">‹</span>
+        </button>
 
-      {currentExercise.type === "LUISTEREN_EN_HERKENNEN" && (
-        <ListenAndSpeak
-          key={currentExercise.id}
-          item={currentExercise.vocabularyItem}
-          childId={child.id}
-          microphoneOptIn={child.microphoneOptIn}
-          onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
-          preferredPersona={child.preferredVoicePersona}
-          lenientPronunciationMode={child.lenientPronunciationMode}
-        />
-      )}
+        <div className="min-w-0 flex-1">
+          {currentExercise.type === "AFBEELDING_EN_WOORD" && (
+            <ImageAndWord
+              key={currentExercise.id}
+              item={currentExercise.vocabularyItem}
+              onDone={() => handleAnswer(currentExercise, true)}
+              preferredPersona={child.preferredVoicePersona}
+            />
+          )}
 
-      {currentExercise.type === "NAZEGGEN" && (
-        <RepeatAfterMe
-          key={currentExercise.id}
-          item={currentExercise.vocabularyItem}
-          microphoneOptIn={child.microphoneOptIn}
-          onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
-          preferredPersona={child.preferredVoicePersona}
-          lenientPronunciationMode={child.lenientPronunciationMode}
-        />
-      )}
+          {currentExercise.type === "LUISTEREN_EN_HERKENNEN" && (
+            <ListenAndSpeak
+              key={currentExercise.id}
+              item={currentExercise.vocabularyItem}
+              childId={child.id}
+              microphoneOptIn={child.microphoneOptIn}
+              onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+              preferredPersona={child.preferredVoicePersona}
+              lenientPronunciationMode={child.lenientPronunciationMode}
+            />
+          )}
 
-      {currentExercise.type === "ZELFSTANDIG_SPREKEN" && (
-        <SpeakFromPicture
-          key={currentExercise.id}
-          item={currentExercise.vocabularyItem}
-          microphoneOptIn={child.microphoneOptIn}
-          onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
-          preferredPersona={child.preferredVoicePersona}
-          lenientPronunciationMode={child.lenientPronunciationMode}
-        />
-      )}
+          {currentExercise.type === "NAZEGGEN" && (
+            <RepeatAfterMe
+              key={currentExercise.id}
+              item={currentExercise.vocabularyItem}
+              microphoneOptIn={child.microphoneOptIn}
+              onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+              preferredPersona={child.preferredVoicePersona}
+              lenientPronunciationMode={child.lenientPronunciationMode}
+            />
+          )}
+
+          {currentExercise.type === "ZELFSTANDIG_SPREKEN" && (
+            <SpeakFromPicture
+              key={currentExercise.id}
+              item={currentExercise.vocabularyItem}
+              microphoneOptIn={child.microphoneOptIn}
+              onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+              preferredPersona={child.preferredVoicePersona}
+              lenientPronunciationMode={child.lenientPronunciationMode}
+            />
+          )}
+        </div>
+
+        <button
+          type="button"
+          onClick={handleSkip}
+          aria-label="Deze oefening overslaan"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-border-subtle
+            bg-white text-xl text-ink-muted transition-colors hover:border-clay-400 hover:text-clay-500
+            focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+        >
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
     </main>
   );
 }
