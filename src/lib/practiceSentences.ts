@@ -93,6 +93,8 @@ export interface RecordablePracticeSentenceItem {
   imageEmoji: string;
   categorySlug: string;
   categoryTitleNl: string;
+  /** Zie PracticeSentenceDefinition.pictogramUrl — meegegeven zodat de opnamestudio (opnames/page.tsx) hetzelfde plaatje kan tonen als het kind straks ziet. */
+  pictogramUrl?: string;
 }
 
 export function getRecordablePracticeSentences(): RecordablePracticeSentenceItem[] {
@@ -106,6 +108,7 @@ export function getRecordablePracticeSentences(): RecordablePracticeSentenceItem
       imageEmoji: sentence.emoji,
       categorySlug: sentence.categorySlug,
       categoryTitleNl: category?.titleNl ?? sentence.categorySlug,
+      pictogramUrl: sentence.pictogramUrl,
     };
   });
 }

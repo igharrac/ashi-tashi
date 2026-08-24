@@ -25,11 +25,18 @@ import type { RecordableItem } from "@/lib/recordableItems";
 
 type ManifestState = Record<string, RecordingEntryData>;
 type StudioMode = "woorden" | "zinnen" | "oefenen";
-/** Gemeenschappelijke velden die de item-lijst hieronder nodig heeft — RecordableItem (woorden), RecordableSentenceItem (zinnen) en RecordablePracticeSentenceItem (oefenen) voldoen hier allemaal aan. */
+/**
+ * Gemeenschappelijke velden die de item-lijst hieronder nodig heeft —
+ * RecordableItem (woorden), RecordableSentenceItem (zinnen) en
+ * RecordablePracticeSentenceItem (oefenen) voldoen hier allemaal aan.
+ * `pictogramUrl` bestaat alleen bij Oefenen-zinnen (optioneel, dus geen
+ * probleem voor de andere twee) — zo zie je in de studio precies hetzelfde
+ * plaatje als het kind straks bij deze zin te zien krijgt.
+ */
 type StudioListItem = Pick<
   RecordableItem | RecordableSentenceItem | RecordablePracticeSentenceItem,
   "id" | "translationNl" | "latinSpelling" | "imageEmoji"
->;
+> & { pictogramUrl?: string };
 
 /**
  * Opnamestudio-hoofdpagina (ARCHITECTUUR-OPNAMESTUDIO.md). Beschermd door
@@ -322,7 +329,24 @@ export default function StudioOpnamesPage() {
             return (
               <Card key={item.id} className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex items-start gap-3">
-                  <span className="text-3xl" aria-hidden="true">
+                  {item.pictogramUrl ? (
+                    // eslint-disable-next-line @next/next/no-img-element -- extern ARASAAC-plaatje, geen lokale kopie
+                    <img
+                      src={item.pictogramUrl}
+                      alt={item.translationNl}
+                      className="h-12 w-12 shrink-0 rounded-lg bg-primary-50 object-contain p-1"
+                      onError={(event) => {
+                        event.currentTarget.style.display = "none";
+                        const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+                        if (fallback) fallback.style.display = "inline";
+                      }}
+                    />
+                  ) : null}
+                  <span
+                    className="text-3xl"
+                    aria-hidden="true"
+                    style={item.pictogramUrl ? { display: "none" } : undefined}
+                  >
                     {item.imageEmoji}
                   </span>
                   <div>
