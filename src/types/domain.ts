@@ -34,6 +34,13 @@ export interface VocabularyItemView {
    * dan bij een enkel woord als "hond") niet altijd vanzelfsprekend genoeg.
    */
   contextNl?: string;
+  /**
+   * Optionele rijkere illustratie (ARASAAC-pictogram, CC BY-NC-SA — zie
+   * naamsvermelding op /ouder/overzicht) i.p.v. imageEmoji. Bewust optioneel
+   * en met emoji-fallback (RepeatAfterMe.tsx): niet elke zin heeft al een
+   * uitgezocht pictogram, en een kind mag daar nooit op vastlopen.
+   */
+  pictogramUrl?: string;
 }
 
 export type ExerciseType =

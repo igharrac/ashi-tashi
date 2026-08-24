@@ -27,6 +27,14 @@ export interface PracticeSentenceDefinition {
   translationNl: string;
   contextNl: string;
   emoji: string;
+  /**
+   * Optioneel ARASAAC-pictogram (CC BY-NC-SA, naamsvermelding op
+   * /ouder/overzicht) i.p.v. de kale emoji — rijkere, eenduidige illustratie
+   * per zin. Rechtstreeks gelinkt naar static.arasaac.org (geen lokale
+   * kopie, op verzoek): als die dienst ooit niet bereikbaar is valt de UI
+   * terug op emoji (imageEmoji), nooit een kapot plaatje of vastlopen.
+   */
+  pictogramUrl?: string;
 }
 
 export const PRACTICE_SENTENCE_CATEGORIES: PracticeSentenceCategory[] = [
@@ -40,6 +48,7 @@ export const PRACTICE_SENTENCES: PracticeSentenceDefinition[] = [
     translationNl: "Naar boven lopen.",
     contextNl: "Als je de trap op gaat, zeg je:",
     emoji: "🪜",
+    pictogramUrl: "https://static.arasaac.org/pictograms/2795/2795_500.png",
   },
   {
     id: "item-oefenen-ik-ga-naar-buiten",
@@ -47,6 +56,7 @@ export const PRACTICE_SENTENCES: PracticeSentenceDefinition[] = [
     translationNl: "Ik ga naar buiten.",
     contextNl: "Als je naar buiten gaat, zeg je:",
     emoji: "🚪",
+    pictogramUrl: "https://static.arasaac.org/pictograms/2806/2806_500.png",
   },
   {
     id: "item-oefenen-ik-ga-naar-binnen",
@@ -54,6 +64,7 @@ export const PRACTICE_SENTENCES: PracticeSentenceDefinition[] = [
     translationNl: "Ik ga naar binnen.",
     contextNl: "Als je naar binnen gaat, zeg je:",
     emoji: "🏠",
+    pictogramUrl: "https://static.arasaac.org/pictograms/2742/2742_500.png",
   },
   {
     id: "item-oefenen-we-gaan-eten",
@@ -61,6 +72,7 @@ export const PRACTICE_SENTENCES: PracticeSentenceDefinition[] = [
     translationNl: "We gaan eten.",
     contextNl: "Als het tijd is om te eten, zeg je:",
     emoji: "🍽️",
+    pictogramUrl: "https://static.arasaac.org/pictograms/28675/28675_500.png",
   },
 ];
 

@@ -74,11 +74,29 @@ export function RepeatAfterMe({
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
+      {item.itemKind === "zin" &&
+        (item.pictogramUrl ? (
+          // eslint-disable-next-line @next/next/no-img-element -- extern ARASAAC-plaatje (CC BY-NC-SA), geen lokale kopie, dus geen next/image-optimalisatie mogelijk
+          <img
+            src={item.pictogramUrl}
+            alt={item.imageAlt}
+            className="h-32 w-32 rounded-xl2 bg-primary-50 object-contain p-2"
+            onError={(event) => {
+              // Als het externe plaatje ooit niet laadt, valt het kind
+              // meteen terug op de emoji i.p.v. een kapot plaatje te zien —
+              // mag nergens vastlopen.
+              event.currentTarget.style.display = "none";
+              const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
+              if (fallback) fallback.style.display = "flex";
+            }}
+          />
+        ) : null)}
       {item.itemKind === "zin" && (
         <div
           role="img"
           aria-label={item.imageAlt}
           className="flex h-32 w-32 items-center justify-center rounded-xl2 bg-primary-50 text-6xl"
+          style={item.pictogramUrl ? { display: "none" } : undefined}
         >
           {item.imageEmoji}
         </div>

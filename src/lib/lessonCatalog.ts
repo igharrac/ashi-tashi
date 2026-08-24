@@ -146,6 +146,7 @@ function buildPracticeLessonForCategory(categorySlug: string): LessonView | null
         reviewNote: DEMO_REVIEW_NOTE,
         imageAlt: sentence.translationNl,
         imageEmoji: sentence.emoji,
+        pictogramUrl: sentence.pictogramUrl,
         itemKind: "zin" as const,
       },
     }));

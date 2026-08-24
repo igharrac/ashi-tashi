@@ -86,6 +86,14 @@ export default function ParentOverviewPage() {
       <Link href="/">
         <Button variant="secondary">Terug</Button>
       </Link>
+
+      {/* Verplichte naamsvermelding CC BY-NC-SA voor de ARASAAC-pictogrammen
+          die bij sommige Oefenen-/Dagelijkse-zinnen-illustraties gebruikt
+          worden (zie RepeatAfterMe.tsx, practiceSentences.ts). */}
+      <p className="mt-4 text-xs text-gray-400">
+        Sommige illustraties zijn pictogrammen van ARASAAC (arasaac.org), eigendom van de Regering van Aragón, gemaakt
+        door Sergio Palao, gebruikt onder een Creative Commons-licentie (BY-NC-SA).
+      </p>
     </main>
   );
 }
