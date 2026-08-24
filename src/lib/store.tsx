@@ -66,6 +66,7 @@ interface AppStore {
   setMicrophoneOptIn: (childId: string, enabled: boolean) => void;
   setLessonProgress: (childId: string, progress: { lessonId: string; index: number } | null) => void;
   setPreferredVoicePersona: (childId: string, persona: VoicePersona | null) => void;
+  setExperienceLevel: (childId: string, level: ExperienceLevel) => void;
 }
 
 const StoreContext = createContext<AppStore | null>(null);
@@ -220,6 +221,17 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
   // meisje) gebruikt wordt, i.p.v. altijd automatisch de vaste
   // voorkeursvolgorde in referenceAudio.ts — nuttig zodra er voor
   // hetzelfde woord meerdere persona's zijn ingesproken.
+  // Niveau (Ontdekken/Oefenen/Spreken) wordt standaard bij aanmaken gekozen,
+  // maar mag daarna nooit een harde plafond worden — een kind moet altijd
+  // door kunnen groeien (of terug kunnen) zonder dat een ouder een nieuw
+  // profiel hoeft aan te maken (zie JourneySettingsMenu.tsx).
+  const setExperienceLevel = useCallback<AppStore["setExperienceLevel"]>((childId, level) => {
+    setState((prev) => ({
+      ...prev,
+      children: prev.children.map((child) => (child.id === childId ? { ...child, level } : child)),
+    }));
+  }, []);
+
   const setPreferredVoicePersona = useCallback<AppStore["setPreferredVoicePersona"]>((childId, persona) => {
     setState((prev) => ({
       ...prev,
@@ -243,6 +255,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       setMicrophoneOptIn,
       setLessonProgress,
       setPreferredVoicePersona,
+      setExperienceLevel,
     }),
     [
       state,
@@ -257,6 +270,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       setMicrophoneOptIn,
       setLessonProgress,
       setPreferredVoicePersona,
+      setExperienceLevel,
     ],
   );
 

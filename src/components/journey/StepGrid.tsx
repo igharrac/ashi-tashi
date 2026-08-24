@@ -5,9 +5,11 @@ import { CATEGORIES } from "@/lib/contentCatalog";
 import {
   DAILY_SENTENCES_LESSON_ID,
   getCategoryUnlockStatuses,
+  getPracticeCategoryStatuses,
   MIN_RECORDED_SENTENCES_FOR_LESSON,
 } from "@/lib/lessonCatalog";
 import { getDailySentenceItems } from "@/lib/dailySentences";
+import { PRACTICE_SENTENCE_CATEGORIES } from "@/lib/practiceSentences";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { ChildProfileData } from "@/types/domain";
 import { StepTile } from "./StepTile";
@@ -58,6 +60,15 @@ export function StepGrid({ childId, child }: StepGridProps) {
   const showDailySentencesTile = recordedSentenceCount >= MIN_RECORDED_SENTENCES_FOR_LESSON;
   const dailySentencesCompleted = child.completedLessonIds.includes(DAILY_SENTENCES_LESSON_ID);
 
+  // "Oefenen"-categorieën (practiceSentences.ts) — alleen zichtbaar voor
+  // kinderen op niveau Oefenen of Spreken (child.level), los van de
+  // woordcategorie-keten, net als Dagelijkse zinnen hierboven. Ontdekken-
+  // niveau ziet deze tegels helemaal niet, ook al zou er content zijn.
+  const showPracticeTiles = child.level !== "A_ONTDEKKEN";
+  const practiceStatuses = showPracticeTiles
+    ? getPracticeCategoryStatuses(child.completedLessonIds, recordedIds)
+    : [];
+
   return (
     <div className="mx-auto grid max-w-3xl grid-cols-3 gap-x-3 gap-y-6 py-6 sm:grid-cols-4 sm:gap-x-4 md:grid-cols-5">
       {showDailySentencesTile && (
@@ -67,6 +78,18 @@ export function StepGrid({ childId, child }: StepGridProps) {
           href={`/kind/${childId}/les/${DAILY_SENTENCES_LESSON_ID}`}
         />
       )}
+      {practiceStatuses.map(({ categorySlug, status, lessonId }) => {
+        const category = PRACTICE_SENTENCE_CATEGORIES.find((c) => c.slug === categorySlug);
+        if (!category || status === "locked") return null;
+        return (
+          <StepTile
+            key={categorySlug}
+            category={{ emoji: category.emoji, titleNl: category.titleNl, teaser: `Oefenen: ${category.titleNl.toLowerCase()}` }}
+            status={status}
+            href={`/kind/${childId}/les/${lessonId}`}
+          />
+        );
+      })}
       {unlockStatuses.map(({ categorySlug, status, lessonId }) => {
         const category = CATEGORIES.find((c) => c.slug === categorySlug);
         if (!category) return null;

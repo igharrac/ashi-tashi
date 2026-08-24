@@ -5,13 +5,8 @@ import { useState } from "react";
 import { useAppStore } from "@/lib/store";
 import { AVATARS } from "@/lib/demoData";
 import { Button } from "@/components/ui/Button";
+import { EXPERIENCE_LEVELS } from "@/lib/experienceLevels";
 import type { ExperienceLevel } from "@/types/domain";
-
-const LEVELS: { value: ExperienceLevel; label: string; hint: string }[] = [
-  { value: "A_ONTDEKKEN", label: "Ontdekken", hint: "6-8 jaar — veel audio, weinig tekst" },
-  { value: "B_OEFENEN", label: "Oefenen", hint: "9-11 jaar — woorden en korte zinnen" },
-  { value: "C_SPREKEN", label: "Spreken", hint: "12-14 jaar — langere zinnen en dialogen" },
-];
 
 /** Kindprofiel aanmaken: avatar en niveau kiezen (hfst. 5.1, 11.1, 55). */
 export default function NewChildProfilePage() {
@@ -66,8 +61,9 @@ export default function NewChildProfilePage() {
 
         <fieldset>
           <legend className="mb-2 text-sm font-medium text-gray-700">Beginniveau (hfst. 5.1)</legend>
+          <p className="mb-2 text-xs text-gray-500">Later gewoon aan te passen via de instellingen op het reispad.</p>
           <div className="flex flex-col gap-2">
-            {LEVELS.map((option) => (
+            {EXPERIENCE_LEVELS.map((option) => (
               <label
                 key={option.value}
                 className={`flex cursor-pointer flex-col rounded-xl2 border-2 p-3

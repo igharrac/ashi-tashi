@@ -20,6 +20,7 @@ export default function LearningRoutePage() {
     setLenientPronunciationMode,
     setMicrophoneOptIn,
     setPreferredVoicePersona,
+    setExperienceLevel,
     ready,
   } = useAppStore();
 
@@ -37,6 +38,7 @@ export default function LearningRoutePage() {
           onSpeakFirstModeChange={(enabled) => setSpeakFirstMode(child.id, enabled)}
           onLenientPronunciationModeChange={(enabled) => setLenientPronunciationMode(child.id, enabled)}
           onPreferredVoicePersonaChange={(persona) => setPreferredVoicePersona(child.id, persona)}
+          onExperienceLevelChange={(level) => setExperienceLevel(child.id, level)}
         />
         <h1 className="text-2xl font-bold text-forest-500">Jouw Reis</h1>
         <p className="mt-1 text-ink-muted">{child.points} punten verdiend</p>

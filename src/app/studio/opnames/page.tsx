@@ -16,12 +16,20 @@ import {
   type RecordingPersona,
 } from "@/lib/recordableItems";
 import { DAILY_SENTENCE_CATEGORIES, getRecordableSentences, type RecordableSentenceItem } from "@/lib/dailySentences";
+import {
+  PRACTICE_SENTENCE_CATEGORIES,
+  getRecordablePracticeSentences,
+  type RecordablePracticeSentenceItem,
+} from "@/lib/practiceSentences";
 import type { RecordableItem } from "@/lib/recordableItems";
 
 type ManifestState = Record<string, RecordingEntryData>;
-type StudioMode = "woorden" | "zinnen";
-/** Gemeenschappelijke velden die de item-lijst hieronder nodig heeft — zowel RecordableItem (woorden) als RecordableSentenceItem (zinnen) voldoen hieraan. */
-type StudioListItem = Pick<RecordableItem | RecordableSentenceItem, "id" | "translationNl" | "latinSpelling" | "imageEmoji">;
+type StudioMode = "woorden" | "zinnen" | "oefenen";
+/** Gemeenschappelijke velden die de item-lijst hieronder nodig heeft — RecordableItem (woorden), RecordableSentenceItem (zinnen) en RecordablePracticeSentenceItem (oefenen) voldoen hier allemaal aan. */
+type StudioListItem = Pick<
+  RecordableItem | RecordableSentenceItem | RecordablePracticeSentenceItem,
+  "id" | "translationNl" | "latinSpelling" | "imageEmoji"
+>;
 
 /**
  * Opnamestudio-hoofdpagina (ARCHITECTUUR-OPNAMESTUDIO.md). Beschermd door
@@ -33,6 +41,7 @@ export default function StudioOpnamesPage() {
   const router = useRouter();
   const items = useMemo(() => getRecordableItems(), []);
   const sentenceItems = useMemo(() => getRecordableSentences(), []);
+  const practiceItems = useMemo(() => getRecordablePracticeSentences(), []);
   const [manifest, setManifest] = useState<ManifestState>({});
   const [spellings, setSpellings] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -43,6 +52,7 @@ export default function StudioOpnamesPage() {
   const categoriesForLevel = useMemo(() => getCategoriesForLevel(activeLevelSlug), [activeLevelSlug]);
   const [activeCategorySlug, setActiveCategorySlug] = useState(categoriesForLevel[0]?.slug ?? "");
   const [activeSentenceCategorySlug, setActiveSentenceCategorySlug] = useState(DAILY_SENTENCE_CATEGORIES[0]?.slug ?? "");
+  const [activePracticeCategorySlug, setActivePracticeCategorySlug] = useState(PRACTICE_SENTENCE_CATEGORIES[0]?.slug ?? "");
 
   useEffect(() => {
     const first = getCategoriesForLevel(activeLevelSlug)[0];
@@ -95,7 +105,12 @@ export default function StudioOpnamesPage() {
     () => sentenceItems.filter((item) => item.categorySlug === activeSentenceCategorySlug),
     [sentenceItems, activeSentenceCategorySlug]
   );
-  const itemsForActiveSelection: StudioListItem[] = mode === "woorden" ? itemsForActiveCategory : sentencesForActiveCategory;
+  const practiceSentencesForActiveCategory = useMemo(
+    () => practiceItems.filter((item) => item.categorySlug === activePracticeCategorySlug),
+    [practiceItems, activePracticeCategorySlug]
+  );
+  const itemsForActiveSelection: StudioListItem[] =
+    mode === "woorden" ? itemsForActiveCategory : mode === "zinnen" ? sentencesForActiveCategory : practiceSentencesForActiveCategory;
 
   function countsFor(pool: StudioListItem[], categorySlug: string, persona: RecordingPersona) {
     let recorded = 0;
@@ -114,6 +129,9 @@ export default function StudioOpnamesPage() {
 
   const activeCategory = categoriesForLevel.find((category) => category.slug === activeCategorySlug);
   const activeSentenceCategory = DAILY_SENTENCE_CATEGORIES.find((category) => category.slug === activeSentenceCategorySlug);
+  const activePracticeCategory = PRACTICE_SENTENCE_CATEGORIES.find((category) => category.slug === activePracticeCategorySlug);
+  const activeModeCategory =
+    mode === "woorden" ? activeCategory : mode === "zinnen" ? activeSentenceCategory : activePracticeCategory;
   const activeCounts =
     mode === "woorden"
       ? activeCategory
@@ -123,9 +141,13 @@ export default function StudioOpnamesPage() {
             activePersona,
           )
         : { recorded: 0, approved: 0, total: 0 }
-      : activeSentenceCategory
-        ? countsFor(sentencesForActiveCategory, activeSentenceCategory.slug, activePersona)
-        : { recorded: 0, approved: 0, total: 0 };
+      : mode === "zinnen"
+        ? activeSentenceCategory
+          ? countsFor(sentencesForActiveCategory, activeSentenceCategory.slug, activePersona)
+          : { recorded: 0, approved: 0, total: 0 }
+        : activePracticeCategory
+          ? countsFor(practiceSentencesForActiveCategory, activePracticeCategory.slug, activePersona)
+          : { recorded: 0, approved: 0, total: 0 };
 
   return (
     <main className="mx-auto flex max-w-4xl flex-col gap-6 px-4 py-8">
@@ -135,7 +157,9 @@ export default function StudioOpnamesPage() {
           <p className="text-sm text-ink-muted">
             {mode === "woorden"
               ? `${items.length} woorden in ${LEVELS.length} levels.`
-              : `${sentenceItems.length} dagelijkse zinnen in ${DAILY_SENTENCE_CATEGORIES.length} categorieën.`}{" "}
+              : mode === "zinnen"
+                ? `${sentenceItems.length} dagelijkse zinnen in ${DAILY_SENTENCE_CATEGORIES.length} categorieën.`
+                : `${practiceItems.length} oefenzinnen in ${PRACTICE_SENTENCE_CATEGORIES.length} categorieën.`}{" "}
             Draai dit lokaal (npm run dev) — zie ARCHITECTUUR-OPNAMESTUDIO.md.
           </p>
         </div>
@@ -152,7 +176,7 @@ export default function StudioOpnamesPage() {
       </div>
 
       <div className="flex gap-2">
-        {(["woorden", "zinnen"] as const).map((option) => (
+        {(["woorden", "zinnen", "oefenen"] as const).map((option) => (
           <button
             key={option}
             type="button"
@@ -165,7 +189,7 @@ export default function StudioOpnamesPage() {
                   : "border-border-subtle bg-white text-ink hover:border-primary-400"
               }`}
           >
-            {option === "woorden" ? "Woorden" : "Zinnen"}
+            {option === "woorden" ? "Woorden" : option === "zinnen" ? "Zinnen" : "Oefenen"}
           </button>
         ))}
       </div>
@@ -211,7 +235,7 @@ export default function StudioOpnamesPage() {
             ))}
           </div>
         </>
-      ) : (
+      ) : mode === "zinnen" ? (
         <div className="flex flex-wrap gap-2">
           {DAILY_SENTENCE_CATEGORIES.map((category) => (
             <button
@@ -229,6 +253,28 @@ export default function StudioOpnamesPage() {
               <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
               <span className="ml-1 opacity-70">
                 ({sentenceItems.filter((item) => item.categorySlug === category.slug).length})
+              </span>
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-wrap gap-2">
+          {PRACTICE_SENTENCE_CATEGORIES.map((category) => (
+            <button
+              key={category.slug}
+              type="button"
+              onClick={() => setActivePracticeCategorySlug(category.slug)}
+              className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
+                focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
+                ${
+                  category.slug === activePracticeCategorySlug
+                    ? "border-clay-500 bg-clay-500 text-white"
+                    : "border-border-subtle bg-white text-ink hover:border-clay-400"
+                }`}
+            >
+              <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
+              <span className="ml-1 opacity-70">
+                ({practiceItems.filter((item) => item.categorySlug === category.slug).length})
               </span>
             </button>
           ))}
@@ -257,9 +303,9 @@ export default function StudioOpnamesPage() {
             );
           })}
         </div>
-        {(mode === "woorden" ? activeCategory : activeSentenceCategory) && (
+        {activeModeCategory && (
           <p className="mt-3 text-sm text-ink-muted">
-            {(mode === "woorden" ? activeCategory : activeSentenceCategory)?.titleNl} · {activeCounts.recorded}/
+            {activeModeCategory.titleNl} · {activeCounts.recorded}/
             {activeCounts.total} opgenomen voor {PERSONA_LABELS[activePersona].toLowerCase()} · {activeCounts.approved}{" "}
             goedgekeurd
           </p>

@@ -2,6 +2,11 @@ import type { ExerciseView, LessonView } from "@/types/domain";
 import { CATEGORIES, getCatalogItems, getCategoryBySlug } from "@/lib/contentCatalog";
 import { DEMO_REVIEW_NOTE, DIEREN_THEME } from "@/lib/demoData";
 import { getDailySentenceItems } from "@/lib/dailySentences";
+import {
+  getPracticeSentenceCategoryBySlug,
+  getPracticeSentenceItems,
+  PRACTICE_SENTENCE_CATEGORIES,
+} from "@/lib/practiceSentences";
 
 /**
  * Generieke lesopbouw voor elke categorie buiten "dieren" (die blijft op
@@ -98,9 +103,89 @@ function buildDailySentencesLesson(): LessonView {
   };
 }
 
-/** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat (of de vaste dagelijkse-zinnen-les-id), of null als er niets bij past. */
+/**
+ * "Oefenen"-zinnen (practiceSentences.ts) — content voor kinderen op niveau
+ * B_OEFENEN of hoger (child.level, zie experienceLevels.ts). Elke categorie
+ * krijgt, net als een woordcategorie, zijn EIGEN les/tegel i.p.v. alles
+ * samen te voegen zoals bij Dagelijkse zinnen — op verzoek "allerlei
+ * categorieën" binnen dit niveau, dus dezelfde per-categorie opzet als de
+ * gewone woordcategorieën (buildLessonForCategory hierboven), maar dan met
+ * NAZEGGEN-oefeningen (plaatje + contextNl) i.p.v. LUISTEREN_EN_HERKENNEN.
+ * Ook deze staan los van de streng-opeenvolgende woordcategorie-keten (zie
+ * StepGrid.tsx) — alleen het niveau van het kind bepaalt of ze zichtbaar
+ * zijn, niet de voortgang in de woordcategorieën.
+ */
+const PRACTICE_LESSON_ID_PREFIX = "lesson-oefenen-";
+
+/** Praktijkcategorieën zijn klein van opzet (een handvol zinnen per categorie) — vandaar een lagere drempel dan bij woorden of Dagelijkse zinnen. */
+export const MIN_RECORDED_PRACTICE_SENTENCES_FOR_LESSON = 2;
+
+export function practiceLessonIdForCategory(categorySlug: string): string {
+  return `${PRACTICE_LESSON_ID_PREFIX}${categorySlug}`;
+}
+
+function practiceCategorySlugFromLessonId(lessonId: string): string | null {
+  return lessonId.startsWith(PRACTICE_LESSON_ID_PREFIX) ? lessonId.slice(PRACTICE_LESSON_ID_PREFIX.length) : null;
+}
+
+function buildPracticeLessonForCategory(categorySlug: string): LessonView | null {
+  const category = getPracticeSentenceCategoryBySlug(categorySlug);
+  if (!category) return null;
+
+  const exercises: ExerciseView[] = getPracticeSentenceItems()
+    .filter((sentence) => sentence.categorySlug === categorySlug)
+    .map((sentence) => ({
+      id: `exercise-oefenen-${sentence.id}`,
+      type: "NAZEGGEN" as const,
+      vocabularyItem: {
+        id: sentence.id,
+        translationNl: sentence.translationNl,
+        contextNl: sentence.contextNl,
+        latinSpelling: `[TASHELHIT_SENTENCE_REVIEW_REQUIRED:${sentence.id}]`,
+        reviewStatus: "TE_REVIEWEN" as const,
+        reviewNote: DEMO_REVIEW_NOTE,
+        imageAlt: sentence.translationNl,
+        imageEmoji: sentence.emoji,
+        itemKind: "zin" as const,
+      },
+    }));
+
+  return {
+    id: practiceLessonIdForCategory(categorySlug),
+    titleNl: category.titleNl,
+    targetMinutes: Math.max(3, Math.round(exercises.length * 0.5)),
+    exercises,
+  };
+}
+
+export interface PracticeCategoryStatus {
+  categorySlug: string;
+  status: "active" | "completed" | "locked";
+  lessonId: string;
+}
+
+/** Los van de woordcategorie-keten (geen chainBroken-logica): elke Oefenen-categorie ontgrendelt onafhankelijk zodra er genoeg zinnen zijn ingesproken. */
+export function getPracticeCategoryStatuses(
+  completedLessonIds: string[],
+  recordedIds: Set<string>,
+): PracticeCategoryStatus[] {
+  return PRACTICE_SENTENCE_CATEGORIES.map((category) => {
+    const lessonId = practiceLessonIdForCategory(category.slug);
+    const isCompleted = completedLessonIds.includes(lessonId);
+    const recordedCount = getPracticeSentenceItems().filter(
+      (item) => item.categorySlug === category.slug && recordedIds.has(item.id),
+    ).length;
+    const hasEnoughContent = recordedCount >= MIN_RECORDED_PRACTICE_SENTENCES_FOR_LESSON;
+    const status: PracticeCategoryStatus["status"] = !hasEnoughContent ? "locked" : isCompleted ? "completed" : "active";
+    return { categorySlug: category.slug, status, lessonId };
+  });
+}
+
+/** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat (of de vaste dagelijkse-zinnen-les-id, of een "lesson-oefenen-<categorySlug>"-id), of null als er niets bij past. */
 export function getGenericLessonById(lessonId: string): LessonView | null {
   if (lessonId === DAILY_SENTENCES_LESSON_ID) return buildDailySentencesLesson();
+  const practiceCategorySlug = practiceCategorySlugFromLessonId(lessonId);
+  if (practiceCategorySlug) return buildPracticeLessonForCategory(practiceCategorySlug);
   const categorySlug = categorySlugFromLessonId(lessonId);
   if (!categorySlug) return null;
   return buildLessonForCategory(categorySlug);

@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { Toggle } from "@/components/ui/Toggle";
 import { PERSONA_LABELS, RECORDING_PERSONAS } from "@/lib/recordableItems";
 import type { RecordingPersona } from "@/lib/recordableItems";
-import type { ChildProfileData } from "@/types/domain";
+import { EXPERIENCE_LEVELS } from "@/lib/experienceLevels";
+import type { ChildProfileData, ExperienceLevel } from "@/types/domain";
 
 interface JourneySettingsMenuProps {
   child: ChildProfileData;
@@ -12,6 +13,7 @@ interface JourneySettingsMenuProps {
   onSpeakFirstModeChange: (enabled: boolean) => void;
   onLenientPronunciationModeChange: (enabled: boolean) => void;
   onPreferredVoicePersonaChange: (persona: RecordingPersona | null) => void;
+  onExperienceLevelChange: (level: ExperienceLevel) => void;
 }
 
 /**
@@ -27,6 +29,7 @@ export function JourneySettingsMenu({
   onSpeakFirstModeChange,
   onLenientPronunciationModeChange,
   onPreferredVoicePersonaChange,
+  onExperienceLevelChange,
 }: JourneySettingsMenuProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -95,6 +98,35 @@ export function JourneySettingsMenu({
                   : "Uit: het kind moet net zo vaak proberen tot de uitspraak echt herkend wordt (onbeperkt proberen)."
               }
             />
+
+            <div className="flex flex-col gap-1.5 border-t border-border-subtle pt-3">
+              <span className="text-sm font-semibold text-ink">Niveau</span>
+              <p className="text-xs text-ink-muted">
+                Geen leeftijdsindeling — puur waar dit kind qua taal staat. Altijd aan te passen, ook achteraf.
+              </p>
+              <div className="flex flex-col gap-1.5 pt-1">
+                {EXPERIENCE_LEVELS.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    onClick={() => onExperienceLevelChange(option.value)}
+                    aria-pressed={child.level === option.value}
+                    className={`flex flex-col rounded-xl border px-3 py-1.5 text-left transition-colors ${
+                      child.level === option.value
+                        ? "border-forest-500 bg-forest-100"
+                        : "border-border-subtle bg-white hover:bg-cream"
+                    }`}
+                  >
+                    <span
+                      className={`text-sm font-semibold ${child.level === option.value ? "text-forest-600" : "text-ink"}`}
+                    >
+                      {option.label}
+                    </span>
+                    <span className="text-xs text-ink-muted">{option.hint}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
 
             <div className="flex flex-col gap-1.5 border-t border-border-subtle pt-3">
               <span className="text-sm font-semibold text-ink">Stem</span>
