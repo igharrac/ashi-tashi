@@ -206,7 +206,7 @@ export default function StudioOpnamesPage() {
               ? `${items.length} woorden in ${LEVELS.length} levels.`
               : mode === "zinnen"
                 ? `${sentenceItems.length} dagelijkse zinnen in ${DAILY_SENTENCE_CATEGORIES.length} categorieën.`
-                : `${practiceItems.length} oefenzinnen in ${PRACTICE_SENTENCE_CATEGORIES.length} categorieën.`}{" "}
+                : `${practiceItems.length} praktijkzinnen in ${PRACTICE_SENTENCE_CATEGORIES.length} categorieën.`}{" "}
             Draai dit lokaal (npm run dev) — zie ARCHITECTUUR-OPNAMESTUDIO.md.
           </p>
         </div>
@@ -222,39 +222,48 @@ export default function StudioOpnamesPage() {
         </div>
       </div>
 
-      <div className="flex gap-2">
+      {/*
+        Drie navigatieniveaus met bewust verschillend visueel gewicht i.p.v.
+        drie identieke pillen (op verzoek, zag er "te druk" uit): contenttype
+        als tabs (grootste keuze), level als segmented control, categorie als
+        platte tags. "Oefenen" heet in de UI "Praktijkzinnen" om niet te
+        botsen met de gelijknamige child-niveau ("Oefenen", zie
+        experienceLevels.ts) — dat is een ander concept (child.level is
+        vandaag niet gekoppeld aan welke woorden/zinnen-content bestaat).
+      */}
+      <div className="flex gap-6 border-b border-border-subtle">
         {(["woorden", "zinnen", "oefenen"] as const).map((option) => (
           <button
             key={option}
             type="button"
             onClick={() => setMode(option)}
-            className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors
+            className={`-mb-px border-b-2 pb-2.5 text-[15px] transition-colors
               focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
               ${
                 option === mode
-                  ? "border-primary-600 bg-primary-600 text-white"
-                  : "border-border-subtle bg-white text-ink hover:border-primary-400"
+                  ? "border-primary-600 font-medium text-primary-600"
+                  : "border-transparent text-ink-muted hover:text-ink"
               }`}
           >
-            {option === "woorden" ? "Woorden" : option === "zinnen" ? "Zinnen" : "Oefenen"}
+            {option === "woorden" ? "Woorden" : option === "zinnen" ? "Zinnen" : "Praktijkzinnen"}
           </button>
         ))}
       </div>
 
       {mode === "woorden" ? (
         <>
-          <div className="flex flex-wrap gap-2">
+          <div className="inline-flex w-fit gap-0.5 rounded-xl2 bg-primary-50 p-1">
             {LEVELS.map((level) => (
               <button
                 key={level.slug}
                 type="button"
                 onClick={() => setActiveLevelSlug(level.slug)}
-                className={`rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors
+                className={`rounded-lg px-3.5 py-1.5 text-sm transition-colors
                   focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
                   ${
                     level.slug === activeLevelSlug
-                      ? "border-forest-500 bg-forest-500 text-white"
-                      : "border-border-subtle bg-white text-ink hover:border-forest-400"
+                      ? "bg-white font-medium text-ink shadow-sm"
+                      : "text-ink-muted hover:text-ink"
                   }`}
               >
                 <span aria-hidden="true">{level.emoji}</span> {level.titleNl}
@@ -262,66 +271,75 @@ export default function StudioOpnamesPage() {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             {categoriesForLevel.map((category) => (
               <button
                 key={category.slug}
                 type="button"
                 onClick={() => setActiveCategorySlug(category.slug)}
-                className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
+                className={`flex items-center gap-1.5 text-sm transition-colors
                   focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
                   ${
                     category.slug === activeCategorySlug
-                      ? "border-clay-500 bg-clay-500 text-white"
-                      : "border-border-subtle bg-white text-ink hover:border-clay-400"
+                      ? "font-medium text-clay-600"
+                      : "text-ink-muted hover:text-ink"
                   }`}
               >
+                {category.slug === activeCategorySlug && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-clay-500" aria-hidden="true" />
+                )}
                 <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
-                <span className="ml-1 opacity-70">({category.words.length})</span>
+                <span className="text-ink-muted">{category.words.length}</span>
               </button>
             ))}
           </div>
         </>
       ) : mode === "zinnen" ? (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           {DAILY_SENTENCE_CATEGORIES.map((category) => (
             <button
               key={category.slug}
               type="button"
               onClick={() => setActiveSentenceCategorySlug(category.slug)}
-              className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
+              className={`flex items-center gap-1.5 text-sm transition-colors
                 focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
                 ${
                   category.slug === activeSentenceCategorySlug
-                    ? "border-clay-500 bg-clay-500 text-white"
-                    : "border-border-subtle bg-white text-ink hover:border-clay-400"
+                    ? "font-medium text-clay-600"
+                    : "text-ink-muted hover:text-ink"
                 }`}
             >
+              {category.slug === activeSentenceCategorySlug && (
+                <span className="h-1.5 w-1.5 rounded-full bg-clay-500" aria-hidden="true" />
+              )}
               <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
-              <span className="ml-1 opacity-70">
-                ({sentenceItems.filter((item) => item.categorySlug === category.slug).length})
+              <span className="text-ink-muted">
+                {sentenceItems.filter((item) => item.categorySlug === category.slug).length}
               </span>
             </button>
           ))}
         </div>
       ) : (
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           {PRACTICE_SENTENCE_CATEGORIES.map((category) => (
             <button
               key={category.slug}
               type="button"
               onClick={() => setActivePracticeCategorySlug(category.slug)}
-              className={`rounded-full border-2 px-4 py-1.5 text-sm font-semibold transition-colors
+              className={`flex items-center gap-1.5 text-sm transition-colors
                 focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
                 ${
                   category.slug === activePracticeCategorySlug
-                    ? "border-clay-500 bg-clay-500 text-white"
-                    : "border-border-subtle bg-white text-ink hover:border-clay-400"
+                    ? "font-medium text-clay-600"
+                    : "text-ink-muted hover:text-ink"
                 }`}
             >
+              {category.slug === activePracticeCategorySlug && (
+                <span className="h-1.5 w-1.5 rounded-full bg-clay-500" aria-hidden="true" />
+              )}
               <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
-              <span className="ml-1 opacity-70">
-                ({practiceItems.filter((item) => item.categorySlug === category.slug).length})
+              <span className="text-ink-muted">
+                {practiceItems.filter((item) => item.categorySlug === category.slug).length}
               </span>
             </button>
           ))}
