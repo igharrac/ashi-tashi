@@ -5,6 +5,7 @@ import {
   readManifest,
   saveRecording,
   updateReviewStatus,
+  updateReviewStatusBulk,
 } from "@/lib/recordingsManifest";
 import { regeneratePublicCatalog } from "@/lib/publicCatalogSnapshot";
 import type { ReviewStatus } from "@/types/domain";
@@ -69,23 +70,39 @@ export async function PATCH(request: Request) {
     itemId?: string;
     persona?: string;
     reviewStatus?: string;
+    items?: { itemId?: string; persona?: string }[];
   } | null;
+
+  const reviewStatus = body?.reviewStatus;
+  if (
+    typeof reviewStatus !== "string" ||
+    !REVIEW_STATUSES_FROM_STUDIO.includes(reviewStatus as ReviewStatus)
+  ) {
+    return NextResponse.json({ error: "Ongeldige reviewstatus." }, { status: 400 });
+  }
+
+  // Bulk-modus (op verzoek: "alles in 1x kunnen goedkeuren i.p.v. elke
+  // opname apart") — een lijst van {itemId, persona}-paren i.p.v. één stuk.
+  if (Array.isArray(body?.items)) {
+    const keys: { itemId: string; persona: RecordingPersona }[] = [];
+    for (const raw of body.items) {
+      if (typeof raw?.itemId !== "string" || !SAFE_ID_PATTERN.test(raw.itemId)) continue;
+      if (typeof raw?.persona !== "string" || !isRecordingPersona(raw.persona)) continue;
+      keys.push({ itemId: raw.itemId, persona: raw.persona });
+    }
+    const entries = await updateReviewStatusBulk(keys, reviewStatus as ReviewStatus);
+    await regeneratePublicCatalog();
+    return NextResponse.json({ entries });
+  }
 
   const itemId = body?.itemId;
   const persona = body?.persona;
-  const reviewStatus = body?.reviewStatus;
 
   if (typeof itemId !== "string" || !SAFE_ID_PATTERN.test(itemId)) {
     return NextResponse.json({ error: "Ongeldig itemId." }, { status: 400 });
   }
   if (typeof persona !== "string" || !isRecordingPersona(persona)) {
     return NextResponse.json({ error: "Ongeldige persona." }, { status: 400 });
-  }
-  if (
-    typeof reviewStatus !== "string" ||
-    !REVIEW_STATUSES_FROM_STUDIO.includes(reviewStatus as ReviewStatus)
-  ) {
-    return NextResponse.json({ error: "Ongeldige reviewstatus." }, { status: 400 });
   }
 
   const entry = await updateReviewStatus(itemId, persona as RecordingPersona, reviewStatus as ReviewStatus);

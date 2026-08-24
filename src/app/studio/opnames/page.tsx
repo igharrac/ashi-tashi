@@ -53,6 +53,7 @@ export default function StudioOpnamesPage() {
   const [spellings, setSpellings] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
   const [activePersona, setActivePersona] = useState<RecordingPersona>("man");
+  const [bulkApproving, setBulkApproving] = useState(false);
   const [mode, setMode] = useState<StudioMode>("woorden");
   const [activeLevelSlug, setActiveLevelSlug] = useState(LEVELS[0]?.slug ?? "");
 
@@ -104,6 +105,35 @@ export default function StudioOpnamesPage() {
     router.refresh();
   }
 
+  /**
+   * Alle nog-niet-goedgekeurde opnames van de huidige categorie + persona in
+   * één keer goedkeuren (op verzoek: minder klikken dan elke opname apart
+   * langsgaan). Losse goedkeuren/afkeuren per item (RecorderControl) blijft
+   * gewoon bestaan voor wie liever per opname beslist.
+   */
+  async function handleBulkApprove(itemsToApprove: { itemId: string; persona: RecordingPersona }[]) {
+    if (itemsToApprove.length === 0) return;
+    setBulkApproving(true);
+    try {
+      const response = await fetch("/api/studio/recordings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items: itemsToApprove, reviewStatus: "GOEDGEKEURD" }),
+      });
+      if (!response.ok) return;
+      const data = (await response.json()) as { entries: RecordingEntryData[] };
+      setManifest((prev) => {
+        const next = { ...prev };
+        for (const entry of data.entries) {
+          next[recordingKey(entry.itemId, entry.persona)] = entry;
+        }
+        return next;
+      });
+    } finally {
+      setBulkApproving(false);
+    }
+  }
+
   const itemsForActiveCategory = useMemo(
     () => items.filter((item) => item.categorySlug === activeCategorySlug),
     [items, activeCategorySlug]
@@ -118,6 +148,16 @@ export default function StudioOpnamesPage() {
   );
   const itemsForActiveSelection: StudioListItem[] =
     mode === "woorden" ? itemsForActiveCategory : mode === "zinnen" ? sentencesForActiveCategory : practiceSentencesForActiveCategory;
+
+  // Items in de huidige categorie + persona die wél een opname hebben maar
+  // nog niet goedgekeurd zijn — dit is precies wat "Alles goedkeuren" in
+  // één klap goedkeurt.
+  const itemsPendingApproval = itemsForActiveSelection
+    .filter((item) => {
+      const entry = manifest[recordingKey(item.id, activePersona)];
+      return entry && entry.reviewStatus !== "GOEDGEKEURD";
+    })
+    .map((item) => ({ itemId: item.id, persona: activePersona }));
 
   function countsFor(pool: StudioListItem[], categorySlug: string, persona: RecordingPersona) {
     let recorded = 0;
@@ -311,11 +351,23 @@ export default function StudioOpnamesPage() {
           })}
         </div>
         {activeModeCategory && (
-          <p className="mt-3 text-sm text-ink-muted">
-            {activeModeCategory.titleNl} · {activeCounts.recorded}/
-            {activeCounts.total} opgenomen voor {PERSONA_LABELS[activePersona].toLowerCase()} · {activeCounts.approved}{" "}
-            goedgekeurd
-          </p>
+          <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+            <p className="text-sm text-ink-muted">
+              {activeModeCategory.titleNl} · {activeCounts.recorded}/
+              {activeCounts.total} opgenomen voor {PERSONA_LABELS[activePersona].toLowerCase()} · {activeCounts.approved}{" "}
+              goedgekeurd
+            </p>
+            {itemsPendingApproval.length > 0 && (
+              <Button
+                variant="secondary"
+                size="sm"
+                onClick={() => handleBulkApprove(itemsPendingApproval)}
+                disabled={bulkApproving}
+              >
+                {bulkApproving ? "Bezig…" : `Alles goedkeuren (${itemsPendingApproval.length})`}
+              </Button>
+            )}
+          </div>
         )}
       </Card>
 

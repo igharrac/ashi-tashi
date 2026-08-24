@@ -116,6 +116,31 @@ export async function updateReviewStatus(
   return entry;
 }
 
+/**
+ * Meerdere opnames in één keer op dezelfde reviewstatus zetten (op verzoek:
+ * "alles in 1x kunnen goedkeuren i.p.v. elke opname apart") — één keer
+ * inlezen/wegschrijven i.p.v. per item, dus ook bij tientallen items geen
+ * herhaalde disk-I/O. Items zonder bestaande opname worden gewoon
+ * overgeslagen (geen foutmelding voor de hele batch).
+ */
+export async function updateReviewStatusBulk(
+  keys: { itemId: string; persona: RecordingPersona }[],
+  reviewStatus: ReviewStatus
+): Promise<RecordingEntry[]> {
+  const manifest = await readManifest();
+  const updated: RecordingEntry[] = [];
+  for (const { itemId, persona } of keys) {
+    const key = recordingKey(itemId, persona);
+    const entry = manifest[key];
+    if (!entry) continue;
+    entry.reviewStatus = reviewStatus;
+    manifest[key] = entry;
+    updated.push(entry);
+  }
+  if (updated.length > 0) await writeManifest(manifest);
+  return updated;
+}
+
 export async function deleteRecording(itemId: string, persona: RecordingPersona): Promise<void> {
   const manifest = await readManifest();
   const key = recordingKey(itemId, persona);
