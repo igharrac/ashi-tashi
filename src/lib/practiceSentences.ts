@@ -6,13 +6,17 @@
  * niveau, net als bij de gewone woordcategorieën).
  *
  * Zelfde regel als overal (hfst. 3, 54): Nederlandse zin + emoji-placeholder,
- * geen verzonnen Tashelhit-vertaling. `latinSpelling` is een
- * `[TASHELHIT_..._REVIEW_REQUIRED:...]`-placeholder, in te vullen via de
- * opnamestudio (tabblad "Oefenen", src/app/studio/opnames/page.tsx).
+ * geen verzonnen Tashelhit-vertaling. `latinSpelling` hieronder is een
+ * `[TASHELHIT_..._REVIEW_REQUIRED:...]`-placeholder — puur voor de studio-
+ * weergave, in te vullen via opname. De ECHTE spelling die het kind te zien
+ * krijgt komt (indien aanwezig) uit data/word-spellings.json, zie
+ * useWordSpelling.ts/referenceAudio.ts; die is voor een aantal zinnen hier
+ * al rechtstreeks door de ouder aangeleverd (dus geen placeholder nodig).
  *
- * "Ik heb honger" staat bewust NIET hier — die zin bestaat al in
- * dailySentences.ts (categorie basisbehoeften) en zou anders dubbel worden
- * aangeboden.
+ * "Ik heb honger", "Ik heb dorst" en "Ik ben moe" staan bewust NIET hier —
+ * die zinnen bestaan al in dailySentences.ts (categorie basisbehoeften) en
+ * zouden anders dubbel worden aangeboden; de aangeleverde spelling voor die
+ * drie is aan de bestaande dailySentences-items gekoppeld.
  */
 
 export interface PracticeSentenceCategory {
@@ -39,6 +43,10 @@ export interface PracticeSentenceDefinition {
 
 export const PRACTICE_SENTENCE_CATEGORIES: PracticeSentenceCategory[] = [
   { slug: "oefenen-acties", titleNl: "Acties & bewegen", emoji: "🚶" },
+  { slug: "oefenen-verzoeken", titleNl: "Verzoeken", emoji: "🙏" },
+  { slug: "oefenen-vragen", titleNl: "Vragen", emoji: "❓" },
+  { slug: "oefenen-wensen", titleNl: "Wensen", emoji: "💭" },
+  { slug: "oefenen-taal-leren", titleNl: "Taal leren", emoji: "🗣️" },
 ];
 
 export const PRACTICE_SENTENCES: PracticeSentenceDefinition[] = [
@@ -73,6 +81,112 @@ export const PRACTICE_SENTENCES: PracticeSentenceDefinition[] = [
     contextNl: "Als het tijd is om te eten, zeg je:",
     emoji: "🍽️",
     pictogramUrl: "https://static.arasaac.org/pictograms/28675/28675_500.png",
+  },
+
+  // Verzoeken
+  {
+    id: "item-oefenen-geef-me-brood",
+    categorySlug: "oefenen-verzoeken",
+    translationNl: "Geef me brood.",
+    contextNl: "Als je brood wilt, zeg je:",
+    emoji: "🍞",
+  },
+  {
+    id: "item-oefenen-geef-me-water",
+    categorySlug: "oefenen-verzoeken",
+    translationNl: "Geef me water.",
+    contextNl: "Als je water wilt, zeg je:",
+    emoji: "💧",
+  },
+
+  // Vragen
+  {
+    id: "item-oefenen-wat-zeg-je",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Wat zeg je?",
+    contextNl: "Als je iemand niet goed hoort, vraag je:",
+    emoji: "👂",
+  },
+  {
+    id: "item-oefenen-weet-niet-wat-je-zegt",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Ik weet niet wat je zegt.",
+    contextNl: "Als je iemand niet begrijpt, zeg je:",
+    emoji: "🤷",
+  },
+  {
+    id: "item-oefenen-waar-ben-je",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Waar ben je?",
+    contextNl: "Als je iemand zoekt, roep je:",
+    emoji: "🔍",
+  },
+  {
+    id: "item-oefenen-waar-ga-je-heen",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Waar ga je heen?",
+    contextNl: "Als je wilt weten waar iemand heen gaat, vraag je:",
+    emoji: "🚶",
+  },
+  {
+    id: "item-oefenen-wat-doe-je",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Wat doe je?",
+    contextNl: "Als je wilt weten wat iemand aan het doen is, vraag je:",
+    emoji: "👀",
+  },
+  {
+    id: "item-oefenen-wat-is-er",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Wat is er?",
+    contextNl: "Als je merkt dat er iets is, vraag je:",
+    emoji: "❗",
+  },
+  {
+    id: "item-oefenen-hoe-heet-je-meisje",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Hoe heet je? (tegen een meisje)",
+    contextNl: "Als je het aan een meisje vraagt, zeg je:",
+    emoji: "🙋‍♀️",
+  },
+  {
+    id: "item-oefenen-hoe-heet-je-jongen",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Hoe heet je? (tegen een jongen)",
+    contextNl: "Als je het aan een jongen vraagt, zeg je:",
+    emoji: "🙋‍♂️",
+  },
+
+  // Wensen
+  {
+    id: "item-oefenen-ik-wil-naar-huis",
+    categorySlug: "oefenen-wensen",
+    translationNl: "Ik wil naar huis.",
+    contextNl: "Als je naar huis wilt, zeg je:",
+    emoji: "🏠",
+  },
+  {
+    id: "item-oefenen-ik-wil-niet",
+    categorySlug: "oefenen-wensen",
+    translationNl: "Ik wil niet.",
+    contextNl: "Als je iets niet wilt, zeg je:",
+    emoji: "🙅",
+  },
+
+  // Taal leren
+  {
+    id: "item-oefenen-tashelhit-leren",
+    categorySlug: "oefenen-taal-leren",
+    translationNl: "Ik wil Tashelhit leren.",
+    contextNl: "Als je wilt vertellen dat je Tashelhit leert, zeg je:",
+    emoji: "📚",
+  },
+  {
+    id: "item-oefenen-tashelhit-praten-met-jou",
+    categorySlug: "oefenen-taal-leren",
+    translationNl: "Ik wil met jou Tashelhit praten.",
+    contextNl: "Als je Tashelhit wilt oefenen met iemand, zeg je:",
+    emoji: "🗣️",
   },
 ];
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T16:24:05.138Z",
+  "generatedAt": "2026-08-24T14:05:17.658Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -864,6 +864,78 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-leraar__man.webm"
       }
+    },
+    "item-dieren-uil": {
+      "phoneticSpelling": "Tanuht",
+      "recordings": {}
+    },
+    "item-zin-honger": {
+      "phoneticSpelling": "Yaghiyyi laaz",
+      "recordings": {}
+    },
+    "item-zin-dorst": {
+      "phoneticSpelling": "Yaghiyyi faad",
+      "recordings": {}
+    },
+    "item-zin-moe": {
+      "phoneticSpelling": "Oehlaagh",
+      "recordings": {}
+    },
+    "item-oefenen-geef-me-brood": {
+      "phoneticSpelling": "Awid aghroum",
+      "recordings": {}
+    },
+    "item-oefenen-geef-me-water": {
+      "phoneticSpelling": "Awid aman",
+      "recordings": {}
+    },
+    "item-oefenen-wat-zeg-je": {
+      "phoneticSpelling": "Mat tnnit?",
+      "recordings": {}
+    },
+    "item-oefenen-weet-niet-wat-je-zegt": {
+      "phoneticSpelling": "Ur singh ma d tnit",
+      "recordings": {}
+    },
+    "item-oefenen-waar-ben-je": {
+      "phoneticSpelling": "Mandi y tellit?",
+      "recordings": {}
+    },
+    "item-oefenen-waar-ga-je-heen": {
+      "phoneticSpelling": "Mas taaint?",
+      "recordings": {}
+    },
+    "item-oefenen-wat-doe-je": {
+      "phoneticSpelling": "Matskart?",
+      "recordings": {}
+    },
+    "item-oefenen-wat-is-er": {
+      "phoneticSpelling": "May jran?",
+      "recordings": {}
+    },
+    "item-oefenen-hoe-heet-je-meisje": {
+      "phoneticSpelling": "Maysmanam?",
+      "recordings": {}
+    },
+    "item-oefenen-hoe-heet-je-jongen": {
+      "phoneticSpelling": "Maysmanakh?",
+      "recordings": {}
+    },
+    "item-oefenen-ik-wil-naar-huis": {
+      "phoneticSpelling": "Righ adough s teddart",
+      "recordings": {}
+    },
+    "item-oefenen-ik-wil-niet": {
+      "phoneticSpelling": "Urrigh",
+      "recordings": {}
+    },
+    "item-oefenen-tashelhit-leren": {
+      "phoneticSpelling": "Righ ad 3almgh Tachelhit",
+      "recordings": {}
+    },
+    "item-oefenen-tashelhit-praten-met-jou": {
+      "phoneticSpelling": "Righ adidam sawlgh Tachelhit",
+      "recordings": {}
     }
   }
 }
