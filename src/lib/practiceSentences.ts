@@ -156,6 +156,13 @@ export const PRACTICE_SENTENCES: PracticeSentenceDefinition[] = [
     contextNl: "Als je het aan een jongen vraagt, zeg je:",
     emoji: "🙋‍♂️",
   },
+  {
+    id: "item-oefenen-hoelaat-is-het",
+    categorySlug: "oefenen-vragen",
+    translationNl: "Hoe laat is het?",
+    contextNl: "Als je wilt weten hoe laat het is, vraag je:",
+    emoji: "🕐",
+  },
 
   // Wensen
   {

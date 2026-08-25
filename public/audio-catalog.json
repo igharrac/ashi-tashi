@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-24T14:05:17.658Z",
+  "generatedAt": "2026-08-25T14:19:59.830Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -935,6 +935,10 @@
     },
     "item-oefenen-tashelhit-praten-met-jou": {
       "phoneticSpelling": "Righ adidam sawlgh Tachelhit",
+      "recordings": {}
+    },
+    "item-oefenen-hoelaat-is-het": {
+      "phoneticSpelling": "Shaal sa-a?",
       "recordings": {}
     }
   }
