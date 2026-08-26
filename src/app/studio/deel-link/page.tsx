@@ -4,14 +4,22 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import type { ShareLinkDuration } from "@/lib/shareLink";
+
+const DURATION_OPTIONS: { value: ShareLinkDuration; label: string }[] = [
+  { value: "1d", label: "1 dag" },
+  { value: "3d", label: "3 dagen" },
+  { value: "7d", label: "1 week" },
+];
 
 /**
- * Genereert een tijdelijke (max 1 dag geldige) link waarmee iemand de
- * kind-app kan proberen zonder zelf iets aan te maken — zie
- * src/lib/shareLink.ts en src/middleware.ts. Zit achter dezelfde
- * studio-wachtwoordgate als de rest van /studio/* (middleware.ts).
+ * Genereert een tijdelijke link waarmee iemand de kind-app kan proberen
+ * zonder zelf iets aan te maken — zie src/lib/shareLink.ts en
+ * src/middleware.ts. Duur is kiesbaar (1/3/7 dagen, op verzoek). Zit achter
+ * dezelfde studio-wachtwoordgate als de rest van /studio/* (middleware.ts).
  */
 export default function ShareLinkPage() {
+  const [duration, setDuration] = useState<ShareLinkDuration>("1d");
   const [url, setUrl] = useState<string | null>(null);
   const [expiresAt, setExpiresAt] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +31,11 @@ export default function ShareLinkPage() {
     setError(null);
     setCopied(false);
 
-    const response = await fetch("/api/studio/share-link", { method: "POST" });
+    const response = await fetch("/api/studio/share-link", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ duration }),
+    });
     const data = (await response.json().catch(() => ({}))) as { url?: string; expiresAt?: number; error?: string };
 
     setLoading(false);
@@ -53,15 +65,36 @@ export default function ShareLinkPage() {
       <div>
         <h1 className="text-2xl font-bold text-forest-500">Deel-link genereren</h1>
         <p className="mt-1 text-sm text-ink-muted">
-          Maak een link waarmee iemand de app kan proberen — geldig tot max. 1 dag na het genereren, daarna vanzelf
-          verlopen.
+          Maak een link waarmee iemand de app kan proberen — kies hoe lang die geldig blijft, daarna vanzelf verlopen.
         </p>
       </div>
 
       <Card className="w-full text-left">
         <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <span className="text-sm font-medium text-ink">Geldig voor</span>
+            <div className="inline-flex w-fit gap-0.5 rounded-xl2 bg-primary-50 p-1">
+              {DURATION_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setDuration(option.value)}
+                  className={`rounded-lg px-3.5 py-1.5 text-sm transition-colors
+                    focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
+                    ${
+                      option.value === duration
+                        ? "bg-white font-medium text-ink shadow-sm"
+                        : "text-ink-muted hover:text-ink"
+                    }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
           <Button onClick={handleGenerate} disabled={loading}>
-            {loading ? "Bezig…" : "Genereer nieuwe link (24u)"}
+            {loading ? "Bezig…" : "Genereer nieuwe link"}
           </Button>
 
           {error && (

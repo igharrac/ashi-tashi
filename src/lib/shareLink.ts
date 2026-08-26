@@ -14,6 +14,19 @@
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
+/** Selecteerbare geldigheidsduren voor een deel-link (op verzoek: niet meer altijd vast op 1 dag). */
+export const SHARE_LINK_DURATIONS = {
+  "1d": DAY_MS,
+  "3d": 3 * DAY_MS,
+  "7d": 7 * DAY_MS,
+} as const;
+
+export type ShareLinkDuration = keyof typeof SHARE_LINK_DURATIONS;
+
+export function isShareLinkDuration(value: unknown): value is ShareLinkDuration {
+  return typeof value === "string" && value in SHARE_LINK_DURATIONS;
+}
+
 export const SHARE_ACCESS_COOKIE = "ashi_tashi_access";
 export const SHARE_TOKEN_QUERY_PARAM = "toegang";
 
