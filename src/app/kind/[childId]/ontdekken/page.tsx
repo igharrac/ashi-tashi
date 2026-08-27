@@ -8,9 +8,10 @@ import { AppShell } from "@/components/layout/AppShell";
 import { WordGrid } from "@/components/discover/WordGrid";
 import { WordDetailModal } from "@/components/discover/WordDetailModal";
 import { Button } from "@/components/ui/Button";
-import { CATEGORIES, getCatalogItems, type CatalogItem } from "@/lib/contentCatalog";
+import { buildCatalogItems, type CatalogItem, type CategoryDefinition } from "@/lib/contentCatalog";
 import { getUnlockedCategorySlugs } from "@/lib/lessonCatalog";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
+import { getWordsContent, mergeCategories } from "@/lib/wordsContentClient";
 import type { VocabularyItemView } from "@/types/domain";
 
 function toVocabularyItemView(item: CatalogItem): VocabularyItemView {
@@ -36,11 +37,15 @@ export default function DiscoverPage() {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [activeCategorySlug, setActiveCategorySlug] = useState<string | null>(null);
+  const [categories, setCategories] = useState<CategoryDefinition[] | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     getItemIdsWithRecordings().then((ids) => {
       if (!cancelled) setRecordedIds(ids);
+    });
+    getWordsContent().then((content) => {
+      if (!cancelled) setCategories(mergeCategories(content));
     });
     return () => {
       cancelled = true;
@@ -54,9 +59,9 @@ export default function DiscoverPage() {
   // niet meer alleen "dieren". Nog op slot betekent hier ook nog niet
   // beschikbaar om vrij te browsen.
   const unlockedCategorySlugs = useMemo(() => {
-    if (!recordedIds || !child) return [];
-    return getUnlockedCategorySlugs(child.completedLessonIds, recordedIds);
-  }, [recordedIds, child]);
+    if (!recordedIds || !child || !categories) return [];
+    return getUnlockedCategorySlugs(child.completedLessonIds, recordedIds, categories);
+  }, [recordedIds, child, categories]);
 
   useEffect(() => {
     if (activeCategorySlug && unlockedCategorySlugs.includes(activeCategorySlug)) return;
@@ -68,16 +73,16 @@ export default function DiscoverPage() {
   // zou het kind bij een tik gewoon Nederlandse TTS te horen krijgen
   // (zelfde regel als het matchspel, zie getItemIdsWithRecordings).
   const items = useMemo(() => {
-    if (!recordedIds || !activeCategorySlug) return [];
-    return getCatalogItems()
+    if (!recordedIds || !activeCategorySlug || !categories) return [];
+    return buildCatalogItems(categories)
       .filter((item) => item.categorySlug === activeCategorySlug && recordedIds.has(item.id))
       .map(toVocabularyItemView);
-  }, [recordedIds, activeCategorySlug]);
+  }, [recordedIds, activeCategorySlug, categories]);
 
   if (!ready) return <p className="pt-12 text-center text-ink-muted">Even laden…</p>;
   if (!child) return notFound();
 
-  const loading = recordedIds === null;
+  const loading = recordedIds === null || categories === null;
 
   return (
     <AppShell child={child}>
@@ -96,7 +101,7 @@ export default function DiscoverPage() {
       {!loading && unlockedCategorySlugs.length > 1 && (
         <div className="mx-auto mt-4 flex max-w-4xl flex-wrap justify-center gap-2">
           {unlockedCategorySlugs.map((slug) => {
-            const category = CATEGORIES.find((c) => c.slug === slug);
+            const category = categories?.find((c) => c.slug === slug);
             if (!category) return null;
             return (
               <button

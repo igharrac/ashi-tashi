@@ -8,6 +8,8 @@ import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
 import { DAILY_SENTENCES_LESSON_ID, getGenericLessonById } from "@/lib/lessonCatalog";
 import { getDailySentenceContent, type DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import { getPracticeContent, type PracticeContent } from "@/lib/practiceContentClient";
+import { getWordsContent, mergeCategories } from "@/lib/wordsContentClient";
+import type { CategoryDefinition } from "@/lib/contentCatalog";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
 import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
@@ -35,6 +37,7 @@ export default function LessonPage() {
   // hoort niet bij een andere categorie (zie completeLesson hieronder).
   const [practiceContent, setPracticeContent] = useState<PracticeContent | null>(null);
   const [dailySentenceContent, setDailySentenceContent] = useState<DailySentenceContent | null>(null);
+  const [categories, setCategories] = useState<CategoryDefinition[] | null>(null);
   useEffect(() => {
     let cancelled = false;
     getPracticeContent().then((content) => {
@@ -42,6 +45,9 @@ export default function LessonPage() {
     });
     getDailySentenceContent().then((content) => {
       if (!cancelled) setDailySentenceContent(content);
+    });
+    getWordsContent().then((content) => {
+      if (!cancelled) setCategories(mergeCategories(content));
     });
     return () => {
       cancelled = true;
@@ -51,8 +57,8 @@ export default function LessonPage() {
   const dierenLesson = DIEREN_THEME.lessons.find((l) => l.id === params.lessonId);
   const lesson =
     dierenLesson ??
-    (practiceContent && dailySentenceContent
-      ? getGenericLessonById(params.lessonId, practiceContent, dailySentenceContent)
+    (practiceContent && dailySentenceContent && categories
+      ? getGenericLessonById(params.lessonId, practiceContent, dailySentenceContent, categories)
       : null);
   const isDierenLesson = Boolean(dierenLesson);
   // Child alvast ophalen (kan nog undefined zijn vóór "ready") zodat de
@@ -132,7 +138,7 @@ export default function LessonPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  if (!ready || practiceContent === null || dailySentenceContent === null)
+  if (!ready || practiceContent === null || dailySentenceContent === null || categories === null)
     return <p className="text-center text-gray-500">Even laden…</p>;
   const child = getChild(params.childId);
   if (!child || !lesson) return notFound();

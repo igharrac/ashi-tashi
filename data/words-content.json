@@ -1,0 +1,1375 @@
+{
+  "categories": [
+    {
+      "slug": "lichaam",
+      "levelSlug": "de-basis",
+      "titleNl": "Lichaam",
+      "emoji": "🙂",
+      "teaser": "Van hoofd tot teen.",
+      "words": [
+        {
+          "slug": "oog",
+          "translationNl": "oog",
+          "emoji": "👁️"
+        },
+        {
+          "slug": "oor",
+          "translationNl": "oor",
+          "emoji": "👂"
+        },
+        {
+          "slug": "neus",
+          "translationNl": "neus",
+          "emoji": "👃"
+        },
+        {
+          "slug": "mond",
+          "translationNl": "mond",
+          "emoji": "👄"
+        },
+        {
+          "slug": "tand",
+          "translationNl": "tand",
+          "emoji": "🦷"
+        },
+        {
+          "slug": "tong",
+          "translationNl": "tong",
+          "emoji": "👅"
+        },
+        {
+          "slug": "hand",
+          "translationNl": "hand",
+          "emoji": "✋"
+        },
+        {
+          "slug": "vinger",
+          "translationNl": "vinger",
+          "emoji": "👉"
+        },
+        {
+          "slug": "vuist",
+          "translationNl": "vuist",
+          "emoji": "✊"
+        },
+        {
+          "slug": "arm",
+          "translationNl": "arm",
+          "emoji": "💪"
+        },
+        {
+          "slug": "been",
+          "translationNl": "been",
+          "emoji": "🦵"
+        },
+        {
+          "slug": "voet",
+          "translationNl": "voet",
+          "emoji": "🦶"
+        },
+        {
+          "slug": "hart",
+          "translationNl": "hart",
+          "emoji": "🫀"
+        },
+        {
+          "slug": "hersenen",
+          "translationNl": "hersenen",
+          "emoji": "🧠"
+        },
+        {
+          "slug": "longen",
+          "translationNl": "longen",
+          "emoji": "🫁"
+        },
+        {
+          "slug": "bot",
+          "translationNl": "bot",
+          "emoji": "🦴"
+        },
+        {
+          "slug": "nagel",
+          "translationNl": "nagel",
+          "emoji": "💅"
+        },
+        {
+          "slug": "schedel",
+          "translationNl": "schedel",
+          "emoji": "💀"
+        }
+      ]
+    },
+    {
+      "slug": "kleding",
+      "levelSlug": "de-basis",
+      "titleNl": "Kleding",
+      "emoji": "👕",
+      "teaser": "Wat trek je vandaag aan?",
+      "words": [
+        {
+          "slug": "shirt",
+          "translationNl": "shirt",
+          "emoji": "👕"
+        },
+        {
+          "slug": "broek",
+          "translationNl": "broek",
+          "emoji": "👖"
+        },
+        {
+          "slug": "jurk",
+          "translationNl": "jurk",
+          "emoji": "👗"
+        },
+        {
+          "slug": "jas",
+          "translationNl": "jas",
+          "emoji": "🧥"
+        },
+        {
+          "slug": "sjaal",
+          "translationNl": "sjaal",
+          "emoji": "🧣"
+        },
+        {
+          "slug": "handschoenen",
+          "translationNl": "handschoenen",
+          "emoji": "🧤"
+        },
+        {
+          "slug": "sokken",
+          "translationNl": "sokken",
+          "emoji": "🧦"
+        },
+        {
+          "slug": "schoenen",
+          "translationNl": "schoenen",
+          "emoji": "👞"
+        },
+        {
+          "slug": "laarzen",
+          "translationNl": "laarzen",
+          "emoji": "🥾"
+        },
+        {
+          "slug": "sandalen",
+          "translationNl": "sandalen",
+          "emoji": "👡"
+        },
+        {
+          "slug": "hoge-hakken",
+          "translationNl": "hoge hakken",
+          "emoji": "👠"
+        },
+        {
+          "slug": "pet",
+          "translationNl": "pet",
+          "emoji": "🧢"
+        },
+        {
+          "slug": "hoed",
+          "translationNl": "hoed",
+          "emoji": "🎩"
+        },
+        {
+          "slug": "bikini",
+          "translationNl": "bikini",
+          "emoji": "👙"
+        },
+        {
+          "slug": "zwembroek",
+          "translationNl": "zwembroek",
+          "emoji": "🩳"
+        },
+        {
+          "slug": "das",
+          "translationNl": "das",
+          "emoji": "👔"
+        },
+        {
+          "slug": "zonnebril",
+          "translationNl": "zonnebril",
+          "emoji": "🕶️"
+        },
+        {
+          "slug": "kroon",
+          "translationNl": "kroon",
+          "emoji": "👑"
+        },
+        {
+          "slug": "ring",
+          "translationNl": "ring",
+          "emoji": "💍"
+        },
+        {
+          "slug": "horloge",
+          "translationNl": "horloge",
+          "emoji": "⌚"
+        },
+        {
+          "slug": "badpak",
+          "translationNl": "badpak",
+          "emoji": "🩱"
+        },
+        {
+          "slug": "kimono",
+          "translationNl": "kimono",
+          "emoji": "👘"
+        },
+        {
+          "slug": "sari",
+          "translationNl": "sari",
+          "emoji": "🥻"
+        },
+        {
+          "slug": "tulband",
+          "translationNl": "tulband",
+          "emoji": "👳"
+        }
+      ]
+    },
+    {
+      "slug": "eten-en-drinken",
+      "levelSlug": "thuis-en-eten",
+      "titleNl": "Eten & Drinken",
+      "emoji": "🍎",
+      "teaser": "Proef de lekkerste woorden.",
+      "words": [
+        {
+          "slug": "appel",
+          "translationNl": "appel",
+          "emoji": "🍎"
+        },
+        {
+          "slug": "banaan",
+          "translationNl": "banaan",
+          "emoji": "🍌"
+        },
+        {
+          "slug": "sinaasappel",
+          "translationNl": "sinaasappel",
+          "emoji": "🍊"
+        },
+        {
+          "slug": "druiven",
+          "translationNl": "druiven",
+          "emoji": "🍇"
+        },
+        {
+          "slug": "aardbei",
+          "translationNl": "aardbei",
+          "emoji": "🍓"
+        },
+        {
+          "slug": "watermeloen",
+          "translationNl": "watermeloen",
+          "emoji": "🍉"
+        },
+        {
+          "slug": "peer",
+          "translationNl": "peer",
+          "emoji": "🍐"
+        },
+        {
+          "slug": "kers",
+          "translationNl": "kers",
+          "emoji": "🍒"
+        },
+        {
+          "slug": "ananas",
+          "translationNl": "ananas",
+          "emoji": "🍍"
+        },
+        {
+          "slug": "citroen",
+          "translationNl": "citroen",
+          "emoji": "🍋"
+        },
+        {
+          "slug": "perzik",
+          "translationNl": "perzik",
+          "emoji": "🍑"
+        },
+        {
+          "slug": "kiwi",
+          "translationNl": "kiwi",
+          "emoji": "🥝"
+        },
+        {
+          "slug": "mango",
+          "translationNl": "mango",
+          "emoji": "🥭"
+        },
+        {
+          "slug": "kokosnoot",
+          "translationNl": "kokosnoot",
+          "emoji": "🥥"
+        },
+        {
+          "slug": "brood",
+          "translationNl": "brood",
+          "emoji": "🍞"
+        },
+        {
+          "slug": "kaas",
+          "translationNl": "kaas",
+          "emoji": "🧀"
+        },
+        {
+          "slug": "ei",
+          "translationNl": "ei",
+          "emoji": "🥚"
+        },
+        {
+          "slug": "melk",
+          "translationNl": "melk",
+          "emoji": "🥛"
+        },
+        {
+          "slug": "water",
+          "translationNl": "water",
+          "emoji": "💧"
+        },
+        {
+          "slug": "thee",
+          "translationNl": "thee",
+          "emoji": "🍵"
+        },
+        {
+          "slug": "honing",
+          "translationNl": "honing",
+          "emoji": "🍯"
+        },
+        {
+          "slug": "boter",
+          "translationNl": "boter",
+          "emoji": "🧈"
+        },
+        {
+          "slug": "rijst",
+          "translationNl": "rijst",
+          "emoji": "🍚"
+        },
+        {
+          "slug": "pasta",
+          "translationNl": "pasta",
+          "emoji": "🍝"
+        },
+        {
+          "slug": "pizza",
+          "translationNl": "pizza",
+          "emoji": "🍕"
+        },
+        {
+          "slug": "taart",
+          "translationNl": "taart",
+          "emoji": "🎂"
+        },
+        {
+          "slug": "koekje",
+          "translationNl": "koekje",
+          "emoji": "🍪"
+        },
+        {
+          "slug": "chocolade",
+          "translationNl": "chocolade",
+          "emoji": "🍫"
+        },
+        {
+          "slug": "ijsje",
+          "translationNl": "ijsje",
+          "emoji": "🍦"
+        },
+        {
+          "slug": "wortel",
+          "translationNl": "wortel",
+          "emoji": "🥕"
+        },
+        {
+          "slug": "tomaat",
+          "translationNl": "tomaat",
+          "emoji": "🍅"
+        },
+        {
+          "slug": "komkommer",
+          "translationNl": "komkommer",
+          "emoji": "🥒"
+        },
+        {
+          "slug": "paprika",
+          "translationNl": "paprika",
+          "emoji": "🫑"
+        },
+        {
+          "slug": "aardappel",
+          "translationNl": "aardappel",
+          "emoji": "🥔"
+        },
+        {
+          "slug": "ui",
+          "translationNl": "ui",
+          "emoji": "🧅"
+        },
+        {
+          "slug": "knoflook",
+          "translationNl": "knoflook",
+          "emoji": "🧄"
+        },
+        {
+          "slug": "mais",
+          "translationNl": "maïs",
+          "emoji": "🌽"
+        },
+        {
+          "slug": "broccoli",
+          "translationNl": "broccoli",
+          "emoji": "🥦"
+        },
+        {
+          "slug": "paddenstoel",
+          "translationNl": "paddenstoel",
+          "emoji": "🍄"
+        },
+        {
+          "slug": "popcorn",
+          "translationNl": "popcorn",
+          "emoji": "🍿"
+        }
+      ]
+    },
+    {
+      "slug": "huis-en-spullen",
+      "levelSlug": "thuis-en-eten",
+      "titleNl": "Huis & Spullen",
+      "emoji": "🏡",
+      "teaser": "Alles wat je thuis tegenkomt.",
+      "words": [
+        {
+          "slug": "stoel",
+          "translationNl": "stoel",
+          "emoji": "🪑"
+        },
+        {
+          "slug": "bed",
+          "translationNl": "bed",
+          "emoji": "🛏️"
+        },
+        {
+          "slug": "bank",
+          "translationNl": "bank",
+          "emoji": "🛋️"
+        },
+        {
+          "slug": "deur",
+          "translationNl": "deur",
+          "emoji": "🚪"
+        },
+        {
+          "slug": "raam",
+          "translationNl": "raam",
+          "emoji": "🪟"
+        },
+        {
+          "slug": "lamp",
+          "translationNl": "lamp",
+          "emoji": "💡"
+        },
+        {
+          "slug": "klok",
+          "translationNl": "klok",
+          "emoji": "🕐"
+        },
+        {
+          "slug": "spiegel",
+          "translationNl": "spiegel",
+          "emoji": "🪞"
+        },
+        {
+          "slug": "boek",
+          "translationNl": "boek",
+          "emoji": "📖"
+        },
+        {
+          "slug": "pen",
+          "translationNl": "pen",
+          "emoji": "🖊️"
+        },
+        {
+          "slug": "potlood",
+          "translationNl": "potlood",
+          "emoji": "✏️"
+        },
+        {
+          "slug": "schaar",
+          "translationNl": "schaar",
+          "emoji": "✂️"
+        },
+        {
+          "slug": "telefoon",
+          "translationNl": "telefoon",
+          "emoji": "📱"
+        },
+        {
+          "slug": "computer",
+          "translationNl": "computer",
+          "emoji": "💻"
+        },
+        {
+          "slug": "televisie",
+          "translationNl": "televisie",
+          "emoji": "📺"
+        },
+        {
+          "slug": "kopje",
+          "translationNl": "kopje",
+          "emoji": "☕"
+        },
+        {
+          "slug": "bord",
+          "translationNl": "bord",
+          "emoji": "🍽️"
+        },
+        {
+          "slug": "lepel",
+          "translationNl": "lepel",
+          "emoji": "🥄"
+        },
+        {
+          "slug": "vork",
+          "translationNl": "vork",
+          "emoji": "🍴"
+        },
+        {
+          "slug": "mes",
+          "translationNl": "mes",
+          "emoji": "🔪"
+        },
+        {
+          "slug": "pan",
+          "translationNl": "pan",
+          "emoji": "🍳"
+        },
+        {
+          "slug": "douche",
+          "translationNl": "douche",
+          "emoji": "🚿"
+        },
+        {
+          "slug": "bad",
+          "translationNl": "bad",
+          "emoji": "🛁"
+        },
+        {
+          "slug": "wc",
+          "translationNl": "wc",
+          "emoji": "🚽"
+        },
+        {
+          "slug": "sleutel",
+          "translationNl": "sleutel",
+          "emoji": "🔑"
+        },
+        {
+          "slug": "tas",
+          "translationNl": "tas",
+          "emoji": "👜"
+        },
+        {
+          "slug": "paraplu",
+          "translationNl": "paraplu",
+          "emoji": "☂️"
+        },
+        {
+          "slug": "bezem",
+          "translationNl": "bezem",
+          "emoji": "🧹"
+        },
+        {
+          "slug": "emmer",
+          "translationNl": "emmer",
+          "emoji": "🪣"
+        },
+        {
+          "slug": "zeep",
+          "translationNl": "zeep",
+          "emoji": "🧼"
+        },
+        {
+          "slug": "tandenborstel",
+          "translationNl": "tandenborstel",
+          "emoji": "🪥"
+        },
+        {
+          "slug": "kaars",
+          "translationNl": "kaars",
+          "emoji": "🕯️"
+        },
+        {
+          "slug": "schilderij",
+          "translationNl": "schilderij",
+          "emoji": "🖼️"
+        },
+        {
+          "slug": "koffer",
+          "translationNl": "koffer",
+          "emoji": "🧳"
+        },
+        {
+          "slug": "wekker",
+          "translationNl": "wekker",
+          "emoji": "⏰"
+        }
+      ]
+    },
+    {
+      "slug": "natuur-en-weer",
+      "levelSlug": "buiten-en-natuur",
+      "titleNl": "Natuur & Weer",
+      "emoji": "🌦️",
+      "teaser": "Zon, regen en alles daartussenin.",
+      "words": [
+        {
+          "slug": "zon",
+          "translationNl": "zon",
+          "emoji": "☀️"
+        },
+        {
+          "slug": "maan",
+          "translationNl": "maan",
+          "emoji": "🌙"
+        },
+        {
+          "slug": "ster",
+          "translationNl": "ster",
+          "emoji": "⭐"
+        },
+        {
+          "slug": "wolk",
+          "translationNl": "wolk",
+          "emoji": "☁️"
+        },
+        {
+          "slug": "regen",
+          "translationNl": "regen",
+          "emoji": "🌧️"
+        },
+        {
+          "slug": "sneeuw",
+          "translationNl": "sneeuw",
+          "emoji": "❄️"
+        },
+        {
+          "slug": "wind",
+          "translationNl": "wind",
+          "emoji": "💨"
+        },
+        {
+          "slug": "regenboog",
+          "translationNl": "regenboog",
+          "emoji": "🌈"
+        },
+        {
+          "slug": "bliksem",
+          "translationNl": "bliksem",
+          "emoji": "⚡"
+        },
+        {
+          "slug": "berg",
+          "translationNl": "berg",
+          "emoji": "⛰️"
+        },
+        {
+          "slug": "vulkaan",
+          "translationNl": "vulkaan",
+          "emoji": "🌋"
+        },
+        {
+          "slug": "zee",
+          "translationNl": "zee",
+          "emoji": "🌊"
+        },
+        {
+          "slug": "strand",
+          "translationNl": "strand",
+          "emoji": "🏖️"
+        },
+        {
+          "slug": "boom",
+          "translationNl": "boom",
+          "emoji": "🌳"
+        },
+        {
+          "slug": "bloem",
+          "translationNl": "bloem",
+          "emoji": "🌸"
+        },
+        {
+          "slug": "gras",
+          "translationNl": "gras",
+          "emoji": "🌱"
+        },
+        {
+          "slug": "blad",
+          "translationNl": "blad",
+          "emoji": "🍂"
+        },
+        {
+          "slug": "eiland",
+          "translationNl": "eiland",
+          "emoji": "🏝️"
+        },
+        {
+          "slug": "woestijn",
+          "translationNl": "woestijn",
+          "emoji": "🏜️"
+        },
+        {
+          "slug": "bos",
+          "translationNl": "bos",
+          "emoji": "🌲"
+        },
+        {
+          "slug": "grot",
+          "translationNl": "grot",
+          "emoji": "🕳️"
+        },
+        {
+          "slug": "vuur",
+          "translationNl": "vuur",
+          "emoji": "🔥"
+        },
+        {
+          "slug": "ijs",
+          "translationNl": "ijs",
+          "emoji": "🧊"
+        },
+        {
+          "slug": "storm",
+          "translationNl": "storm",
+          "emoji": "🌪️"
+        },
+        {
+          "slug": "mist",
+          "translationNl": "mist",
+          "emoji": "🌫️"
+        },
+        {
+          "slug": "komeet",
+          "translationNl": "komeet",
+          "emoji": "🌠"
+        },
+        {
+          "slug": "planeet",
+          "translationNl": "planeet",
+          "emoji": "🪐"
+        },
+        {
+          "slug": "aarde",
+          "translationNl": "aarde",
+          "emoji": "🌍"
+        }
+      ]
+    },
+    {
+      "slug": "vervoer",
+      "levelSlug": "buiten-en-natuur",
+      "titleNl": "Vervoer",
+      "emoji": "🚗",
+      "teaser": "Hoe kom je van A naar B?",
+      "words": [
+        {
+          "slug": "auto",
+          "translationNl": "auto",
+          "emoji": "🚗"
+        },
+        {
+          "slug": "bus",
+          "translationNl": "bus",
+          "emoji": "🚌"
+        },
+        {
+          "slug": "trein",
+          "translationNl": "trein",
+          "emoji": "🚆"
+        },
+        {
+          "slug": "vliegtuig",
+          "translationNl": "vliegtuig",
+          "emoji": "✈️"
+        },
+        {
+          "slug": "fiets",
+          "translationNl": "fiets",
+          "emoji": "🚲"
+        },
+        {
+          "slug": "motor",
+          "translationNl": "motor",
+          "emoji": "🏍️"
+        },
+        {
+          "slug": "boot",
+          "translationNl": "boot",
+          "emoji": "⛵"
+        },
+        {
+          "slug": "schip",
+          "translationNl": "schip",
+          "emoji": "🚢"
+        },
+        {
+          "slug": "helikopter",
+          "translationNl": "helikopter",
+          "emoji": "🚁"
+        },
+        {
+          "slug": "raket",
+          "translationNl": "raket",
+          "emoji": "🚀"
+        },
+        {
+          "slug": "tractor",
+          "translationNl": "tractor",
+          "emoji": "🚜"
+        },
+        {
+          "slug": "brandweerwagen",
+          "translationNl": "brandweerwagen",
+          "emoji": "🚒"
+        },
+        {
+          "slug": "ambulance",
+          "translationNl": "ambulance",
+          "emoji": "🚑"
+        },
+        {
+          "slug": "politieauto",
+          "translationNl": "politieauto",
+          "emoji": "🚓"
+        },
+        {
+          "slug": "taxi",
+          "translationNl": "taxi",
+          "emoji": "🚕"
+        },
+        {
+          "slug": "vrachtwagen",
+          "translationNl": "vrachtwagen",
+          "emoji": "🚛"
+        },
+        {
+          "slug": "step",
+          "translationNl": "step",
+          "emoji": "🛴"
+        },
+        {
+          "slug": "skateboard",
+          "translationNl": "skateboard",
+          "emoji": "🛹"
+        },
+        {
+          "slug": "rolstoel",
+          "translationNl": "rolstoel",
+          "emoji": "♿"
+        },
+        {
+          "slug": "kano",
+          "translationNl": "kano",
+          "emoji": "🛶"
+        },
+        {
+          "slug": "tram",
+          "translationNl": "tram",
+          "emoji": "🚋"
+        },
+        {
+          "slug": "metro",
+          "translationNl": "metro",
+          "emoji": "🚇"
+        },
+        {
+          "slug": "kabelbaan",
+          "translationNl": "kabelbaan",
+          "emoji": "🚡"
+        },
+        {
+          "slug": "slee",
+          "translationNl": "slee",
+          "emoji": "🛷"
+        },
+        {
+          "slug": "brommer",
+          "translationNl": "brommer",
+          "emoji": "🛵"
+        },
+        {
+          "slug": "luchtballon",
+          "translationNl": "luchtballon",
+          "emoji": "🎈"
+        },
+        {
+          "slug": "wagon",
+          "translationNl": "wagon",
+          "emoji": "🚃"
+        },
+        {
+          "slug": "raceauto",
+          "translationNl": "raceauto",
+          "emoji": "🏎️"
+        }
+      ]
+    },
+    {
+      "slug": "speelgoed-en-spel",
+      "levelSlug": "buiten-en-natuur",
+      "titleNl": "Speelgoed & Spel",
+      "emoji": "🧸",
+      "teaser": "Tijd om te spelen!",
+      "words": [
+        {
+          "slug": "bal",
+          "translationNl": "bal",
+          "emoji": "⚽"
+        },
+        {
+          "slug": "pop",
+          "translationNl": "pop",
+          "emoji": "🎎"
+        },
+        {
+          "slug": "teddybeer",
+          "translationNl": "teddybeer",
+          "emoji": "🧸"
+        },
+        {
+          "slug": "puzzel",
+          "translationNl": "puzzel",
+          "emoji": "🧩"
+        },
+        {
+          "slug": "dobbelsteen",
+          "translationNl": "dobbelsteen",
+          "emoji": "🎲"
+        },
+        {
+          "slug": "kaartspel",
+          "translationNl": "kaartspel",
+          "emoji": "🃏"
+        },
+        {
+          "slug": "glijbaan",
+          "translationNl": "glijbaan",
+          "emoji": "🛝"
+        },
+        {
+          "slug": "vlieger",
+          "translationNl": "vlieger",
+          "emoji": "🪁"
+        },
+        {
+          "slug": "ballon",
+          "translationNl": "ballon",
+          "emoji": "🎈"
+        },
+        {
+          "slug": "zeepbellen",
+          "translationNl": "zeepbellen",
+          "emoji": "🫧"
+        },
+        {
+          "slug": "lego",
+          "translationNl": "lego",
+          "emoji": "🧱"
+        },
+        {
+          "slug": "spelcomputer",
+          "translationNl": "spelcomputer",
+          "emoji": "🎮"
+        },
+        {
+          "slug": "yoyo",
+          "translationNl": "yo-yo",
+          "emoji": "🪀"
+        },
+        {
+          "slug": "frisbee",
+          "translationNl": "frisbee",
+          "emoji": "🥏"
+        },
+        {
+          "slug": "badminton",
+          "translationNl": "badminton",
+          "emoji": "🏸"
+        },
+        {
+          "slug": "schaakbord",
+          "translationNl": "schaakbord",
+          "emoji": "♟️"
+        },
+        {
+          "slug": "draak",
+          "translationNl": "speelgoeddraak",
+          "emoji": "🐉"
+        },
+        {
+          "slug": "robot",
+          "translationNl": "robot",
+          "emoji": "🤖"
+        },
+        {
+          "slug": "magneet",
+          "translationNl": "magneet",
+          "emoji": "🧲"
+        },
+        {
+          "slug": "kompas",
+          "translationNl": "kompas",
+          "emoji": "🧭"
+        },
+        {
+          "slug": "verrekijker",
+          "translationNl": "verrekijker",
+          "emoji": "🔭"
+        },
+        {
+          "slug": "vergrootglas",
+          "translationNl": "vergrootglas",
+          "emoji": "🔍"
+        },
+        {
+          "slug": "vlag",
+          "translationNl": "vlag",
+          "emoji": "🚩"
+        },
+        {
+          "slug": "schat",
+          "translationNl": "schat",
+          "emoji": "💰"
+        }
+      ]
+    },
+    {
+      "slug": "beroepen",
+      "levelSlug": "grote-wereld",
+      "titleNl": "Beroepen",
+      "emoji": "👷",
+      "teaser": "Wat wil jij later worden?",
+      "words": [
+        {
+          "slug": "dokter",
+          "translationNl": "dokter",
+          "emoji": "🧑‍⚕️"
+        },
+        {
+          "slug": "leraar",
+          "translationNl": "leraar",
+          "emoji": "🧑‍🏫"
+        },
+        {
+          "slug": "brandweerman",
+          "translationNl": "brandweerman",
+          "emoji": "🧑‍🚒"
+        },
+        {
+          "slug": "politieagent",
+          "translationNl": "politieagent",
+          "emoji": "👮"
+        },
+        {
+          "slug": "boer",
+          "translationNl": "boer",
+          "emoji": "🧑‍🌾"
+        },
+        {
+          "slug": "kok",
+          "translationNl": "kok",
+          "emoji": "🧑‍🍳"
+        },
+        {
+          "slug": "kapper",
+          "translationNl": "kapper",
+          "emoji": "💇"
+        },
+        {
+          "slug": "monteur",
+          "translationNl": "monteur",
+          "emoji": "🧑‍🔧"
+        },
+        {
+          "slug": "piloot",
+          "translationNl": "piloot",
+          "emoji": "🧑‍✈️"
+        },
+        {
+          "slug": "astronaut",
+          "translationNl": "astronaut",
+          "emoji": "🧑‍🚀"
+        },
+        {
+          "slug": "kunstenaar",
+          "translationNl": "kunstenaar",
+          "emoji": "🧑‍🎨"
+        },
+        {
+          "slug": "zanger",
+          "translationNl": "zanger",
+          "emoji": "🧑‍🎤"
+        },
+        {
+          "slug": "wetenschapper",
+          "translationNl": "wetenschapper",
+          "emoji": "🧑‍🔬"
+        },
+        {
+          "slug": "rechter",
+          "translationNl": "rechter",
+          "emoji": "🧑‍⚖️"
+        },
+        {
+          "slug": "visser",
+          "translationNl": "visser",
+          "emoji": "🎣"
+        },
+        {
+          "slug": "postbode",
+          "translationNl": "postbode",
+          "emoji": "✉️"
+        },
+        {
+          "slug": "bakker",
+          "translationNl": "bakker",
+          "emoji": "🥖"
+        },
+        {
+          "slug": "danser",
+          "translationNl": "danser",
+          "emoji": "💃"
+        },
+        {
+          "slug": "acteur",
+          "translationNl": "acteur",
+          "emoji": "🎭"
+        },
+        {
+          "slug": "schrijver",
+          "translationNl": "schrijver",
+          "emoji": "✍️"
+        },
+        {
+          "slug": "fotograaf",
+          "translationNl": "fotograaf",
+          "emoji": "📷"
+        },
+        {
+          "slug": "dierenarts",
+          "translationNl": "dierenarts",
+          "emoji": "🐾"
+        },
+        {
+          "slug": "tandarts",
+          "translationNl": "tandarts",
+          "emoji": "🦷"
+        },
+        {
+          "slug": "apotheker",
+          "translationNl": "apotheker",
+          "emoji": "💊"
+        },
+        {
+          "slug": "buschauffeur",
+          "translationNl": "buschauffeur",
+          "emoji": "🚌"
+        },
+        {
+          "slug": "treinmachinist",
+          "translationNl": "treinmachinist",
+          "emoji": "🚆"
+        },
+        {
+          "slug": "bouwvakker",
+          "translationNl": "bouwvakker",
+          "emoji": "👷"
+        },
+        {
+          "slug": "elektricien",
+          "translationNl": "elektricien",
+          "emoji": "⚡"
+        },
+        {
+          "slug": "loodgieter",
+          "translationNl": "loodgieter",
+          "emoji": "🚰"
+        },
+        {
+          "slug": "imker",
+          "translationNl": "imker",
+          "emoji": "🐝"
+        },
+        {
+          "slug": "kapitein",
+          "translationNl": "kapitein",
+          "emoji": "⚓"
+        },
+        {
+          "slug": "rechercheur",
+          "translationNl": "rechercheur",
+          "emoji": "🔍"
+        },
+        {
+          "slug": "bibliothecaris",
+          "translationNl": "bibliothecaris",
+          "emoji": "📚"
+        },
+        {
+          "slug": "architect",
+          "translationNl": "architect",
+          "emoji": "📐"
+        },
+        {
+          "slug": "scheidsrechter",
+          "translationNl": "scheidsrechter",
+          "emoji": "🟨"
+        }
+      ]
+    },
+    {
+      "slug": "school",
+      "levelSlug": "grote-wereld",
+      "titleNl": "School",
+      "emoji": "🎒",
+      "teaser": "Alles voor in je schooltas.",
+      "words": [
+        {
+          "slug": "boek",
+          "translationNl": "boek",
+          "emoji": "📚"
+        },
+        {
+          "slug": "schrift",
+          "translationNl": "schrift",
+          "emoji": "📓"
+        },
+        {
+          "slug": "vulpen",
+          "translationNl": "vulpen",
+          "emoji": "🖋️"
+        },
+        {
+          "slug": "stift",
+          "translationNl": "stift",
+          "emoji": "🖍️"
+        },
+        {
+          "slug": "liniaal",
+          "translationNl": "liniaal",
+          "emoji": "📏"
+        },
+        {
+          "slug": "schaar",
+          "translationNl": "schaar",
+          "emoji": "✂️"
+        },
+        {
+          "slug": "rugzak",
+          "translationNl": "rugzak",
+          "emoji": "🎒"
+        },
+        {
+          "slug": "gymschoenen",
+          "translationNl": "gymschoenen",
+          "emoji": "👟"
+        },
+        {
+          "slug": "wereldbol",
+          "translationNl": "wereldbol",
+          "emoji": "🌐"
+        },
+        {
+          "slug": "landkaart",
+          "translationNl": "landkaart",
+          "emoji": "🗺️"
+        },
+        {
+          "slug": "computer",
+          "translationNl": "computer",
+          "emoji": "💻"
+        },
+        {
+          "slug": "prikbord",
+          "translationNl": "prikbord",
+          "emoji": "📌"
+        },
+        {
+          "slug": "rekenmachine",
+          "translationNl": "rekenmachine",
+          "emoji": "🧮"
+        },
+        {
+          "slug": "agenda",
+          "translationNl": "agenda",
+          "emoji": "📅"
+        },
+        {
+          "slug": "map",
+          "translationNl": "map",
+          "emoji": "📁"
+        },
+        {
+          "slug": "paperclip",
+          "translationNl": "paperclip",
+          "emoji": "📎"
+        },
+        {
+          "slug": "verfkwast",
+          "translationNl": "verfkwast",
+          "emoji": "🖌️"
+        },
+        {
+          "slug": "verf",
+          "translationNl": "verf",
+          "emoji": "🎨"
+        },
+        {
+          "slug": "blocnote",
+          "translationNl": "blocnote",
+          "emoji": "🗒️"
+        },
+        {
+          "slug": "label",
+          "translationNl": "label",
+          "emoji": "🏷️"
+        },
+        {
+          "slug": "bel",
+          "translationNl": "schoolbel",
+          "emoji": "🔔"
+        },
+        {
+          "slug": "microscoop",
+          "translationNl": "microscoop",
+          "emoji": "🔬"
+        },
+        {
+          "slug": "diploma",
+          "translationNl": "diploma",
+          "emoji": "📜"
+        },
+        {
+          "slug": "medaille",
+          "translationNl": "medaille",
+          "emoji": "🏅"
+        },
+        {
+          "slug": "trofee",
+          "translationNl": "trofee",
+          "emoji": "🏆"
+        },
+        {
+          "slug": "bril",
+          "translationNl": "bril",
+          "emoji": "👓"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import type { ExerciseView, LessonView } from "@/types/domain";
-import { CATEGORIES, getCatalogItems, getCategoryBySlug } from "@/lib/contentCatalog";
+import { buildCatalogItems, getCategoryBySlug, type CategoryDefinition } from "@/lib/contentCatalog";
 import { DEMO_REVIEW_NOTE, DIEREN_THEME } from "@/lib/demoData";
 import type { DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import type { PracticeContent } from "@/lib/practiceContentClient";
@@ -32,11 +32,11 @@ function categorySlugFromLessonId(lessonId: string): string | null {
   return lessonId.startsWith(LESSON_ID_PREFIX) ? lessonId.slice(LESSON_ID_PREFIX.length) : null;
 }
 
-function buildLessonForCategory(categorySlug: string): LessonView | null {
-  const category = getCategoryBySlug(categorySlug);
+function buildLessonForCategory(categorySlug: string, categories: CategoryDefinition[]): LessonView | null {
+  const category = getCategoryBySlug(categorySlug, categories);
   if (!category) return null;
 
-  const exercises: ExerciseView[] = getCatalogItems()
+  const exercises: ExerciseView[] = buildCatalogItems(categories)
     .filter((item) => item.categorySlug === categorySlug)
     .map((item) => ({
       id: `exercise-listen-${item.id}`,
@@ -184,18 +184,19 @@ export function getGenericLessonById(
   lessonId: string,
   practiceContent: PracticeContent,
   dailySentenceContent: DailySentenceContent,
+  categories: CategoryDefinition[],
 ): LessonView | null {
   if (lessonId === DAILY_SENTENCES_LESSON_ID) return buildDailySentencesLesson(dailySentenceContent);
   const practiceCategorySlug = practiceCategorySlugFromLessonId(lessonId);
   if (practiceCategorySlug) return buildPracticeLessonForCategory(practiceCategorySlug, practiceContent);
   const categorySlug = categorySlugFromLessonId(lessonId);
   if (!categorySlug) return null;
-  return buildLessonForCategory(categorySlug);
+  return buildLessonForCategory(categorySlug, categories);
 }
 
-/** Categorieslugs in de vaste, bedoelde volgorde (Level > Categorie, zie CATEGORIES) — bepaalt de strenge, opeenvolgende ontgrendeling op het reispad. */
-export function getOrderedCategorySlugs(): string[] {
-  return CATEGORIES.map((category) => category.slug);
+/** Categorieslugs in de vaste, bedoelde volgorde (Dieren eerst, dan Level > Categorie, zie wordsContentClient.ts mergeCategories) — bepaalt de strenge, opeenvolgende ontgrendeling op het reispad. */
+export function getOrderedCategorySlugs(categories: CategoryDefinition[]): string[] {
+  return categories.map((category) => category.slug);
 }
 
 export interface CategoryUnlockStatus {
@@ -215,16 +216,18 @@ export interface CategoryUnlockStatus {
 export function getCategoryUnlockStatuses(
   completedLessonIds: string[],
   recordedIds: Set<string>,
+  categories: CategoryDefinition[],
 ): CategoryUnlockStatus[] {
   const dierenLessonId = DIEREN_THEME.lessons[0]?.id ?? lessonIdForCategory("dieren");
   let chainBroken = false;
+  const allItems = buildCatalogItems(categories);
 
-  return CATEGORIES.map((category) => {
+  return categories.map((category) => {
     const isDieren = category.slug === "dieren";
     const lessonId = isDieren ? dierenLessonId : lessonIdForCategory(category.slug);
     const isCompleted = completedLessonIds.includes(lessonId);
 
-    const recordedCount = getCatalogItems().filter(
+    const recordedCount = allItems.filter(
       (item) => item.categorySlug === category.slug && recordedIds.has(item.id),
     ).length;
     const hasEnoughContent = recordedCount >= MIN_RECORDED_WORDS_FOR_LESSON;
@@ -243,8 +246,12 @@ export function getCategoryUnlockStatuses(
 }
 
 /** Categorieslugs die het kind al mag zien (voltooid of nu actief) — voor Ontdekken/matchspel, zie getCategoryUnlockStatuses hierboven. */
-export function getUnlockedCategorySlugs(completedLessonIds: string[], recordedIds: Set<string>): string[] {
-  return getCategoryUnlockStatuses(completedLessonIds, recordedIds)
+export function getUnlockedCategorySlugs(
+  completedLessonIds: string[],
+  recordedIds: Set<string>,
+  categories: CategoryDefinition[],
+): string[] {
+  return getCategoryUnlockStatuses(completedLessonIds, recordedIds, categories)
     .filter((entry) => entry.status !== "locked")
     .map((entry) => entry.categorySlug);
 }

@@ -1,9 +1,12 @@
-import { getCatalogItems } from "@/lib/contentCatalog";
+import { buildCatalogItems, type CategoryDefinition } from "@/lib/contentCatalog";
 
 /**
  * Opnamestudio (zie ARCHITECTUUR-OPNAMESTUDIO.md): welke woorden kun je
  * inspreken? Bron is de volledige content-catalogus (src/lib/contentCatalog.ts,
- * Level > Categorie > Woord) — dus alle 11 categorieën, niet alleen "Dieren".
+ * Level > Categorie > Woord) — dus alle categorieën, niet alleen "Dieren".
+ * Sinds de Woorden-CMS (wordsContentClient.ts) is de categorielijst niet
+ * meer module-level hardcoded, dus krijgt deze functie 'm nu als parameter
+ * mee (zelfde patroon als getPracticeContent/getDailySentenceContent).
  */
 export interface RecordableItem {
   id: string;
@@ -17,8 +20,8 @@ export interface RecordableItem {
   categoryTitleNl: string;
 }
 
-export function getRecordableItems(): RecordableItem[] {
-  return getCatalogItems().map((item) => ({
+export function getRecordableItems(categories: CategoryDefinition[]): RecordableItem[] {
+  return buildCatalogItems(categories).map((item) => ({
     id: item.id,
     translationNl: item.translationNl,
     latinSpelling: item.latinSpelling,

@@ -8,6 +8,8 @@ import { Card } from "@/components/ui/Card";
 import { RecorderControl, type RecordingEntryData } from "@/components/studio/RecorderControl";
 import { SpellingInput } from "@/components/studio/SpellingInput";
 import { LEVELS, getCategoriesForLevel } from "@/lib/contentCatalog";
+import { mergeCategories } from "@/lib/wordsContentClient";
+import type { WordCategoryDefinition } from "@/lib/wordsContent";
 import {
   getRecordableItems,
   PERSONA_LABELS,
@@ -28,6 +30,9 @@ import {
   type RecordablePracticeSentenceItem,
 } from "@/lib/practiceSentences";
 import type { RecordableItem } from "@/lib/recordableItems";
+
+/** "Dieren" is met opzet nooit bewerkbaar via de studio (zie contentCatalog.ts) — hardcoded, geen labels/woorden aanpasbaar. */
+const NON_EDITABLE_CATEGORY_SLUG = "dieren";
 
 type ManifestState = Record<string, RecordingEntryData>;
 type StudioMode = "woorden" | "zinnen" | "oefenen";
@@ -72,7 +77,6 @@ const EMPTY_DAILY_SENTENCE_CONTENT: DailySentenceContentState = { categories: []
  */
 export default function StudioOpnamesPage() {
   const router = useRouter();
-  const items = useMemo(() => getRecordableItems(), []);
   const [manifest, setManifest] = useState<ManifestState>({});
   const [spellings, setSpellings] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -81,8 +85,30 @@ export default function StudioOpnamesPage() {
   const [mode, setMode] = useState<StudioMode>("woorden");
   const [activeLevelSlug, setActiveLevelSlug] = useState(LEVELS[0]?.slug ?? "");
 
-  const categoriesForLevel = useMemo(() => getCategoriesForLevel(activeLevelSlug), [activeLevelSlug]);
+  // Woorden-content (alle categorieën behalve "Dieren", zie contentCatalog.ts
+  // DIEREN_CATEGORY) komt — net als Praktijkzinnen/Zinnen — niet meer uit een
+  // vaste import maar wordt hier geladen; zie src/app/api/studio/content/words.
+  const [wordsContent, setWordsContent] = useState<{ categories: WordCategoryDefinition[] }>({ categories: [] });
+  const [wordsContentError, setWordsContentError] = useState<string | null>(null);
+  const [wordsContentSaving, setWordsContentSaving] = useState(false);
+
+  const allCategories = useMemo(() => mergeCategories(wordsContent), [wordsContent]);
+  const items = useMemo(() => getRecordableItems(allCategories), [allCategories]);
+  const categoriesForLevel = useMemo(
+    () => getCategoriesForLevel(activeLevelSlug, allCategories),
+    [activeLevelSlug, allCategories],
+  );
   const [activeCategorySlug, setActiveCategorySlug] = useState(categoriesForLevel[0]?.slug ?? "");
+
+  const [editingWordCategory, setEditingWordCategory] = useState(false);
+  const [wordCategoryDraft, setWordCategoryDraft] = useState({ titleNl: "", emoji: "", teaser: "", levelSlug: "" });
+  const [addingWordCategory, setAddingWordCategory] = useState(false);
+  const [newWordCategoryDraft, setNewWordCategoryDraft] = useState({ titleNl: "", emoji: "", teaser: "" });
+
+  const [editingWordSlug, setEditingWordSlug] = useState<string | null>(null);
+  const [wordDraft, setWordDraft] = useState({ translationNl: "", emoji: "" });
+  const [addingWord, setAddingWord] = useState(false);
+  const [newWordDraft, setNewWordDraft] = useState({ translationNl: "", emoji: "" });
 
   // Praktijkzinnen-content komt (i.t.t. Woorden) niet uit een vaste
   // import maar wordt hier geladen — zie src/app/api/studio/content/practice.
@@ -121,9 +147,19 @@ export default function StudioOpnamesPage() {
   const [newDailySentenceDraft, setNewDailySentenceDraft] = useState({ translationNl: "", contextNl: "", emoji: "" });
 
   useEffect(() => {
-    const first = getCategoriesForLevel(activeLevelSlug)[0];
-    setActiveCategorySlug(first?.slug ?? "");
-  }, [activeLevelSlug]);
+    setActiveCategorySlug((prev) => {
+      const stillValid = categoriesForLevel.some((category) => category.slug === prev);
+      return stillValid ? prev : (categoriesForLevel[0]?.slug ?? "");
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeLevelSlug, categoriesForLevel]);
+
+  async function loadWordsContent() {
+    const response = await fetch("/api/studio/content/words");
+    const data = (await response.json().catch(() => ({ categories: [] }))) as { categories: WordCategoryDefinition[] };
+    setWordsContent(data);
+    return data;
+  }
 
   async function loadPracticeContent() {
     const response = await fetch("/api/studio/content/practice");
@@ -152,6 +188,7 @@ export default function StudioOpnamesPage() {
       fetch("/api/studio/spellings").then((res) => res.json()) as Promise<{ spellings: Record<string, string> }>,
       loadPracticeContent(),
       loadDailySentenceContent(),
+      loadWordsContent(),
     ])
       .then(([recordingsData, spellingsData]) => {
         if (cancelled) return;
@@ -345,6 +382,73 @@ export default function StudioOpnamesPage() {
     await submitSentenceContent("DELETE", { kind: "sentence", id });
   }
 
+  // --- Woorden CRUD (behalve "Dieren", zie NON_EDITABLE_CATEGORY_SLUG) ------
+
+  async function submitWordsContent(method: "POST" | "PATCH" | "DELETE", body: Record<string, unknown>): Promise<boolean> {
+    setWordsContentSaving(true);
+    setWordsContentError(null);
+    try {
+      const response = await fetch("/api/studio/content/words", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = (await response.json().catch(() => ({}))) as { error?: string };
+      if (!response.ok) {
+        setWordsContentError(data.error ?? "Opslaan is mislukt.");
+        return false;
+      }
+      await loadWordsContent();
+      return true;
+    } finally {
+      setWordsContentSaving(false);
+    }
+  }
+
+  async function handleAddWordCategory() {
+    const ok = await submitWordsContent("POST", {
+      kind: "category",
+      levelSlug: activeLevelSlug,
+      ...newWordCategoryDraft,
+    });
+    if (ok) {
+      setAddingWordCategory(false);
+      setNewWordCategoryDraft({ titleNl: "", emoji: "", teaser: "" });
+    }
+  }
+
+  async function handleSaveWordCategory(slug: string) {
+    const ok = await submitWordsContent("PATCH", { kind: "category", slug, ...wordCategoryDraft });
+    if (ok) setEditingWordCategory(false);
+  }
+
+  async function handleDeleteWordCategory(slug: string) {
+    const ok = await submitWordsContent("DELETE", { kind: "category", slug });
+    if (ok) setEditingWordCategory(false);
+  }
+
+  async function handleAddWord() {
+    const ok = await submitWordsContent("POST", { kind: "word", categorySlug: activeCategorySlug, ...newWordDraft });
+    if (ok) {
+      setAddingWord(false);
+      setNewWordDraft({ translationNl: "", emoji: "" });
+    }
+  }
+
+  async function handleSaveWord(wordSlug: string) {
+    const ok = await submitWordsContent("PATCH", {
+      kind: "word",
+      categorySlug: activeCategorySlug,
+      wordSlug,
+      ...wordDraft,
+    });
+    if (ok) setEditingWordSlug(null);
+  }
+
+  async function handleDeleteWord(wordSlug: string) {
+    await submitWordsContent("DELETE", { kind: "word", categorySlug: activeCategorySlug, wordSlug });
+  }
+
   // --------------------------------------------------------------------------
 
   const practiceItems = useMemo(
@@ -410,6 +514,8 @@ export default function StudioOpnamesPage() {
   }
 
   const activeCategory = categoriesForLevel.find((category) => category.slug === activeCategorySlug);
+  const isEditableWordCategory = activeCategorySlug !== NON_EDITABLE_CATEGORY_SLUG;
+  const activeWordCategory = wordsContent.categories.find((category) => category.slug === activeCategorySlug);
   const activeSentenceCategory = dailySentenceContent.categories.find(
     (category) => category.slug === activeSentenceCategorySlug,
   );
@@ -513,7 +619,10 @@ export default function StudioOpnamesPage() {
               <button
                 key={category.slug}
                 type="button"
-                onClick={() => setActiveCategorySlug(category.slug)}
+                onClick={() => {
+                  setActiveCategorySlug(category.slug);
+                  setEditingWordCategory(false);
+                }}
                 className={`flex items-center gap-1.5 text-sm transition-colors
                   focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
                   ${
@@ -529,7 +638,166 @@ export default function StudioOpnamesPage() {
                 <span className="text-ink-muted">{category.words.length}</span>
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => {
+                setAddingWordCategory((v) => !v);
+                setWordsContentError(null);
+              }}
+              className="text-sm font-medium text-clay-500 underline underline-offset-2
+                focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+            >
+              + Categorie
+            </button>
           </div>
+
+          {addingWordCategory && (
+            <Card className="flex flex-wrap items-end gap-3">
+              <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                Naam
+                <input
+                  type="text"
+                  value={newWordCategoryDraft.titleNl}
+                  onChange={(e) => setNewWordCategoryDraft((prev) => ({ ...prev, titleNl: e.target.value }))}
+                  placeholder="Bijvoorbeeld: Muziek"
+                  className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                    focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                />
+              </label>
+              <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                Emoji
+                <input
+                  type="text"
+                  value={newWordCategoryDraft.emoji}
+                  onChange={(e) => setNewWordCategoryDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                  placeholder="🎵"
+                  className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                    focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                />
+              </label>
+              <label className="flex flex-1 min-w-[12rem] flex-col gap-1 text-xs font-medium text-ink-muted">
+                Korte omschrijving
+                <input
+                  type="text"
+                  value={newWordCategoryDraft.teaser}
+                  onChange={(e) => setNewWordCategoryDraft((prev) => ({ ...prev, teaser: e.target.value }))}
+                  placeholder="Instrumenten en geluiden."
+                  className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                    focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                />
+              </label>
+              <p className="w-full text-xs text-ink-muted">
+                Wordt toegevoegd aan level: {LEVELS.find((l) => l.slug === activeLevelSlug)?.titleNl}
+              </p>
+              <Button variant="primary" size="sm" onClick={handleAddWordCategory} disabled={wordsContentSaving}>
+                Toevoegen
+              </Button>
+              <Button variant="ghost" size="sm" onClick={() => setAddingWordCategory(false)}>
+                Annuleren
+              </Button>
+            </Card>
+          )}
+
+          {activeWordCategory && isEditableWordCategory && (
+            <Card className="flex flex-col gap-3">
+              {editingWordCategory ? (
+                <div className="flex flex-wrap items-end gap-3">
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Naam
+                    <input
+                      type="text"
+                      value={wordCategoryDraft.titleNl}
+                      onChange={(e) => setWordCategoryDraft((prev) => ({ ...prev, titleNl: e.target.value }))}
+                      className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Emoji
+                    <input
+                      type="text"
+                      value={wordCategoryDraft.emoji}
+                      onChange={(e) => setWordCategoryDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                      className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <label className="flex flex-1 min-w-[12rem] flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Korte omschrijving
+                    <input
+                      type="text"
+                      value={wordCategoryDraft.teaser}
+                      onChange={(e) => setWordCategoryDraft((prev) => ({ ...prev, teaser: e.target.value }))}
+                      className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Level
+                    <select
+                      value={wordCategoryDraft.levelSlug}
+                      onChange={(e) => setWordCategoryDraft((prev) => ({ ...prev, levelSlug: e.target.value }))}
+                      className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    >
+                      {LEVELS.map((level) => (
+                        <option key={level.slug} value={level.slug}>
+                          {level.titleNl}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    onClick={() => handleSaveWordCategory(activeWordCategory.slug)}
+                    disabled={wordsContentSaving}
+                  >
+                    Opslaan
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={() => setEditingWordCategory(false)}>
+                    Annuleren
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDeleteWordCategory(activeWordCategory.slug)}
+                    disabled={wordsContentSaving}
+                    className="text-clay-500"
+                  >
+                    Categorie verwijderen
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-ink">
+                    <span aria-hidden="true">{activeWordCategory.emoji}</span> {activeWordCategory.titleNl}
+                  </p>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setWordCategoryDraft({
+                        titleNl: activeWordCategory.titleNl,
+                        emoji: activeWordCategory.emoji,
+                        teaser: activeWordCategory.teaser,
+                        levelSlug: activeWordCategory.levelSlug,
+                      });
+                      setEditingWordCategory(true);
+                    }}
+                  >
+                    Label bewerken
+                  </Button>
+                </div>
+              )}
+            </Card>
+          )}
+
+          {wordsContentError && (
+            <p role="alert" className="text-sm font-medium text-clay-500">
+              {wordsContentError}
+            </p>
+          )}
         </>
       ) : mode === "zinnen" ? (
         <div className="flex flex-col gap-3">
@@ -878,9 +1146,15 @@ export default function StudioOpnamesPage() {
             const entry = manifest[key];
             const isPracticeMode = mode === "oefenen";
             const isSentenceMode = mode === "zinnen";
+            const isWordMode = mode === "woorden";
+            const currentWord =
+              isWordMode && isEditableWordCategory
+                ? activeWordCategory?.words.find((w) => `item-${activeCategorySlug}-${w.slug}` === item.id)
+                : undefined;
             const isEditingSentence =
               (isPracticeMode && editingSentenceId === item.id) ||
               (isSentenceMode && editingDailySentenceId === item.id);
+            const isEditingWord = Boolean(currentWord) && editingWordSlug === currentWord?.slug;
             const currentSentenceDraft = isPracticeMode ? sentenceDraft : dailySentenceDraft;
             const setCurrentSentenceDraft = isPracticeMode ? setSentenceDraft : setDailySentenceDraft;
             const currentContentSaving = isPracticeMode ? contentSaving : sentenceContentSaving;
@@ -973,6 +1247,51 @@ export default function StudioOpnamesPage() {
                           </Button>
                         </div>
                       </div>
+                    ) : isEditingWord && currentWord ? (
+                      <div className="flex flex-col gap-2">
+                        <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                          Woord
+                          <input
+                            type="text"
+                            value={wordDraft.translationNl}
+                            onChange={(e) => setWordDraft((prev) => ({ ...prev, translationNl: e.target.value }))}
+                            className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                          />
+                        </label>
+                        <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                          Emoji
+                          <input
+                            type="text"
+                            value={wordDraft.emoji}
+                            onChange={(e) => setWordDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                            className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                          />
+                        </label>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="primary"
+                            size="sm"
+                            onClick={() => handleSaveWord(currentWord.slug)}
+                            disabled={wordsContentSaving}
+                          >
+                            Opslaan
+                          </Button>
+                          <Button variant="ghost" size="sm" onClick={() => setEditingWordSlug(null)}>
+                            Annuleren
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDeleteWord(currentWord.slug)}
+                            disabled={wordsContentSaving}
+                            className="text-clay-500"
+                          >
+                            Verwijderen
+                          </Button>
+                        </div>
+                      </div>
                     ) : (
                       <>
                         <div className="flex items-center gap-2">
@@ -998,6 +1317,19 @@ export default function StudioOpnamesPage() {
                                   });
                                   setEditingDailySentenceId(item.id);
                                 }
+                              }}
+                              className="text-xs font-medium text-clay-500 underline underline-offset-2
+                                focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                            >
+                              Label bewerken
+                            </button>
+                          )}
+                          {isWordMode && currentWord && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setWordDraft({ translationNl: currentWord.translationNl, emoji: currentWord.emoji });
+                                setEditingWordSlug(currentWord.slug);
                               }}
                               className="text-xs font-medium text-clay-500 underline underline-offset-2
                                 focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
@@ -1054,6 +1386,49 @@ export default function StudioOpnamesPage() {
               </Card>
             );
           })}
+
+          {mode === "woorden" && isEditableWordCategory && activeWordCategory && (
+            <Card className="flex flex-col gap-3">
+              {addingWord ? (
+                <div className="flex flex-col gap-2">
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Woord
+                    <input
+                      type="text"
+                      value={newWordDraft.translationNl}
+                      onChange={(e) => setNewWordDraft((prev) => ({ ...prev, translationNl: e.target.value }))}
+                      placeholder="Bijvoorbeeld: gitaar"
+                      className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Emoji
+                    <input
+                      type="text"
+                      value={newWordDraft.emoji}
+                      onChange={(e) => setNewWordDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                      placeholder="🎸"
+                      className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <div className="flex gap-2">
+                    <Button variant="primary" size="sm" onClick={handleAddWord} disabled={wordsContentSaving}>
+                      Toevoegen
+                    </Button>
+                    <Button variant="ghost" size="sm" onClick={() => setAddingWord(false)}>
+                      Annuleren
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <Button variant="secondary" size="sm" onClick={() => setAddingWord(true)} className="w-fit">
+                  + Nieuw woord in {activeWordCategory.titleNl}
+                </Button>
+              )}
+            </Card>
+          )}
 
           {mode === "oefenen" && activePracticeCategory && (
             <Card className="flex flex-col gap-3">

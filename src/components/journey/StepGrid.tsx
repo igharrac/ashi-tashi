@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CATEGORIES } from "@/lib/contentCatalog";
+import type { CategoryDefinition } from "@/lib/contentCatalog";
 import {
   DAILY_SENTENCES_LESSON_ID,
   getCategoryUnlockStatuses,
@@ -10,6 +10,7 @@ import {
 } from "@/lib/lessonCatalog";
 import { getDailySentenceContent, type DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import { getPracticeContent, type PracticeContent } from "@/lib/practiceContentClient";
+import { getWordsContent, mergeCategories } from "@/lib/wordsContentClient";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { ChildProfileData } from "@/types/domain";
 import { StepTile } from "./StepTile";
@@ -31,6 +32,7 @@ export function StepGrid({ childId, child }: StepGridProps) {
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [practiceContent, setPracticeContent] = useState<PracticeContent | null>(null);
   const [dailySentenceContent, setDailySentenceContent] = useState<DailySentenceContent | null>(null);
+  const [categories, setCategories] = useState<CategoryDefinition[] | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -43,12 +45,15 @@ export function StepGrid({ childId, child }: StepGridProps) {
     getDailySentenceContent().then((content) => {
       if (!cancelled) setDailySentenceContent(content);
     });
+    getWordsContent().then((content) => {
+      if (!cancelled) setCategories(mergeCategories(content));
+    });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  if (recordedIds === null || practiceContent === null || dailySentenceContent === null) {
+  if (recordedIds === null || practiceContent === null || dailySentenceContent === null || categories === null) {
     return <p className="py-6 text-center text-ink-muted">Even laden…</p>;
   }
 
@@ -56,7 +61,7 @@ export function StepGrid({ childId, child }: StepGridProps) {
   // getCategoryUnlockStatuses in lessonCatalog.ts) zodat die schermen precies
   // dezelfde "welke categorie mag dit kind al zien"-regels gebruiken i.p.v.
   // een eigen kopie.
-  const unlockStatuses = getCategoryUnlockStatuses(child.completedLessonIds, recordedIds);
+  const unlockStatuses = getCategoryUnlockStatuses(child.completedLessonIds, recordedIds, categories);
 
   // "Dagelijkse zinnen" staat bewust los van de keten hierboven (op verzoek:
   // niet gekoppeld aan een woordcategorie, dus ook niet aan de streng-
@@ -99,7 +104,7 @@ export function StepGrid({ childId, child }: StepGridProps) {
         );
       })}
       {unlockStatuses.map(({ categorySlug, status, lessonId }) => {
-        const category = CATEGORIES.find((c) => c.slug === categorySlug);
+        const category = categories.find((c) => c.slug === categorySlug);
         if (!category) return null;
         return (
           <StepTile

@@ -6,9 +6,10 @@ import { notFound, useParams, useSearchParams } from "next/navigation";
 import { useAppStore } from "@/lib/store";
 import { AppShell } from "@/components/layout/AppShell";
 import { MatchGame } from "@/components/discover/MatchGame";
-import { CATEGORIES, getCatalogItems, type CatalogItem } from "@/lib/contentCatalog";
+import { buildCatalogItems, type CatalogItem, type CategoryDefinition } from "@/lib/contentCatalog";
 import { getUnlockedCategorySlugs } from "@/lib/lessonCatalog";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
+import { getWordsContent, mergeCategories } from "@/lib/wordsContentClient";
 import { pickRound } from "@/domain/matchGame";
 import type { VocabularyItemView } from "@/types/domain";
 
@@ -38,11 +39,15 @@ export default function MatchGamePage() {
   const { getChild, ready } = useAppStore();
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [roundKey, setRoundKey] = useState(0);
+  const [categories, setCategories] = useState<CategoryDefinition[] | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     getItemIdsWithRecordings().then((ids) => {
       if (!cancelled) setRecordedIds(ids);
+    });
+    getWordsContent().then((content) => {
+      if (!cancelled) setCategories(mergeCategories(content));
     });
     return () => {
       cancelled = true;
@@ -55,23 +60,23 @@ export default function MatchGamePage() {
   // regels als StepGrid.tsx/Ontdekken, zie getUnlockedCategorySlugs) —
   // voorkomt dat iemand via de URL een nog-op-slot categorie kan spelen.
   const unlockedCategorySlugs = useMemo(() => {
-    if (!recordedIds || !child) return [];
-    return getUnlockedCategorySlugs(child.completedLessonIds, recordedIds);
-  }, [recordedIds, child]);
+    if (!recordedIds || !child || !categories) return [];
+    return getUnlockedCategorySlugs(child.completedLessonIds, recordedIds, categories);
+  }, [recordedIds, child, categories]);
 
   const requestedCategorySlug = searchParams.get("categorie");
   const activeCategorySlug =
     requestedCategorySlug && unlockedCategorySlugs.includes(requestedCategorySlug)
       ? requestedCategorySlug
       : (unlockedCategorySlugs[0] ?? null);
-  const activeCategory = CATEGORIES.find((c) => c.slug === activeCategorySlug);
+  const activeCategory = categories?.find((c) => c.slug === activeCategorySlug);
 
   const pool = useMemo(() => {
-    if (!recordedIds || !activeCategorySlug) return [];
-    return getCatalogItems()
+    if (!recordedIds || !activeCategorySlug || !categories) return [];
+    return buildCatalogItems(categories)
       .filter((item) => item.categorySlug === activeCategorySlug && recordedIds.has(item.id))
       .map(toVocabularyItemView);
-  }, [recordedIds, activeCategorySlug]);
+  }, [recordedIds, activeCategorySlug, categories]);
 
   // roundKey in de afhankelijkheden: bij "Nog een rondje" verandert de key
   // en wordt hier een nieuwe, andere selectie + volgorde bepaald.
@@ -96,7 +101,7 @@ export default function MatchGamePage() {
       </div>
 
       <div className="mx-auto mt-6 max-w-2xl">
-        {recordedIds === null ? (
+        {recordedIds === null || categories === null ? (
           <p className="text-center text-ink-muted">Even laden…</p>
         ) : roundItems.length < 2 ? (
           <p className="text-center text-ink-muted">
