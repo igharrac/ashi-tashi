@@ -2,11 +2,7 @@ import type { ExerciseView, LessonView } from "@/types/domain";
 import { CATEGORIES, getCatalogItems, getCategoryBySlug } from "@/lib/contentCatalog";
 import { DEMO_REVIEW_NOTE, DIEREN_THEME } from "@/lib/demoData";
 import { getDailySentenceItems } from "@/lib/dailySentences";
-import {
-  getPracticeSentenceCategoryBySlug,
-  getPracticeSentenceItems,
-  PRACTICE_SENTENCE_CATEGORIES,
-} from "@/lib/practiceSentences";
+import type { PracticeContent } from "@/lib/practiceContentClient";
 
 /**
  * Generieke lesopbouw voor elke categorie buiten "dieren" (die blijft op
@@ -128,11 +124,11 @@ function practiceCategorySlugFromLessonId(lessonId: string): string | null {
   return lessonId.startsWith(PRACTICE_LESSON_ID_PREFIX) ? lessonId.slice(PRACTICE_LESSON_ID_PREFIX.length) : null;
 }
 
-function buildPracticeLessonForCategory(categorySlug: string): LessonView | null {
-  const category = getPracticeSentenceCategoryBySlug(categorySlug);
+function buildPracticeLessonForCategory(categorySlug: string, practiceContent: PracticeContent): LessonView | null {
+  const category = practiceContent.categories.find((c) => c.slug === categorySlug);
   if (!category) return null;
 
-  const exercises: ExerciseView[] = getPracticeSentenceItems()
+  const exercises: ExerciseView[] = practiceContent.sentences
     .filter((sentence) => sentence.categorySlug === categorySlug)
     .map((sentence) => ({
       id: `exercise-oefenen-${sentence.id}`,
@@ -169,11 +165,12 @@ export interface PracticeCategoryStatus {
 export function getPracticeCategoryStatuses(
   completedLessonIds: string[],
   recordedIds: Set<string>,
+  practiceContent: PracticeContent,
 ): PracticeCategoryStatus[] {
-  return PRACTICE_SENTENCE_CATEGORIES.map((category) => {
+  return practiceContent.categories.map((category) => {
     const lessonId = practiceLessonIdForCategory(category.slug);
     const isCompleted = completedLessonIds.includes(lessonId);
-    const recordedCount = getPracticeSentenceItems().filter(
+    const recordedCount = practiceContent.sentences.filter(
       (item) => item.categorySlug === category.slug && recordedIds.has(item.id),
     ).length;
     const hasEnoughContent = recordedCount >= MIN_RECORDED_PRACTICE_SENTENCES_FOR_LESSON;
@@ -183,10 +180,10 @@ export function getPracticeCategoryStatuses(
 }
 
 /** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat (of de vaste dagelijkse-zinnen-les-id, of een "lesson-oefenen-<categorySlug>"-id), of null als er niets bij past. */
-export function getGenericLessonById(lessonId: string): LessonView | null {
+export function getGenericLessonById(lessonId: string, practiceContent: PracticeContent): LessonView | null {
   if (lessonId === DAILY_SENTENCES_LESSON_ID) return buildDailySentencesLesson();
   const practiceCategorySlug = practiceCategorySlugFromLessonId(lessonId);
-  if (practiceCategorySlug) return buildPracticeLessonForCategory(practiceCategorySlug);
+  if (practiceCategorySlug) return buildPracticeLessonForCategory(practiceCategorySlug, practiceContent);
   const categorySlug = categorySlugFromLessonId(lessonId);
   if (!categorySlug) return null;
   return buildLessonForCategory(categorySlug);

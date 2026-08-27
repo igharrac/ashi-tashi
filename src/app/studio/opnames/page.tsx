@@ -17,8 +17,9 @@ import {
 } from "@/lib/recordableItems";
 import { DAILY_SENTENCE_CATEGORIES, getRecordableSentences, type RecordableSentenceItem } from "@/lib/dailySentences";
 import {
-  PRACTICE_SENTENCE_CATEGORIES,
-  getRecordablePracticeSentences,
+  toRecordablePracticeSentence,
+  type PracticeSentenceCategory,
+  type PracticeSentenceDefinition,
   type RecordablePracticeSentenceItem,
 } from "@/lib/practiceSentences";
 import type { RecordableItem } from "@/lib/recordableItems";
@@ -38,17 +39,29 @@ type StudioListItem = Pick<
   "id" | "translationNl" | "latinSpelling" | "imageEmoji"
 > & { pictogramUrl?: string };
 
+interface PracticeContentState {
+  categories: PracticeSentenceCategory[];
+  sentences: PracticeSentenceDefinition[];
+}
+
+const EMPTY_PRACTICE_CONTENT: PracticeContentState = { categories: [], sentences: [] };
+
 /**
  * Opnamestudio-hoofdpagina (ARCHITECTUUR-OPNAMESTUDIO.md). Beschermd door
  * middleware.ts. Genavigeerd via Level > Categorie (content-catalogus,
  * src/lib/contentCatalog.ts) zodat je per keer maar één categorie (±40
  * items) ziet, in plaats van alle 300+ woorden in één lange lijst.
+ *
+ * Praktijkzinnen (mode "oefenen") is de eerste content-catalogus die op
+ * verzoek volledig via de studio te beheren is — categorieën én zinnen zelf
+ * toevoegen/aanpassen/verwijderen, i.p.v. dat daar code voor aangepast moet
+ * worden (zie src/lib/practiceContentStore.ts). Woorden en Zinnen blijven
+ * voorlopig vaste code-catalogi (gefaseerde aanpak, op verzoek).
  */
 export default function StudioOpnamesPage() {
   const router = useRouter();
   const items = useMemo(() => getRecordableItems(), []);
   const sentenceItems = useMemo(() => getRecordableSentences(), []);
-  const practiceItems = useMemo(() => getRecordablePracticeSentences(), []);
   const [manifest, setManifest] = useState<ManifestState>({});
   const [spellings, setSpellings] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
@@ -60,18 +73,45 @@ export default function StudioOpnamesPage() {
   const categoriesForLevel = useMemo(() => getCategoriesForLevel(activeLevelSlug), [activeLevelSlug]);
   const [activeCategorySlug, setActiveCategorySlug] = useState(categoriesForLevel[0]?.slug ?? "");
   const [activeSentenceCategorySlug, setActiveSentenceCategorySlug] = useState(DAILY_SENTENCE_CATEGORIES[0]?.slug ?? "");
-  const [activePracticeCategorySlug, setActivePracticeCategorySlug] = useState(PRACTICE_SENTENCE_CATEGORIES[0]?.slug ?? "");
+
+  // Praktijkzinnen-content komt (i.t.t. Woorden/Zinnen) niet uit een vaste
+  // import maar wordt hier geladen — zie src/app/api/studio/content/practice.
+  const [practiceContent, setPracticeContent] = useState<PracticeContentState>(EMPTY_PRACTICE_CONTENT);
+  const [activePracticeCategorySlug, setActivePracticeCategorySlug] = useState("");
+  const [contentError, setContentError] = useState<string | null>(null);
+  const [contentSaving, setContentSaving] = useState(false);
+
+  const [editingCategory, setEditingCategory] = useState(false);
+  const [categoryDraft, setCategoryDraft] = useState({ titleNl: "", emoji: "" });
+  const [addingCategory, setAddingCategory] = useState(false);
+  const [newCategoryDraft, setNewCategoryDraft] = useState({ titleNl: "", emoji: "" });
+
+  const [editingSentenceId, setEditingSentenceId] = useState<string | null>(null);
+  const [sentenceDraft, setSentenceDraft] = useState({ translationNl: "", contextNl: "", emoji: "" });
+  const [addingSentence, setAddingSentence] = useState(false);
+  const [newSentenceDraft, setNewSentenceDraft] = useState({ translationNl: "", contextNl: "", emoji: "" });
 
   useEffect(() => {
     const first = getCategoriesForLevel(activeLevelSlug)[0];
     setActiveCategorySlug(first?.slug ?? "");
   }, [activeLevelSlug]);
 
+  async function loadPracticeContent() {
+    const response = await fetch("/api/studio/content/practice");
+    const data = (await response.json().catch(() => EMPTY_PRACTICE_CONTENT)) as PracticeContentState;
+    setPracticeContent(data);
+    setActivePracticeCategorySlug((prev) =>
+      data.categories.some((category) => category.slug === prev) ? prev : (data.categories[0]?.slug ?? ""),
+    );
+    return data;
+  }
+
   useEffect(() => {
     let cancelled = false;
     Promise.all([
       fetch("/api/studio/recordings").then((res) => res.json()) as Promise<{ manifest: ManifestState }>,
       fetch("/api/studio/spellings").then((res) => res.json()) as Promise<{ spellings: Record<string, string> }>,
+      loadPracticeContent(),
     ])
       .then(([recordingsData, spellingsData]) => {
         if (cancelled) return;
@@ -84,6 +124,7 @@ export default function StudioOpnamesPage() {
     return () => {
       cancelled = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleEntryChange(itemId: string, persona: RecordingPersona, entry: RecordingEntryData | null) {
@@ -134,6 +175,84 @@ export default function StudioOpnamesPage() {
     }
   }
 
+  // --- Praktijkzinnen CRUD -------------------------------------------------
+
+  async function submitPracticeContent(
+    method: "POST" | "PATCH" | "DELETE",
+    body: Record<string, unknown>,
+  ): Promise<boolean> {
+    setContentSaving(true);
+    setContentError(null);
+    try {
+      const response = await fetch("/api/studio/content/practice", {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = (await response.json().catch(() => ({}))) as { error?: string };
+      if (!response.ok) {
+        setContentError(data.error ?? "Opslaan is mislukt.");
+        return false;
+      }
+      await loadPracticeContent();
+      return true;
+    } finally {
+      setContentSaving(false);
+    }
+  }
+
+  async function handleAddCategory() {
+    const ok = await submitPracticeContent("POST", { kind: "category", ...newCategoryDraft });
+    if (ok) {
+      setAddingCategory(false);
+      setNewCategoryDraft({ titleNl: "", emoji: "" });
+    }
+  }
+
+  async function handleSaveCategory(slug: string) {
+    const ok = await submitPracticeContent("PATCH", { kind: "category", slug, ...categoryDraft });
+    if (ok) setEditingCategory(false);
+  }
+
+  async function handleDeleteCategory(slug: string) {
+    const ok = await submitPracticeContent("DELETE", { kind: "category", slug });
+    if (ok) setEditingCategory(false);
+  }
+
+  async function handleAddSentence() {
+    const ok = await submitPracticeContent("POST", {
+      kind: "sentence",
+      categorySlug: activePracticeCategorySlug,
+      ...newSentenceDraft,
+    });
+    if (ok) {
+      setAddingSentence(false);
+      setNewSentenceDraft({ translationNl: "", contextNl: "", emoji: "" });
+    }
+  }
+
+  async function handleSaveSentence(id: string) {
+    const ok = await submitPracticeContent("PATCH", { kind: "sentence", id, ...sentenceDraft });
+    if (ok) setEditingSentenceId(null);
+  }
+
+  async function handleDeleteSentence(id: string) {
+    await submitPracticeContent("DELETE", { kind: "sentence", id });
+  }
+
+  // --------------------------------------------------------------------------
+
+  const practiceItems = useMemo(
+    () =>
+      practiceContent.sentences.map((sentence) =>
+        toRecordablePracticeSentence(
+          sentence,
+          practiceContent.categories.find((category) => category.slug === sentence.categorySlug),
+        ),
+      ),
+    [practiceContent],
+  );
+
   const itemsForActiveCategory = useMemo(
     () => items.filter((item) => item.categorySlug === activeCategorySlug),
     [items, activeCategorySlug]
@@ -176,7 +295,7 @@ export default function StudioOpnamesPage() {
 
   const activeCategory = categoriesForLevel.find((category) => category.slug === activeCategorySlug);
   const activeSentenceCategory = DAILY_SENTENCE_CATEGORIES.find((category) => category.slug === activeSentenceCategorySlug);
-  const activePracticeCategory = PRACTICE_SENTENCE_CATEGORIES.find((category) => category.slug === activePracticeCategorySlug);
+  const activePracticeCategory = practiceContent.categories.find((category) => category.slug === activePracticeCategorySlug);
   const activeModeCategory =
     mode === "woorden" ? activeCategory : mode === "zinnen" ? activeSentenceCategory : activePracticeCategory;
   const activeCounts =
@@ -206,7 +325,7 @@ export default function StudioOpnamesPage() {
               ? `${items.length} woorden in ${LEVELS.length} levels.`
               : mode === "zinnen"
                 ? `${sentenceItems.length} dagelijkse zinnen in ${DAILY_SENTENCE_CATEGORIES.length} categorieën.`
-                : `${practiceItems.length} praktijkzinnen in ${PRACTICE_SENTENCE_CATEGORIES.length} categorieën.`}{" "}
+                : `${practiceItems.length} praktijkzinnen in ${practiceContent.categories.length} categorieën.`}{" "}
             Draai dit lokaal (npm run dev) — zie ARCHITECTUUR-OPNAMESTUDIO.md.
           </p>
         </div>
@@ -320,29 +439,149 @@ export default function StudioOpnamesPage() {
           ))}
         </div>
       ) : (
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-          {PRACTICE_SENTENCE_CATEGORIES.map((category) => (
+        <div className="flex flex-col gap-3">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            {practiceContent.categories.map((category) => (
+              <button
+                key={category.slug}
+                type="button"
+                onClick={() => {
+                  setActivePracticeCategorySlug(category.slug);
+                  setEditingCategory(false);
+                }}
+                className={`flex items-center gap-1.5 text-sm transition-colors
+                  focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
+                  ${
+                    category.slug === activePracticeCategorySlug
+                      ? "font-medium text-clay-600"
+                      : "text-ink-muted hover:text-ink"
+                  }`}
+              >
+                {category.slug === activePracticeCategorySlug && (
+                  <span className="h-1.5 w-1.5 rounded-full bg-clay-500" aria-hidden="true" />
+                )}
+                <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
+                <span className="text-ink-muted">
+                  {practiceItems.filter((item) => item.categorySlug === category.slug).length}
+                </span>
+              </button>
+            ))}
             <button
-              key={category.slug}
               type="button"
-              onClick={() => setActivePracticeCategorySlug(category.slug)}
-              className={`flex items-center gap-1.5 text-sm transition-colors
-                focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500
-                ${
-                  category.slug === activePracticeCategorySlug
-                    ? "font-medium text-clay-600"
-                    : "text-ink-muted hover:text-ink"
-                }`}
+              onClick={() => {
+                setAddingCategory((v) => !v);
+                setContentError(null);
+              }}
+              className="text-sm font-medium text-clay-500 underline underline-offset-2
+                focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
             >
-              {category.slug === activePracticeCategorySlug && (
-                <span className="h-1.5 w-1.5 rounded-full bg-clay-500" aria-hidden="true" />
-              )}
-              <span aria-hidden="true">{category.emoji}</span> {category.titleNl}
-              <span className="text-ink-muted">
-                {practiceItems.filter((item) => item.categorySlug === category.slug).length}
-              </span>
+              + Categorie
             </button>
-          ))}
+          </div>
+
+          {addingCategory && (
+            <Card className="flex flex-wrap items-end gap-3">
+              <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                Naam
+                <input
+                  type="text"
+                  value={newCategoryDraft.titleNl}
+                  onChange={(e) => setNewCategoryDraft((prev) => ({ ...prev, titleNl: e.target.value }))}
+                  placeholder="Bijvoorbeeld: Gevoelens"
+                  className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                    focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                />
+              </label>
+              <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                Emoji
+                <input
+                  type="text"
+                  value={newCategoryDraft.emoji}
+                  onChange={(e) => setNewCategoryDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                  placeholder="❤️"
+                  className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                    focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                />
+              </label>
+              <Button variant="primary" size="sm" onClick={handleAddCategory} disabled={contentSaving}>
+                Toevoegen
+              </Button>
+              <Button variant="ghost" size="sm" onClick={() => setAddingCategory(false)}>
+                Annuleren
+              </Button>
+            </Card>
+          )}
+
+          {activePracticeCategory && (
+            <Card className="flex flex-col gap-3">
+              {editingCategory ? (
+                <div className="flex flex-wrap items-end gap-3">
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Naam
+                    <input
+                      type="text"
+                      value={categoryDraft.titleNl}
+                      onChange={(e) => setCategoryDraft((prev) => ({ ...prev, titleNl: e.target.value }))}
+                      className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Emoji
+                    <input
+                      type="text"
+                      value={categoryDraft.emoji}
+                      onChange={(e) => setCategoryDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                      className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    onClick={() => handleSaveCategory(activePracticeCategory.slug)}
+                    disabled={contentSaving}
+                  >
+                    Opslaan
+                  </Button>
+                  <Button variant="ghost" size="sm" onClick={() => setEditingCategory(false)}>
+                    Annuleren
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDeleteCategory(activePracticeCategory.slug)}
+                    disabled={contentSaving}
+                    className="text-clay-500"
+                  >
+                    Categorie verwijderen
+                  </Button>
+                </div>
+              ) : (
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-semibold text-ink">
+                    <span aria-hidden="true">{activePracticeCategory.emoji}</span> {activePracticeCategory.titleNl}
+                  </p>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => {
+                      setCategoryDraft({ titleNl: activePracticeCategory.titleNl, emoji: activePracticeCategory.emoji });
+                      setEditingCategory(true);
+                    }}
+                  >
+                    Label bewerken
+                  </Button>
+                </div>
+              )}
+            </Card>
+          )}
+
+          {contentError && (
+            <p role="alert" className="text-sm font-medium text-clay-500">
+              {contentError}
+            </p>
+          )}
         </div>
       )}
 
@@ -396,6 +635,7 @@ export default function StudioOpnamesPage() {
           {itemsForActiveSelection.map((item) => {
             const key = recordingKey(item.id, activePersona);
             const entry = manifest[key];
+            const isEditingSentence = mode === "oefenen" && editingSentenceId === item.id;
             return (
               <Card key={item.id} className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex items-start gap-3">
@@ -419,9 +659,88 @@ export default function StudioOpnamesPage() {
                   >
                     {item.imageEmoji}
                   </span>
-                  <div>
-                    <p className="font-semibold text-ink">{item.translationNl}</p>
-                    <p className="text-xs text-ink-muted">{item.latinSpelling}</p>
+                  <div className="flex-1">
+                    {isEditingSentence ? (
+                      <div className="flex flex-col gap-2">
+                        <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                          Zin
+                          <input
+                            type="text"
+                            value={sentenceDraft.translationNl}
+                            onChange={(e) => setSentenceDraft((prev) => ({ ...prev, translationNl: e.target.value }))}
+                            className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                          />
+                        </label>
+                        <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                          Context ("Als je... zeg je:")
+                          <input
+                            type="text"
+                            value={sentenceDraft.contextNl}
+                            onChange={(e) => setSentenceDraft((prev) => ({ ...prev, contextNl: e.target.value }))}
+                            className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                          />
+                        </label>
+                        <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                          Emoji
+                          <input
+                            type="text"
+                            value={sentenceDraft.emoji}
+                            onChange={(e) => setSentenceDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                            className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                              focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                          />
+                        </label>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="primary"
+                            size="sm"
+                            onClick={() => handleSaveSentence(item.id)}
+                            disabled={contentSaving}
+                          >
+                            Opslaan
+                          </Button>
+                          <Button variant="ghost" size="sm" onClick={() => setEditingSentenceId(null)}>
+                            Annuleren
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDeleteSentence(item.id)}
+                            disabled={contentSaving}
+                            className="text-clay-500"
+                          >
+                            Verwijderen
+                          </Button>
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-2">
+                          <p className="font-semibold text-ink">{item.translationNl}</p>
+                          {mode === "oefenen" && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const sentence = practiceContent.sentences.find((s) => s.id === item.id);
+                                setSentenceDraft({
+                                  translationNl: item.translationNl,
+                                  contextNl: sentence?.contextNl ?? "",
+                                  emoji: item.imageEmoji,
+                                });
+                                setEditingSentenceId(item.id);
+                              }}
+                              className="text-xs font-medium text-clay-500 underline underline-offset-2
+                                focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                            >
+                              Label bewerken
+                            </button>
+                          )}
+                        </div>
+                        <p className="text-xs text-ink-muted">{item.latinSpelling}</p>
+                      </>
+                    )}
                     <div className="mt-1">
                       <SpellingInput
                         itemId={item.id}
@@ -467,6 +786,60 @@ export default function StudioOpnamesPage() {
               </Card>
             );
           })}
+
+          {mode === "oefenen" && activePracticeCategory && (
+            <Card className="flex flex-col gap-3">
+              {addingSentence ? (
+                <div className="flex flex-col gap-2">
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Zin
+                    <input
+                      type="text"
+                      value={newSentenceDraft.translationNl}
+                      onChange={(e) => setNewSentenceDraft((prev) => ({ ...prev, translationNl: e.target.value }))}
+                      placeholder="Bijvoorbeeld: Ik ben blij."
+                      className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Context ("Als je... zeg je:")
+                    <input
+                      type="text"
+                      value={newSentenceDraft.contextNl}
+                      onChange={(e) => setNewSentenceDraft((prev) => ({ ...prev, contextNl: e.target.value }))}
+                      placeholder="Als je blij bent, zeg je:"
+                      className="rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <label className="flex flex-col gap-1 text-xs font-medium text-ink-muted">
+                    Emoji
+                    <input
+                      type="text"
+                      value={newSentenceDraft.emoji}
+                      onChange={(e) => setNewSentenceDraft((prev) => ({ ...prev, emoji: e.target.value }))}
+                      placeholder="😊"
+                      className="w-16 rounded-lg border-2 border-border-subtle px-3 py-1.5 text-sm
+                        focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
+                    />
+                  </label>
+                  <div className="flex gap-2">
+                    <Button variant="primary" size="sm" onClick={handleAddSentence} disabled={contentSaving}>
+                      Toevoegen
+                    </Button>
+                    <Button variant="ghost" size="sm" onClick={() => setAddingSentence(false)}>
+                      Annuleren
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <Button variant="secondary" size="sm" onClick={() => setAddingSentence(true)} className="w-fit">
+                  + Nieuwe zin in {activePracticeCategory.titleNl}
+                </Button>
+              )}
+            </Card>
+          )}
         </div>
       )}
     </main>

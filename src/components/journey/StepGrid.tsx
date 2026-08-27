@@ -9,7 +9,7 @@ import {
   MIN_RECORDED_SENTENCES_FOR_LESSON,
 } from "@/lib/lessonCatalog";
 import { getDailySentenceItems } from "@/lib/dailySentences";
-import { PRACTICE_SENTENCE_CATEGORIES } from "@/lib/practiceSentences";
+import { getPracticeContent, type PracticeContent } from "@/lib/practiceContentClient";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { ChildProfileData } from "@/types/domain";
 import { StepTile } from "./StepTile";
@@ -29,18 +29,22 @@ interface StepGridProps {
  */
 export function StepGrid({ childId, child }: StepGridProps) {
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
+  const [practiceContent, setPracticeContent] = useState<PracticeContent | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     getItemIdsWithRecordings().then((ids) => {
       if (!cancelled) setRecordedIds(ids);
     });
+    getPracticeContent().then((content) => {
+      if (!cancelled) setPracticeContent(content);
+    });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  if (recordedIds === null) {
+  if (recordedIds === null || practiceContent === null) {
     return <p className="py-6 text-center text-ink-muted">Even laden…</p>;
   }
 
@@ -66,7 +70,7 @@ export function StepGrid({ childId, child }: StepGridProps) {
   // niveau ziet deze tegels helemaal niet, ook al zou er content zijn.
   const showPracticeTiles = child.level !== "A_ONTDEKKEN";
   const practiceStatuses = showPracticeTiles
-    ? getPracticeCategoryStatuses(child.completedLessonIds, recordedIds)
+    ? getPracticeCategoryStatuses(child.completedLessonIds, recordedIds, practiceContent)
     : [];
 
   return (
@@ -79,7 +83,7 @@ export function StepGrid({ childId, child }: StepGridProps) {
         />
       )}
       {practiceStatuses.map(({ categorySlug, status, lessonId }) => {
-        const category = PRACTICE_SENTENCE_CATEGORIES.find((c) => c.slug === categorySlug);
+        const category = practiceContent.categories.find((c) => c.slug === categorySlug);
         if (!category || status === "locked") return null;
         return (
           <StepTile
