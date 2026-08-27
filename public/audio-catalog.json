@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-25T14:19:59.830Z",
+  "generatedAt": "2026-08-27T13:30:14.700Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -865,20 +865,218 @@
         "man": "/audio/recordings/item-beroepen-leraar__man.webm"
       }
     },
-    "item-dieren-uil": {
-      "phoneticSpelling": "Tanuht",
-      "recordings": {}
+    "item-beroepen-boer": {
+      "phoneticSpelling": "Afellah",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-boer__man.webm"
+      }
+    },
+    "item-beroepen-kok": {
+      "phoneticSpelling": "Akoezini",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-kok__man.webm"
+      }
+    },
+    "item-beroepen-kapper": {
+      "phoneticSpelling": "Ahelaak",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-kapper__man.webm"
+      }
+    },
+    "item-beroepen-monteur": {
+      "phoneticSpelling": "Lmecanic",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-monteur__man.webm"
+      }
+    },
+    "item-beroepen-zanger": {
+      "phoneticSpelling": "Lmoeghani",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-zanger__man.webm"
+      }
+    },
+    "item-beroepen-rechter": {
+      "phoneticSpelling": "Lkadi",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-rechter__man.webm"
+      }
+    },
+    "item-beroepen-postbode": {
+      "phoneticSpelling": "Boetebratien",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-postbode__man.webm"
+      }
+    },
+    "item-beroepen-bakker": {
+      "phoneticSpelling": "Bo afrraan",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-bakker__man.webm"
+      }
+    },
+    "item-beroepen-tandarts": {
+      "phoneticSpelling": "Boeteghmaas",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-tandarts__man.webm"
+      }
+    },
+    "item-beroepen-bouwvakker": {
+      "phoneticSpelling": "Abennay",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-bouwvakker__man.webm"
+      }
+    },
+    "item-beroepen-loodgieter": {
+      "phoneticSpelling": "leplombi",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-loodgieter__man.webm"
+      }
+    },
+    "item-beroepen-elektricien": {
+      "phoneticSpelling": "Triciean",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-elektricien__man.webm"
+      }
+    },
+    "item-beroepen-scheidsrechter": {
+      "phoneticSpelling": "l arbit",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-scheidsrechter__man.webm"
+      }
+    },
+    "item-zin-hallo": {
+      "phoneticSpelling": "Assalamoe aleikom",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-hallo__man.webm"
+      }
+    },
+    "item-zin-dank-je-wel": {
+      "phoneticSpelling": "Chokran",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-dank-je-wel__man.webm"
+      }
+    },
+    "item-zin-alsjeblieft": {
+      "phoneticSpelling": "Afaak",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-alsjeblieft__man.webm"
+      }
+    },
+    "item-zin-goedemorgen": {
+      "phoneticSpelling": "Sbah elghir",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-goedemorgen__man.webm"
+      }
+    },
+    "item-zin-welterusten": {
+      "phoneticSpelling": "Nesataas ilmaan",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-welterusten__man.webm"
+      }
+    },
+    "item-zin-tot-straks": {
+      "phoneticSpelling": "Er asra",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-tot-straks__man.webm"
+      }
+    },
+    "item-zin-dag-mama-papa": {
+      "phoneticSpelling": "Assalamoe aleikom mama, Assalamoe aleikom baba",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-dag-mama-papa__man.webm"
+      }
     },
     "item-zin-honger": {
-      "phoneticSpelling": "Yaghiyyi laaz",
-      "recordings": {}
+      "phoneticSpelling": "Inghayyi laaz",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-honger__man.webm"
+      }
     },
     "item-zin-dorst": {
-      "phoneticSpelling": "Yaghiyyi faad",
-      "recordings": {}
+      "phoneticSpelling": "Inghayyi faad",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-dorst__man.webm"
+      }
     },
     "item-zin-moe": {
       "phoneticSpelling": "Oehlaagh",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-moe__man.webm"
+      }
+    },
+    "item-zin-naar-buiten": {
+      "phoneticSpelling": "Righ afghaagh sbarra",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-naar-buiten__man.webm"
+      }
+    },
+    "item-zin-naar-bed": {
+      "phoneticSpelling": "Righ ad ynaagh",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-naar-bed__man.webm"
+      }
+    },
+    "item-zin-blij": {
+      "phoneticSpelling": "Farhaagh",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-blij__man.webm"
+      }
+    },
+    "item-zin-verdrietig": {
+      "phoneticSpelling": "Ghayragh",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-verdrietig__man.webm"
+      }
+    },
+    "item-zin-bang": {
+      "phoneticSpelling": "Gdoegh",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-bang__man.webm"
+      }
+    },
+    "item-zin-hou-van-jou": {
+      "phoneticSpelling": "Tehlit ghoeri",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-hou-van-jou__man.webm"
+      }
+    },
+    "item-zin-boos": {
+      "phoneticSpelling": "Kalkaagh",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-boos__man.webm"
+      }
+    },
+    "item-zin-waar-is": {
+      "phoneticSpelling": "Menza",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-waar-is__man.webm"
+      }
+    },
+    "item-zin-wat-is-dit": {
+      "phoneticSpelling": "Mataw ya",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-wat-is-dit__man.webm"
+      }
+    },
+    "item-zin-mag-ik": {
+      "phoneticSpelling": "Waga",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-mag-ik__man.webm"
+      }
+    },
+    "item-zin-ben-je-klaar": {
+      "phoneticSpelling": "Tkammelt?",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-ben-je-klaar__man.webm"
+      }
+    },
+    "item-zin-kom-je": {
+      "phoneticSpelling": "Eduud",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-kom-je__man.webm"
+      }
+    },
+    "item-dieren-uil": {
+      "phoneticSpelling": "Tanuht",
       "recordings": {}
     },
     "item-oefenen-geef-me-brood": {
@@ -939,6 +1137,10 @@
     },
     "item-oefenen-hoelaat-is-het": {
       "phoneticSpelling": "Shaal sa-a?",
+      "recordings": {}
+    },
+    "item-beroepen-piloot": {
+      "phoneticSpelling": "Lpitol",
       "recordings": {}
     }
   }
