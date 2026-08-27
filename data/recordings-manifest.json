@@ -1609,5 +1609,50 @@
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-27T13:30:12.836Z",
     "denoised": true
+  },
+  "item-zin-ik-ben-woedend__man": {
+    "itemId": "item-zin-ik-ben-woedend",
+    "persona": "man",
+    "fileName": "item-zin-ik-ben-woedend__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:03:21.088Z",
+    "denoised": true
+  },
+  "item-zin-tijd-om-te-eten__man": {
+    "itemId": "item-zin-tijd-om-te-eten",
+    "persona": "man",
+    "fileName": "item-zin-tijd-om-te-eten__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "TE_REVIEWEN",
+    "recordedAt": "2026-08-27T14:04:29.631Z",
+    "denoised": true
+  },
+  "item-zin-handen-wassen__man": {
+    "itemId": "item-zin-handen-wassen",
+    "persona": "man",
+    "fileName": "item-zin-handen-wassen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "TE_REVIEWEN",
+    "recordedAt": "2026-08-27T14:04:41.712Z",
+    "denoised": true
+  },
+  "item-zin-we-gaan-naar-buiten__man": {
+    "itemId": "item-zin-we-gaan-naar-buiten",
+    "persona": "man",
+    "fileName": "item-zin-we-gaan-naar-buiten__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "TE_REVIEWEN",
+    "recordedAt": "2026-08-27T14:05:12.736Z",
+    "denoised": true
+  },
+  "item-zin-kleren-aandoen__man": {
+    "itemId": "item-zin-kleren-aandoen",
+    "persona": "man",
+    "fileName": "item-zin-kleren-aandoen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "TE_REVIEWEN",
+    "recordedAt": "2026-08-27T14:05:31.205Z",
+    "denoised": true
   }
 }

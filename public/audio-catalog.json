@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T13:30:14.700Z",
+  "generatedAt": "2026-08-27T14:05:31.224Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -1075,6 +1075,12 @@
         "man": "/audio/recordings/item-zin-kom-je__man.webm"
       }
     },
+    "item-zin-ik-ben-woedend": {
+      "phoneticSpelling": "Za faagh",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-ik-ben-woedend__man.webm"
+      }
+    },
     "item-dieren-uil": {
       "phoneticSpelling": "Tanuht",
       "recordings": {}
@@ -1141,6 +1147,22 @@
     },
     "item-beroepen-piloot": {
       "phoneticSpelling": "Lpitol",
+      "recordings": {}
+    },
+    "item-zin-tijd-om-te-eten": {
+      "phoneticSpelling": "Lfotr, imekli, imensi",
+      "recordings": {}
+    },
+    "item-zin-handen-wassen": {
+      "phoneticSpelling": "Sird ifasan",
+      "recordings": {}
+    },
+    "item-zin-we-gaan-naar-buiten": {
+      "phoneticSpelling": "Yallah s barra",
+      "recordings": {}
+    },
+    "item-zin-kleren-aandoen": {
+      "phoneticSpelling": "Les ihruun",
       "recordings": {}
     }
   }
