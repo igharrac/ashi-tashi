@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T14:05:31.224Z",
+  "generatedAt": "2026-08-27T15:00:03.475Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -1081,68 +1081,134 @@
         "man": "/audio/recordings/item-zin-ik-ben-woedend__man.webm"
       }
     },
-    "item-dieren-uil": {
-      "phoneticSpelling": "Tanuht",
-      "recordings": {}
+    "item-oefenen-naar-boven-lopen": {
+      "phoneticSpelling": "Ali s effelah",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-naar-boven-lopen__man.webm"
+      }
+    },
+    "item-oefenen-ik-ga-naar-buiten": {
+      "phoneticSpelling": "Ra dugh sbarra",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-ik-ga-naar-buiten__man.webm"
+      }
+    },
+    "item-oefenen-ik-ga-naar-binnen": {
+      "phoneticSpelling": "Akshmegh s ajensou",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__man.webm"
+      }
+    },
+    "item-oefenen-we-gaan-eten": {
+      "phoneticSpelling": "Ran tesh",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-we-gaan-eten__man.webm"
+      }
     },
     "item-oefenen-geef-me-brood": {
-      "phoneticSpelling": "Awid aghroum",
-      "recordings": {}
+      "phoneticSpelling": "Araad aghroum",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-geef-me-brood__man.webm"
+      }
     },
     "item-oefenen-geef-me-water": {
-      "phoneticSpelling": "Awid aman",
-      "recordings": {}
+      "phoneticSpelling": "Araad amen",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-geef-me-water__man.webm"
+      }
+    },
+    "item-oefenen-haal-water": {
+      "phoneticSpelling": "Awid eman",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-haal-water__man.webm"
+      }
+    },
+    "item-oefenen-awid-brood": {
+      "phoneticSpelling": "Awid aghroum",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-awid-brood__man.webm"
+      }
     },
     "item-oefenen-wat-zeg-je": {
       "phoneticSpelling": "Mat tnnit?",
-      "recordings": {}
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-wat-zeg-je__man.webm"
+      }
     },
     "item-oefenen-weet-niet-wat-je-zegt": {
       "phoneticSpelling": "Ur singh ma d tnit",
-      "recordings": {}
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-weet-niet-wat-je-zegt__man.webm"
+      }
     },
     "item-oefenen-waar-ben-je": {
       "phoneticSpelling": "Mandi y tellit?",
-      "recordings": {}
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-waar-ben-je__man.webm"
+      }
     },
     "item-oefenen-waar-ga-je-heen": {
       "phoneticSpelling": "Mas taaint?",
-      "recordings": {}
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-waar-ga-je-heen__man.webm"
+      }
     },
     "item-oefenen-wat-doe-je": {
       "phoneticSpelling": "Matskart?",
-      "recordings": {}
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-wat-doe-je__man.webm"
+      }
     },
     "item-oefenen-wat-is-er": {
       "phoneticSpelling": "May jran?",
-      "recordings": {}
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-wat-is-er__man.webm"
+      }
     },
     "item-oefenen-hoe-heet-je-meisje": {
-      "phoneticSpelling": "Maysmanam?",
-      "recordings": {}
+      "phoneticSpelling": "Mas manannem?",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-hoe-heet-je-meisje__man.webm"
+      }
     },
     "item-oefenen-hoe-heet-je-jongen": {
       "phoneticSpelling": "Maysmanakh?",
-      "recordings": {}
-    },
-    "item-oefenen-ik-wil-naar-huis": {
-      "phoneticSpelling": "Righ adough s teddart",
-      "recordings": {}
-    },
-    "item-oefenen-ik-wil-niet": {
-      "phoneticSpelling": "Urrigh",
-      "recordings": {}
-    },
-    "item-oefenen-tashelhit-leren": {
-      "phoneticSpelling": "Righ ad 3almgh Tachelhit",
-      "recordings": {}
-    },
-    "item-oefenen-tashelhit-praten-met-jou": {
-      "phoneticSpelling": "Righ adidam sawlgh Tachelhit",
-      "recordings": {}
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-hoe-heet-je-jongen__man.webm"
+      }
     },
     "item-oefenen-hoelaat-is-het": {
       "phoneticSpelling": "Shaal sa-a?",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-hoelaat-is-het__man.webm"
+      }
+    },
+    "item-oefenen-ik-wil-naar-huis": {
+      "phoneticSpelling": "Righ adough s teddart",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-ik-wil-naar-huis__man.webm"
+      }
+    },
+    "item-oefenen-ik-wil-niet": {
+      "phoneticSpelling": "Urrigh",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-ik-wil-niet__man.webm"
+      }
+    },
+    "item-oefenen-tashelhit-praten-met-jou": {
+      "phoneticSpelling": "Righ adidam sawlgh s Tachelhit",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-tashelhit-praten-met-jou__man.webm"
+      }
+    },
+    "item-oefenen-tashelhit-leren": {
+      "phoneticSpelling": "Righ ad 3almgh Tachelhit",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-tashelhit-leren__man.webm"
+      }
+    },
+    "item-dieren-uil": {
+      "phoneticSpelling": "Tanuht",
       "recordings": {}
     },
     "item-beroepen-piloot": {

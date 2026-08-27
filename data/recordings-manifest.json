@@ -1654,5 +1654,194 @@
     "reviewStatus": "TE_REVIEWEN",
     "recordedAt": "2026-08-27T14:05:31.205Z",
     "denoised": true
+  },
+  "item-oefenen-naar-boven-lopen__man": {
+    "itemId": "item-oefenen-naar-boven-lopen",
+    "persona": "man",
+    "fileName": "item-oefenen-naar-boven-lopen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:48:36.541Z",
+    "denoised": true
+  },
+  "item-oefenen-ik-ga-naar-buiten__man": {
+    "itemId": "item-oefenen-ik-ga-naar-buiten",
+    "persona": "man",
+    "fileName": "item-oefenen-ik-ga-naar-buiten__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:48:55.941Z",
+    "denoised": true
+  },
+  "item-oefenen-ik-ga-naar-binnen__man": {
+    "itemId": "item-oefenen-ik-ga-naar-binnen",
+    "persona": "man",
+    "fileName": "item-oefenen-ik-ga-naar-binnen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:49:13.301Z",
+    "denoised": true
+  },
+  "item-oefenen-we-gaan-eten__man": {
+    "itemId": "item-oefenen-we-gaan-eten",
+    "persona": "man",
+    "fileName": "item-oefenen-we-gaan-eten__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:49:16.495Z",
+    "denoised": true
+  },
+  "item-oefenen-geef-me-brood__man": {
+    "itemId": "item-oefenen-geef-me-brood",
+    "persona": "man",
+    "fileName": "item-oefenen-geef-me-brood__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:51:27.842Z",
+    "denoised": true
+  },
+  "item-oefenen-geef-me-water__man": {
+    "itemId": "item-oefenen-geef-me-water",
+    "persona": "man",
+    "fileName": "item-oefenen-geef-me-water__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:51:38.651Z",
+    "denoised": true
+  },
+  "item-oefenen-haal-water__man": {
+    "itemId": "item-oefenen-haal-water",
+    "persona": "man",
+    "fileName": "item-oefenen-haal-water__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:52:26.664Z",
+    "denoised": true
+  },
+  "item-oefenen-awid-brood__man": {
+    "itemId": "item-oefenen-awid-brood",
+    "persona": "man",
+    "fileName": "item-oefenen-awid-brood__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:53:03.216Z",
+    "denoised": true
+  },
+  "item-oefenen-wat-zeg-je__man": {
+    "itemId": "item-oefenen-wat-zeg-je",
+    "persona": "man",
+    "fileName": "item-oefenen-wat-zeg-je__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:58:03.961Z",
+    "denoised": true
+  },
+  "item-oefenen-weet-niet-wat-je-zegt__man": {
+    "itemId": "item-oefenen-weet-niet-wat-je-zegt",
+    "persona": "man",
+    "fileName": "item-oefenen-weet-niet-wat-je-zegt__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:58:09.415Z",
+    "denoised": true
+  },
+  "item-oefenen-waar-ben-je__man": {
+    "itemId": "item-oefenen-waar-ben-je",
+    "persona": "man",
+    "fileName": "item-oefenen-waar-ben-je__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:58:18.191Z",
+    "denoised": true
+  },
+  "item-oefenen-waar-ga-je-heen__man": {
+    "itemId": "item-oefenen-waar-ga-je-heen",
+    "persona": "man",
+    "fileName": "item-oefenen-waar-ga-je-heen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:58:25.559Z",
+    "denoised": true
+  },
+  "item-oefenen-wat-doe-je__man": {
+    "itemId": "item-oefenen-wat-doe-je",
+    "persona": "man",
+    "fileName": "item-oefenen-wat-doe-je__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:58:29.905Z",
+    "denoised": true
+  },
+  "item-oefenen-wat-is-er__man": {
+    "itemId": "item-oefenen-wat-is-er",
+    "persona": "man",
+    "fileName": "item-oefenen-wat-is-er__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:58:36.355Z",
+    "denoised": true
+  },
+  "item-oefenen-hoe-heet-je-meisje__man": {
+    "itemId": "item-oefenen-hoe-heet-je-meisje",
+    "persona": "man",
+    "fileName": "item-oefenen-hoe-heet-je-meisje__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:59:08.770Z",
+    "denoised": true
+  },
+  "item-oefenen-hoe-heet-je-jongen__man": {
+    "itemId": "item-oefenen-hoe-heet-je-jongen",
+    "persona": "man",
+    "fileName": "item-oefenen-hoe-heet-je-jongen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:59:09.585Z",
+    "denoised": true
+  },
+  "item-oefenen-hoelaat-is-het__man": {
+    "itemId": "item-oefenen-hoelaat-is-het",
+    "persona": "man",
+    "fileName": "item-oefenen-hoelaat-is-het__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:59:14.299Z",
+    "denoised": true
+  },
+  "item-oefenen-ik-wil-naar-huis__man": {
+    "itemId": "item-oefenen-ik-wil-naar-huis",
+    "persona": "man",
+    "fileName": "item-oefenen-ik-wil-naar-huis__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:59:29.595Z",
+    "denoised": true
+  },
+  "item-oefenen-ik-wil-niet__man": {
+    "itemId": "item-oefenen-ik-wil-niet",
+    "persona": "man",
+    "fileName": "item-oefenen-ik-wil-niet__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T14:59:33.779Z",
+    "denoised": true
+  },
+  "item-oefenen-tashelhit-praten-met-jou__man": {
+    "itemId": "item-oefenen-tashelhit-praten-met-jou",
+    "persona": "man",
+    "fileName": "item-oefenen-tashelhit-praten-met-jou__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T15:00:02.046Z",
+    "denoised": true
+  },
+  "item-oefenen-tashelhit-leren__man": {
+    "itemId": "item-oefenen-tashelhit-leren",
+    "persona": "man",
+    "fileName": "item-oefenen-tashelhit-leren__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-27T15:00:02.785Z",
+    "denoised": true
   }
 }

@@ -1,10 +1,30 @@
 {
   "categories": [
-    { "slug": "oefenen-acties", "titleNl": "Acties & bewegen", "emoji": "🚶" },
-    { "slug": "oefenen-verzoeken", "titleNl": "Verzoeken", "emoji": "🙏" },
-    { "slug": "oefenen-vragen", "titleNl": "Vragen", "emoji": "❓" },
-    { "slug": "oefenen-wensen", "titleNl": "Wensen", "emoji": "💭" },
-    { "slug": "oefenen-taal-leren", "titleNl": "Taal leren", "emoji": "🗣️" }
+    {
+      "slug": "oefenen-acties",
+      "titleNl": "Acties & bewegen",
+      "emoji": "🚶"
+    },
+    {
+      "slug": "oefenen-verzoeken",
+      "titleNl": "Verzoeken",
+      "emoji": "🙏"
+    },
+    {
+      "slug": "oefenen-vragen",
+      "titleNl": "Vragen",
+      "emoji": "❓"
+    },
+    {
+      "slug": "oefenen-wensen",
+      "titleNl": "Wensen",
+      "emoji": "💭"
+    },
+    {
+      "slug": "oefenen-taal-leren",
+      "titleNl": "Taal leren",
+      "emoji": "🗣️"
+    }
   ],
   "sentences": [
     {
@@ -143,6 +163,20 @@
       "translationNl": "Ik wil met jou Tashelhit praten.",
       "contextNl": "Als je Tashelhit wilt oefenen met iemand, zeg je:",
       "emoji": "🗣️"
+    },
+    {
+      "id": "item-oefenen-awid-brood",
+      "categorySlug": "oefenen-verzoeken",
+      "translationNl": "Haal brood",
+      "contextNl": "Als je wilt dat iemand brood moet halen",
+      "emoji": "🍞"
+    },
+    {
+      "id": "item-oefenen-haal-water",
+      "categorySlug": "oefenen-verzoeken",
+      "translationNl": "Haal water",
+      "contextNl": "Als je wilt dat iemand water haalt",
+      "emoji": "💧"
     }
   ]
 }
