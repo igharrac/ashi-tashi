@@ -8,7 +8,7 @@ import {
   getPracticeCategoryStatuses,
   MIN_RECORDED_SENTENCES_FOR_LESSON,
 } from "@/lib/lessonCatalog";
-import { getDailySentenceItems } from "@/lib/dailySentences";
+import { getDailySentenceContent, type DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import { getPracticeContent, type PracticeContent } from "@/lib/practiceContentClient";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { ChildProfileData } from "@/types/domain";
@@ -30,6 +30,7 @@ interface StepGridProps {
 export function StepGrid({ childId, child }: StepGridProps) {
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [practiceContent, setPracticeContent] = useState<PracticeContent | null>(null);
+  const [dailySentenceContent, setDailySentenceContent] = useState<DailySentenceContent | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -39,12 +40,15 @@ export function StepGrid({ childId, child }: StepGridProps) {
     getPracticeContent().then((content) => {
       if (!cancelled) setPracticeContent(content);
     });
+    getDailySentenceContent().then((content) => {
+      if (!cancelled) setDailySentenceContent(content);
+    });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  if (recordedIds === null || practiceContent === null) {
+  if (recordedIds === null || practiceContent === null || dailySentenceContent === null) {
     return <p className="py-6 text-center text-ink-muted">Even laden…</p>;
   }
 
@@ -58,7 +62,7 @@ export function StepGrid({ childId, child }: StepGridProps) {
   // niet gekoppeld aan een woordcategorie, dus ook niet aan de streng-
   // opeenvolgende volgorde). Alleen zichtbaar zodra er genoeg zinnen echt
   // zijn ingesproken — anders leidt de tegel naar een lege les.
-  const recordedSentenceCount = getDailySentenceItems().filter((sentence) =>
+  const recordedSentenceCount = dailySentenceContent.sentences.filter((sentence) =>
     recordedIds.has(sentence.id),
   ).length;
   const showDailySentencesTile = recordedSentenceCount >= MIN_RECORDED_SENTENCES_FOR_LESSON;

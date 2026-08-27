@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
 import { DAILY_SENTENCES_LESSON_ID, getGenericLessonById } from "@/lib/lessonCatalog";
+import { getDailySentenceContent, type DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import { getPracticeContent, type PracticeContent } from "@/lib/practiceContentClient";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import { ImageAndWord } from "@/components/exercises/ImageAndWord";
@@ -33,10 +34,14 @@ export default function LessonPage() {
   // bepaalt of het themabadge ("Dierenkenner") mag worden toegekend — die
   // hoort niet bij een andere categorie (zie completeLesson hieronder).
   const [practiceContent, setPracticeContent] = useState<PracticeContent | null>(null);
+  const [dailySentenceContent, setDailySentenceContent] = useState<DailySentenceContent | null>(null);
   useEffect(() => {
     let cancelled = false;
     getPracticeContent().then((content) => {
       if (!cancelled) setPracticeContent(content);
+    });
+    getDailySentenceContent().then((content) => {
+      if (!cancelled) setDailySentenceContent(content);
     });
     return () => {
       cancelled = true;
@@ -44,7 +49,11 @@ export default function LessonPage() {
   }, []);
 
   const dierenLesson = DIEREN_THEME.lessons.find((l) => l.id === params.lessonId);
-  const lesson = dierenLesson ?? (practiceContent ? getGenericLessonById(params.lessonId, practiceContent) : null);
+  const lesson =
+    dierenLesson ??
+    (practiceContent && dailySentenceContent
+      ? getGenericLessonById(params.lessonId, practiceContent, dailySentenceContent)
+      : null);
   const isDierenLesson = Boolean(dierenLesson);
   // Child alvast ophalen (kan nog undefined zijn vóór "ready") zodat de
   // gekozen oefenvorm (hfst. 13.11) direct bij de start van de les geldt.
@@ -123,7 +132,8 @@ export default function LessonPage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  if (!ready || practiceContent === null) return <p className="text-center text-gray-500">Even laden…</p>;
+  if (!ready || practiceContent === null || dailySentenceContent === null)
+    return <p className="text-center text-gray-500">Even laden…</p>;
   const child = getChild(params.childId);
   if (!child || !lesson) return notFound();
   if (!recordedIds || queue === null) return <p className="text-center text-gray-500">Even laden…</p>;

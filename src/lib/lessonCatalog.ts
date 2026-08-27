@@ -1,7 +1,7 @@
 import type { ExerciseView, LessonView } from "@/types/domain";
 import { CATEGORIES, getCatalogItems, getCategoryBySlug } from "@/lib/contentCatalog";
 import { DEMO_REVIEW_NOTE, DIEREN_THEME } from "@/lib/demoData";
-import { getDailySentenceItems } from "@/lib/dailySentences";
+import type { DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import type { PracticeContent } from "@/lib/practiceContentClient";
 
 /**
@@ -74,8 +74,8 @@ export const DAILY_SENTENCES_LESSON_ID = "lesson-dagelijkse-zinnen";
 /** Lager dan MIN_RECORDED_WORDS_FOR_LESSON: zinnen zijn trager te produceren en hoeven niet met 5 tegelijk te komen om al de moeite waard te zijn. */
 export const MIN_RECORDED_SENTENCES_FOR_LESSON = 3;
 
-function buildDailySentencesLesson(): LessonView {
-  const exercises: ExerciseView[] = getDailySentenceItems().map((sentence) => ({
+function buildDailySentencesLesson(dailySentenceContent: DailySentenceContent): LessonView {
+  const exercises: ExerciseView[] = dailySentenceContent.sentences.map((sentence) => ({
     id: `exercise-zin-${sentence.id}`,
     type: "NAZEGGEN" as const,
     vocabularyItem: {
@@ -180,8 +180,12 @@ export function getPracticeCategoryStatuses(
 }
 
 /** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat (of de vaste dagelijkse-zinnen-les-id, of een "lesson-oefenen-<categorySlug>"-id), of null als er niets bij past. */
-export function getGenericLessonById(lessonId: string, practiceContent: PracticeContent): LessonView | null {
-  if (lessonId === DAILY_SENTENCES_LESSON_ID) return buildDailySentencesLesson();
+export function getGenericLessonById(
+  lessonId: string,
+  practiceContent: PracticeContent,
+  dailySentenceContent: DailySentenceContent,
+): LessonView | null {
+  if (lessonId === DAILY_SENTENCES_LESSON_ID) return buildDailySentencesLesson(dailySentenceContent);
   const practiceCategorySlug = practiceCategorySlugFromLessonId(lessonId);
   if (practiceCategorySlug) return buildPracticeLessonForCategory(practiceCategorySlug, practiceContent);
   const categorySlug = categorySlugFromLessonId(lessonId);
