@@ -9,5 +9,5 @@ export const NAV_ITEMS: NavItem[] = [
   { key: "leren", label: "Leren", icon: "🎓", hrefSuffix: "route" },
   { key: "ontdekken", label: "Ontdekken", icon: "🧭", hrefSuffix: "ontdekken" },
   { key: "beloningen", label: "Beloningen", icon: "🏅", hrefSuffix: "beloningen" },
-  { key: "profiel", label: "Profiel", icon: "👤", hrefSuffix: null },
+  { key: "profiel", label: "Profiel", icon: "👤", hrefSuffix: "profiel" },
 ];
