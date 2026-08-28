@@ -21,6 +21,15 @@ export interface RecordingEntry {
   recordedAt: string;
   /** Is ruisonderdrukking (RNNoise, zie lib/audio/denoise.ts) toegepast op dit bestand? */
   denoised?: boolean;
+  /**
+   * Alleen relevant voor persona "man": is dit een geanonimiseerde
+   * stemconversie (via het losse voice-anonymize-script op de eigen Mac
+   * van de gebruiker) i.p.v. een rechtstreeks in de studio opgenomen
+   * bestand? Wordt gebruikt om bij een volgende conversieronde te bepalen
+   * welke items al gedaan zijn (zodat niet dezelfde geconverteerde audio
+   * per ongeluk nóg een keer geconverteerd wordt).
+   */
+  voiceConverted?: boolean;
 }
 
 export type RecordingsManifest = Record<string, RecordingEntry>;
