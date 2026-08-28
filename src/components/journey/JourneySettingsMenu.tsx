@@ -66,8 +66,26 @@ export function JourneySettingsMenu({
       </button>
 
       {open && (
-        <div className="absolute right-0 z-20 mt-2 w-72 rounded-xl2 border border-border-subtle bg-white p-3 text-left shadow-soft sm:w-80">
-          <div className="flex flex-col gap-3">
+        <div
+          className="fixed inset-0 z-50 flex flex-col bg-white text-left sm:absolute sm:inset-auto sm:right-0 sm:z-20 sm:mt-2 sm:w-72 sm:flex-none sm:rounded-xl2 sm:border sm:border-border-subtle sm:p-3 sm:shadow-soft sm:w-80"
+        >
+          {/* Alleen op mobiel: schermvullend met een terug-pijltje, want de
+              uitklap-dropdown was op kleine schermen niet goed bereikbaar
+              (o.a. de Stem-sectie viel buiten beeld). Vanaf sm: gewoon de
+              bestaande zwevende dropdown. */}
+          <div className="flex items-center gap-2 border-b border-border-subtle px-4 py-3 sm:hidden">
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Terug naar het reispad"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-xl hover:bg-cream"
+            >
+              <span aria-hidden="true">←</span>
+            </button>
+            <span className="text-base font-semibold text-ink">Instellingen</span>
+          </div>
+
+          <div className="flex flex-col gap-3 overflow-y-auto p-4 sm:p-0">
             <Toggle
               checked={child.microphoneOptIn}
               onChange={onMicrophoneOptInChange}
