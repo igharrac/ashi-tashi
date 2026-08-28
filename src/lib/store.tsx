@@ -53,7 +53,12 @@ interface AppStore {
   state: AppStateData;
   ready: boolean;
   setParentEmail: (email: string) => void;
-  createChildProfile: (input: { displayName: string; avatarId: string; level: ExperienceLevel }) => ChildProfileData;
+  createChildProfile: (input: {
+    displayName: string;
+    avatarId: string;
+    level: ExperienceLevel;
+    preferredVoicePersona: VoicePersona;
+  }) => ChildProfileData;
   getChild: (childId: string) => ChildProfileData | undefined;
   recordExerciseAttempt: (childId: string, attempt: ExerciseAttemptRecord & { isSpoken: boolean }) => void;
   completeLesson: (
@@ -98,9 +103,11 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       // het instellingenmenu op het reispad (hfst. 23, 30: opt-out blijft
       // mogelijk, blokkeert de les nooit).
       microphoneOptIn: true,
-      // null = automatisch (bestaande voorkeursvolgorde); de ouder/het kind
-      // kan later een vaste stem kiezen via het instellingenmenu.
-      preferredVoicePersona: null,
+      // Bewuste keuze bij het aanmaken van het profiel (aparte stap in
+      // profiel/nieuw) i.p.v. stilzwijgend "automatisch" — de ouder/het
+      // kind kan dit later alsnog wijzigen (of op "Automatisch" zetten)
+      // via het instellingenmenu/Profiel-scherm.
+      preferredVoicePersona: input.preferredVoicePersona,
       speakFirstMode: false,
       // Standaard aan (op verzoek): een spreekoefening is klaar na 3x
       // inspreken, ongeacht of het (bijna) exact matchte — zie
