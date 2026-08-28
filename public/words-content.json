@@ -1370,6 +1370,55 @@
           "emoji": "👓"
         }
       ]
+    },
+    {
+      "slug": "kleuren",
+      "levelSlug": "de-basis",
+      "titleNl": "Kleuren",
+      "emoji": "🎨",
+      "teaser": "Alle kleuren",
+      "words": [
+        {
+          "slug": "wit",
+          "translationNl": "Wit",
+          "emoji": "⚪"
+        },
+        {
+          "slug": "zwart",
+          "translationNl": "Zwart",
+          "emoji": "⚫"
+        },
+        {
+          "slug": "rod",
+          "translationNl": "Rood",
+          "emoji": "🔴"
+        },
+        {
+          "slug": "blauw",
+          "translationNl": "Blauw",
+          "emoji": "🔵"
+        },
+        {
+          "slug": "bruin",
+          "translationNl": "Bruin",
+          "emoji": "🟤"
+        },
+        {
+          "slug": "groen",
+          "translationNl": "Groen",
+          "emoji": "🟢"
+        },
+        {
+          "slug": "geel",
+          "translationNl": "Geel",
+          "emoji": "🟡"
+        },
+        {
+          "slug": "oranje",
+          "translationNl": "Oranje",
+          "emoji": "🟠"
+        }
+      ]
     }
   ]
 }

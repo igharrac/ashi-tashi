@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-27T15:00:03.475Z",
+  "generatedAt": "2026-08-28T07:05:58.334Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -1205,6 +1205,54 @@
       "phoneticSpelling": "Righ ad 3almgh Tachelhit",
       "recordings": {
         "man": "/audio/recordings/item-oefenen-tashelhit-leren__man.webm"
+      }
+    },
+    "item-kleuren-wit": {
+      "phoneticSpelling": "Amellaal",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-wit__man.webm"
+      }
+    },
+    "item-kleuren-zwart": {
+      "phoneticSpelling": "Unjaal",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-zwart__man.webm"
+      }
+    },
+    "item-kleuren-rod": {
+      "phoneticSpelling": "Azegagh",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-rod__man.webm"
+      }
+    },
+    "item-kleuren-blauw": {
+      "phoneticSpelling": "Azenjali",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-blauw__man.webm"
+      }
+    },
+    "item-kleuren-bruin": {
+      "phoneticSpelling": "Aqahwi",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-bruin__man.webm"
+      }
+    },
+    "item-kleuren-groen": {
+      "phoneticSpelling": "Azizaw",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-groen__man.webm"
+      }
+    },
+    "item-kleuren-geel": {
+      "phoneticSpelling": "Awraagh",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-geel__man.webm"
+      }
+    },
+    "item-kleuren-oranje": {
+      "phoneticSpelling": "Alimoeni",
+      "recordings": {
+        "man": "/audio/recordings/item-kleuren-oranje__man.webm"
       }
     },
     "item-dieren-uil": {

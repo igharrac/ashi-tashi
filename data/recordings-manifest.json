@@ -1843,5 +1843,77 @@
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-27T15:00:02.785Z",
     "denoised": true
+  },
+  "item-kleuren-wit__man": {
+    "itemId": "item-kleuren-wit",
+    "persona": "man",
+    "fileName": "item-kleuren-wit__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:23.304Z",
+    "denoised": true
+  },
+  "item-kleuren-zwart__man": {
+    "itemId": "item-kleuren-zwart",
+    "persona": "man",
+    "fileName": "item-kleuren-zwart__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:27.476Z",
+    "denoised": true
+  },
+  "item-kleuren-rod__man": {
+    "itemId": "item-kleuren-rod",
+    "persona": "man",
+    "fileName": "item-kleuren-rod__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:31.315Z",
+    "denoised": true
+  },
+  "item-kleuren-blauw__man": {
+    "itemId": "item-kleuren-blauw",
+    "persona": "man",
+    "fileName": "item-kleuren-blauw__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:35.949Z",
+    "denoised": true
+  },
+  "item-kleuren-bruin__man": {
+    "itemId": "item-kleuren-bruin",
+    "persona": "man",
+    "fileName": "item-kleuren-bruin__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:43.289Z",
+    "denoised": true
+  },
+  "item-kleuren-groen__man": {
+    "itemId": "item-kleuren-groen",
+    "persona": "man",
+    "fileName": "item-kleuren-groen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:47.521Z",
+    "denoised": true
+  },
+  "item-kleuren-geel__man": {
+    "itemId": "item-kleuren-geel",
+    "persona": "man",
+    "fileName": "item-kleuren-geel__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:51.527Z",
+    "denoised": true
+  },
+  "item-kleuren-oranje__man": {
+    "itemId": "item-kleuren-oranje",
+    "persona": "man",
+    "fileName": "item-kleuren-oranje__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-28T07:05:56.432Z",
+    "denoised": true
   }
 }
