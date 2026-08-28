@@ -5,6 +5,7 @@ import { Toggle } from "@/components/ui/Toggle";
 import { PERSONA_LABELS, RECORDING_PERSONAS } from "@/lib/recordableItems";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { EXPERIENCE_LEVELS } from "@/lib/experienceLevels";
+import { useHideBottomBarWhile } from "@/components/layout/BottomBarVisibilityContext";
 import type { ChildProfileData, ExperienceLevel } from "@/types/domain";
 
 interface JourneySettingsMenuProps {
@@ -33,6 +34,11 @@ export function JourneySettingsMenu({
 }: JourneySettingsMenuProps) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Onderste navigatiebalk verbergen zolang deze schermvullende (mobiele)
+  // overlay open is, anders is de laatste sectie (Stem) niet scrollbaar/
+  // bereikbaar — komt vanzelf terug zodra je teruggaat.
+  useHideBottomBarWhile(open);
 
   useEffect(() => {
     if (!open) return;

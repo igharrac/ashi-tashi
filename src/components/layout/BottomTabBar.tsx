@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_ITEMS } from "./navItems";
+import { useIsBottomBarHidden } from "./BottomBarVisibilityContext";
 import type { ChildProfileData } from "@/types/domain";
 
 interface BottomTabBarProps {
@@ -12,6 +13,12 @@ interface BottomTabBarProps {
 /** Mobiele navigatie (hfst. 9: mobile-first), zelfde items als de Sidebar. */
 export function BottomTabBar({ child }: BottomTabBarProps) {
   const pathname = usePathname();
+  const hidden = useIsBottomBarHidden();
+
+  // Verborgen zolang er een schermvullende mobiele overlay open is (bv.
+  // JourneySettingsMenu) — anders valt overlay-inhoud er half achter en is
+  // niet alles bereikbaar/scrollbaar. Zie BottomBarVisibilityContext.
+  if (hidden) return null;
 
   return (
     <nav
