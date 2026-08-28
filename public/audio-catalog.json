@@ -1,12 +1,13 @@
 {
-  "generatedAt": "2026-08-28T18:19:35.584Z",
+  "generatedAt": "2026-08-28T21:58:09.911Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
       "recordings": {
         "man": "/audio/recordings/item-dieren-hond__man.webm",
         "vrouw": "/audio/recordings/item-dieren-hond__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-hond__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-hond__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-hond__meisje.webm"
       }
     },
     "item-dieren-kat": {
@@ -14,7 +15,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-kat__man.webm",
         "vrouw": "/audio/recordings/item-dieren-kat__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-kat__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-kat__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-kat__meisje.webm"
       }
     },
     "item-dieren-vogel": {
@@ -22,7 +24,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-vogel__man.webm",
         "vrouw": "/audio/recordings/item-dieren-vogel__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-vogel__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-vogel__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-vogel__meisje.webm"
       }
     },
     "item-dieren-vis": {
@@ -30,7 +33,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-vis__man.webm",
         "vrouw": "/audio/recordings/item-dieren-vis__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-vis__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-vis__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-vis__meisje.webm"
       }
     },
     "item-dieren-koe": {
@@ -38,7 +42,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-koe__man.webm",
         "vrouw": "/audio/recordings/item-dieren-koe__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-koe__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-koe__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-koe__meisje.webm"
       }
     },
     "item-dieren-schaap": {
@@ -46,7 +51,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-schaap__man.webm",
         "vrouw": "/audio/recordings/item-dieren-schaap__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-schaap__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-schaap__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-schaap__meisje.webm"
       }
     },
     "item-dieren-kip": {
@@ -54,7 +60,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-kip__man.webm",
         "vrouw": "/audio/recordings/item-dieren-kip__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-kip__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-kip__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-kip__meisje.webm"
       }
     },
     "item-dieren-ezel": {
@@ -62,7 +69,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-ezel__man.webm",
         "vrouw": "/audio/recordings/item-dieren-ezel__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-ezel__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-ezel__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-ezel__meisje.webm"
       }
     },
     "item-dieren-kameel": {
@@ -70,7 +78,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-kameel__man.webm",
         "vrouw": "/audio/recordings/item-dieren-kameel__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-kameel__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-kameel__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-kameel__meisje.webm"
       }
     },
     "item-dieren-paard": {
@@ -78,7 +87,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-paard__man.webm",
         "vrouw": "/audio/recordings/item-dieren-paard__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-paard__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-paard__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-paard__meisje.webm"
       }
     },
     "item-dieren-varken": {
@@ -86,7 +96,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-varken__man.webm",
         "vrouw": "/audio/recordings/item-dieren-varken__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-varken__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-varken__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-varken__meisje.webm"
       }
     },
     "item-dieren-eend": {
@@ -94,7 +105,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-eend__man.webm",
         "vrouw": "/audio/recordings/item-dieren-eend__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-eend__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-eend__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-eend__meisje.webm"
       }
     },
     "item-dieren-konijn": {
@@ -102,7 +114,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-konijn__man.webm",
         "vrouw": "/audio/recordings/item-dieren-konijn__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-konijn__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-konijn__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-konijn__meisje.webm"
       }
     },
     "item-dieren-muis": {
@@ -110,7 +123,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-muis__man.webm",
         "vrouw": "/audio/recordings/item-dieren-muis__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-muis__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-muis__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-muis__meisje.webm"
       }
     },
     "item-dieren-olifant": {
@@ -118,7 +132,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-olifant__man.webm",
         "vrouw": "/audio/recordings/item-dieren-olifant__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-olifant__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-olifant__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-olifant__meisje.webm"
       }
     },
     "item-dieren-leeuw": {
@@ -126,7 +141,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-leeuw__man.webm",
         "vrouw": "/audio/recordings/item-dieren-leeuw__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-leeuw__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-leeuw__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-leeuw__meisje.webm"
       }
     },
     "item-dieren-tijger": {
@@ -134,7 +150,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-tijger__man.webm",
         "vrouw": "/audio/recordings/item-dieren-tijger__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-tijger__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-tijger__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-tijger__meisje.webm"
       }
     },
     "item-dieren-beer": {
@@ -142,7 +159,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-beer__man.webm",
         "vrouw": "/audio/recordings/item-dieren-beer__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-beer__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-beer__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-beer__meisje.webm"
       }
     },
     "item-dieren-aap": {
@@ -150,7 +168,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-aap__man.webm",
         "vrouw": "/audio/recordings/item-dieren-aap__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-aap__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-aap__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-aap__meisje.webm"
       }
     },
     "item-dieren-giraffe": {
@@ -158,7 +177,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-giraffe__man.webm",
         "vrouw": "/audio/recordings/item-dieren-giraffe__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-giraffe__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-giraffe__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-giraffe__meisje.webm"
       }
     },
     "item-dieren-vos": {
@@ -166,7 +186,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-vos__man.webm",
         "vrouw": "/audio/recordings/item-dieren-vos__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-vos__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-vos__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-vos__meisje.webm"
       }
     },
     "item-dieren-hert": {
@@ -174,7 +195,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-hert__man.webm",
         "vrouw": "/audio/recordings/item-dieren-hert__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-hert__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-hert__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-hert__meisje.webm"
       }
     },
     "item-dieren-egel": {
@@ -182,7 +204,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-egel__man.webm",
         "vrouw": "/audio/recordings/item-dieren-egel__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-egel__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-egel__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-egel__meisje.webm"
       }
     },
     "item-dieren-slang": {
@@ -190,7 +213,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-slang__man.webm",
         "vrouw": "/audio/recordings/item-dieren-slang__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-slang__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-slang__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-slang__meisje.webm"
       }
     },
     "item-dieren-kikker": {
@@ -198,7 +222,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-kikker__man.webm",
         "vrouw": "/audio/recordings/item-dieren-kikker__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-kikker__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-kikker__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-kikker__meisje.webm"
       }
     },
     "item-dieren-bij": {
@@ -206,7 +231,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-bij__man.webm",
         "vrouw": "/audio/recordings/item-dieren-bij__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-bij__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-bij__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-bij__meisje.webm"
       }
     },
     "item-dieren-spin": {
@@ -214,7 +240,8 @@
       "recordings": {
         "man": "/audio/recordings/item-dieren-spin__man.webm",
         "vrouw": "/audio/recordings/item-dieren-spin__vrouw.webm",
-        "jongen": "/audio/recordings/item-dieren-spin__jongen.webm"
+        "jongen": "/audio/recordings/item-dieren-spin__jongen.webm",
+        "meisje": "/audio/recordings/item-dieren-spin__meisje.webm"
       }
     },
     "item-lichaam-mond": {
@@ -222,7 +249,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-mond__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-mond__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-mond__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-mond__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-mond__meisje.webm"
       }
     },
     "item-lichaam-tand": {
@@ -230,7 +258,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-tand__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-tand__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-tand__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-tand__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-tand__meisje.webm"
       }
     },
     "item-lichaam-tong": {
@@ -238,7 +267,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-tong__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-tong__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-tong__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-tong__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-tong__meisje.webm"
       }
     },
     "item-lichaam-hand": {
@@ -246,7 +276,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-hand__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-hand__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-hand__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-hand__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-hand__meisje.webm"
       }
     },
     "item-lichaam-been": {
@@ -254,7 +285,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-been__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-been__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-been__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-been__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-been__meisje.webm"
       }
     },
     "item-lichaam-hart": {
@@ -262,7 +294,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-hart__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-hart__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-hart__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-hart__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-hart__meisje.webm"
       }
     },
     "item-lichaam-hersenen": {
@@ -270,7 +303,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-hersenen__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-hersenen__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-hersenen__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-hersenen__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-hersenen__meisje.webm"
       }
     },
     "item-lichaam-longen": {
@@ -278,7 +312,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-longen__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-longen__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-longen__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-longen__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-longen__meisje.webm"
       }
     },
     "item-lichaam-bot": {
@@ -286,7 +321,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-bot__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-bot__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-bot__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-bot__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-bot__meisje.webm"
       }
     },
     "item-lichaam-nagel": {
@@ -294,7 +330,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-nagel__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-nagel__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-nagel__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-nagel__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-nagel__meisje.webm"
       }
     },
     "item-lichaam-schedel": {
@@ -302,7 +339,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-schedel__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-schedel__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-schedel__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-schedel__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-schedel__meisje.webm"
       }
     },
     "item-lichaam-oog": {
@@ -310,7 +348,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-oog__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-oog__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-oog__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-oog__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-oog__meisje.webm"
       }
     },
     "item-lichaam-oor": {
@@ -318,7 +357,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-oor__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-oor__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-oor__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-oor__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-oor__meisje.webm"
       }
     },
     "item-lichaam-neus": {
@@ -326,7 +366,8 @@
       "recordings": {
         "man": "/audio/recordings/item-lichaam-neus__man.webm",
         "vrouw": "/audio/recordings/item-lichaam-neus__vrouw.webm",
-        "jongen": "/audio/recordings/item-lichaam-neus__jongen.webm"
+        "jongen": "/audio/recordings/item-lichaam-neus__jongen.webm",
+        "meisje": "/audio/recordings/item-lichaam-neus__meisje.webm"
       }
     },
     "item-kleding-shirt": {
@@ -334,7 +375,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-shirt__man.webm",
         "vrouw": "/audio/recordings/item-kleding-shirt__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-shirt__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-shirt__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-shirt__meisje.webm"
       }
     },
     "item-kleding-broek": {
@@ -342,7 +384,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-broek__man.webm",
         "vrouw": "/audio/recordings/item-kleding-broek__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-broek__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-broek__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-broek__meisje.webm"
       }
     },
     "item-kleding-jurk": {
@@ -350,7 +393,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-jurk__man.webm",
         "vrouw": "/audio/recordings/item-kleding-jurk__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-jurk__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-jurk__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-jurk__meisje.webm"
       }
     },
     "item-kleding-jas": {
@@ -358,7 +402,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-jas__man.webm",
         "vrouw": "/audio/recordings/item-kleding-jas__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-jas__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-jas__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-jas__meisje.webm"
       }
     },
     "item-kleding-sjaal": {
@@ -366,7 +411,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-sjaal__man.webm",
         "vrouw": "/audio/recordings/item-kleding-sjaal__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-sjaal__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-sjaal__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-sjaal__meisje.webm"
       }
     },
     "item-kleding-handschoenen": {
@@ -374,7 +420,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-handschoenen__man.webm",
         "vrouw": "/audio/recordings/item-kleding-handschoenen__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-handschoenen__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-handschoenen__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-handschoenen__meisje.webm"
       }
     },
     "item-kleding-sokken": {
@@ -382,7 +429,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-sokken__man.webm",
         "vrouw": "/audio/recordings/item-kleding-sokken__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-sokken__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-sokken__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-sokken__meisje.webm"
       }
     },
     "item-kleding-schoenen": {
@@ -390,7 +438,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-schoenen__man.webm",
         "vrouw": "/audio/recordings/item-kleding-schoenen__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-schoenen__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-schoenen__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-schoenen__meisje.webm"
       }
     },
     "item-kleding-laarzen": {
@@ -398,7 +447,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-laarzen__man.webm",
         "vrouw": "/audio/recordings/item-kleding-laarzen__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-laarzen__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-laarzen__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-laarzen__meisje.webm"
       }
     },
     "item-kleding-sandalen": {
@@ -406,7 +456,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-sandalen__man.webm",
         "vrouw": "/audio/recordings/item-kleding-sandalen__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-sandalen__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-sandalen__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-sandalen__meisje.webm"
       }
     },
     "item-kleding-pet": {
@@ -414,7 +465,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-pet__man.webm",
         "vrouw": "/audio/recordings/item-kleding-pet__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-pet__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-pet__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-pet__meisje.webm"
       }
     },
     "item-kleding-ring": {
@@ -422,7 +474,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-ring__man.webm",
         "vrouw": "/audio/recordings/item-kleding-ring__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-ring__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-ring__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-ring__meisje.webm"
       }
     },
     "item-kleding-horloge": {
@@ -430,7 +483,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleding-horloge__man.webm",
         "vrouw": "/audio/recordings/item-kleding-horloge__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleding-horloge__jongen.webm"
+        "jongen": "/audio/recordings/item-kleding-horloge__jongen.webm",
+        "meisje": "/audio/recordings/item-kleding-horloge__meisje.webm"
       }
     },
     "item-eten-en-drinken-appel": {
@@ -438,7 +492,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-appel__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-appel__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-appel__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-appel__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-appel__meisje.webm"
       }
     },
     "item-eten-en-drinken-banaan": {
@@ -446,7 +501,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-banaan__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-banaan__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-banaan__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-banaan__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-banaan__meisje.webm"
       }
     },
     "item-eten-en-drinken-sinaasappel": {
@@ -454,7 +510,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-sinaasappel__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-sinaasappel__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-sinaasappel__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-sinaasappel__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-sinaasappel__meisje.webm"
       }
     },
     "item-eten-en-drinken-druiven": {
@@ -462,7 +519,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-druiven__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-druiven__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-druiven__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-druiven__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-druiven__meisje.webm"
       }
     },
     "item-eten-en-drinken-aardbei": {
@@ -470,7 +528,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-aardbei__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-aardbei__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-aardbei__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-aardbei__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-aardbei__meisje.webm"
       }
     },
     "item-eten-en-drinken-watermeloen": {
@@ -478,7 +537,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-watermeloen__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-watermeloen__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-watermeloen__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-watermeloen__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-watermeloen__meisje.webm"
       }
     },
     "item-eten-en-drinken-peer": {
@@ -486,7 +546,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-peer__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-peer__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-peer__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-peer__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-peer__meisje.webm"
       }
     },
     "item-eten-en-drinken-citroen": {
@@ -494,7 +555,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-citroen__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-citroen__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-citroen__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-citroen__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-citroen__meisje.webm"
       }
     },
     "item-eten-en-drinken-perzik": {
@@ -502,7 +564,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-perzik__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-perzik__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-perzik__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-perzik__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-perzik__meisje.webm"
       }
     },
     "item-eten-en-drinken-brood": {
@@ -510,7 +573,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-brood__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-brood__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-brood__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-brood__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-brood__meisje.webm"
       }
     },
     "item-eten-en-drinken-kaas": {
@@ -518,7 +582,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-kaas__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-kaas__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-kaas__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-kaas__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-kaas__meisje.webm"
       }
     },
     "item-eten-en-drinken-ei": {
@@ -526,7 +591,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-ei__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-ei__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-ei__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-ei__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-ei__meisje.webm"
       }
     },
     "item-eten-en-drinken-melk": {
@@ -534,7 +600,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-melk__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-melk__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-melk__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-melk__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-melk__meisje.webm"
       }
     },
     "item-eten-en-drinken-water": {
@@ -542,7 +609,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-water__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-water__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-water__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-water__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-water__meisje.webm"
       }
     },
     "item-eten-en-drinken-thee": {
@@ -550,7 +618,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-thee__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-thee__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-thee__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-thee__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-thee__meisje.webm"
       }
     },
     "item-eten-en-drinken-honing": {
@@ -558,7 +627,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-honing__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-honing__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-honing__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-honing__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-honing__meisje.webm"
       }
     },
     "item-eten-en-drinken-boter": {
@@ -566,7 +636,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-boter__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-boter__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-boter__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-boter__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-boter__meisje.webm"
       }
     },
     "item-eten-en-drinken-rijst": {
@@ -574,7 +645,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-rijst__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-rijst__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-rijst__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-rijst__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-rijst__meisje.webm"
       }
     },
     "item-eten-en-drinken-pasta": {
@@ -582,7 +654,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-pasta__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-pasta__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-pasta__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-pasta__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-pasta__meisje.webm"
       }
     },
     "item-eten-en-drinken-koekje": {
@@ -590,7 +663,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-koekje__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-koekje__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-koekje__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-koekje__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-koekje__meisje.webm"
       }
     },
     "item-eten-en-drinken-wortel": {
@@ -598,7 +672,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-wortel__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-wortel__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-wortel__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-wortel__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-wortel__meisje.webm"
       }
     },
     "item-eten-en-drinken-tomaat": {
@@ -606,7 +681,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-tomaat__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-tomaat__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-tomaat__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-tomaat__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-tomaat__meisje.webm"
       }
     },
     "item-eten-en-drinken-komkommer": {
@@ -614,7 +690,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-komkommer__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-komkommer__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-komkommer__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-komkommer__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-komkommer__meisje.webm"
       }
     },
     "item-eten-en-drinken-paprika": {
@@ -622,7 +699,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-paprika__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-paprika__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-paprika__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-paprika__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-paprika__meisje.webm"
       }
     },
     "item-eten-en-drinken-aardappel": {
@@ -630,7 +708,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-aardappel__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-aardappel__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-aardappel__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-aardappel__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-aardappel__meisje.webm"
       }
     },
     "item-eten-en-drinken-ui": {
@@ -638,7 +717,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-ui__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-ui__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-ui__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-ui__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-ui__meisje.webm"
       }
     },
     "item-eten-en-drinken-knoflook": {
@@ -646,7 +726,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-knoflook__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-knoflook__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-knoflook__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-knoflook__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-knoflook__meisje.webm"
       }
     },
     "item-eten-en-drinken-mais": {
@@ -654,7 +735,8 @@
       "recordings": {
         "man": "/audio/recordings/item-eten-en-drinken-mais__man.webm",
         "vrouw": "/audio/recordings/item-eten-en-drinken-mais__vrouw.webm",
-        "jongen": "/audio/recordings/item-eten-en-drinken-mais__jongen.webm"
+        "jongen": "/audio/recordings/item-eten-en-drinken-mais__jongen.webm",
+        "meisje": "/audio/recordings/item-eten-en-drinken-mais__meisje.webm"
       }
     },
     "item-huis-en-spullen-stoel": {
@@ -662,7 +744,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-stoel__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-stoel__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-stoel__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-stoel__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-stoel__meisje.webm"
       }
     },
     "item-huis-en-spullen-bed": {
@@ -670,7 +753,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-bed__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-bed__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-bed__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-bed__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-bed__meisje.webm"
       }
     },
     "item-huis-en-spullen-deur": {
@@ -678,7 +762,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-deur__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-deur__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-deur__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-deur__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-deur__meisje.webm"
       }
     },
     "item-huis-en-spullen-raam": {
@@ -686,7 +771,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-raam__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-raam__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-raam__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-raam__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-raam__meisje.webm"
       }
     },
     "item-huis-en-spullen-lamp": {
@@ -694,7 +780,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-lamp__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-lamp__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-lamp__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-lamp__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-lamp__meisje.webm"
       }
     },
     "item-huis-en-spullen-klok": {
@@ -702,7 +789,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-klok__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-klok__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-klok__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-klok__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-klok__meisje.webm"
       }
     },
     "item-huis-en-spullen-spiegel": {
@@ -710,7 +798,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-spiegel__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-spiegel__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-spiegel__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-spiegel__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-spiegel__meisje.webm"
       }
     },
     "item-huis-en-spullen-boek": {
@@ -718,7 +807,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-boek__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-boek__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-boek__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-boek__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-boek__meisje.webm"
       }
     },
     "item-huis-en-spullen-pen": {
@@ -726,7 +816,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-pen__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-pen__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-pen__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-pen__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-pen__meisje.webm"
       }
     },
     "item-huis-en-spullen-potlood": {
@@ -734,7 +825,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-potlood__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-potlood__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-potlood__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-potlood__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-potlood__meisje.webm"
       }
     },
     "item-huis-en-spullen-schaar": {
@@ -742,7 +834,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-schaar__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-schaar__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-schaar__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-schaar__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-schaar__meisje.webm"
       }
     },
     "item-huis-en-spullen-telefoon": {
@@ -750,7 +843,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-telefoon__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-telefoon__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-telefoon__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-telefoon__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-telefoon__meisje.webm"
       }
     },
     "item-huis-en-spullen-televisie": {
@@ -758,7 +852,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-televisie__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-televisie__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-televisie__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-televisie__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-televisie__meisje.webm"
       }
     },
     "item-huis-en-spullen-bord": {
@@ -766,7 +861,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-bord__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-bord__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-bord__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-bord__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-bord__meisje.webm"
       }
     },
     "item-huis-en-spullen-lepel": {
@@ -774,7 +870,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-lepel__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-lepel__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-lepel__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-lepel__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-lepel__meisje.webm"
       }
     },
     "item-huis-en-spullen-vork": {
@@ -782,7 +879,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-vork__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-vork__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-vork__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-vork__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-vork__meisje.webm"
       }
     },
     "item-huis-en-spullen-mes": {
@@ -790,7 +888,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-mes__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-mes__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-mes__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-mes__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-mes__meisje.webm"
       }
     },
     "item-huis-en-spullen-pan": {
@@ -798,7 +897,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-pan__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-pan__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-pan__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-pan__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-pan__meisje.webm"
       }
     },
     "item-huis-en-spullen-douche": {
@@ -806,7 +906,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-douche__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-douche__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-douche__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-douche__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-douche__meisje.webm"
       }
     },
     "item-huis-en-spullen-wc": {
@@ -814,7 +915,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-wc__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-wc__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-wc__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-wc__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-wc__meisje.webm"
       }
     },
     "item-huis-en-spullen-sleutel": {
@@ -822,7 +924,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-sleutel__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-sleutel__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-sleutel__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-sleutel__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-sleutel__meisje.webm"
       }
     },
     "item-huis-en-spullen-tas": {
@@ -830,7 +933,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-tas__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-tas__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-tas__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-tas__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-tas__meisje.webm"
       }
     },
     "item-huis-en-spullen-bezem": {
@@ -838,7 +942,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-bezem__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-bezem__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-bezem__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-bezem__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-bezem__meisje.webm"
       }
     },
     "item-huis-en-spullen-emmer": {
@@ -846,7 +951,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-emmer__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-emmer__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-emmer__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-emmer__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-emmer__meisje.webm"
       }
     },
     "item-huis-en-spullen-zeep": {
@@ -854,7 +960,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-zeep__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-zeep__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-zeep__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-zeep__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-zeep__meisje.webm"
       }
     },
     "item-huis-en-spullen-kaars": {
@@ -862,7 +969,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-kaars__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-kaars__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-kaars__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-kaars__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-kaars__meisje.webm"
       }
     },
     "item-huis-en-spullen-koffer": {
@@ -870,7 +978,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-koffer__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-koffer__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-koffer__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-koffer__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-koffer__meisje.webm"
       }
     },
     "item-huis-en-spullen-wekker": {
@@ -878,7 +987,8 @@
       "recordings": {
         "man": "/audio/recordings/item-huis-en-spullen-wekker__man.webm",
         "vrouw": "/audio/recordings/item-huis-en-spullen-wekker__vrouw.webm",
-        "jongen": "/audio/recordings/item-huis-en-spullen-wekker__jongen.webm"
+        "jongen": "/audio/recordings/item-huis-en-spullen-wekker__jongen.webm",
+        "meisje": "/audio/recordings/item-huis-en-spullen-wekker__meisje.webm"
       }
     },
     "item-natuur-en-weer-zon": {
@@ -886,7 +996,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-zon__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-zon__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-zon__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-zon__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-zon__meisje.webm"
       }
     },
     "item-natuur-en-weer-maan": {
@@ -894,7 +1005,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-maan__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-maan__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-maan__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-maan__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-maan__meisje.webm"
       }
     },
     "item-natuur-en-weer-ster": {
@@ -902,7 +1014,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-ster__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-ster__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-ster__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-ster__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-ster__meisje.webm"
       }
     },
     "item-natuur-en-weer-wolk": {
@@ -910,7 +1023,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-wolk__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-wolk__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-wolk__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-wolk__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-wolk__meisje.webm"
       }
     },
     "item-natuur-en-weer-regen": {
@@ -918,7 +1032,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-regen__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-regen__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-regen__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-regen__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-regen__meisje.webm"
       }
     },
     "item-natuur-en-weer-sneeuw": {
@@ -926,7 +1041,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-sneeuw__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-sneeuw__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-sneeuw__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-sneeuw__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-sneeuw__meisje.webm"
       }
     },
     "item-natuur-en-weer-wind": {
@@ -934,7 +1050,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-wind__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-wind__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-wind__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-wind__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-wind__meisje.webm"
       }
     },
     "item-natuur-en-weer-regenboog": {
@@ -942,7 +1059,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-regenboog__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-regenboog__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-regenboog__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-regenboog__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-regenboog__meisje.webm"
       }
     },
     "item-natuur-en-weer-bliksem": {
@@ -950,7 +1068,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-bliksem__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-bliksem__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-bliksem__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-bliksem__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-bliksem__meisje.webm"
       }
     },
     "item-natuur-en-weer-berg": {
@@ -958,7 +1077,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-berg__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-berg__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-berg__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-berg__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-berg__meisje.webm"
       }
     },
     "item-natuur-en-weer-zee": {
@@ -966,7 +1086,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-zee__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-zee__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-zee__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-zee__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-zee__meisje.webm"
       }
     },
     "item-natuur-en-weer-boom": {
@@ -974,7 +1095,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-boom__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-boom__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-boom__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-boom__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-boom__meisje.webm"
       }
     },
     "item-natuur-en-weer-bloem": {
@@ -982,7 +1104,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-bloem__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-bloem__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-bloem__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-bloem__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-bloem__meisje.webm"
       }
     },
     "item-natuur-en-weer-bos": {
@@ -990,7 +1113,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-bos__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-bos__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-bos__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-bos__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-bos__meisje.webm"
       }
     },
     "item-natuur-en-weer-grot": {
@@ -998,7 +1122,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-grot__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-grot__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-grot__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-grot__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-grot__meisje.webm"
       }
     },
     "item-natuur-en-weer-vuur": {
@@ -1006,7 +1131,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-vuur__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-vuur__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-vuur__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-vuur__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-vuur__meisje.webm"
       }
     },
     "item-natuur-en-weer-ijs": {
@@ -1014,7 +1140,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-ijs__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-ijs__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-ijs__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-ijs__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-ijs__meisje.webm"
       }
     },
     "item-natuur-en-weer-mist": {
@@ -1022,7 +1149,8 @@
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-mist__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-mist__vrouw.webm",
-        "jongen": "/audio/recordings/item-natuur-en-weer-mist__jongen.webm"
+        "jongen": "/audio/recordings/item-natuur-en-weer-mist__jongen.webm",
+        "meisje": "/audio/recordings/item-natuur-en-weer-mist__meisje.webm"
       }
     },
     "item-vervoer-auto": {
@@ -1030,7 +1158,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-auto__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-auto__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-auto__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-auto__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-auto__meisje.webm"
       }
     },
     "item-vervoer-bus": {
@@ -1038,7 +1167,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-bus__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-bus__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-bus__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-bus__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-bus__meisje.webm"
       }
     },
     "item-vervoer-trein": {
@@ -1046,7 +1176,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-trein__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-trein__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-trein__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-trein__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-trein__meisje.webm"
       }
     },
     "item-vervoer-vliegtuig": {
@@ -1054,7 +1185,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-vliegtuig__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-vliegtuig__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-vliegtuig__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-vliegtuig__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-vliegtuig__meisje.webm"
       }
     },
     "item-vervoer-fiets": {
@@ -1062,7 +1194,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-fiets__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-fiets__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-fiets__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-fiets__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-fiets__meisje.webm"
       }
     },
     "item-vervoer-motor": {
@@ -1070,7 +1203,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-motor__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-motor__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-motor__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-motor__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-motor__meisje.webm"
       }
     },
     "item-vervoer-boot": {
@@ -1078,7 +1212,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-boot__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-boot__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-boot__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-boot__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-boot__meisje.webm"
       }
     },
     "item-vervoer-vrachtwagen": {
@@ -1086,7 +1221,8 @@
       "recordings": {
         "man": "/audio/recordings/item-vervoer-vrachtwagen__man.webm",
         "vrouw": "/audio/recordings/item-vervoer-vrachtwagen__vrouw.webm",
-        "jongen": "/audio/recordings/item-vervoer-vrachtwagen__jongen.webm"
+        "jongen": "/audio/recordings/item-vervoer-vrachtwagen__jongen.webm",
+        "meisje": "/audio/recordings/item-vervoer-vrachtwagen__meisje.webm"
       }
     },
     "item-speelgoed-en-spel-bal": {
@@ -1094,7 +1230,8 @@
       "recordings": {
         "man": "/audio/recordings/item-speelgoed-en-spel-bal__man.webm",
         "vrouw": "/audio/recordings/item-speelgoed-en-spel-bal__vrouw.webm",
-        "jongen": "/audio/recordings/item-speelgoed-en-spel-bal__jongen.webm"
+        "jongen": "/audio/recordings/item-speelgoed-en-spel-bal__jongen.webm",
+        "meisje": "/audio/recordings/item-speelgoed-en-spel-bal__meisje.webm"
       }
     },
     "item-speelgoed-en-spel-pop": {
@@ -1102,7 +1239,8 @@
       "recordings": {
         "man": "/audio/recordings/item-speelgoed-en-spel-pop__man.webm",
         "vrouw": "/audio/recordings/item-speelgoed-en-spel-pop__vrouw.webm",
-        "jongen": "/audio/recordings/item-speelgoed-en-spel-pop__jongen.webm"
+        "jongen": "/audio/recordings/item-speelgoed-en-spel-pop__jongen.webm",
+        "meisje": "/audio/recordings/item-speelgoed-en-spel-pop__meisje.webm"
       }
     },
     "item-speelgoed-en-spel-kaartspel": {
@@ -1110,7 +1248,8 @@
       "recordings": {
         "man": "/audio/recordings/item-speelgoed-en-spel-kaartspel__man.webm",
         "vrouw": "/audio/recordings/item-speelgoed-en-spel-kaartspel__vrouw.webm",
-        "jongen": "/audio/recordings/item-speelgoed-en-spel-kaartspel__jongen.webm"
+        "jongen": "/audio/recordings/item-speelgoed-en-spel-kaartspel__jongen.webm",
+        "meisje": "/audio/recordings/item-speelgoed-en-spel-kaartspel__meisje.webm"
       }
     },
     "item-speelgoed-en-spel-magneet": {
@@ -1118,7 +1257,8 @@
       "recordings": {
         "man": "/audio/recordings/item-speelgoed-en-spel-magneet__man.webm",
         "vrouw": "/audio/recordings/item-speelgoed-en-spel-magneet__vrouw.webm",
-        "jongen": "/audio/recordings/item-speelgoed-en-spel-magneet__jongen.webm"
+        "jongen": "/audio/recordings/item-speelgoed-en-spel-magneet__jongen.webm",
+        "meisje": "/audio/recordings/item-speelgoed-en-spel-magneet__meisje.webm"
       }
     },
     "item-speelgoed-en-spel-vlag": {
@@ -1126,7 +1266,8 @@
       "recordings": {
         "man": "/audio/recordings/item-speelgoed-en-spel-vlag__man.webm",
         "vrouw": "/audio/recordings/item-speelgoed-en-spel-vlag__vrouw.webm",
-        "jongen": "/audio/recordings/item-speelgoed-en-spel-vlag__jongen.webm"
+        "jongen": "/audio/recordings/item-speelgoed-en-spel-vlag__jongen.webm",
+        "meisje": "/audio/recordings/item-speelgoed-en-spel-vlag__meisje.webm"
       }
     },
     "item-speelgoed-en-spel-schat": {
@@ -1134,7 +1275,8 @@
       "recordings": {
         "man": "/audio/recordings/item-speelgoed-en-spel-schat__man.webm",
         "vrouw": "/audio/recordings/item-speelgoed-en-spel-schat__vrouw.webm",
-        "jongen": "/audio/recordings/item-speelgoed-en-spel-schat__jongen.webm"
+        "jongen": "/audio/recordings/item-speelgoed-en-spel-schat__jongen.webm",
+        "meisje": "/audio/recordings/item-speelgoed-en-spel-schat__meisje.webm"
       }
     },
     "item-beroepen-dokter": {
@@ -1142,7 +1284,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-dokter__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-dokter__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-dokter__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-dokter__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-dokter__meisje.webm"
       }
     },
     "item-beroepen-leraar": {
@@ -1150,7 +1293,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-leraar__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-leraar__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-leraar__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-leraar__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-leraar__meisje.webm"
       }
     },
     "item-beroepen-boer": {
@@ -1158,7 +1302,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-boer__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-boer__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-boer__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-boer__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-boer__meisje.webm"
       }
     },
     "item-beroepen-kok": {
@@ -1166,7 +1311,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-kok__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-kok__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-kok__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-kok__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-kok__meisje.webm"
       }
     },
     "item-beroepen-kapper": {
@@ -1174,7 +1320,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-kapper__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-kapper__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-kapper__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-kapper__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-kapper__meisje.webm"
       }
     },
     "item-beroepen-monteur": {
@@ -1182,7 +1329,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-monteur__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-monteur__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-monteur__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-monteur__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-monteur__meisje.webm"
       }
     },
     "item-beroepen-zanger": {
@@ -1190,7 +1338,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-zanger__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-zanger__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-zanger__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-zanger__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-zanger__meisje.webm"
       }
     },
     "item-beroepen-rechter": {
@@ -1198,7 +1347,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-rechter__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-rechter__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-rechter__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-rechter__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-rechter__meisje.webm"
       }
     },
     "item-beroepen-postbode": {
@@ -1206,7 +1356,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-postbode__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-postbode__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-postbode__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-postbode__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-postbode__meisje.webm"
       }
     },
     "item-beroepen-bakker": {
@@ -1214,7 +1365,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-bakker__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-bakker__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-bakker__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-bakker__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-bakker__meisje.webm"
       }
     },
     "item-beroepen-tandarts": {
@@ -1222,7 +1374,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-tandarts__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-tandarts__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-tandarts__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-tandarts__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-tandarts__meisje.webm"
       }
     },
     "item-beroepen-bouwvakker": {
@@ -1230,7 +1383,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-bouwvakker__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-bouwvakker__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-bouwvakker__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-bouwvakker__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-bouwvakker__meisje.webm"
       }
     },
     "item-beroepen-loodgieter": {
@@ -1238,7 +1392,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-loodgieter__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-loodgieter__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-loodgieter__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-loodgieter__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-loodgieter__meisje.webm"
       }
     },
     "item-beroepen-elektricien": {
@@ -1246,7 +1401,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-elektricien__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-elektricien__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-elektricien__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-elektricien__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-elektricien__meisje.webm"
       }
     },
     "item-beroepen-scheidsrechter": {
@@ -1254,7 +1410,8 @@
       "recordings": {
         "man": "/audio/recordings/item-beroepen-scheidsrechter__man.webm",
         "vrouw": "/audio/recordings/item-beroepen-scheidsrechter__vrouw.webm",
-        "jongen": "/audio/recordings/item-beroepen-scheidsrechter__jongen.webm"
+        "jongen": "/audio/recordings/item-beroepen-scheidsrechter__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-scheidsrechter__meisje.webm"
       }
     },
     "item-zin-hallo": {
@@ -1262,7 +1419,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-hallo__man.webm",
         "vrouw": "/audio/recordings/item-zin-hallo__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-hallo__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-hallo__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-hallo__meisje.webm"
       }
     },
     "item-zin-dank-je-wel": {
@@ -1270,7 +1428,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-dank-je-wel__man.webm",
         "vrouw": "/audio/recordings/item-zin-dank-je-wel__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-dank-je-wel__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-dank-je-wel__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-dank-je-wel__meisje.webm"
       }
     },
     "item-zin-alsjeblieft": {
@@ -1278,7 +1437,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-alsjeblieft__man.webm",
         "vrouw": "/audio/recordings/item-zin-alsjeblieft__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-alsjeblieft__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-alsjeblieft__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-alsjeblieft__meisje.webm"
       }
     },
     "item-zin-goedemorgen": {
@@ -1286,7 +1446,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-goedemorgen__man.webm",
         "vrouw": "/audio/recordings/item-zin-goedemorgen__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-goedemorgen__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-goedemorgen__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-goedemorgen__meisje.webm"
       }
     },
     "item-zin-welterusten": {
@@ -1294,7 +1455,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-welterusten__man.webm",
         "vrouw": "/audio/recordings/item-zin-welterusten__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-welterusten__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-welterusten__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-welterusten__meisje.webm"
       }
     },
     "item-zin-tot-straks": {
@@ -1302,7 +1464,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-tot-straks__man.webm",
         "vrouw": "/audio/recordings/item-zin-tot-straks__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-tot-straks__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-tot-straks__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-tot-straks__meisje.webm"
       }
     },
     "item-zin-dag-mama-papa": {
@@ -1310,7 +1473,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-dag-mama-papa__man.webm",
         "vrouw": "/audio/recordings/item-zin-dag-mama-papa__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-dag-mama-papa__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-dag-mama-papa__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-dag-mama-papa__meisje.webm"
       }
     },
     "item-zin-honger": {
@@ -1318,7 +1482,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-honger__man.webm",
         "vrouw": "/audio/recordings/item-zin-honger__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-honger__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-honger__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-honger__meisje.webm"
       }
     },
     "item-zin-dorst": {
@@ -1326,7 +1491,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-dorst__man.webm",
         "vrouw": "/audio/recordings/item-zin-dorst__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-dorst__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-dorst__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-dorst__meisje.webm"
       }
     },
     "item-zin-moe": {
@@ -1334,7 +1500,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-moe__man.webm",
         "vrouw": "/audio/recordings/item-zin-moe__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-moe__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-moe__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-moe__meisje.webm"
       }
     },
     "item-zin-naar-buiten": {
@@ -1342,7 +1509,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-naar-buiten__man.webm",
         "vrouw": "/audio/recordings/item-zin-naar-buiten__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-naar-buiten__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-naar-buiten__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-naar-buiten__meisje.webm"
       }
     },
     "item-zin-naar-bed": {
@@ -1350,7 +1518,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-naar-bed__man.webm",
         "vrouw": "/audio/recordings/item-zin-naar-bed__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-naar-bed__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-naar-bed__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-naar-bed__meisje.webm"
       }
     },
     "item-zin-blij": {
@@ -1358,7 +1527,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-blij__man.webm",
         "vrouw": "/audio/recordings/item-zin-blij__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-blij__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-blij__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-blij__meisje.webm"
       }
     },
     "item-zin-verdrietig": {
@@ -1366,7 +1536,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-verdrietig__man.webm",
         "vrouw": "/audio/recordings/item-zin-verdrietig__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-verdrietig__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-verdrietig__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-verdrietig__meisje.webm"
       }
     },
     "item-zin-bang": {
@@ -1374,7 +1545,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-bang__man.webm",
         "vrouw": "/audio/recordings/item-zin-bang__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-bang__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-bang__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-bang__meisje.webm"
       }
     },
     "item-zin-hou-van-jou": {
@@ -1382,7 +1554,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-hou-van-jou__man.webm",
         "vrouw": "/audio/recordings/item-zin-hou-van-jou__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-hou-van-jou__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-hou-van-jou__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-hou-van-jou__meisje.webm"
       }
     },
     "item-zin-boos": {
@@ -1390,7 +1563,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-boos__man.webm",
         "vrouw": "/audio/recordings/item-zin-boos__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-boos__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-boos__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-boos__meisje.webm"
       }
     },
     "item-zin-waar-is": {
@@ -1398,7 +1572,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-waar-is__man.webm",
         "vrouw": "/audio/recordings/item-zin-waar-is__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-waar-is__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-waar-is__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-waar-is__meisje.webm"
       }
     },
     "item-zin-wat-is-dit": {
@@ -1406,7 +1581,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-wat-is-dit__man.webm",
         "vrouw": "/audio/recordings/item-zin-wat-is-dit__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-wat-is-dit__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-wat-is-dit__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-wat-is-dit__meisje.webm"
       }
     },
     "item-zin-mag-ik": {
@@ -1414,7 +1590,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-mag-ik__man.webm",
         "vrouw": "/audio/recordings/item-zin-mag-ik__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-mag-ik__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-mag-ik__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-mag-ik__meisje.webm"
       }
     },
     "item-zin-ben-je-klaar": {
@@ -1422,7 +1599,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-ben-je-klaar__man.webm",
         "vrouw": "/audio/recordings/item-zin-ben-je-klaar__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-ben-je-klaar__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-ben-je-klaar__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-ben-je-klaar__meisje.webm"
       }
     },
     "item-zin-kom-je": {
@@ -1430,7 +1608,8 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-kom-je__man.webm",
         "vrouw": "/audio/recordings/item-zin-kom-je__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-kom-je__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-kom-je__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-kom-je__meisje.webm"
       }
     },
     "item-zin-ik-ben-woedend": {
@@ -1438,7 +1617,44 @@
       "recordings": {
         "man": "/audio/recordings/item-zin-ik-ben-woedend__man.webm",
         "vrouw": "/audio/recordings/item-zin-ik-ben-woedend__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-ik-ben-woedend__jongen.webm"
+        "jongen": "/audio/recordings/item-zin-ik-ben-woedend__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-ik-ben-woedend__meisje.webm"
+      }
+    },
+    "item-zin-tijd-om-te-eten": {
+      "phoneticSpelling": "Lfotr, imekli, imensi",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-tijd-om-te-eten__man.webm",
+        "vrouw": "/audio/recordings/item-zin-tijd-om-te-eten__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-tijd-om-te-eten__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-tijd-om-te-eten__meisje.webm"
+      }
+    },
+    "item-zin-handen-wassen": {
+      "phoneticSpelling": "Sird ifasan",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-handen-wassen__man.webm",
+        "vrouw": "/audio/recordings/item-zin-handen-wassen__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-handen-wassen__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-handen-wassen__meisje.webm"
+      }
+    },
+    "item-zin-we-gaan-naar-buiten": {
+      "phoneticSpelling": "Yallah s barra",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-we-gaan-naar-buiten__man.webm",
+        "vrouw": "/audio/recordings/item-zin-we-gaan-naar-buiten__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-we-gaan-naar-buiten__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-we-gaan-naar-buiten__meisje.webm"
+      }
+    },
+    "item-zin-kleren-aandoen": {
+      "phoneticSpelling": "Les ihruun",
+      "recordings": {
+        "man": "/audio/recordings/item-zin-kleren-aandoen__man.webm",
+        "vrouw": "/audio/recordings/item-zin-kleren-aandoen__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-kleren-aandoen__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-kleren-aandoen__meisje.webm"
       }
     },
     "item-oefenen-naar-boven-lopen": {
@@ -1446,7 +1662,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-naar-boven-lopen__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-naar-boven-lopen__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-naar-boven-lopen__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-naar-boven-lopen__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-naar-boven-lopen__meisje.webm"
       }
     },
     "item-oefenen-ik-ga-naar-buiten": {
@@ -1454,7 +1671,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-ik-ga-naar-buiten__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-ik-ga-naar-buiten__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-ik-ga-naar-buiten__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-ik-ga-naar-buiten__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-ik-ga-naar-buiten__meisje.webm"
       }
     },
     "item-oefenen-ik-ga-naar-binnen": {
@@ -1462,7 +1680,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__meisje.webm"
       }
     },
     "item-oefenen-we-gaan-eten": {
@@ -1470,7 +1689,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-we-gaan-eten__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-we-gaan-eten__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-we-gaan-eten__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-we-gaan-eten__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-we-gaan-eten__meisje.webm"
       }
     },
     "item-oefenen-geef-me-brood": {
@@ -1478,7 +1698,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-geef-me-brood__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-geef-me-brood__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-geef-me-brood__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-geef-me-brood__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-geef-me-brood__meisje.webm"
       }
     },
     "item-oefenen-geef-me-water": {
@@ -1486,7 +1707,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-geef-me-water__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-geef-me-water__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-geef-me-water__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-geef-me-water__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-geef-me-water__meisje.webm"
       }
     },
     "item-oefenen-haal-water": {
@@ -1494,7 +1716,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-haal-water__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-haal-water__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-haal-water__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-haal-water__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-haal-water__meisje.webm"
       }
     },
     "item-oefenen-awid-brood": {
@@ -1502,7 +1725,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-awid-brood__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-awid-brood__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-awid-brood__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-awid-brood__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-awid-brood__meisje.webm"
       }
     },
     "item-oefenen-wat-zeg-je": {
@@ -1510,7 +1734,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-wat-zeg-je__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-wat-zeg-je__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-wat-zeg-je__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-wat-zeg-je__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-wat-zeg-je__meisje.webm"
       }
     },
     "item-oefenen-weet-niet-wat-je-zegt": {
@@ -1518,7 +1743,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-weet-niet-wat-je-zegt__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-weet-niet-wat-je-zegt__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-weet-niet-wat-je-zegt__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-weet-niet-wat-je-zegt__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-weet-niet-wat-je-zegt__meisje.webm"
       }
     },
     "item-oefenen-waar-ben-je": {
@@ -1526,7 +1752,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-waar-ben-je__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-waar-ben-je__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-waar-ben-je__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-waar-ben-je__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-waar-ben-je__meisje.webm"
       }
     },
     "item-oefenen-waar-ga-je-heen": {
@@ -1534,7 +1761,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-waar-ga-je-heen__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-waar-ga-je-heen__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-waar-ga-je-heen__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-waar-ga-je-heen__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-waar-ga-je-heen__meisje.webm"
       }
     },
     "item-oefenen-wat-doe-je": {
@@ -1542,7 +1770,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-wat-doe-je__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-wat-doe-je__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-wat-doe-je__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-wat-doe-je__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-wat-doe-je__meisje.webm"
       }
     },
     "item-oefenen-wat-is-er": {
@@ -1550,7 +1779,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-wat-is-er__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-wat-is-er__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-wat-is-er__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-wat-is-er__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-wat-is-er__meisje.webm"
       }
     },
     "item-oefenen-hoe-heet-je-meisje": {
@@ -1558,7 +1788,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-hoe-heet-je-meisje__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-hoe-heet-je-meisje__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-hoe-heet-je-meisje__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-hoe-heet-je-meisje__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-hoe-heet-je-meisje__meisje.webm"
       }
     },
     "item-oefenen-hoe-heet-je-jongen": {
@@ -1566,7 +1797,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-hoe-heet-je-jongen__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-hoe-heet-je-jongen__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-hoe-heet-je-jongen__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-hoe-heet-je-jongen__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-hoe-heet-je-jongen__meisje.webm"
       }
     },
     "item-oefenen-hoelaat-is-het": {
@@ -1574,7 +1806,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-hoelaat-is-het__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-hoelaat-is-het__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-hoelaat-is-het__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-hoelaat-is-het__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-hoelaat-is-het__meisje.webm"
       }
     },
     "item-oefenen-ik-wil-naar-huis": {
@@ -1582,7 +1815,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-ik-wil-naar-huis__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-ik-wil-naar-huis__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-ik-wil-naar-huis__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-ik-wil-naar-huis__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-ik-wil-naar-huis__meisje.webm"
       }
     },
     "item-oefenen-ik-wil-niet": {
@@ -1590,7 +1824,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-ik-wil-niet__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-ik-wil-niet__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-ik-wil-niet__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-ik-wil-niet__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-ik-wil-niet__meisje.webm"
       }
     },
     "item-oefenen-tashelhit-praten-met-jou": {
@@ -1598,7 +1833,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-tashelhit-praten-met-jou__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-tashelhit-praten-met-jou__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-tashelhit-praten-met-jou__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-tashelhit-praten-met-jou__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-tashelhit-praten-met-jou__meisje.webm"
       }
     },
     "item-oefenen-tashelhit-leren": {
@@ -1606,7 +1842,8 @@
       "recordings": {
         "man": "/audio/recordings/item-oefenen-tashelhit-leren__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-tashelhit-leren__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-tashelhit-leren__jongen.webm"
+        "jongen": "/audio/recordings/item-oefenen-tashelhit-leren__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-tashelhit-leren__meisje.webm"
       }
     },
     "item-kleuren-wit": {
@@ -1614,7 +1851,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-wit__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-wit__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-wit__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-wit__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-wit__meisje.webm"
       }
     },
     "item-kleuren-zwart": {
@@ -1622,7 +1860,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-zwart__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-zwart__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-zwart__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-zwart__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-zwart__meisje.webm"
       }
     },
     "item-kleuren-rod": {
@@ -1630,7 +1869,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-rod__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-rod__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-rod__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-rod__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-rod__meisje.webm"
       }
     },
     "item-kleuren-blauw": {
@@ -1638,7 +1878,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-blauw__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-blauw__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-blauw__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-blauw__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-blauw__meisje.webm"
       }
     },
     "item-kleuren-bruin": {
@@ -1646,7 +1887,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-bruin__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-bruin__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-bruin__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-bruin__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-bruin__meisje.webm"
       }
     },
     "item-kleuren-groen": {
@@ -1654,7 +1896,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-groen__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-groen__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-groen__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-groen__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-groen__meisje.webm"
       }
     },
     "item-kleuren-geel": {
@@ -1662,7 +1905,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-geel__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-geel__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-geel__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-geel__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-geel__meisje.webm"
       }
     },
     "item-kleuren-oranje": {
@@ -1670,35 +1914,8 @@
       "recordings": {
         "man": "/audio/recordings/item-kleuren-oranje__man.webm",
         "vrouw": "/audio/recordings/item-kleuren-oranje__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-oranje__jongen.webm"
-      }
-    },
-    "item-zin-handen-wassen": {
-      "phoneticSpelling": "Sird ifasan",
-      "recordings": {
-        "vrouw": "/audio/recordings/item-zin-handen-wassen__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-handen-wassen__jongen.webm"
-      }
-    },
-    "item-zin-kleren-aandoen": {
-      "phoneticSpelling": "Les ihruun",
-      "recordings": {
-        "vrouw": "/audio/recordings/item-zin-kleren-aandoen__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-kleren-aandoen__jongen.webm"
-      }
-    },
-    "item-zin-tijd-om-te-eten": {
-      "phoneticSpelling": "Lfotr, imekli, imensi",
-      "recordings": {
-        "vrouw": "/audio/recordings/item-zin-tijd-om-te-eten__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-tijd-om-te-eten__jongen.webm"
-      }
-    },
-    "item-zin-we-gaan-naar-buiten": {
-      "phoneticSpelling": "Yallah s barra",
-      "recordings": {
-        "vrouw": "/audio/recordings/item-zin-we-gaan-naar-buiten__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-we-gaan-naar-buiten__jongen.webm"
+        "jongen": "/audio/recordings/item-kleuren-oranje__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-oranje__meisje.webm"
       }
     },
     "item-dieren-uil": {
