@@ -27,7 +27,7 @@ export function HeroDecorations() {
       <img
         aria-hidden="true"
         src="/brand/accents/blob-yellow.svg"
-        className="pointer-events-none absolute -left-12 -top-8 w-24 opacity-[0.85] sm:hidden"
+        className="pointer-events-none absolute -left-4 -top-4 w-20 opacity-[0.85] sm:hidden"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
@@ -41,13 +41,13 @@ export function HeroDecorations() {
       <img
         aria-hidden="true"
         src="/brand/accents/blob-teal.svg"
-        className="pointer-events-none absolute -right-16 -top-14 hidden w-44 sm:block lg:hidden"
+        className="pointer-events-none absolute right-4 top-4 hidden w-32 sm:block lg:hidden"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
         aria-hidden="true"
         src="/brand/accents/blob-yellow.svg"
-        className="pointer-events-none absolute -left-12 top-4 hidden w-24 opacity-90 sm:block lg:hidden"
+        className="pointer-events-none absolute left-4 top-8 hidden w-20 opacity-90 sm:block lg:hidden"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
@@ -67,19 +67,19 @@ export function HeroDecorations() {
       <img
         aria-hidden="true"
         src="/brand/accents/blob-teal.svg"
-        className="pointer-events-none absolute hidden lg:-right-[5.5rem] lg:-top-24 lg:block lg:w-[17rem]"
+        className="pointer-events-none absolute hidden lg:right-6 lg:top-6 lg:block lg:w-56"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
         aria-hidden="true"
         src="/brand/accents/blob-yellow.svg"
-        className="pointer-events-none absolute hidden opacity-95 lg:-left-[4.5rem] lg:-top-[4.5rem] lg:block lg:w-36"
+        className="pointer-events-none absolute hidden opacity-95 lg:-left-4 lg:top-1 lg:block lg:w-20"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
         aria-hidden="true"
         src="/brand/accents/blob-navy.svg"
-        className="pointer-events-none absolute hidden opacity-[0.55] lg:-bottom-[5.5rem] lg:-right-14 lg:block lg:w-40"
+        className="pointer-events-none absolute hidden opacity-70 lg:bottom-8 lg:right-10 lg:block lg:w-[6.5rem]"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
