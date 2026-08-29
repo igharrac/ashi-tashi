@@ -118,6 +118,20 @@ const config: Config = {
           500: `rgb(var(--color-success-500) / <alpha-value>)`,
         },
         info: { 500: "#0ea5e9" },
+
+        // Vaste "Ashi d' Tashi"-huisstijlkleuren (definitief merkpakket) —
+        // BEWUST NIET thema-afhankelijk zoals primary/secondary/accent
+        // hierboven. Alleen gebruikt op de publieke landingspagina
+        // (SiteHeader/SiteFooter/page.tsx-hero): die moet de merkidentiteit
+        // altijd hetzelfde tonen, ongeacht welk in-app kleurthema een kind
+        // eventueel al gekozen heeft (dat thema geldt pas ná inloggen).
+        ashi: {
+          navy: "#0F2D5B",
+          teal: "#1BB3A8",
+          coral: "#FF6B57",
+          yellow: "#FFC53D",
+          cream: "#F3F1EB",
+        },
       },
       fontFamily: {
         sans: ["Quicksand", "ui-rounded", "system-ui", "sans-serif"],
