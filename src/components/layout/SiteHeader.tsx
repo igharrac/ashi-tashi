@@ -9,10 +9,11 @@
 export function SiteHeader() {
   return (
     <header className="flex items-center justify-between px-6 py-6 sm:px-12">
-      {/* Definitieve, gecentreerde logo-variant (op verzoek) — beeldmerk +
-          woordmerk "Ashi d' Tashi" + tagline. */}
+      {/* Gecentreerde logo-variant zonder tagline (op verzoek: tagline was
+          te klein leesbaar, logo mocht groter) — beeldmerk + woordmerk
+          "Ashi d' Tashi". */}
       {/* eslint-disable-next-line @next/next/no-img-element -- lokaal SVG-logo (public/brand), geen next/image-optimalisatie nodig */}
-      <img src="/brand/logo-centered.svg" alt="Ashi d' Tashi — Samen spelen, leren en praten." className="h-16 w-auto sm:h-20" />
+      <img src="/brand/logo-centered.svg" alt="Ashi d' Tashi" className="h-20 w-auto sm:h-28" />
       <nav className="flex items-center gap-6 font-semibold text-ashi-navy" aria-label="Sitenavigatie">
         <a href="#over-ons" className="hover:text-ashi-teal">
           Over ons

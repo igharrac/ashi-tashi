@@ -9,6 +9,7 @@ import { Pill } from "@/components/ui/Pill";
 import { MascotIllustration } from "@/components/ui/MascotIllustration";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { HeroDecorations } from "@/components/layout/HeroDecorations";
 
 /**
  * Startscherm: ouder-onboarding + profielkeuze (hfst. 55, stap 1-3).
@@ -31,39 +32,12 @@ export default function HomePage() {
       <div className="flex min-h-screen flex-col">
         <SiteHeader />
 
-        {/* Poster-hoeken (public/brand/poster) — gebonden aan <main> zelf
-            i.p.v. de hele pagina, zodat de footer eronder helder leesbaar
-            blijft en niet met een gekleurde hoek overlapt. */}
+        {/* Decoratieve poster-accenten ("Optie A — verspreide accenten"),
+            gebonden aan <main> zelf i.p.v. de hele pagina, zodat de footer
+            eronder helder leesbaar blijft. Vervangt de eerdere "4 hoeken"-
+            opzet op verzoek (voelde te symmetrisch/gesloten aan). */}
         <main className="relative mx-auto flex w-full max-w-5xl flex-1 flex-col items-center gap-10 overflow-hidden px-6 py-16 text-center lg:flex-row lg:text-left">
-          {/* Poster-hoeken: bewust pas vanaf sm zichtbaar en klein gehouden
-              — op mobiel is er te weinig ruimte tussen de hoek en de tekst
-              (getest), dus daar liever helemaal geen decoratie dan een die
-              over de kop/pil heen valt (hfst. 9: minder drukte op kleine
-              schermen, zelfde principe als de vertrouwensrij hieronder). */}
-          {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/poster) */}
-          <img
-            aria-hidden="true"
-            src="/brand/poster/cloud-corner-yellow-top-left.svg"
-            className="pointer-events-none absolute -left-2 -top-2 hidden w-28 sm:block lg:w-36"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/poster) */}
-          <img
-            aria-hidden="true"
-            src="/brand/poster/cloud-corner-teal-top-right.svg"
-            className="pointer-events-none absolute -right-2 -top-2 hidden w-32 sm:block lg:w-40"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/poster) */}
-          <img
-            aria-hidden="true"
-            src="/brand/poster/cloud-corner-coral-bottom-left.svg"
-            className="pointer-events-none absolute -bottom-2 -left-2 hidden w-32 sm:block lg:w-44"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/poster) */}
-          <img
-            aria-hidden="true"
-            src="/brand/poster/cloud-corner-navy-bottom-right.svg"
-            className="pointer-events-none absolute -bottom-2 -right-2 hidden w-32 sm:block lg:w-44"
-          />
+          <HeroDecorations />
 
           <div className="relative order-2 flex flex-1 flex-col items-center gap-6 lg:order-1 lg:items-start">
             <Pill icon="👋" className="!bg-ashi-yellow/25 !text-ashi-navy">
