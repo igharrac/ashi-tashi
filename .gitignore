@@ -5,6 +5,7 @@ dist
 coverage
 *.log
 tsconfig.tsbuildinfo
+.DS_Store
 
 # Opnames van kinderstemmen voor menselijke beoordeling (src/lib/childAttempts.ts)
 # — nooit in git-geschiedenis, blijft lokaal (hfst. 23, 30: privacy van kindgegevens).
