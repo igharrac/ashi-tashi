@@ -5,7 +5,7 @@ import { notFound, useParams } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type TouchEvent } from "react";
 import { useAppStore } from "@/lib/store";
 import { DEMO_BADGES, DIEREN_THEME } from "@/lib/demoData";
-import { DAILY_SENTENCES_LESSON_ID, getGenericLessonById } from "@/lib/lessonCatalog";
+import { DAILY_SENTENCES_LESSON_ID, categorySlugForGenericLessonId, getGenericLessonById } from "@/lib/lessonCatalog";
 import { getDailySentenceContent, type DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import { getPracticeContent, type PracticeContent } from "@/lib/practiceContentClient";
 import { getWordsContent, mergeCategories } from "@/lib/wordsContentClient";
@@ -203,6 +203,17 @@ export default function LessonPage() {
     setFinished({ points, newBadges });
   }
 
+  // Categorie voor de "Match het geluid"-knop op het afrondingsscherm
+  // hieronder — Dieren heeft een eigen (niet-gegenereerd) lessonId, dus
+  // die slug ligt al vast; bij de overige lessen wordt hij afgeleid uit
+  // het lessonId (zie categorySlugForGenericLessonId). null bij de
+  // Dagelijkse zinnen-les, die knop verschijnt dan niet.
+  const matchGameCategorySlug = isDierenLesson
+    ? DIEREN_THEME.slug
+    : lesson
+      ? categorySlugForGenericLessonId(lesson.id)
+      : null;
+
   if (finished) {
     // Geen navigatie meer mogelijk (of zinvol) op het afrondingsscherm —
     // anders zou een pijltoets/swipe hier per ongeluk de les nogmaals
@@ -233,9 +244,16 @@ export default function LessonPage() {
           </div>
         )}
 
-        <Link href={`/kind/${child.id}/route`}>
-          <Button>Naar leerroute</Button>
-        </Link>
+        <div className="flex flex-col items-center gap-3">
+          <Link href={`/kind/${child.id}/route`}>
+            <Button>Naar leerroute</Button>
+          </Link>
+          {matchGameCategorySlug && (
+            <Link href={`/kind/${child.id}/ontdekken/spel?categorie=${matchGameCategorySlug}`}>
+              <Button variant="secondary">🔊 Match het geluid</Button>
+            </Link>
+          )}
+        </div>
       </main>
     );
   }
