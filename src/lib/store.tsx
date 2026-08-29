@@ -37,6 +37,9 @@ function loadState(): AppStateData {
       children: parsed.children.map((child) => ({
         ...child,
         lenientPronunciationMode: child.lenientPronunciationMode ?? true,
+        // autoplayAudio is nieuw en staat standaard aan — profielen die al
+        // bestonden vóór deze instelling er was, krijgen 'm hier alsnog.
+        autoplayAudio: child.autoplayAudio ?? true,
       })),
     };
   } catch {
@@ -69,6 +72,7 @@ interface AppStore {
   setSpeakFirstMode: (childId: string, enabled: boolean) => void;
   setLenientPronunciationMode: (childId: string, enabled: boolean) => void;
   setMicrophoneOptIn: (childId: string, enabled: boolean) => void;
+  setAutoplayAudio: (childId: string, enabled: boolean) => void;
   setLessonProgress: (childId: string, progress: { lessonId: string; index: number } | null) => void;
   setPreferredVoicePersona: (childId: string, persona: VoicePersona | null) => void;
   setExperienceLevel: (childId: string, level: ExperienceLevel) => void;
@@ -103,6 +107,11 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       // het instellingenmenu op het reispad (hfst. 23, 30: opt-out blijft
       // mogelijk, blokkeert de les nooit).
       microphoneOptIn: true,
+      // Standaard aan: de eerste keer dat een nieuwe vraag/plaatje
+      // verschijnt, wordt de opname automatisch afgespeeld (zie
+      // AutoplayToggle.tsx). De ouder/het kind kan dit per luidsprekertje
+      // uitzetten; dat geldt dan voor het hele profiel.
+      autoplayAudio: true,
       // Bewuste keuze bij het aanmaken van het profiel (aparte stap in
       // profiel/nieuw) i.p.v. stilzwijgend "automatisch" — de ouder/het
       // kind kan dit later alsnog wijzigen (of op "Automatisch" zetten)
@@ -213,6 +222,15 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
     }));
   }, []);
 
+  // Bediend via het luidsprekertje (AutoplayToggle.tsx) — geldt voor het
+  // hele profiel, niet per oefening (op verzoek: "dit moet overal gelden").
+  const setAutoplayAudio = useCallback<AppStore["setAutoplayAudio"]>((childId, enabled) => {
+    setState((prev) => ({
+      ...prev,
+      children: prev.children.map((child) => (child.id === childId ? { ...child, autoplayAudio: enabled } : child)),
+    }));
+  }, []);
+
   // Onthoudt waar een kind gebleven was in een niet-afgemaakte les (bv. na
   // sluiten van de browser tussendoor), zodat de les hervat kan worden i.p.v.
   // steeds opnieuw te beginnen. Wordt gewist zodra de les wél is afgerond
@@ -260,6 +278,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       setSpeakFirstMode,
       setLenientPronunciationMode,
       setMicrophoneOptIn,
+      setAutoplayAudio,
       setLessonProgress,
       setPreferredVoicePersona,
       setExperienceLevel,
@@ -275,6 +294,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       setSpeakFirstMode,
       setLenientPronunciationMode,
       setMicrophoneOptIn,
+      setAutoplayAudio,
       setLessonProgress,
       setPreferredVoicePersona,
       setExperienceLevel,

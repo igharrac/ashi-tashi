@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
-import { AudioButton } from "@/components/ui/AudioButton";
+import { AutoplayToggle } from "@/components/ui/AutoplayToggle";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
+import { playWordAudio } from "@/lib/playWordAudio";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
 import type { RecordingPersona } from "@/lib/recordableItems";
@@ -21,6 +22,9 @@ interface RepeatAfterMeProps {
   preferredPersona?: RecordingPersona | null;
   /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
   lenientPronunciationMode?: boolean;
+  /** Kindinstelling child.autoplayAudio — bediend via het luidsprekertje (AutoplayToggle.tsx), geldt overal. */
+  autoplayAudio: boolean;
+  onToggleAutoplayAudio: (enabled: boolean) => void;
 }
 
 /**
@@ -40,6 +44,8 @@ export function RepeatAfterMe({
   onDone,
   preferredPersona,
   lenientPronunciationMode = true,
+  autoplayAudio,
+  onToggleAutoplayAudio,
 }: RepeatAfterMeProps) {
   const speech = useSpeechCheck(
     item.translationNl,
@@ -60,6 +66,20 @@ export function RepeatAfterMe({
   useEffect(() => {
     if (fallbackStatus === "feedback") playSuccessChime();
   }, [fallbackStatus]);
+
+  // Autoplay bij het verschijnen van dit woord (mount, dankzij key={item.id}
+  // bij de aanroeper) — mits de kindinstelling aan staat (AutoplayToggle.tsx).
+  useEffect(() => {
+    if (autoplayAudio) {
+      void playWordAudio({
+        itemId: item.id,
+        text: item.latinSpelling,
+        fallbackSpokenText: item.translationNl,
+        preferredPersona,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function handleFallbackRecord() {
     setFallbackStatus("recording");
@@ -115,12 +135,13 @@ export function RepeatAfterMe({
                   primaire "Neem op"-knop — afspelen mag zo vaak als nodig,
                   ook vóór poging 2 en 3. */}
               <div className="flex flex-row items-center justify-center gap-4">
-                <AudioButton
+                <AutoplayToggle
                   text={item.latinSpelling}
                   itemId={item.id}
                   fallbackSpokenText={item.translationNl}
                   preferredPersona={preferredPersona}
-                  label="Afspelen"
+                  enabled={autoplayAudio}
+                  onToggle={onToggleAutoplayAudio}
                   iconOnly
                 />
                 <Button onClick={speech.attempt} className="flex items-center gap-2">
@@ -138,7 +159,13 @@ export function RepeatAfterMe({
                   >
                     {speech.feedbackMessage}
                   </p>
-                  <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
+                  <AnswerReveal
+                    item={item}
+                    onContinue={() => onDone(false)}
+                    preferredPersona={preferredPersona}
+                    autoplayAudio={autoplayAudio}
+                    onToggleAutoplayAudio={onToggleAutoplayAudio}
+                  />
                 </>
               )}
             </div>

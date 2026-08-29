@@ -4,6 +4,7 @@ node_modules
 dist
 coverage
 *.log
+tsconfig.tsbuildinfo
 
 # Opnames van kinderstemmen voor menselijke beoordeling (src/lib/childAttempts.ts)
 # — nooit in git-geschiedenis, blijft lokaal (hfst. 23, 30: privacy van kindgegevens).

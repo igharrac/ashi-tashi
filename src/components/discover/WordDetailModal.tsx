@@ -16,6 +16,9 @@ interface WordDetailModalProps {
   preferredPersona?: RecordingPersona | null;
   /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
   lenientPronunciationMode?: boolean;
+  /** Kindinstelling child.autoplayAudio — doorgegeven aan ListenAndSpeak, geldt overal (ook hier in Ontdekken). */
+  autoplayAudio: boolean;
+  onToggleAutoplayAudio: (enabled: boolean) => void;
 }
 
 /**
@@ -37,6 +40,8 @@ export function WordDetailModal({
   onClose,
   preferredPersona,
   lenientPronunciationMode,
+  autoplayAudio,
+  onToggleAutoplayAudio,
 }: WordDetailModalProps) {
   const item = items[currentIndex];
   const hasPrevious = currentIndex > 0;
@@ -109,6 +114,8 @@ export function WordDetailModal({
           onDone={onClose}
           preferredPersona={preferredPersona}
           lenientPronunciationMode={lenientPronunciationMode}
+          autoplayAudio={autoplayAudio}
+          onToggleAutoplayAudio={onToggleAutoplayAudio}
         />
       </div>
     </div>

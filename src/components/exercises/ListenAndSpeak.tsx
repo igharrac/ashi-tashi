@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { VocabularyItemView } from "@/types/domain";
-import { AudioButton } from "@/components/ui/AudioButton";
+import { AutoplayToggle } from "@/components/ui/AutoplayToggle";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
+import { playWordAudio } from "@/lib/playWordAudio";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilarityProvider";
 import { LENIENT_PRONUNCIATION_ATTEMPTS, leniencyDoneMessage, leniencyRetryMessage } from "@/domain/pronunciationLeniency";
@@ -22,6 +23,9 @@ interface ListenAndSpeakProps {
   preferredPersona?: RecordingPersona | null;
   /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
   lenientPronunciationMode?: boolean;
+  /** Kindinstelling child.autoplayAudio — bediend via het luidsprekertje (AutoplayToggle.tsx), geldt overal. */
+  autoplayAudio: boolean;
+  onToggleAutoplayAudio: (enabled: boolean) => void;
 }
 
 type Status = "idle" | "requesting" | "recording" | "assessing" | "correct" | "retry" | "saved-for-review";
@@ -55,6 +59,8 @@ export function ListenAndSpeak({
   onDone,
   preferredPersona,
   lenientPronunciationMode = true,
+  autoplayAudio,
+  onToggleAutoplayAudio,
 }: ListenAndSpeakProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
@@ -80,6 +86,20 @@ export function ListenAndSpeak({
       cancelled = true;
     };
   }, [item.id, preferredPersona]);
+
+  // Autoplay bij het verschijnen van dit woord (mount, dankzij key={item.id}
+  // bij de aanroeper) — mits de kindinstelling aan staat (AutoplayToggle.tsx).
+  useEffect(() => {
+    if (autoplayAudio) {
+      void playWordAudio({
+        itemId: item.id,
+        text: item.latinSpelling,
+        fallbackSpokenText: item.translationNl,
+        preferredPersona,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -198,12 +218,13 @@ export function ListenAndSpeak({
 
       {(status === "idle" || status === "retry") && useRealCapture && (
         <div className="flex flex-row items-center justify-center gap-4">
-          <AudioButton
+          <AutoplayToggle
             text={item.latinSpelling}
             itemId={item.id}
             fallbackSpokenText={item.translationNl}
             preferredPersona={preferredPersona}
-            label="Afspelen"
+            enabled={autoplayAudio}
+            onToggle={onToggleAutoplayAudio}
             iconOnly
           />
           <Button onClick={handleRecord} className="flex items-center gap-2">
@@ -214,12 +235,13 @@ export function ListenAndSpeak({
 
       {status === "idle" && !useRealCapture && (
         <div className="flex flex-col items-center gap-3">
-          <AudioButton
+          <AutoplayToggle
             text={item.latinSpelling}
             itemId={item.id}
             fallbackSpokenText={item.translationNl}
             preferredPersona={preferredPersona}
-            label="Speel het woord af"
+            enabled={autoplayAudio}
+            onToggle={onToggleAutoplayAudio}
           />
           <p className="max-w-xs text-sm text-gray-500">
             {microphoneOptIn
@@ -282,7 +304,13 @@ export function ListenAndSpeak({
             </p>
           )}
           {!useRealCapture && <Button onClick={handleRecord}>Probeer opnieuw</Button>}
-          <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
+          <AnswerReveal
+            item={item}
+            onContinue={() => onDone(false)}
+            preferredPersona={preferredPersona}
+            autoplayAudio={autoplayAudio}
+            onToggleAutoplayAudio={onToggleAutoplayAudio}
+          />
         </div>
       )}
     </div>

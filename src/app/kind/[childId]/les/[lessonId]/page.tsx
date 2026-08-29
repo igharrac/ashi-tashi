@@ -28,7 +28,7 @@ import type { ExerciseView } from "@/types/domain";
  */
 export default function LessonPage() {
   const params = useParams<{ childId: string; lessonId: string }>();
-  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, ready } = useAppStore();
+  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, setAutoplayAudio, ready } = useAppStore();
 
   // Dieren blijft op zijn handmatig samengestelde thema (met zinnetjes-
   // afsluiting); alle andere categorieën met genoeg opnames krijgen een
@@ -333,6 +333,8 @@ export default function LessonPage() {
               item={currentExercise.vocabularyItem}
               onDone={() => handleAnswer(currentExercise, true)}
               preferredPersona={child.preferredVoicePersona}
+              autoplayAudio={child.autoplayAudio}
+              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
 
@@ -345,6 +347,8 @@ export default function LessonPage() {
               onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
               preferredPersona={child.preferredVoicePersona}
               lenientPronunciationMode={child.lenientPronunciationMode}
+              autoplayAudio={child.autoplayAudio}
+              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
 
@@ -356,6 +360,8 @@ export default function LessonPage() {
               onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
               preferredPersona={child.preferredVoicePersona}
               lenientPronunciationMode={child.lenientPronunciationMode}
+              autoplayAudio={child.autoplayAudio}
+              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
 
@@ -367,6 +373,8 @@ export default function LessonPage() {
               onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
               preferredPersona={child.preferredVoicePersona}
               lenientPronunciationMode={child.lenientPronunciationMode}
+              autoplayAudio={child.autoplayAudio}
+              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
         </div>

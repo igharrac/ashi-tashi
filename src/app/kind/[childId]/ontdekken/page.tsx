@@ -33,7 +33,7 @@ function toVocabularyItemView(item: CatalogItem): VocabularyItemView {
  */
 export default function DiscoverPage() {
   const params = useParams<{ childId: string }>();
-  const { getChild, ready } = useAppStore();
+  const { getChild, setAutoplayAudio, ready } = useAppStore();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [activeCategorySlug, setActiveCategorySlug] = useState<string | null>(null);
@@ -143,6 +143,8 @@ export default function DiscoverPage() {
           onClose={() => setSelectedIndex(null)}
           preferredPersona={child.preferredVoicePersona}
           lenientPronunciationMode={child.lenientPronunciationMode}
+          autoplayAudio={child.autoplayAudio}
+          onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
         />
       )}
     </AppShell>

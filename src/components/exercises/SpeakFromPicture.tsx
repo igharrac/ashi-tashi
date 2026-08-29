@@ -20,6 +20,9 @@ interface SpeakFromPictureProps {
   preferredPersona?: RecordingPersona | null;
   /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
   lenientPronunciationMode?: boolean;
+  /** Kindinstelling child.autoplayAudio — doorgegeven aan AnswerReveal (het luidsprekertje bij "Ik weet het niet"), geldt overal. */
+  autoplayAudio: boolean;
+  onToggleAutoplayAudio: (enabled: boolean) => void;
 }
 
 /**
@@ -39,6 +42,8 @@ export function SpeakFromPicture({
   onDone,
   preferredPersona,
   lenientPronunciationMode = true,
+  autoplayAudio,
+  onToggleAutoplayAudio,
 }: SpeakFromPictureProps) {
   const speech = useSpeechCheck(
     item.translationNl,
@@ -108,7 +113,13 @@ export function SpeakFromPicture({
                 {speech.feedbackMessage}
               </p>
               <Button onClick={speech.attempt}>{lenientPronunciationMode ? "Nog een keer" : "Probeer opnieuw"}</Button>
-              <AnswerReveal item={item} onContinue={() => onDone(false)} preferredPersona={preferredPersona} />
+              <AnswerReveal
+                item={item}
+                onContinue={() => onDone(false)}
+                preferredPersona={preferredPersona}
+                autoplayAudio={autoplayAudio}
+                onToggleAutoplayAudio={onToggleAutoplayAudio}
+              />
             </div>
           )}
         </>

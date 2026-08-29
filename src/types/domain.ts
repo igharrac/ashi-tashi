@@ -80,6 +80,14 @@ export interface ChildProfileData {
   avatarId: string;
   level: ExperienceLevel;
   microphoneOptIn: boolean;
+  /**
+   * Aan (standaard): de referentie-opname wordt automatisch afgespeeld
+   * zodra een nieuwe vraag/plaatje verschijnt (of een antwoord onthuld
+   * wordt) — bediend via het luidsprekertje (AutoplayToggle.tsx). Uit:
+   * geen automatisch afspelen meer, het luidsprekertje staat dan rood
+   * doorgestreept; een tik erop zet 'm weer aan en speelt meteen af.
+   */
+  autoplayAudio: boolean;
   /** null = automatisch (bestaande voorkeursvolgorde man > vrouw > jongen > meisje); anders expliciete keuze van de gebruiker. */
   preferredVoicePersona: VoicePersona | null;
   /** Aan: plaatje zien + zelf inspreken (hfst. 13.11). Uit (standaard): eerst horen, dan nazeggen. */
