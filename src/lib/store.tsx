@@ -56,6 +56,8 @@ interface AppStore {
   state: AppStateData;
   ready: boolean;
   setParentEmail: (email: string) => void;
+  /** MVP-demo: er is geen echte auth, dit wist alleen de "ingelogd"-vlag (parentEmail) — kindprofielen blijven bewaard in localStorage en zijn na opnieuw "inloggen" (e-mailadres invullen) weer gewoon zichtbaar. */
+  logout: () => void;
   createChildProfile: (input: {
     displayName: string;
     avatarId: string;
@@ -95,6 +97,10 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
 
   const setParentEmail = useCallback((email: string) => {
     setState((prev) => ({ ...prev, parentEmail: email }));
+  }, []);
+
+  const logout = useCallback(() => {
+    setState((prev) => ({ ...prev, parentEmail: null }));
   }, []);
 
   const createChildProfile = useCallback<AppStore["createChildProfile"]>((input) => {
@@ -271,6 +277,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       state,
       ready,
       setParentEmail,
+      logout,
       createChildProfile,
       getChild,
       recordExerciseAttempt,
@@ -287,6 +294,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       state,
       ready,
       setParentEmail,
+      logout,
       createChildProfile,
       getChild,
       recordExerciseAttempt,

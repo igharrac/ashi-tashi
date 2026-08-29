@@ -27,12 +27,7 @@ export function Sidebar({ child }: SidebarProps) {
         <div>
           <p className="flex items-center gap-2 font-bold text-forest-500">
             {/* eslint-disable-next-line @next/next/no-img-element -- lokaal SVG-beeldmerk (public/brand), geen next/image-optimalisatie nodig */}
-            <img
-              src="/brand/ashi-d-tashi-app-icon.svg"
-              alt=""
-              aria-hidden="true"
-              className="h-7 w-7 shrink-0 rounded-lg shadow-sm"
-            />
+            <img src="/brand/icon-mark.svg" alt="" aria-hidden="true" className="h-7 w-7 shrink-0" />
             Ashi &amp; Tashi
           </p>
           <p className="text-xs text-ink-muted">{child.displayName}s avontuur</p>

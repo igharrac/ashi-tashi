@@ -1,8 +1,10 @@
 "use client";
 
-import { notFound, useParams } from "next/navigation";
+import Link from "next/link";
+import { notFound, useParams, useRouter } from "next/navigation";
 import { useAppStore } from "@/lib/store";
 import { AppShell } from "@/components/layout/AppShell";
+import { Button } from "@/components/ui/Button";
 import { SettingsPanelContent } from "@/components/journey/SettingsPanelContent";
 import { EXPERIENCE_LEVELS } from "@/lib/experienceLevels";
 
@@ -11,10 +13,13 @@ import { EXPERIENCE_LEVELS } from "@/lib/experienceLevels";
  * beschikbaar"), nu geactiveerd. Toont kindprofiel-info bovenaan en
  * daaronder dezelfde instellingen die ook achter het tandwiel-knopje op
  * Leren zitten (zie SettingsPanelContent.tsx) — op verzoek ook hier
- * bereikbaar, niet alleen via Leren.
+ * bereikbaar, niet alleen via Leren. Onderaan een "Account"-blok (op
+ * verzoek): terug naar de landingspagina, en uitloggen — daarvoor was
+ * eerder nergens een weg terug vanuit een kindprofiel.
  */
 export default function ChildProfilePage() {
   const params = useParams<{ childId: string }>();
+  const router = useRouter();
   const {
     getChild,
     setSpeakFirstMode,
@@ -22,6 +27,7 @@ export default function ChildProfilePage() {
     setMicrophoneOptIn,
     setPreferredVoicePersona,
     setExperienceLevel,
+    logout,
     ready,
   } = useAppStore();
 
@@ -62,6 +68,27 @@ export default function ChildProfilePage() {
             onPreferredVoicePersonaChange={(persona) => setPreferredVoicePersona(child.id, persona)}
             onExperienceLevelChange={(level) => setExperienceLevel(child.id, level)}
           />
+        </div>
+
+        <div className="flex flex-col gap-3 rounded-xl2 border border-border-subtle bg-white p-4 shadow-soft">
+          <h2 className="text-sm font-semibold text-ink">Account</h2>
+          <Link href="/">
+            <Button variant="secondary" className="w-full">
+              ⟵ Terug naar de landingspagina
+            </Button>
+          </Link>
+          <Button
+            variant="ghost"
+            onClick={() => {
+              // Geen echte auth in deze MVP-demo: dit wist alleen de
+              // "ingelogd"-vlag (parentEmail) — kindprofielen blijven
+              // gewoon bewaard, zie logout() in store.tsx.
+              logout();
+              router.push("/");
+            }}
+          >
+            Uitloggen
+          </Button>
         </div>
       </div>
     </AppShell>

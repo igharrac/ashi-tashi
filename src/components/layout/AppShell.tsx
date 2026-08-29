@@ -31,11 +31,7 @@ export function AppShell({ child, children }: AppShellProps) {
                 zijbalk (Sidebar.tsx), dat hier nogmaals tonen zou dubbelop
                 zijn. Op mobiel is linksboven anders leeg (geen zijbalk). */}
             {/* eslint-disable-next-line @next/next/no-img-element -- lokaal SVG-beeldmerk (public/brand), geen next/image-optimalisatie nodig */}
-            <img
-              src="/brand/ashi-d-tashi-app-icon.svg"
-              alt="Ashi & Tashi"
-              className="h-10 w-10 rounded-xl2 shadow-sm md:hidden"
-            />
+            <img src="/brand/icon-mark.svg" alt="Ashi & Tashi" className="h-10 w-10 md:hidden" />
             <div className="flex items-center gap-3">
               <StreakPill days={streakDays} />
               <ThemeSwitcher />
