@@ -1,4 +1,5 @@
 import type { ThemeView } from "@/types/domain";
+import { DIEREN_CATEGORY } from "@/lib/contentCatalog";
 
 /**
  * Statische spiegel van prisma/seed.ts voor de client-side demo-flow.
@@ -18,18 +19,18 @@ interface AnimalSeed {
   emoji: string;
 }
 
-const ANIMALS: AnimalSeed[] = [
-  { id: "hond", translationNl: "hond", emoji: "🐕" },
-  { id: "kat", translationNl: "kat", emoji: "🐈" },
-  { id: "vogel", translationNl: "vogel", emoji: "🐦" },
-  { id: "vis", translationNl: "vis", emoji: "🐟" },
-  { id: "koe", translationNl: "koe", emoji: "🐄" },
-  { id: "schaap", translationNl: "schaap", emoji: "🐑" },
-  { id: "geit", translationNl: "geit", emoji: "🐐" },
-  { id: "kip", translationNl: "kip", emoji: "🐔" },
-  { id: "ezel", translationNl: "ezel", emoji: "🫏" },
-  { id: "kameel", translationNl: "kameel", emoji: "🐫" },
-];
+// Op verzoek: de Dieren-les gebruikt nu dezelfde volledige dierenlijst (39,
+// DIEREN_CATEGORY.words) als Ontdekken/Match het geluid, i.p.v. een eigen,
+// losstaande lijst van maar 10 dieren — anders kon een dier dat al wél was
+// ingesproken en dus in Ontdekken/het matchspel verscheen, nooit in de les
+// zelf voorkomen. De les/[lessonId]-pagina filtert hierna nog steeds op
+// getItemIdsWithRecordings(), dus een kind ziet nooit een niet-ingesproken
+// dier — er komen alleen meer dieren bij zodra ze zijn ingesproken.
+const ANIMALS: AnimalSeed[] = DIEREN_CATEGORY.words.map(([slug, label, emoji]) => ({
+  id: slug,
+  translationNl: label,
+  emoji,
+}));
 
 export const AVATARS = ["🦊", "🐻", "🐼", "🐯", "🐰", "🐨"];
 
