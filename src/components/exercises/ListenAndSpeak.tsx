@@ -172,6 +172,20 @@ export function ListenAndSpeak({
     setStatus(result.shouldOfferRetry ? "retry" : "correct");
   }
 
+  // Fallback wanneer echte opname niet ondersteund wordt (geen
+  // getUserMedia/MediaRecorder in deze browser) maar de ouder wél
+  // microfoon-toestemming heeft gegeven: zelfde patroon als
+  // RepeatAfterMe/SpeakFromPicture — het micknopje blijft dan gewoon
+  // zichtbaar (i.p.v. stilletjes te verdwijnen) en simuleert kort
+  // "luisteren" voordat het kind gewoon verdergaat.
+  async function handleFallbackRecord() {
+    setStatus("recording");
+    await new Promise((resolve) => window.setTimeout(resolve, 900));
+    setAttempts((prev) => prev + 1);
+    setFeedbackMessage("Goed gezegd!");
+    setStatus("correct");
+  }
+
   async function handleRecord() {
     setStatus("requesting");
     try {
@@ -216,7 +230,7 @@ export function ListenAndSpeak({
         {item.imageEmoji}
       </div>
 
-      {(status === "idle" || status === "retry") && useRealCapture && (
+      {(status === "idle" || status === "retry") && microphoneOptIn && (
         <div className="flex flex-row items-center justify-center gap-4">
           <AutoplayToggle
             text={item.latinSpelling}
@@ -227,13 +241,16 @@ export function ListenAndSpeak({
             onToggle={onToggleAutoplayAudio}
             iconOnly
           />
-          <Button onClick={handleRecord} className="flex items-center gap-2 whitespace-nowrap !px-5">
+          <Button
+            onClick={useRealCapture ? handleRecord : handleFallbackRecord}
+            className="flex items-center gap-2 whitespace-nowrap !px-5"
+          >
             <span aria-hidden="true">🎙️</span> Zeg het woord
           </Button>
         </div>
       )}
 
-      {status === "idle" && !useRealCapture && (
+      {status === "idle" && !microphoneOptIn && (
         <div className="flex flex-col items-center gap-3">
           <AutoplayToggle
             text={item.latinSpelling}
@@ -243,11 +260,7 @@ export function ListenAndSpeak({
             enabled={autoplayAudio}
             onToggle={onToggleAutoplayAudio}
           />
-          <p className="max-w-xs text-sm text-gray-500">
-            {microphoneOptIn
-              ? "Opnemen lukt niet in deze browser — zeg het woord toch hardop en ga dan verder."
-              : "Microfoon staat uit. Zeg het woord toch hardop en ga dan verder."}
-          </p>
+          <p className="max-w-xs text-sm text-gray-500">Microfoon staat uit. Zeg het woord toch hardop en ga dan verder.</p>
           <Button onClick={() => onDone(true)}>Ik heb het gezegd</Button>
         </div>
       )}

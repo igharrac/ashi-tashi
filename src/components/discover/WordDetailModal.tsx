@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import type { TouchEvent } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
 import type { RecordingPersona } from "@/lib/recordableItems";
@@ -30,6 +31,11 @@ interface WordDetailModalProps {
  * plaatje aan te tikken. `key={item.id}` op <ListenAndSpeak> zorgt dat de
  * opname-/feedbackstatus bij elke navigatie schoon begint (geen "bijna!"
  * van het vorige woord dat blijft hangen op het volgende).
+ *
+ * Op verzoek: swipen op mobiel werkt nu ook (zelfde drempel/aanpak als het
+ * lesscherm, zie les/[lessonId]/page.tsx), en de pijlknoppen hebben een
+ * duidelijkere schaduw + rand — ze stonden wit-op-wit nauwelijks zichtbaar
+ * tegen de witte kaart.
  */
 export function WordDetailModal({
   items,
@@ -46,6 +52,26 @@ export function WordDetailModal({
   const item = items[currentIndex];
   const hasPrevious = currentIndex > 0;
   const hasNext = currentIndex < items.length - 1;
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const SWIPE_THRESHOLD_PX = 60;
+
+  function handleTouchStart(event: TouchEvent<HTMLDivElement>) {
+    const touch = event.touches[0];
+    touchStartRef.current = touch ? { x: touch.clientX, y: touch.clientY } : null;
+  }
+
+  function handleTouchEnd(event: TouchEvent<HTMLDivElement>) {
+    const start = touchStartRef.current;
+    touchStartRef.current = null;
+    const touch = event.changedTouches[0];
+    if (!start || !touch) return;
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    // Duidelijk horizontaal én lang genoeg, anders telt het als scrollen/tikken.
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD_PX || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) return;
+    if (deltaX < 0 && hasNext) onNavigate(currentIndex + 1); // swipe naar links = volgende
+    else if (deltaX > 0 && hasPrevious) onNavigate(currentIndex - 1); // swipe naar rechts = vorige
+  }
 
   useEffect(() => {
     function handleKeydown(event: KeyboardEvent) {
@@ -70,6 +96,8 @@ export function WordDetailModal({
       <div
         className="relative w-full max-w-sm rounded-xl2 bg-white p-6 shadow-soft"
         onClick={(event) => event.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
       >
         <button
           type="button"
@@ -87,7 +115,7 @@ export function WordDetailModal({
             onClick={() => onNavigate(currentIndex - 1)}
             aria-label="Vorig woord"
             className="absolute left-0 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center
-              rounded-full bg-white text-xl text-ink-muted shadow-sm hover:bg-cream
+              rounded-full border-2 border-border-subtle bg-white text-xl text-ink-muted shadow-md hover:border-clay-400 hover:text-clay-500
               focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
           >
             <span aria-hidden="true">‹</span>
@@ -99,7 +127,7 @@ export function WordDetailModal({
             onClick={() => onNavigate(currentIndex + 1)}
             aria-label="Volgend woord"
             className="absolute right-0 top-1/2 flex h-10 w-10 translate-x-1/2 -translate-y-1/2 items-center justify-center
-              rounded-full bg-white text-xl text-ink-muted shadow-sm hover:bg-cream
+              rounded-full border-2 border-border-subtle bg-white text-xl text-ink-muted shadow-md hover:border-clay-400 hover:text-clay-500
               focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
           >
             <span aria-hidden="true">›</span>
