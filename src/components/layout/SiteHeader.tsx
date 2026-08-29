@@ -3,9 +3,8 @@ export function SiteHeader() {
   return (
     <header className="flex items-center justify-between px-6 py-6 sm:px-12">
       <div className="flex items-center gap-3">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-forest-500 text-lg font-bold text-white shadow-forest">
-          A&amp;T
-        </span>
+        {/* eslint-disable-next-line @next/next/no-img-element -- lokaal SVG-beeldmerk (public/brand), geen next/image-optimalisatie nodig */}
+        <img src="/brand/ashi-d-tashi-mark.svg" alt="" aria-hidden="true" className="h-12 w-12" />
         <span className="text-2xl text-forest-500">Ashi &amp; Tashi</span>
       </div>
       <nav className="flex items-center gap-6 text-ink" aria-label="Sitenavigatie">

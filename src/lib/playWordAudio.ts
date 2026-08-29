@@ -3,6 +3,31 @@ import { speakDutchFallback } from "@/providers/tts/browserSpeechFallback";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import type { RecordingPersona } from "@/lib/recordableItems";
 
+// Eén gedeelde referentie naar het HTMLAudioElement dat nu (mogelijk) nog
+// speelt — module-scope, niet per component-instance, want een <audio>
+// blijft gewoon doorspelen ook nadat het component dat 'm startte al
+// unmount is (bv. bij snel doorklikken naar de volgende vraag). Zonder dit
+// zou het vorige woordje nog uitgesproken worden terwijl het nieuwe al
+// begint.
+let currentAudio: HTMLAudioElement | null = null;
+
+/**
+ * Kapt alles af wat nog klinkt van een vorige playWordAudio-aanroep: zowel
+ * een lopende opname (currentAudio) als browserspraaksynthese
+ * (speakDutchFallback annuleert zichzelf al bij een volgende aanroep, maar
+ * niet als de vólgende aanroep juist een échte opname afspeelt).
+ */
+function stopCurrentPlayback(): void {
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+    currentAudio = null;
+  }
+  if (typeof window !== "undefined" && "speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+  }
+}
+
 interface PlayWordAudioInput {
   itemId?: string;
   text: string;
@@ -26,11 +51,25 @@ export async function playWordAudio({
   slow = false,
   preferredPersona,
 }: PlayWordAudioInput): Promise<void> {
+  // Meteen afkappen wat nog van een vorige aanroep speelt — vóór het
+  // (async) ophalen van de referentie hieronder, zodat een oud fragment
+  // niet nog even doorloopt terwijl het nieuwe al wordt opgehaald.
+  stopCurrentPlayback();
+
   if (itemId) {
     const reference = await getReferenceAudioForItem(itemId, preferredPersona);
     if (reference) {
+      // Nogmaals afkappen: tussen het ophalen hierboven (await) en hier kan
+      // er alweer een nieuwere aanroep gestart zijn die zelf ook al
+      // afgekapt heeft — anders zou dit inmiddels verouderde fragment
+      // alsnog van start gaan bovenop het nieuwere.
+      stopCurrentPlayback();
       const audio = new Audio(reference.url);
       audio.playbackRate = slow ? 0.7 : 1.0;
+      currentAudio = audio;
+      audio.addEventListener("ended", () => {
+        if (currentAudio === audio) currentAudio = null;
+      });
       try {
         await audio.play();
       } catch {

@@ -25,7 +25,11 @@ export function Sidebar({ child }: SidebarProps) {
           {child.avatarId}
         </span>
         <div>
-          <p className="font-bold text-forest-500">Ashi &amp; Tashi</p>
+          <p className="flex items-center gap-1.5 font-bold text-forest-500">
+            {/* eslint-disable-next-line @next/next/no-img-element -- lokaal SVG-beeldmerk (public/brand), geen next/image-optimalisatie nodig */}
+            <img src="/brand/ashi-d-tashi-mark.svg" alt="" aria-hidden="true" className="h-4 w-4" />
+            Ashi &amp; Tashi
+          </p>
           <p className="text-xs text-ink-muted">{child.displayName}s avontuur</p>
         </div>
       </div>

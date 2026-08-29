@@ -95,11 +95,11 @@ export function StepGrid({ childId, child }: StepGridProps) {
     : [];
 
   // Filterbalk alleen tonen als er ook echt iets te filteren valt (meer dan
-  // alleen "Woorden") — anders is de balk overbodige ruis.
-  const availableFilters: FilterKey[] = ["alles"];
+  // alleen "Woorden") — anders is de balk overbodige ruis. Volgorde op
+  // verzoek: Alles, Woorden, Zinnen, en Oefenen achteraan.
+  const availableFilters: FilterKey[] = ["alles", "woorden"];
   if (showDailySentencesTile) availableFilters.push("zinnen");
   if (showPracticeTiles && practiceStatuses.some((s) => s.status !== "locked")) availableFilters.push("oefenen");
-  availableFilters.push("woorden");
   const showFilterBar = availableFilters.length > 2;
   const activeFilter = availableFilters.includes(filter) ? filter : "alles";
 
@@ -132,7 +132,22 @@ export function StepGrid({ childId, child }: StepGridProps) {
         </div>
       )}
 
+      {/* Tegel-volgorde volgt de filterbalk hierboven (op verzoek): Woorden,
+          Zinnen, en Oefenen achteraan — ook zichtbaar bij "Alles". */}
       <div className="mx-auto grid max-w-3xl grid-cols-3 gap-x-3 gap-y-6 py-6 sm:grid-cols-4 sm:gap-x-4 md:grid-cols-5">
+        {showWoorden &&
+          unlockStatuses.map(({ categorySlug, status, lessonId }) => {
+            const category = categories.find((c) => c.slug === categorySlug);
+            if (!category) return null;
+            return (
+              <StepTile
+                key={categorySlug}
+                category={category}
+                status={status}
+                href={status !== "locked" ? `/kind/${childId}/les/${lessonId}` : undefined}
+              />
+            );
+          })}
         {showZinnen && showDailySentencesTile && (
           <StepTile
             category={{ emoji: "💬", titleNl: "Dagelijkse zinnen", teaser: "Zinnen die je elke dag gebruikt — altijd beschikbaar" }}
@@ -150,19 +165,6 @@ export function StepGrid({ childId, child }: StepGridProps) {
                 category={{ emoji: category.emoji, titleNl: category.titleNl, teaser: `Oefenen: ${category.titleNl.toLowerCase()}` }}
                 status={status}
                 href={`/kind/${childId}/les/${lessonId}`}
-              />
-            );
-          })}
-        {showWoorden &&
-          unlockStatuses.map(({ categorySlug, status, lessonId }) => {
-            const category = categories.find((c) => c.slug === categorySlug);
-            if (!category) return null;
-            return (
-              <StepTile
-                key={categorySlug}
-                category={category}
-                status={status}
-                href={status !== "locked" ? `/kind/${childId}/les/${lessonId}` : undefined}
               />
             );
           })}

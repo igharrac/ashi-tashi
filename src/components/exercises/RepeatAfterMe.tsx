@@ -144,7 +144,7 @@ export function RepeatAfterMe({
                   onToggle={onToggleAutoplayAudio}
                   iconOnly
                 />
-                <Button onClick={speech.attempt} className="flex items-center gap-2">
+                <Button onClick={speech.attempt} className="flex items-center gap-2 whitespace-nowrap !px-5">
                   <span aria-hidden="true">🎙️</span> Zeg het woord
                 </Button>
               </div>
