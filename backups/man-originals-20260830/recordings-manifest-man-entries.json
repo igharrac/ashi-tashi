@@ -1,0 +1,92 @@
+{
+  "item-dieren-aap__man": {
+    "itemId": "item-dieren-aap",
+    "persona": "man",
+    "fileName": "item-dieren-aap__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-29T17:20:33.273Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-achter__man": {
+    "itemId": "item-oefenen-voorzetsels-achter",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-achter__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:09:21.621Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-boven__man": {
+    "itemId": "item-oefenen-voorzetsels-boven",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-boven__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:11:55.336Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-in__man": {
+    "itemId": "item-oefenen-voorzetsels-in",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-in__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:08:00.697Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-naast__man": {
+    "itemId": "item-oefenen-voorzetsels-naast",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-naast__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:10:09.006Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-onder__man": {
+    "itemId": "item-oefenen-voorzetsels-onder",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-onder__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:08:48.114Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-op__man": {
+    "itemId": "item-oefenen-voorzetsels-op",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-op__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:06:55.592Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-tussen__man": {
+    "itemId": "item-oefenen-voorzetsels-tussen",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-tussen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:10:39.544Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-voor__man": {
+    "itemId": "item-oefenen-voorzetsels-voor",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-voor__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:09:28.015Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-waar-is-de-bal__man": {
+    "itemId": "item-oefenen-voorzetsels-waar-is-de-bal",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-waar-is-de-bal__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:06:28.653Z",
+    "denoised": true
+  }
+}
