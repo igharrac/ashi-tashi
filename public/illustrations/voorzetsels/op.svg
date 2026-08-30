@@ -1,12 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
-      <rect x="100" y="140" width="120" height="130" rx="14" fill="#E3B77D" stroke="#B5893D" stroke-width="4"/>
-      <line x1="160.0" y1="148" x2="160.0" y2="262" stroke="#B5893D" stroke-width="3"/>
-      <circle cx="146.0" cy="205.0" r="4" fill="#B5893D"/>
-      <circle cx="174.0" cy="205.0" r="4" fill="#B5893D"/>
-    
-      <g opacity="1">
-      <circle cx="160" cy="116" r="24" fill="#FF6B57"/>
-      <path d="M136 116 Q160 101.6 184 116" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
-      <path d="M136 116 Q160 130.4 184 116" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
-      </g>
-    <line x1="20" y1="280" x2="300" y2="280" stroke="#E7E3DA" stroke-width="6" stroke-linecap="round"/></svg>
+      <rect x="91" y="130" width="138" height="12" rx="4" fill="#8A5A28"/>
+      <rect x="95" y="142" width="130" height="138" fill="#D89B5E" stroke="#9C6B32" stroke-width="4"/>
+      <rect x="105" y="152" width="50.0" height="118" rx="6" fill="none" stroke="#9C6B32" stroke-width="2.5" opacity="0.7"/>
+      <rect x="165.0" y="152" width="50.0" height="118" rx="6" fill="none" stroke="#9C6B32" stroke-width="2.5" opacity="0.7"/>
+      <line x1="160.0" y1="142" x2="160.0" y2="280" stroke="#9C6B32" stroke-width="3"/>
+      <rect x="95" y="142" width="130" height="138" fill="none" stroke="#9C6B32" stroke-width="4"/>
+      <circle cx="144.0" cy="211.0" r="5" fill="#E3B23C" stroke="#8A5A28" stroke-width="1.5"/>
+      <circle cx="176.0" cy="211.0" r="5" fill="#E3B23C" stroke="#8A5A28" stroke-width="1.5"/>
+    <clipPath id="ballclip-160-106"><circle cx="160" cy="106" r="24"/></clipPath><circle cx="160" cy="106" r="24" fill="#ffffff" stroke="#1a1a1a" stroke-width="2.5"/><polygon points="160.0,95.4 170.0,102.7 166.2,114.5 153.8,114.5 150.0,102.7" fill="#1a1a1a"/><g clip-path="url(#ballclip-160-106)"><polygon points="169.0,85.4 162.8,93.9 152.7,90.6 152.7,80.1 162.8,76.8" fill="#1a1a1a"/><polygon points="182.4,108.2 172.4,104.9 172.4,94.3 182.4,91.1 188.6,99.6" fill="#1a1a1a"/><polygon points="164.9,128.0 164.9,117.4 174.9,114.2 181.1,122.7 174.9,131.2" fill="#1a1a1a"/><polygon points="140.6,117.4 150.6,114.2 156.8,122.7 150.6,131.2 140.6,128.0" fill="#1a1a1a"/><polygon points="143.1,91.1 149.3,99.6 143.1,108.2 133.1,104.9 133.1,94.3" fill="#1a1a1a"/></g><path d="M136 106 A24 24 0 0 1 184 106" stroke="#00000022" stroke-width="2" fill="none"/><line x1="20" y1="288" x2="300" y2="288" stroke="#E7E3DA" stroke-width="6" stroke-linecap="round"/></svg>

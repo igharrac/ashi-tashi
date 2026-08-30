@@ -1,17 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
-      <rect x="30" y="140" width="90" height="130" rx="14" fill="#E3B77D" stroke="#B5893D" stroke-width="4"/>
-      <line x1="75.0" y1="148" x2="75.0" y2="262" stroke="#B5893D" stroke-width="3"/>
-      <circle cx="61.0" cy="205.0" r="4" fill="#B5893D"/>
-      <circle cx="89.0" cy="205.0" r="4" fill="#B5893D"/>
+      <rect x="16" y="130" width="108" height="12" rx="4" fill="#8A5A28"/>
+      <rect x="20" y="142" width="100" height="138" fill="#D89B5E" stroke="#9C6B32" stroke-width="4"/>
+      <rect x="30" y="152" width="35.0" height="118" rx="6" fill="none" stroke="#9C6B32" stroke-width="2.5" opacity="0.7"/>
+      <rect x="75.0" y="152" width="35.0" height="118" rx="6" fill="none" stroke="#9C6B32" stroke-width="2.5" opacity="0.7"/>
+      <line x1="70.0" y1="142" x2="70.0" y2="280" stroke="#9C6B32" stroke-width="3"/>
+      <rect x="20" y="142" width="100" height="138" fill="none" stroke="#9C6B32" stroke-width="4"/>
+      <circle cx="54.0" cy="211.0" r="5" fill="#E3B23C" stroke="#8A5A28" stroke-width="1.5"/>
+      <circle cx="86.0" cy="211.0" r="5" fill="#E3B23C" stroke="#8A5A28" stroke-width="1.5"/>
     
       <rect x="232" y="128" width="54" height="142" rx="8" fill="#0F2D5B"/>
       <rect x="240" y="140" width="38" height="59.64" rx="4" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.35"/>
       <rect x="240" y="201.84" width="38" height="56.800000000000004" rx="4" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.35"/>
       <circle cx="274" cy="199.0" r="4" fill="#FFC53D"/>
-    
-      <g opacity="1">
-      <circle cx="168" cy="244" r="22" fill="#FF6B57"/>
-      <path d="M146 244 Q168 230.8 190 244" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
-      <path d="M146 244 Q168 257.2 190 244" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
-      </g>
-    <line x1="20" y1="270" x2="300" y2="270" stroke="#E7E3DA" stroke-width="6" stroke-linecap="round"/></svg>
+    <clipPath id="ballclip-172-246"><circle cx="172" cy="246" r="22"/></clipPath><circle cx="172" cy="246" r="22" fill="#ffffff" stroke="#1a1a1a" stroke-width="2.5"/><polygon points="172.0,236.3 181.2,243.0 177.7,253.8 166.3,253.8 162.8,243.0" fill="#1a1a1a"/><g clip-path="url(#ballclip-172-246)"><polygon points="180.2,227.1 174.5,234.9 165.3,231.9 165.3,222.2 174.5,219.3" fill="#1a1a1a"/><polygon points="192.5,248.0 183.3,245.0 183.3,235.3 192.5,232.3 198.2,240.2" fill="#1a1a1a"/><polygon points="176.5,266.1 176.5,256.5 185.7,253.5 191.3,261.3 185.7,269.1" fill="#1a1a1a"/><polygon points="154.2,256.5 163.4,253.5 169.1,261.3 163.4,269.1 154.2,266.1" fill="#1a1a1a"/><polygon points="156.5,232.3 162.2,240.2 156.5,248.0 147.3,245.0 147.3,235.3" fill="#1a1a1a"/></g><path d="M150 246 A22 22 0 0 1 194 246" stroke="#00000022" stroke-width="2" fill="none"/><line x1="20" y1="270" x2="300" y2="270" stroke="#E7E3DA" stroke-width="6" stroke-linecap="round"/></svg>

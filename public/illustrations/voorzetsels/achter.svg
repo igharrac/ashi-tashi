@@ -1,17 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
-  <circle cx="160.0" cy="146" r="30" fill="#FF6B57" opacity="0.28" stroke="#FF6B57" stroke-width="2" stroke-dasharray="2 6"/>
+  <circle cx="160.0" cy="134" r="30" fill="#9c9c9c" opacity="0.25" stroke="#9c9c9c" stroke-width="2" stroke-dasharray="2 6"/>
   
-      <rect x="100" y="140" width="120" height="130" rx="14" fill="#E3B77D" stroke="#B5893D" stroke-width="4"/>
-      <line x1="160.0" y1="148" x2="160.0" y2="262" stroke="#B5893D" stroke-width="3"/>
-      <circle cx="146.0" cy="205.0" r="4" fill="#B5893D"/>
-      <circle cx="174.0" cy="205.0" r="4" fill="#B5893D"/>
+      <rect x="91" y="130" width="138" height="12" rx="4" fill="#8A5A28"/>
+      <rect x="95" y="142" width="130" height="138" fill="#D89B5E" stroke="#9C6B32" stroke-width="4"/>
+      <rect x="105" y="152" width="50.0" height="118" rx="6" fill="none" stroke="#9C6B32" stroke-width="2.5" opacity="0.7"/>
+      <rect x="165.0" y="152" width="50.0" height="118" rx="6" fill="none" stroke="#9C6B32" stroke-width="2.5" opacity="0.7"/>
+      <line x1="160.0" y1="142" x2="160.0" y2="280" stroke="#9C6B32" stroke-width="3"/>
+      <rect x="95" y="142" width="130" height="138" fill="none" stroke="#9C6B32" stroke-width="4"/>
+      <circle cx="144.0" cy="211.0" r="5" fill="#E3B23C" stroke="#8A5A28" stroke-width="1.5"/>
+      <circle cx="176.0" cy="211.0" r="5" fill="#E3B23C" stroke="#8A5A28" stroke-width="1.5"/>
     
-  <clipPath id="peekClip"><rect x="100" y="0" width="120" height="138"/></clipPath>
-  <g clip-path="url(#peekClip)">
-      <g opacity="1">
-      <circle cx="160.0" cy="146" r="30" fill="#FF6B57"/>
-      <path d="M130.0 146 Q160.0 128.0 190.0 146" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
-      <path d="M130.0 146 Q160.0 164.0 190.0 146" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
-      </g>
-    </g>
-<line x1="20" y1="280" x2="300" y2="280" stroke="#E7E3DA" stroke-width="6" stroke-linecap="round"/></svg>
+  <clipPath id="peekClip"><rect x="95" y="0" width="130" height="126"/></clipPath>
+  <g clip-path="url(#peekClip)"><clipPath id="ballclip-160-134"><circle cx="160.0" cy="134" r="30"/></clipPath><circle cx="160.0" cy="134" r="30" fill="#ffffff" stroke="#1a1a1a" stroke-width="2.5"/><polygon points="160.0,120.8 172.6,129.9 167.8,144.7 152.2,144.7 147.4,129.9" fill="#1a1a1a"/><g clip-path="url(#ballclip-160-134)"><polygon points="171.2,108.2 163.5,118.9 150.9,114.8 150.9,101.6 163.5,97.5" fill="#1a1a1a"/><polygon points="188.0,136.7 175.5,132.6 175.5,119.4 188.0,115.4 195.8,126.0" fill="#1a1a1a"/><polygon points="166.1,161.5 166.1,148.3 178.6,144.2 186.4,154.9 178.6,165.5" fill="#1a1a1a"/><polygon points="135.8,148.3 148.3,144.2 156.1,154.9 148.3,165.5 135.8,161.5" fill="#1a1a1a"/><polygon points="138.9,115.4 146.7,126.0 138.9,136.7 126.4,132.6 126.4,119.4" fill="#1a1a1a"/></g><path d="M130.0 134 A30 30 0 0 1 190.0 134" stroke="#00000022" stroke-width="2" fill="none"/></g>
+<line x1="20" y1="288" x2="300" y2="288" stroke="#E7E3DA" stroke-width="6" stroke-linecap="round"/></svg>
