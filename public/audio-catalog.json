@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T16:05:17.649Z",
+  "generatedAt": "2026-08-30T17:38:23.082011Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -1916,6 +1916,87 @@
         "vrouw": "/audio/recordings/item-kleuren-oranje__vrouw.webm",
         "jongen": "/audio/recordings/item-kleuren-oranje__jongen.webm",
         "meisje": "/audio/recordings/item-kleuren-oranje__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-waar-is-de-bal": {
+      "phoneticSpelling": "Menza takoert",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-waar-is-de-bal__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-waar-is-de-bal__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-waar-is-de-bal__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-waar-is-de-bal__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-op": {
+      "phoneticSpelling": "Afellah n lmerjoe",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-op__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-op__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-op__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-op__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-in": {
+      "phoneticSpelling": "Ajensoe n lmerjoe",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-in__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-in__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-in__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-in__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-onder": {
+      "phoneticSpelling": "Daw lmerjoe",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-onder__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-onder__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-onder__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-onder__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-achter": {
+      "phoneticSpelling": "Dart n lmerjoe",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-achter__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-achter__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-achter__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-achter__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-voor": {
+      "phoneticSpelling": "Det n lmerjoe",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-voor__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-voor__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-voor__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-voor__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-naast": {
+      "phoneticSpelling": "Tamn n lmerjoe",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-naast__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-naast__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-naast__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-naast__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-tussen": {
+      "phoneticSpelling": "Yer lmerjoe d' lbaab",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-tussen__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-tussen__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-tussen__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-tussen__meisje.webm"
+      }
+    },
+    "item-oefenen-voorzetsels-boven": {
+      "phoneticSpelling": "Nig lmerjoe",
+      "recordings": {
+        "man": "/audio/recordings/item-oefenen-voorzetsels-boven__man.webm",
+        "vrouw": "/audio/recordings/item-oefenen-voorzetsels-boven__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-voorzetsels-boven__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-voorzetsels-boven__meisje.webm"
       }
     },
     "item-dieren-uil": {

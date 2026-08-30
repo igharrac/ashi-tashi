@@ -185,8 +185,9 @@
     "fileName": "item-dieren-aap__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-29T17:20:33.273Z",
-    "denoised": true
+    "recordedAt": "2026-08-30T17:31:35.867281Z",
+    "denoised": true,
+    "voiceConverted": true
   },
   "item-dieren-giraffe__man": {
     "itemId": "item-dieren-giraffe",
@@ -7877,6 +7878,339 @@
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-28T21:56:56.722396Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-waar-is-de-bal__man": {
+    "itemId": "item-oefenen-voorzetsels-waar-is-de-bal",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-waar-is-de-bal__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:44.756419Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-op__man": {
+    "itemId": "item-oefenen-voorzetsels-op",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-op__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:41.730457Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-in__man": {
+    "itemId": "item-oefenen-voorzetsels-in",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-in__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:38.765694Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-onder__man": {
+    "itemId": "item-oefenen-voorzetsels-onder",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-onder__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:40.706229Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-achter__man": {
+    "itemId": "item-oefenen-voorzetsels-achter",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-achter__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:36.802921Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-voor__man": {
+    "itemId": "item-oefenen-voorzetsels-voor",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-voor__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:43.760426Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-naast__man": {
+    "itemId": "item-oefenen-voorzetsels-naast",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-naast__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:39.749466Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-tussen__man": {
+    "itemId": "item-oefenen-voorzetsels-tussen",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-tussen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:42.774954Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-boven__man": {
+    "itemId": "item-oefenen-voorzetsels-boven",
+    "persona": "man",
+    "fileName": "item-oefenen-voorzetsels-boven__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:31:37.828955Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-oefenen-voorzetsels-achter__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-achter",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-achter__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:00.013342Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-boven__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-boven",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-boven__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:00.986909Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-in__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-in",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-in__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:01.901825Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-naast__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-naast",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-naast__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:02.885550Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-onder__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-onder",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-onder__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:03.798247Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-op__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-op",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-op__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:04.778841Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-tussen__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-tussen",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-tussen__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:05.760008Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-voor__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-voor",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-voor__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:06.709346Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-waar-is-de-bal__vrouw": {
+    "itemId": "item-oefenen-voorzetsels-waar-is-de-bal",
+    "persona": "vrouw",
+    "fileName": "item-oefenen-voorzetsels-waar-is-de-bal__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:07.707804Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-achter__jongen": {
+    "itemId": "item-oefenen-voorzetsels-achter",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-achter__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:22.809802Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-boven__jongen": {
+    "itemId": "item-oefenen-voorzetsels-boven",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-boven__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:23.804290Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-in__jongen": {
+    "itemId": "item-oefenen-voorzetsels-in",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-in__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:24.689431Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-naast__jongen": {
+    "itemId": "item-oefenen-voorzetsels-naast",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-naast__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:25.607277Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-onder__jongen": {
+    "itemId": "item-oefenen-voorzetsels-onder",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-onder__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:26.510470Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-op__jongen": {
+    "itemId": "item-oefenen-voorzetsels-op",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-op__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:27.494574Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-tussen__jongen": {
+    "itemId": "item-oefenen-voorzetsels-tussen",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-tussen__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:28.502855Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-voor__jongen": {
+    "itemId": "item-oefenen-voorzetsels-voor",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-voor__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:29.438218Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-waar-is-de-bal__jongen": {
+    "itemId": "item-oefenen-voorzetsels-waar-is-de-bal",
+    "persona": "jongen",
+    "fileName": "item-oefenen-voorzetsels-waar-is-de-bal__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:30.424587Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-achter__meisje": {
+    "itemId": "item-oefenen-voorzetsels-achter",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-achter__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:46.258549Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-boven__meisje": {
+    "itemId": "item-oefenen-voorzetsels-boven",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-boven__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:47.267254Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-in__meisje": {
+    "itemId": "item-oefenen-voorzetsels-in",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-in__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:48.194578Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-naast__meisje": {
+    "itemId": "item-oefenen-voorzetsels-naast",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-naast__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:49.124874Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-onder__meisje": {
+    "itemId": "item-oefenen-voorzetsels-onder",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-onder__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:50.045557Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-op__meisje": {
+    "itemId": "item-oefenen-voorzetsels-op",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-op__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:51.077998Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-tussen__meisje": {
+    "itemId": "item-oefenen-voorzetsels-tussen",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-tussen__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:52.090875Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-voor__meisje": {
+    "itemId": "item-oefenen-voorzetsels-voor",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-voor__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:53.007975Z",
+    "denoised": true
+  },
+  "item-oefenen-voorzetsels-waar-is-de-bal__meisje": {
+    "itemId": "item-oefenen-voorzetsels-waar-is-de-bal",
+    "persona": "meisje",
+    "fileName": "item-oefenen-voorzetsels-waar-is-de-bal__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T17:32:53.999590Z",
     "denoised": true
   }
 }

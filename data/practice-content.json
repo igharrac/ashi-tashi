@@ -218,8 +218,8 @@
     {
       "id": "item-oefenen-voorzetsels-boven",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De bal zweeft boven de kast.",
-      "contextNl": "Als iets hoger is dan iets anders, zeg je:",
+      "translationNl": "De bal is vlakbij de kast.",
+      "contextNl": "Als iets in de buurt is, zeg je:",
       "emoji": "⚽",
       "pictogramUrl": "/illustrations/voorzetsels/boven.svg"
     },
