@@ -116,7 +116,7 @@
   "item-natuur-en-weer-sneeuw": "Atfel",
   "item-natuur-en-weer-wind": "Azwoe",
   "item-natuur-en-weer-regenboog": "Tislit n igana",
-  "item-natuur-en-weer-bliksem": "Ismawn",
+  "item-natuur-en-weer-bliksem": "Usmaan",
   "item-natuur-en-weer-berg": "Jbal",
   "item-natuur-en-weer-zee": "lbhar",
   "item-natuur-en-weer-boom": "Aseklu",
@@ -125,7 +125,7 @@
   "item-natuur-en-weer-grot": "Ighir",
   "item-natuur-en-weer-vuur": "Ava",
   "item-natuur-en-weer-ijs": "taljg",
-  "item-natuur-en-weer-mist": "dbaab",
+  "item-natuur-en-weer-mist": "dbaaba",
   "item-vervoer-auto": "Tomobil",
   "item-vervoer-bus": "Tobis",
   "item-vervoer-trein": "Tren",
@@ -220,5 +220,6 @@
   "item-oefenen-voorzetsels-voor": "Det n lmerjoe",
   "item-oefenen-voorzetsels-naast": "Tamn n lmerjoe",
   "item-oefenen-voorzetsels-tussen": "Yer lmerjoe d' lbaab",
-  "item-oefenen-voorzetsels-boven": "Nig lmerjoe"
+  "item-oefenen-voorzetsels-boven": "Nig lmerjoe",
+  "item-beroepen-fotograaf": "lmosawir"
 }
