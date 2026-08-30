@@ -1185,7 +1185,7 @@
     "fileName": "item-natuur-en-weer-bliksem__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:32:32.318697Z",
+    "recordedAt": "2026-08-30T19:16:01.884666Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1215,7 +1215,7 @@
     "fileName": "item-natuur-en-weer-boom__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:32:33.998377Z",
+    "recordedAt": "2026-08-30T19:16:02.761002Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1235,7 +1235,7 @@
     "fileName": "item-natuur-en-weer-bos__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:32:34.863627Z",
+    "recordedAt": "2026-08-30T19:16:03.671364Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1275,7 +1275,7 @@
     "fileName": "item-natuur-en-weer-mist__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:32:38.230118Z",
+    "recordedAt": "2026-08-30T19:16:04.616091Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1465,7 +1465,7 @@
     "fileName": "item-beroepen-kapper__man.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:30:28.599425Z",
+    "recordedAt": "2026-08-30T19:16:01.013046Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -2180,7 +2180,7 @@
     "fileName": "item-beroepen-kapper__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:01:05.915839Z",
+    "recordedAt": "2026-08-30T19:16:20.955096Z",
     "denoised": true
   },
   "item-beroepen-kok__vrouw": {
@@ -3341,7 +3341,7 @@
     "fileName": "item-natuur-en-weer-bliksem__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:03:07.331996Z",
+    "recordedAt": "2026-08-30T19:16:21.866913Z",
     "denoised": true
   },
   "item-natuur-en-weer-bloem__vrouw": {
@@ -3359,7 +3359,7 @@
     "fileName": "item-natuur-en-weer-boom__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:03:09.016087Z",
+    "recordedAt": "2026-08-30T19:16:22.746625Z",
     "denoised": true
   },
   "item-natuur-en-weer-bos__vrouw": {
@@ -3368,7 +3368,7 @@
     "fileName": "item-natuur-en-weer-bos__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:03:09.878822Z",
+    "recordedAt": "2026-08-30T19:16:23.699055Z",
     "denoised": true
   },
   "item-natuur-en-weer-grot__vrouw": {
@@ -3404,7 +3404,7 @@
     "fileName": "item-natuur-en-weer-mist__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:03:13.186770Z",
+    "recordedAt": "2026-08-30T19:16:24.681550Z",
     "denoised": true
   },
   "item-natuur-en-weer-regen__vrouw": {
@@ -4097,7 +4097,7 @@
     "fileName": "item-beroepen-kapper__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:15:33.823628Z",
+    "recordedAt": "2026-08-30T19:16:40.714081Z",
     "denoised": true
   },
   "item-beroepen-kok__jongen": {
@@ -5258,7 +5258,7 @@
     "fileName": "item-natuur-en-weer-bliksem__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:17:38.150438Z",
+    "recordedAt": "2026-08-30T19:16:41.640118Z",
     "denoised": true
   },
   "item-natuur-en-weer-bloem__jongen": {
@@ -5276,7 +5276,7 @@
     "fileName": "item-natuur-en-weer-boom__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:17:39.935028Z",
+    "recordedAt": "2026-08-30T19:16:42.575377Z",
     "denoised": true
   },
   "item-natuur-en-weer-bos__jongen": {
@@ -5285,7 +5285,7 @@
     "fileName": "item-natuur-en-weer-bos__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:17:40.860315Z",
+    "recordedAt": "2026-08-30T19:16:43.495111Z",
     "denoised": true
   },
   "item-natuur-en-weer-grot__jongen": {
@@ -5321,7 +5321,7 @@
     "fileName": "item-natuur-en-weer-mist__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:17:44.261628Z",
+    "recordedAt": "2026-08-30T19:16:44.423656Z",
     "denoised": true
   },
   "item-natuur-en-weer-regen__jongen": {
@@ -6014,7 +6014,7 @@
     "fileName": "item-beroepen-kapper__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:53:35.751860Z",
+    "recordedAt": "2026-08-30T19:17:00.551482Z",
     "denoised": true
   },
   "item-beroepen-kok__meisje": {
@@ -7175,7 +7175,7 @@
     "fileName": "item-natuur-en-weer-bliksem__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:55:42.757604Z",
+    "recordedAt": "2026-08-30T19:17:01.436818Z",
     "denoised": true
   },
   "item-natuur-en-weer-bloem__meisje": {
@@ -7193,7 +7193,7 @@
     "fileName": "item-natuur-en-weer-boom__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:55:44.549734Z",
+    "recordedAt": "2026-08-30T19:17:02.328770Z",
     "denoised": true
   },
   "item-natuur-en-weer-bos__meisje": {
@@ -7202,7 +7202,7 @@
     "fileName": "item-natuur-en-weer-bos__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:55:45.456846Z",
+    "recordedAt": "2026-08-30T19:17:03.253845Z",
     "denoised": true
   },
   "item-natuur-en-weer-grot__meisje": {
@@ -7238,7 +7238,7 @@
     "fileName": "item-natuur-en-weer-mist__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:55:49.017147Z",
+    "recordedAt": "2026-08-30T19:17:04.211545Z",
     "denoised": true
   },
   "item-natuur-en-weer-regen__meisje": {
@@ -8211,6 +8211,43 @@
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-30T17:32:53.999590Z",
+    "denoised": true
+  },
+  "item-beroepen-fotograaf__man": {
+    "itemId": "item-beroepen-fotograaf",
+    "persona": "man",
+    "fileName": "item-beroepen-fotograaf__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:16:00.131893Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-beroepen-fotograaf__vrouw": {
+    "itemId": "item-beroepen-fotograaf",
+    "persona": "vrouw",
+    "fileName": "item-beroepen-fotograaf__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:16:20.089505Z",
+    "denoised": true
+  },
+  "item-beroepen-fotograaf__jongen": {
+    "itemId": "item-beroepen-fotograaf",
+    "persona": "jongen",
+    "fileName": "item-beroepen-fotograaf__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:16:39.874075Z",
+    "denoised": true
+  },
+  "item-beroepen-fotograaf__meisje": {
+    "itemId": "item-beroepen-fotograaf",
+    "persona": "meisje",
+    "fileName": "item-beroepen-fotograaf__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:16:59.700339Z",
     "denoised": true
   }
 }

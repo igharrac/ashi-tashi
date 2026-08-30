@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T17:38:23.082011Z",
+  "generatedAt": "2026-08-30T19:18:51.758387Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -1064,7 +1064,7 @@
       }
     },
     "item-natuur-en-weer-bliksem": {
-      "phoneticSpelling": "Ismawn",
+      "phoneticSpelling": "Usmaan",
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-bliksem__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-bliksem__vrouw.webm",
@@ -1145,7 +1145,7 @@
       }
     },
     "item-natuur-en-weer-mist": {
-      "phoneticSpelling": "dbaab",
+      "phoneticSpelling": "dbaaba",
       "recordings": {
         "man": "/audio/recordings/item-natuur-en-weer-mist__man.webm",
         "vrouw": "/audio/recordings/item-natuur-en-weer-mist__vrouw.webm",
@@ -1997,6 +1997,15 @@
         "vrouw": "/audio/recordings/item-oefenen-voorzetsels-boven__vrouw.webm",
         "jongen": "/audio/recordings/item-oefenen-voorzetsels-boven__jongen.webm",
         "meisje": "/audio/recordings/item-oefenen-voorzetsels-boven__meisje.webm"
+      }
+    },
+    "item-beroepen-fotograaf": {
+      "phoneticSpelling": "lmosawir",
+      "recordings": {
+        "man": "/audio/recordings/item-beroepen-fotograaf__man.webm",
+        "vrouw": "/audio/recordings/item-beroepen-fotograaf__vrouw.webm",
+        "jongen": "/audio/recordings/item-beroepen-fotograaf__jongen.webm",
+        "meisje": "/audio/recordings/item-beroepen-fotograaf__meisje.webm"
       }
     },
     "item-dieren-uil": {
