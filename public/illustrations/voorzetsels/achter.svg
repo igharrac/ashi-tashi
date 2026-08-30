@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" width="320" height="320">
+  <circle cx="160.0" cy="146" r="30" fill="#FF6B57" opacity="0.28" stroke="#FF6B57" stroke-width="2" stroke-dasharray="2 6"/>
+  
+      <rect x="100" y="140" width="120" height="130" rx="14" fill="#E3B77D" stroke="#B5893D" stroke-width="4"/>
+      <line x1="160.0" y1="148" x2="160.0" y2="262" stroke="#B5893D" stroke-width="3"/>
+      <circle cx="146.0" cy="205.0" r="4" fill="#B5893D"/>
+      <circle cx="174.0" cy="205.0" r="4" fill="#B5893D"/>
+    
+  <clipPath id="peekClip"><rect x="100" y="0" width="120" height="138"/></clipPath>
+  <g clip-path="url(#peekClip)">
+      <g opacity="1">
+      <circle cx="160.0" cy="146" r="30" fill="#FF6B57"/>
+      <path d="M130.0 146 Q160.0 128.0 190.0 146" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
+      <path d="M130.0 146 Q160.0 164.0 190.0 146" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.6"/>
+      </g>
+    </g>
+<line x1="20" y1="280" x2="300" y2="280" stroke="#E7E3DA" stroke-width="6" stroke-linecap="round"/></svg>

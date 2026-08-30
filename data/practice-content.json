@@ -184,84 +184,84 @@
       "emoji": "💧"
     },
     {
-      "id": "item-het-boek-ligt-op-de-kast",
+      "id": "item-oefenen-voorzetsels-op",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "Het boek ligt op de kast.",
+      "translationNl": "De bal ligt op de kast.",
       "contextNl": "Als iets bovenop iets anders ligt, zeg je:",
-      "emoji": "📚",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/7814/7814_500.png"
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/op.svg"
     },
     {
-      "id": "item-de-trui-zit-in-de-kast",
+      "id": "item-oefenen-voorzetsels-in",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De trui zit in de kast.",
+      "translationNl": "De bal zit in de kast.",
       "contextNl": "Als iets binnenin iets zit, zeg je:",
-      "emoji": "🧥",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/7034/7034_500.png"
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/in.svg"
     },
     {
-      "id": "item-de-bal-ligt-onder-de-kast",
+      "id": "item-oefenen-voorzetsels-onder",
       "categorySlug": "oefenen-voorzetsels",
       "translationNl": "De bal ligt onder de kast.",
       "contextNl": "Als iets onder iets ligt, zeg je:",
       "emoji": "⚽",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/7047/7047_500.png"
+      "pictogramUrl": "/illustrations/voorzetsels/onder.svg"
     },
     {
-      "id": "item-de-doos-staat-boven-de-kast",
+      "id": "item-oefenen-voorzetsels-boven",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De doos staat boven de kast.",
+      "translationNl": "De bal zweeft boven de kast.",
       "contextNl": "Als iets hoger is dan iets anders, zeg je:",
-      "emoji": "📦",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/5451/5451_500.png"
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/boven.svg"
     },
     {
-      "id": "item-de-kat-zit-achter-de-kast",
+      "id": "item-oefenen-voorzetsels-achter",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De kat zit achter de kast.",
-      "contextNl": "Als iets achter iets is, zeg je:",
-      "emoji": "🐱",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/5443/5443_500.png"
+      "translationNl": "De bal ligt achter de kast.",
+      "contextNl": "Als iets verstopt zit achter iets, zeg je:",
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/achter.svg"
     },
     {
-      "id": "item-de-stoel-staat-voor-de-kast",
+      "id": "item-oefenen-voorzetsels-voor",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De stoel staat voor de kast.",
-      "contextNl": "Als iets vóór iets staat, zeg je:",
-      "emoji": "🪑",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/5438/5438_500.png"
+      "translationNl": "De bal ligt voor de kast.",
+      "contextNl": "Als iets vóór iets ligt, zeg je:",
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/voor.svg"
     },
     {
-      "id": "item-de-lamp-staat-naast-de-kast",
+      "id": "item-oefenen-voorzetsels-naast",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De lamp staat naast de kast.",
-      "contextNl": "Als iets naast iets staat, zeg je:",
-      "emoji": "💡",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/5367/5367_500.png"
+      "translationNl": "De bal ligt naast de kast.",
+      "contextNl": "Als iets naast iets ligt, zeg je:",
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/naast.svg"
     },
     {
-      "id": "item-de-bal-ligt-tussen-de-kast-en-de-deur",
+      "id": "item-oefenen-voorzetsels-tussen",
       "categorySlug": "oefenen-voorzetsels",
       "translationNl": "De bal ligt tussen de kast en de deur.",
       "contextNl": "Als iets tussen twee dingen ligt, zeg je:",
       "emoji": "⚽",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/7765/7765_500.png"
+      "pictogramUrl": "/illustrations/voorzetsels/tussen.svg"
     },
     {
-      "id": "item-de-ladder-staat-tegen-de-kast",
+      "id": "item-oefenen-voorzetsels-tegen",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De ladder staat tegen de kast.",
-      "contextNl": "Als iets tegen iets aan staat, zeg je:",
-      "emoji": "🪜",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/7212/7212_500.png"
+      "translationNl": "De bal ligt tegen de kast aan.",
+      "contextNl": "Als iets tegen iets aan ligt, zeg je:",
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/tegen.svg"
     },
     {
-      "id": "item-de-slinger-hangt-om-de-kast",
+      "id": "item-oefenen-voorzetsels-om",
       "categorySlug": "oefenen-voorzetsels",
-      "translationNl": "De slinger hangt om de kast.",
-      "contextNl": "Als iets ergens omheen hangt, zeg je:",
-      "emoji": "🎉",
-      "pictogramUrl": "https://static.arasaac.org/pictograms/7125/7125_500.png"
+      "translationNl": "De bal rolt om de kast heen.",
+      "contextNl": "Als iets ergens omheen beweegt, zeg je:",
+      "emoji": "⚽",
+      "pictogramUrl": "/illustrations/voorzetsels/om.svg"
     }
   ]
 }
