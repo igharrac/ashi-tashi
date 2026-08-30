@@ -1,0 +1,56 @@
+{
+  "item-natuur-en-weer-bliksem__man": {
+    "itemId": "item-natuur-en-weer-bliksem",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-bliksem__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T18:59:55.879Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-boom__man": {
+    "itemId": "item-natuur-en-weer-boom",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-boom__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:00:49.691Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-bos__man": {
+    "itemId": "item-natuur-en-weer-bos",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-bos__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:01:09.157Z",
+    "denoised": true
+  },
+  "item-natuur-en-weer-mist__man": {
+    "itemId": "item-natuur-en-weer-mist",
+    "persona": "man",
+    "fileName": "item-natuur-en-weer-mist__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:01:25.149Z",
+    "denoised": true
+  },
+  "item-beroepen-kapper__man": {
+    "itemId": "item-beroepen-kapper",
+    "persona": "man",
+    "fileName": "item-beroepen-kapper__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "TE_REVIEWEN",
+    "recordedAt": "2026-08-30T19:03:59.130Z",
+    "denoised": true
+  },
+  "item-beroepen-fotograaf__man": {
+    "itemId": "item-beroepen-fotograaf",
+    "persona": "man",
+    "fileName": "item-beroepen-fotograaf__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-30T19:05:09.846Z",
+    "denoised": true
+  }
+}
