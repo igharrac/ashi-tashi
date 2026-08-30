@@ -24,6 +24,11 @@
       "slug": "oefenen-taal-leren",
       "titleNl": "Taal leren",
       "emoji": "🗣️"
+    },
+    {
+      "slug": "oefenen-voorzetsels",
+      "titleNl": "Voorzetsels",
+      "emoji": "📍"
     }
   ],
   "sentences": [
@@ -177,6 +182,86 @@
       "translationNl": "Haal water",
       "contextNl": "Als je wilt dat iemand water haalt",
       "emoji": "💧"
+    },
+    {
+      "id": "item-het-boek-ligt-op-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "Het boek ligt op de kast.",
+      "contextNl": "Als iets bovenop iets anders ligt, zeg je:",
+      "emoji": "📚",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/7814/7814_500.png"
+    },
+    {
+      "id": "item-de-trui-zit-in-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De trui zit in de kast.",
+      "contextNl": "Als iets binnenin iets zit, zeg je:",
+      "emoji": "🧥",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/7034/7034_500.png"
+    },
+    {
+      "id": "item-de-bal-ligt-onder-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De bal ligt onder de kast.",
+      "contextNl": "Als iets onder iets ligt, zeg je:",
+      "emoji": "⚽",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/7047/7047_500.png"
+    },
+    {
+      "id": "item-de-doos-staat-boven-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De doos staat boven de kast.",
+      "contextNl": "Als iets hoger is dan iets anders, zeg je:",
+      "emoji": "📦",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/5451/5451_500.png"
+    },
+    {
+      "id": "item-de-kat-zit-achter-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De kat zit achter de kast.",
+      "contextNl": "Als iets achter iets is, zeg je:",
+      "emoji": "🐱",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/5443/5443_500.png"
+    },
+    {
+      "id": "item-de-stoel-staat-voor-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De stoel staat voor de kast.",
+      "contextNl": "Als iets vóór iets staat, zeg je:",
+      "emoji": "🪑",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/5438/5438_500.png"
+    },
+    {
+      "id": "item-de-lamp-staat-naast-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De lamp staat naast de kast.",
+      "contextNl": "Als iets naast iets staat, zeg je:",
+      "emoji": "💡",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/5367/5367_500.png"
+    },
+    {
+      "id": "item-de-bal-ligt-tussen-de-kast-en-de-deur",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De bal ligt tussen de kast en de deur.",
+      "contextNl": "Als iets tussen twee dingen ligt, zeg je:",
+      "emoji": "⚽",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/7765/7765_500.png"
+    },
+    {
+      "id": "item-de-ladder-staat-tegen-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De ladder staat tegen de kast.",
+      "contextNl": "Als iets tegen iets aan staat, zeg je:",
+      "emoji": "🪜",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/7212/7212_500.png"
+    },
+    {
+      "id": "item-de-slinger-hangt-om-de-kast",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "De slinger hangt om de kast.",
+      "contextNl": "Als iets ergens omheen hangt, zeg je:",
+      "emoji": "🎉",
+      "pictogramUrl": "https://static.arasaac.org/pictograms/7125/7125_500.png"
     }
   ]
 }
