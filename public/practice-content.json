@@ -184,6 +184,14 @@
       "emoji": "💧"
     },
     {
+      "id": "item-oefenen-voorzetsels-waar-is-de-bal",
+      "categorySlug": "oefenen-voorzetsels",
+      "translationNl": "Waar is de bal?",
+      "contextNl": "Dit is de openingsvraag van dit onderdeel — daarna komen de antwoorden:",
+      "emoji": "❓",
+      "pictogramUrl": "/illustrations/voorzetsels/vraag.svg"
+    },
+    {
       "id": "item-oefenen-voorzetsels-op",
       "categorySlug": "oefenen-voorzetsels",
       "translationNl": "De bal ligt op de kast.",
