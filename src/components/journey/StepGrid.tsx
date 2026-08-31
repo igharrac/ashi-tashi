@@ -5,11 +5,13 @@ import type { CategoryDefinition } from "@/lib/contentCatalog";
 import {
   DAILY_SENTENCES_LESSON_ID,
   getCategoryUnlockStatuses,
+  getConversationStatuses,
   getPracticeCategoryStatuses,
   MIN_RECORDED_SENTENCES_FOR_LESSON,
 } from "@/lib/lessonCatalog";
 import { getDailySentenceContent, type DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import { getPracticeContent, type PracticeContent } from "@/lib/practiceContentClient";
+import { getConversationsContent, type ConversationsContent } from "@/lib/conversationsClient";
 import { getWordsContent, mergeCategories } from "@/lib/wordsContentClient";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
 import type { ChildProfileData } from "@/types/domain";
@@ -28,22 +30,24 @@ interface StepGridProps {
  * een categorie ontgrendelt pas als de vorige categorie in de vaste
  * volgorde (CATEGORIES) écht is afgerond — geen los-van-elkaar-open grid.
  */
-type FilterKey = "alles" | "zinnen" | "oefenen" | "woorden";
+type FilterKey = "alles" | "zinnen" | "oefenen" | "woorden" | "gesprekken";
 
 const FILTER_META: Record<FilterKey, { label: string; emoji: string }> = {
   alles: { label: "Alles", emoji: "🌈" },
   zinnen: { label: "Zinnen", emoji: "💬" },
   oefenen: { label: "Oefenen", emoji: "🗣️" },
   woorden: { label: "Woorden", emoji: "🔤" },
+  gesprekken: { label: "Gesprekken", emoji: "🗨️" },
 };
 
 export function StepGrid({ childId, child }: StepGridProps) {
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [practiceContent, setPracticeContent] = useState<PracticeContent | null>(null);
   const [dailySentenceContent, setDailySentenceContent] = useState<DailySentenceContent | null>(null);
+  const [conversationsContent, setConversationsContent] = useState<ConversationsContent | null>(null);
   const [categories, setCategories] = useState<CategoryDefinition[] | null>(null);
   // Op verzoek: "alles staat door elkaar" — kunnen filteren op Zinnen/
-  // Oefenen/Woorden i.p.v. altijd alle drie groepen tegelijk zien.
+  // Oefenen/Woorden/Gesprekken i.p.v. altijd alle groepen tegelijk zien.
   const [filter, setFilter] = useState<FilterKey>("alles");
 
   useEffect(() => {
@@ -57,6 +61,9 @@ export function StepGrid({ childId, child }: StepGridProps) {
     getDailySentenceContent().then((content) => {
       if (!cancelled) setDailySentenceContent(content);
     });
+    getConversationsContent().then((content) => {
+      if (!cancelled) setConversationsContent(content);
+    });
     getWordsContent().then((content) => {
       if (!cancelled) setCategories(mergeCategories(content));
     });
@@ -65,7 +72,13 @@ export function StepGrid({ childId, child }: StepGridProps) {
     };
   }, []);
 
-  if (recordedIds === null || practiceContent === null || dailySentenceContent === null || categories === null) {
+  if (
+    recordedIds === null ||
+    practiceContent === null ||
+    dailySentenceContent === null ||
+    conversationsContent === null ||
+    categories === null
+  ) {
     return <p className="py-6 text-center text-ink-muted">Even laden…</p>;
   }
 
@@ -94,18 +107,28 @@ export function StepGrid({ childId, child }: StepGridProps) {
     ? getPracticeCategoryStatuses(child.completedLessonIds, recordedIds, practiceContent)
     : [];
 
+  // "Gesprekken" — zelfde niveau-gate als Oefenen, los van de woordcategorie-
+  // keten. Een gesprek moet HELEMAAL ingesproken zijn (elke appregel én elke
+  // keuze-optie) voordat het speelbaar is, zie getConversationStatuses.
+  const showConversationTiles = child.level !== "A_ONTDEKKEN";
+  const conversationStatuses = showConversationTiles
+    ? getConversationStatuses(child.completedLessonIds, recordedIds, conversationsContent)
+    : [];
+
   // Filterbalk alleen tonen als er ook echt iets te filteren valt (meer dan
-  // alleen "Woorden") — anders is de balk overbodige ruis. Volgorde op
-  // verzoek: Alles, Woorden, Zinnen, en Oefenen achteraan.
-  const availableFilters: FilterKey[] = ["alles", "woorden"];
+  // alleen "Woorden") — anders is de balk overbodige ruis.
+  const availableFilters: FilterKey[] = ["alles"];
   if (showDailySentencesTile) availableFilters.push("zinnen");
   if (showPracticeTiles && practiceStatuses.some((s) => s.status !== "locked")) availableFilters.push("oefenen");
+  if (showConversationTiles && conversationStatuses.some((s) => s.status !== "locked")) availableFilters.push("gesprekken");
+  availableFilters.push("woorden");
   const showFilterBar = availableFilters.length > 2;
   const activeFilter = availableFilters.includes(filter) ? filter : "alles";
 
   const showZinnen = activeFilter === "alles" || activeFilter === "zinnen";
   const showOefenen = activeFilter === "alles" || activeFilter === "oefenen";
   const showWoorden = activeFilter === "alles" || activeFilter === "woorden";
+  const showGesprekken = activeFilter === "alles" || activeFilter === "gesprekken";
 
   return (
     <div>
@@ -132,22 +155,7 @@ export function StepGrid({ childId, child }: StepGridProps) {
         </div>
       )}
 
-      {/* Tegel-volgorde volgt de filterbalk hierboven (op verzoek): Woorden,
-          Zinnen, en Oefenen achteraan — ook zichtbaar bij "Alles". */}
       <div className="mx-auto grid max-w-3xl grid-cols-3 gap-x-3 gap-y-6 py-6 sm:grid-cols-4 sm:gap-x-4 md:grid-cols-5">
-        {showWoorden &&
-          unlockStatuses.map(({ categorySlug, status, lessonId }) => {
-            const category = categories.find((c) => c.slug === categorySlug);
-            if (!category) return null;
-            return (
-              <StepTile
-                key={categorySlug}
-                category={category}
-                status={status}
-                href={status !== "locked" ? `/kind/${childId}/les/${lessonId}` : undefined}
-              />
-            );
-          })}
         {showZinnen && showDailySentencesTile && (
           <StepTile
             category={{ emoji: "💬", titleNl: "Dagelijkse zinnen", teaser: "Zinnen die je elke dag gebruikt — altijd beschikbaar" }}
@@ -165,6 +173,32 @@ export function StepGrid({ childId, child }: StepGridProps) {
                 category={{ emoji: category.emoji, titleNl: category.titleNl, teaser: `Oefenen: ${category.titleNl.toLowerCase()}` }}
                 status={status}
                 href={`/kind/${childId}/les/${lessonId}`}
+              />
+            );
+          })}
+        {showGesprekken &&
+          conversationStatuses.map(({ conversationId, status }) => {
+            const conversation = conversationsContent.conversations.find((c) => c.id === conversationId);
+            if (!conversation || status === "locked") return null;
+            return (
+              <StepTile
+                key={conversationId}
+                category={{ emoji: conversation.emoji, titleNl: conversation.titleNl, teaser: conversation.teaser }}
+                status={status}
+                href={`/kind/${childId}/gesprek/${conversationId}`}
+              />
+            );
+          })}
+        {showWoorden &&
+          unlockStatuses.map(({ categorySlug, status, lessonId }) => {
+            const category = categories.find((c) => c.slug === categorySlug);
+            if (!category) return null;
+            return (
+              <StepTile
+                key={categorySlug}
+                category={category}
+                status={status}
+                href={status !== "locked" ? `/kind/${childId}/les/${lessonId}` : undefined}
               />
             );
           })}

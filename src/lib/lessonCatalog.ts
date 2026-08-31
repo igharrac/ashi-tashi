@@ -3,6 +3,7 @@ import { buildCatalogItems, getCategoryBySlug, type CategoryDefinition } from "@
 import { DEMO_REVIEW_NOTE, DIEREN_THEME } from "@/lib/demoData";
 import type { DailySentenceContent } from "@/lib/dailySentenceContentClient";
 import type { PracticeContent } from "@/lib/practiceContentClient";
+import type { ConversationsContent } from "@/lib/conversationsClient";
 
 /**
  * Generieke lesopbouw voor elke categorie buiten "dieren" (die blijft op
@@ -179,18 +180,6 @@ export function getPracticeCategoryStatuses(
   });
 }
 
-/**
- * Categorieslug voor een gegenereerd lessonId (woorden- of oefenen-les),
- * voor de "Match het geluid"-knop op het lesafrondingsscherm (zie
- * les/[lessonId]/page.tsx). Levert null op voor de Dagelijkse zinnen-les
- * (geen aparte woordcategorie om te matchen) — de Dieren-les heeft een
- * eigen, niet-gegenereerd lessonId en wordt daar apart afgehandeld
- * (DIEREN_THEME.slug).
- */
-export function categorySlugForGenericLessonId(lessonId: string): string | null {
-  return practiceCategorySlugFromLessonId(lessonId) ?? categorySlugFromLessonId(lessonId);
-}
-
 /** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat (of de vaste dagelijkse-zinnen-les-id, of een "lesson-oefenen-<categorySlug>"-id), of null als er niets bij past. */
 export function getGenericLessonById(
   lessonId: string,
@@ -266,4 +255,49 @@ export function getUnlockedCategorySlugs(
   return getCategoryUnlockStatuses(completedLessonIds, recordedIds, categories)
     .filter((entry) => entry.status !== "locked")
     .map((entry) => entry.categorySlug);
+}
+
+/**
+ * "Gesprekken" (conversations.ts) — een los, interactief scherm per gesprek
+ * (zie /kind/[childId]/gesprek/[conversationId]/page.tsx), GEEN gegenereerde
+ * LessonView zoals de andere contenttypes hierboven: een gesprek is een
+ * doorlopende chat-flow met keuzemomenten, wat niet in het "één-oefening-
+ * per-scherm"-model van les/[lessonId] past. Deze module levert daarom
+ * alleen de les-id (voor completedLessonIds-tracking) en de
+ * ontgrendelstatus — de eigenlijke inhoud haalt het gespreksscherm zelf op
+ * via conversationsClient.ts.
+ *
+ * Anders dan bij Praktijkzinnen (waar losse niet-ingesproken zinnen gewoon
+ * worden overgeslagen) moet bij een gesprek ELKE regel (elke app-zin én
+ * ELKE keuze-optie) een opname hebben voordat het gesprek speelbaar is —
+ * een script met een missende regel middenin zou de flow breken. Dat maakt
+ * de "genoeg content"-check hier een volledigheidscheck i.p.v. een drempel.
+ */
+const CONVERSATION_LESSON_ID_PREFIX = "lesson-gesprek-";
+
+export function conversationLessonId(conversationId: string): string {
+  return `${CONVERSATION_LESSON_ID_PREFIX}${conversationId}`;
+}
+
+export interface ConversationStatus {
+  conversationId: string;
+  status: "active" | "completed" | "locked";
+  lessonId: string;
+}
+
+export function getConversationStatuses(
+  completedLessonIds: string[],
+  recordedIds: Set<string>,
+  conversationsContent: ConversationsContent,
+): ConversationStatus[] {
+  return conversationsContent.conversations.map((conversation) => {
+    const lessonId = conversationLessonId(conversation.id);
+    const isCompleted = completedLessonIds.includes(lessonId);
+    const allItemIds = conversation.steps.flatMap((step) =>
+      step.type === "app" ? [step.line.itemId] : step.options.map((option) => option.itemId),
+    );
+    const isComplete = allItemIds.length > 0 && allItemIds.every((itemId) => recordedIds.has(itemId));
+    const status: ConversationStatus["status"] = !isComplete ? "locked" : isCompleted ? "completed" : "active";
+    return { conversationId: conversation.id, status, lessonId };
+  });
 }
