@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-30T19:18:51.758387Z",
+  "generatedAt": "2026-08-31T13:45:12.682185Z",
   "items": {
     "item-dieren-hond": {
       "phoneticSpelling": "Ij~di",
@@ -1415,7 +1415,7 @@
       }
     },
     "item-zin-hallo": {
-      "phoneticSpelling": "Assalamoe aleikom",
+      "phoneticSpelling": "Assalamoe aleikom, matte nit?",
       "recordings": {
         "man": "/audio/recordings/item-zin-hallo__man.webm",
         "vrouw": "/audio/recordings/item-zin-hallo__vrouw.webm",
@@ -1441,15 +1441,6 @@
         "meisje": "/audio/recordings/item-zin-alsjeblieft__meisje.webm"
       }
     },
-    "item-zin-goedemorgen": {
-      "phoneticSpelling": "Sbah elghir",
-      "recordings": {
-        "man": "/audio/recordings/item-zin-goedemorgen__man.webm",
-        "vrouw": "/audio/recordings/item-zin-goedemorgen__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-goedemorgen__jongen.webm",
-        "meisje": "/audio/recordings/item-zin-goedemorgen__meisje.webm"
-      }
-    },
     "item-zin-welterusten": {
       "phoneticSpelling": "Nesataas ilmaan",
       "recordings": {
@@ -1460,7 +1451,7 @@
       }
     },
     "item-zin-tot-straks": {
-      "phoneticSpelling": "Er asra",
+      "phoneticSpelling": "Kchomd s ajensou",
       "recordings": {
         "man": "/audio/recordings/item-zin-tot-straks__man.webm",
         "vrouw": "/audio/recordings/item-zin-tot-straks__vrouw.webm",
@@ -1496,7 +1487,7 @@
       }
     },
     "item-zin-moe": {
-      "phoneticSpelling": "Oehlaagh",
+      "phoneticSpelling": "Labaas, walayni oehlagh",
       "recordings": {
         "man": "/audio/recordings/item-zin-moe__man.webm",
         "vrouw": "/audio/recordings/item-zin-moe__vrouw.webm",
@@ -1505,7 +1496,7 @@
       }
     },
     "item-zin-naar-buiten": {
-      "phoneticSpelling": "Righ afghaagh sbarra",
+      "phoneticSpelling": "Righ afgag s barra",
       "recordings": {
         "man": "/audio/recordings/item-zin-naar-buiten__man.webm",
         "vrouw": "/audio/recordings/item-zin-naar-buiten__vrouw.webm",
@@ -1523,21 +1514,12 @@
       }
     },
     "item-zin-blij": {
-      "phoneticSpelling": "Farhaagh",
+      "phoneticSpelling": "Righ al abag ayensou",
       "recordings": {
         "man": "/audio/recordings/item-zin-blij__man.webm",
         "vrouw": "/audio/recordings/item-zin-blij__vrouw.webm",
         "jongen": "/audio/recordings/item-zin-blij__jongen.webm",
         "meisje": "/audio/recordings/item-zin-blij__meisje.webm"
-      }
-    },
-    "item-zin-verdrietig": {
-      "phoneticSpelling": "Ghayragh",
-      "recordings": {
-        "man": "/audio/recordings/item-zin-verdrietig__man.webm",
-        "vrouw": "/audio/recordings/item-zin-verdrietig__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-verdrietig__jongen.webm",
-        "meisje": "/audio/recordings/item-zin-verdrietig__meisje.webm"
       }
     },
     "item-zin-bang": {
@@ -1621,42 +1603,6 @@
         "meisje": "/audio/recordings/item-zin-ik-ben-woedend__meisje.webm"
       }
     },
-    "item-zin-tijd-om-te-eten": {
-      "phoneticSpelling": "Lfotr, imekli, imensi",
-      "recordings": {
-        "man": "/audio/recordings/item-zin-tijd-om-te-eten__man.webm",
-        "vrouw": "/audio/recordings/item-zin-tijd-om-te-eten__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-tijd-om-te-eten__jongen.webm",
-        "meisje": "/audio/recordings/item-zin-tijd-om-te-eten__meisje.webm"
-      }
-    },
-    "item-zin-handen-wassen": {
-      "phoneticSpelling": "Sird ifasan",
-      "recordings": {
-        "man": "/audio/recordings/item-zin-handen-wassen__man.webm",
-        "vrouw": "/audio/recordings/item-zin-handen-wassen__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-handen-wassen__jongen.webm",
-        "meisje": "/audio/recordings/item-zin-handen-wassen__meisje.webm"
-      }
-    },
-    "item-zin-we-gaan-naar-buiten": {
-      "phoneticSpelling": "Yallah s barra",
-      "recordings": {
-        "man": "/audio/recordings/item-zin-we-gaan-naar-buiten__man.webm",
-        "vrouw": "/audio/recordings/item-zin-we-gaan-naar-buiten__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-we-gaan-naar-buiten__jongen.webm",
-        "meisje": "/audio/recordings/item-zin-we-gaan-naar-buiten__meisje.webm"
-      }
-    },
-    "item-zin-kleren-aandoen": {
-      "phoneticSpelling": "Les ihruun",
-      "recordings": {
-        "man": "/audio/recordings/item-zin-kleren-aandoen__man.webm",
-        "vrouw": "/audio/recordings/item-zin-kleren-aandoen__vrouw.webm",
-        "jongen": "/audio/recordings/item-zin-kleren-aandoen__jongen.webm",
-        "meisje": "/audio/recordings/item-zin-kleren-aandoen__meisje.webm"
-      }
-    },
     "item-oefenen-naar-boven-lopen": {
       "phoneticSpelling": "Ali s effelah",
       "recordings": {
@@ -1676,7 +1622,7 @@
       }
     },
     "item-oefenen-ik-ga-naar-binnen": {
-      "phoneticSpelling": "Akshmegh s ajensou",
+      "phoneticSpelling": "R akshmegh s ajensou",
       "recordings": {
         "man": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-ik-ga-naar-binnen__vrouw.webm",
@@ -1691,24 +1637,6 @@
         "vrouw": "/audio/recordings/item-oefenen-we-gaan-eten__vrouw.webm",
         "jongen": "/audio/recordings/item-oefenen-we-gaan-eten__jongen.webm",
         "meisje": "/audio/recordings/item-oefenen-we-gaan-eten__meisje.webm"
-      }
-    },
-    "item-oefenen-geef-me-brood": {
-      "phoneticSpelling": "Araad aghroum",
-      "recordings": {
-        "man": "/audio/recordings/item-oefenen-geef-me-brood__man.webm",
-        "vrouw": "/audio/recordings/item-oefenen-geef-me-brood__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-geef-me-brood__jongen.webm",
-        "meisje": "/audio/recordings/item-oefenen-geef-me-brood__meisje.webm"
-      }
-    },
-    "item-oefenen-geef-me-water": {
-      "phoneticSpelling": "Araad amen",
-      "recordings": {
-        "man": "/audio/recordings/item-oefenen-geef-me-water__man.webm",
-        "vrouw": "/audio/recordings/item-oefenen-geef-me-water__vrouw.webm",
-        "jongen": "/audio/recordings/item-oefenen-geef-me-water__jongen.webm",
-        "meisje": "/audio/recordings/item-oefenen-geef-me-water__meisje.webm"
       }
     },
     "item-oefenen-haal-water": {
@@ -1775,7 +1703,7 @@
       }
     },
     "item-oefenen-wat-is-er": {
-      "phoneticSpelling": "May jran?",
+      "phoneticSpelling": "May zraan",
       "recordings": {
         "man": "/audio/recordings/item-oefenen-wat-is-er__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-wat-is-er__vrouw.webm",
@@ -1811,7 +1739,7 @@
       }
     },
     "item-oefenen-ik-wil-naar-huis": {
-      "phoneticSpelling": "Righ adough s teddart",
+      "phoneticSpelling": "Righ adoeg s taddart",
       "recordings": {
         "man": "/audio/recordings/item-oefenen-ik-wil-naar-huis__man.webm",
         "vrouw": "/audio/recordings/item-oefenen-ik-wil-naar-huis__vrouw.webm",
@@ -1864,24 +1792,6 @@
         "meisje": "/audio/recordings/item-kleuren-zwart__meisje.webm"
       }
     },
-    "item-kleuren-rod": {
-      "phoneticSpelling": "Azegagh",
-      "recordings": {
-        "man": "/audio/recordings/item-kleuren-rod__man.webm",
-        "vrouw": "/audio/recordings/item-kleuren-rod__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-rod__jongen.webm",
-        "meisje": "/audio/recordings/item-kleuren-rod__meisje.webm"
-      }
-    },
-    "item-kleuren-blauw": {
-      "phoneticSpelling": "Azenjali",
-      "recordings": {
-        "man": "/audio/recordings/item-kleuren-blauw__man.webm",
-        "vrouw": "/audio/recordings/item-kleuren-blauw__vrouw.webm",
-        "jongen": "/audio/recordings/item-kleuren-blauw__jongen.webm",
-        "meisje": "/audio/recordings/item-kleuren-blauw__meisje.webm"
-      }
-    },
     "item-kleuren-bruin": {
       "phoneticSpelling": "Aqahwi",
       "recordings": {
@@ -1916,6 +1826,86 @@
         "vrouw": "/audio/recordings/item-kleuren-oranje__vrouw.webm",
         "jongen": "/audio/recordings/item-kleuren-oranje__jongen.webm",
         "meisje": "/audio/recordings/item-kleuren-oranje__meisje.webm"
+      }
+    },
+    "item-kleuren-blauw": {
+      "phoneticSpelling": "Azenjali",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-kleuren-blauw__vrouw.webm",
+        "jongen": "/audio/recordings/item-kleuren-blauw__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-blauw__meisje.webm"
+      }
+    },
+    "item-kleuren-rod": {
+      "phoneticSpelling": "Azegagh",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-kleuren-rod__vrouw.webm",
+        "jongen": "/audio/recordings/item-kleuren-rod__jongen.webm",
+        "meisje": "/audio/recordings/item-kleuren-rod__meisje.webm"
+      }
+    },
+    "item-oefenen-geef-me-brood": {
+      "phoneticSpelling": "Araad aghroum",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-oefenen-geef-me-brood__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-geef-me-brood__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-geef-me-brood__meisje.webm"
+      }
+    },
+    "item-oefenen-geef-me-water": {
+      "phoneticSpelling": "Araad amen",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-oefenen-geef-me-water__vrouw.webm",
+        "jongen": "/audio/recordings/item-oefenen-geef-me-water__jongen.webm",
+        "meisje": "/audio/recordings/item-oefenen-geef-me-water__meisje.webm"
+      }
+    },
+    "item-zin-goedemorgen": {
+      "phoneticSpelling": "Sbah elghir",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-zin-goedemorgen__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-goedemorgen__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-goedemorgen__meisje.webm"
+      }
+    },
+    "item-zin-handen-wassen": {
+      "phoneticSpelling": "Sird ifasan",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-zin-handen-wassen__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-handen-wassen__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-handen-wassen__meisje.webm"
+      }
+    },
+    "item-zin-kleren-aandoen": {
+      "phoneticSpelling": "Les ihruun",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-zin-kleren-aandoen__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-kleren-aandoen__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-kleren-aandoen__meisje.webm"
+      }
+    },
+    "item-zin-tijd-om-te-eten": {
+      "phoneticSpelling": "Lfotr, imekli, imensi",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-zin-tijd-om-te-eten__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-tijd-om-te-eten__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-tijd-om-te-eten__meisje.webm"
+      }
+    },
+    "item-zin-verdrietig": {
+      "phoneticSpelling": "Ghayragh",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-zin-verdrietig__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-verdrietig__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-verdrietig__meisje.webm"
+      }
+    },
+    "item-zin-we-gaan-naar-buiten": {
+      "phoneticSpelling": "Yallah s barra",
+      "recordings": {
+        "vrouw": "/audio/recordings/item-zin-we-gaan-naar-buiten__vrouw.webm",
+        "jongen": "/audio/recordings/item-zin-we-gaan-naar-buiten__jongen.webm",
+        "meisje": "/audio/recordings/item-zin-we-gaan-naar-buiten__meisje.webm"
       }
     },
     "item-oefenen-voorzetsels-waar-is-de-bal": {
@@ -2006,6 +1996,33 @@
         "vrouw": "/audio/recordings/item-beroepen-fotograaf__vrouw.webm",
         "jongen": "/audio/recordings/item-beroepen-fotograaf__jongen.webm",
         "meisje": "/audio/recordings/item-beroepen-fotograaf__meisje.webm"
+      }
+    },
+    "item-gesprek-hallo-hoe-gaat-het-honger-of-dorst": {
+      "phoneticSpelling": "Isk Inghay laz nagd faad?",
+      "recordings": {
+        "man": "/audio/recordings/item-gesprek-hallo-hoe-gaat-het-honger-of-dorst__man.webm",
+        "vrouw": "/audio/recordings/item-gesprek-hallo-hoe-gaat-het-honger-of-dorst__vrouw.webm",
+        "jongen": "/audio/recordings/item-gesprek-hallo-hoe-gaat-het-honger-of-dorst__jongen.webm",
+        "meisje": "/audio/recordings/item-gesprek-hallo-hoe-gaat-het-honger-of-dorst__meisje.webm"
+      }
+    },
+    "item-gesprek-naar-buiten-spelen-welk-dier": {
+      "phoneticSpelling": "Metta  elhayawaan tinijt?",
+      "recordings": {
+        "man": "/audio/recordings/item-gesprek-naar-buiten-spelen-welk-dier__man.webm",
+        "vrouw": "/audio/recordings/item-gesprek-naar-buiten-spelen-welk-dier__vrouw.webm",
+        "jongen": "/audio/recordings/item-gesprek-naar-buiten-spelen-welk-dier__jongen.webm",
+        "meisje": "/audio/recordings/item-gesprek-naar-buiten-spelen-welk-dier__meisje.webm"
+      }
+    },
+    "item-gesprek-naar-buiten-spelen-kom-mee": {
+      "phoneticSpelling": "Waga, kchom s ajensou",
+      "recordings": {
+        "man": "/audio/recordings/item-gesprek-naar-buiten-spelen-kom-mee__man.webm",
+        "vrouw": "/audio/recordings/item-gesprek-naar-buiten-spelen-kom-mee__vrouw.webm",
+        "jongen": "/audio/recordings/item-gesprek-naar-buiten-spelen-kom-mee__jongen.webm",
+        "meisje": "/audio/recordings/item-gesprek-naar-buiten-spelen-kom-mee__meisje.webm"
       }
     },
     "item-dieren-uil": {
