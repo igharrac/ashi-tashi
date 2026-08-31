@@ -12,11 +12,9 @@ import { playSuccessChime } from "@/lib/playSuccessChime";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
-import { LENIENT_PRONUNCIATION_ATTEMPTS } from "@/domain/pronunciationLeniency";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
-import { AttemptStars } from "@/components/exercises/AttemptStars";
 import type { ConversationLine } from "@/lib/conversations";
 
 interface TranscriptEntry {
@@ -177,7 +175,6 @@ export default function ConversationPage() {
             line={pickedLine}
             microphoneOptIn={child.microphoneOptIn}
             preferredPersona={child.preferredVoicePersona}
-            lenientPronunciationMode={child.lenientPronunciationMode}
             onDone={() => {
               recordExerciseAttempt(child!.id, {
                 vocabularyItemId: pickedLine.itemId,
@@ -264,13 +261,17 @@ interface ChoiceAttemptProps {
   line: ConversationLine;
   microphoneOptIn: boolean;
   preferredPersona: ReturnType<typeof useAppStore>["state"]["children"][number]["preferredVoicePersona"];
-  lenientPronunciationMode: boolean;
   onDone: () => void;
 }
 
-/** Navertellen van de gekozen zin — zelfde coulante-beoordelingslogica als RepeatAfterMe.tsx, compact voor de chatflow. */
-function ChoiceAttempt({ line, microphoneOptIn, preferredPersona, lenientPronunciationMode, onDone }: ChoiceAttemptProps) {
-  const speech = useSpeechCheck(line.translationNl, lenientPronunciationMode ? { passAfterAttempts: LENIENT_PRONUNCIATION_ATTEMPTS } : undefined);
+/**
+ * Navertellen van de gekozen zin — zelfde speech-check als RepeatAfterMe.tsx,
+ * maar op verzoek zonder de "3x inspreken"-drempel: hier telt elke poging
+ * meteen als klaar (passAfterAttempts: 1), ongeacht de coulante-modus-
+ * instelling van het kind elders in de app.
+ */
+function ChoiceAttempt({ line, microphoneOptIn, preferredPersona, onDone }: ChoiceAttemptProps) {
+  const speech = useSpeechCheck(line.translationNl, { passAfterAttempts: 1 });
   const spelling = useWordSpelling(line.itemId);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
   const [fallbackMessage, setFallbackMessage] = useState<string | null>(null);
@@ -317,14 +318,8 @@ function ChoiceAttempt({ line, microphoneOptIn, preferredPersona, lenientPronunc
                   <span aria-hidden="true">🎙️</span> Zeg het na
                 </Button>
               </div>
-              {lenientPronunciationMode && speech.attempts > 0 && (
-                <AttemptStars attempts={speech.attempts} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
-              )}
               {speech.status === "retry" && (
-                <p
-                  aria-live="polite"
-                  className={`text-lg font-medium ${lenientPronunciationMode ? "text-forest-600" : "text-clay-500"}`}
-                >
+                <p aria-live="polite" className="text-lg font-medium text-forest-600">
                   {speech.feedbackMessage}
                 </p>
               )}
@@ -338,7 +333,6 @@ function ChoiceAttempt({ line, microphoneOptIn, preferredPersona, lenientPronunc
           )}
           {speech.status === "correct" && (
             <div className="flex flex-col items-center gap-4">
-              {lenientPronunciationMode && <AttemptStars attempts={LENIENT_PRONUNCIATION_ATTEMPTS} total={LENIENT_PRONUNCIATION_ATTEMPTS} />}
               <p aria-hidden="true" className="text-4xl">
                 🎉
               </p>
