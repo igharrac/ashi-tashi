@@ -180,6 +180,18 @@ export function getPracticeCategoryStatuses(
   });
 }
 
+/**
+ * Categorieslug voor een gegenereerd lessonId (woorden- of oefenen-les),
+ * voor de "Match het geluid"-knop op het lesafrondingsscherm (zie
+ * les/[lessonId]/page.tsx). Levert null op voor de Dagelijkse zinnen-les
+ * (geen aparte woordcategorie om te matchen) — de Dieren-les heeft een
+ * eigen, niet-gegenereerd lessonId en wordt daar apart afgehandeld
+ * (DIEREN_THEME.slug).
+ */
+export function categorySlugForGenericLessonId(lessonId: string): string | null {
+  return practiceCategorySlugFromLessonId(lessonId) ?? categorySlugFromLessonId(lessonId);
+}
+
 /** Levert een gegenereerde les op basis van een lessonId in het "lesson-<categorySlug>"-formaat (of de vaste dagelijkse-zinnen-les-id, of een "lesson-oefenen-<categorySlug>"-id), of null als er niets bij past. */
 export function getGenericLessonById(
   lessonId: string,
