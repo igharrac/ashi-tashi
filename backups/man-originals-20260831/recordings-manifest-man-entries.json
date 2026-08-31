@@ -1,0 +1,74 @@
+{
+  "item-zin-hallo__man": {
+    "itemId": "item-zin-hallo",
+    "persona": "man",
+    "fileName": "item-zin-hallo__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:27:47.184Z",
+    "denoised": true
+  },
+  "item-zin-blij__man": {
+    "itemId": "item-zin-blij",
+    "persona": "man",
+    "fileName": "item-zin-blij__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:39:16.409Z",
+    "denoised": true
+  },
+  "item-zin-moe__man": {
+    "itemId": "item-zin-moe",
+    "persona": "man",
+    "fileName": "item-zin-moe__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:29:50.562Z",
+    "denoised": true
+  },
+  "item-zin-tot-straks__man": {
+    "itemId": "item-zin-tot-straks",
+    "persona": "man",
+    "fileName": "item-zin-tot-straks__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:33:33.482Z",
+    "denoised": true
+  },
+  "item-oefenen-ik-ga-naar-binnen__man": {
+    "itemId": "item-oefenen-ik-ga-naar-binnen",
+    "persona": "man",
+    "fileName": "item-oefenen-ik-ga-naar-binnen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:30:40.282Z",
+    "denoised": true
+  },
+  "item-gesprek-hallo-hoe-gaat-het-honger-of-dorst__man": {
+    "itemId": "item-gesprek-hallo-hoe-gaat-het-honger-of-dorst",
+    "persona": "man",
+    "fileName": "item-gesprek-hallo-hoe-gaat-het-honger-of-dorst__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:31:09.169Z",
+    "denoised": true
+  },
+  "item-gesprek-naar-buiten-spelen-kom-mee__man": {
+    "itemId": "item-gesprek-naar-buiten-spelen-kom-mee",
+    "persona": "man",
+    "fileName": "item-gesprek-naar-buiten-spelen-kom-mee__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:40:24.747Z",
+    "denoised": true
+  },
+  "item-gesprek-naar-buiten-spelen-welk-dier__man": {
+    "itemId": "item-gesprek-naar-buiten-spelen-welk-dier",
+    "persona": "man",
+    "fileName": "item-gesprek-naar-buiten-spelen-welk-dier__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T13:39:54.526Z",
+    "denoised": true
+  }
+}
