@@ -17,7 +17,7 @@
           "type": "choice",
           "options": [
             {
-              "itemId": "item-zin-blij",
+              "itemId": "item-gesprek-hallo-hoe-gaat-het-blij",
               "translationNl": "Het gaat goed. Ik ben heel blij"
             },
             {
@@ -92,7 +92,7 @@
           "type": "choice",
           "options": [
             {
-              "itemId": "item-zin-blij",
+              "itemId": "item-gesprek-s-ochtends-blij",
               "translationNl": "Ik ben blij"
             },
             {
@@ -194,7 +194,7 @@
           "type": "choice",
           "options": [
             {
-              "itemId": "item-zin-blij",
+              "itemId": "item-gesprek-naar-buiten-spelen-binnen-spelen",
               "translationNl": "Ik wil binnen spelen"
             },
             {
