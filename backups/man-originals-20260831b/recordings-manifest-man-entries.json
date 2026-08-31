@@ -1,0 +1,83 @@
+{
+  "item-gesprek-hallo-hoe-gaat-het-blij__man": {
+    "itemId": "item-gesprek-hallo-hoe-gaat-het-blij",
+    "persona": "man",
+    "fileName": "item-gesprek-hallo-hoe-gaat-het-blij__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:13:26.801Z",
+    "denoised": true
+  },
+  "item-gesprek-naar-buiten-spelen-binnen-spelen__man": {
+    "itemId": "item-gesprek-naar-buiten-spelen-binnen-spelen",
+    "persona": "man",
+    "fileName": "item-gesprek-naar-buiten-spelen-binnen-spelen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:21:31.818Z",
+    "denoised": true
+  },
+  "item-gesprek-s-ochtends-blij__man": {
+    "itemId": "item-gesprek-s-ochtends-blij",
+    "persona": "man",
+    "fileName": "item-gesprek-s-ochtends-blij__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:14:42.715Z",
+    "denoised": true
+  },
+  "item-kleuren-blauw__man": {
+    "itemId": "item-kleuren-blauw",
+    "persona": "man",
+    "fileName": "item-kleuren-blauw__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:17:16.453Z",
+    "denoised": true
+  },
+  "item-kleuren-rod__man": {
+    "itemId": "item-kleuren-rod",
+    "persona": "man",
+    "fileName": "item-kleuren-rod__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:16:32.152Z",
+    "denoised": true
+  },
+  "item-oefenen-geef-me-brood__man": {
+    "itemId": "item-oefenen-geef-me-brood",
+    "persona": "man",
+    "fileName": "item-oefenen-geef-me-brood__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:18:39.909Z",
+    "denoised": true
+  },
+  "item-zin-handen-wassen__man": {
+    "itemId": "item-zin-handen-wassen",
+    "persona": "man",
+    "fileName": "item-zin-handen-wassen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:15:39.830Z",
+    "denoised": true
+  },
+  "item-zin-tijd-om-te-eten__man": {
+    "itemId": "item-zin-tijd-om-te-eten",
+    "persona": "man",
+    "fileName": "item-zin-tijd-om-te-eten__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:18:25.075Z",
+    "denoised": true
+  },
+  "item-zin-we-gaan-naar-buiten__man": {
+    "itemId": "item-zin-we-gaan-naar-buiten",
+    "persona": "man",
+    "fileName": "item-zin-we-gaan-naar-buiten__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:19:43.830Z",
+    "denoised": true
+  }
+}
