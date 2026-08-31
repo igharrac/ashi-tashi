@@ -6,34 +6,73 @@
       "emoji": "👋",
       "teaser": "Een kort gesprekje: hallo zeggen en vertellen hoe het gaat.",
       "steps": [
-        { "type": "app", "line": { "itemId": "item-zin-hallo", "translationNl": "Hallo!" } },
         {
-          "type": "choice",
-          "options": [
-            { "itemId": "item-zin-blij", "translationNl": "Ik ben blij" },
-            { "itemId": "item-zin-moe", "translationNl": "Ik ben moe" }
-          ]
+          "type": "app",
+          "line": {
+            "itemId": "item-zin-hallo",
+            "translationNl": "Hallo! Hoe gaat het?"
+          }
         },
-        { "type": "app", "line": { "itemId": "item-oefenen-wat-doe-je", "translationNl": "Wat doe je?" } },
         {
           "type": "choice",
           "options": [
-            { "itemId": "item-oefenen-ik-ga-naar-buiten", "translationNl": "Ik ga naar buiten" },
-            { "itemId": "item-oefenen-ik-ga-naar-binnen", "translationNl": "Ik ga naar binnen" }
+            {
+              "itemId": "item-zin-blij",
+              "translationNl": "Het gaat goed. Ik ben heel blij"
+            },
+            {
+              "itemId": "item-zin-moe",
+              "translationNl": "Goed maar ik ben moe"
+            }
           ]
         },
         {
           "type": "app",
-          "line": { "itemId": "item-gesprek-hallo-hoe-gaat-het-honger-of-dorst", "translationNl": "Heb je honger of dorst?" }
+          "line": {
+            "itemId": "item-oefenen-wat-doe-je",
+            "translationNl": "Wat doe je?"
+          }
         },
         {
           "type": "choice",
           "options": [
-            { "itemId": "item-zin-honger", "translationNl": "Ik heb honger" },
-            { "itemId": "item-zin-dorst", "translationNl": "Ik heb dorst" }
+            {
+              "itemId": "item-oefenen-ik-ga-naar-buiten",
+              "translationNl": "Ik ga naar buiten"
+            },
+            {
+              "itemId": "item-oefenen-ik-ga-naar-binnen",
+              "translationNl": "Ik wil naar binnen"
+            }
           ]
         },
-        { "type": "app", "line": { "itemId": "item-zin-tot-straks", "translationNl": "Tot straks!" } }
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-gesprek-hallo-hoe-gaat-het-honger-of-dorst",
+            "translationNl": "Heb je honger of dorst?"
+          }
+        },
+        {
+          "type": "choice",
+          "options": [
+            {
+              "itemId": "item-zin-honger",
+              "translationNl": "Ik heb honger"
+            },
+            {
+              "itemId": "item-zin-dorst",
+              "translationNl": "Ik heb dorst"
+            }
+          ]
+        },
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-zin-tot-straks",
+            "translationNl": "Kom dan naar binnen"
+          }
+        }
       ]
     },
     {
@@ -42,32 +81,80 @@
       "emoji": "🌅",
       "teaser": "De ochtendroutine: opstaan, eten en naar buiten.",
       "steps": [
-        { "type": "app", "line": { "itemId": "item-zin-goedemorgen", "translationNl": "Goedemorgen!" } },
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-zin-goedemorgen",
+            "translationNl": "Goedemorgen!"
+          }
+        },
         {
           "type": "choice",
           "options": [
-            { "itemId": "item-zin-blij", "translationNl": "Ik ben blij" },
-            { "itemId": "item-zin-verdrietig", "translationNl": "Ik ben verdrietig" }
+            {
+              "itemId": "item-zin-blij",
+              "translationNl": "Ik ben blij"
+            },
+            {
+              "itemId": "item-zin-verdrietig",
+              "translationNl": "Ik ben verdrietig"
+            }
           ]
         },
-        { "type": "app", "line": { "itemId": "item-zin-handen-wassen", "translationNl": "Was je handen" } },
-        { "type": "app", "line": { "itemId": "item-zin-tijd-om-te-eten", "translationNl": "Tijd om te eten!" } },
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-zin-handen-wassen",
+            "translationNl": "Was je handen"
+          }
+        },
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-zin-tijd-om-te-eten",
+            "translationNl": "Tijd om te eten!"
+          }
+        },
         {
           "type": "choice",
           "options": [
-            { "itemId": "item-oefenen-geef-me-brood", "translationNl": "Geef me brood" },
-            { "itemId": "item-oefenen-geef-me-water", "translationNl": "Geef me water" }
+            {
+              "itemId": "item-oefenen-geef-me-brood",
+              "translationNl": "Geef me brood"
+            },
+            {
+              "itemId": "item-oefenen-geef-me-water",
+              "translationNl": "Geef me water"
+            }
           ]
         },
-        { "type": "app", "line": { "itemId": "item-zin-kleren-aandoen", "translationNl": "Trek je kleren aan" } },
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-zin-kleren-aandoen",
+            "translationNl": "Trek je kleren aan"
+          }
+        },
         {
           "type": "choice",
           "options": [
-            { "itemId": "item-kleuren-rod", "translationNl": "Rood" },
-            { "itemId": "item-kleuren-blauw", "translationNl": "Blauw" }
+            {
+              "itemId": "item-kleuren-rod",
+              "translationNl": "Rood"
+            },
+            {
+              "itemId": "item-kleuren-blauw",
+              "translationNl": "Blauw"
+            }
           ]
         },
-        { "type": "app", "line": { "itemId": "item-zin-we-gaan-naar-buiten", "translationNl": "We gaan naar buiten!" } }
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-zin-we-gaan-naar-buiten",
+            "translationNl": "We gaan naar buiten!"
+          }
+        }
       ]
     },
     {
@@ -76,34 +163,73 @@
       "emoji": "🐾",
       "teaser": "Naar buiten, en een dier zoeken om mee te spelen.",
       "steps": [
-        { "type": "app", "line": { "itemId": "item-oefenen-waar-ga-je-heen", "translationNl": "Waar wil je heen?" } },
         {
-          "type": "choice",
-          "options": [
-            { "itemId": "item-zin-naar-buiten", "translationNl": "Ik wil naar buiten" },
-            { "itemId": "item-oefenen-ik-wil-naar-huis", "translationNl": "Ik wil naar huis" }
-          ]
+          "type": "app",
+          "line": {
+            "itemId": "item-oefenen-waar-ga-je-heen",
+            "translationNl": "Waar wil je heen?"
+          }
         },
-        { "type": "app", "line": { "itemId": "item-oefenen-wat-is-er", "translationNl": "Wat is er?" } },
         {
           "type": "choice",
           "options": [
-            { "itemId": "item-zin-blij", "translationNl": "Ik ben blij" },
-            { "itemId": "item-zin-bang", "translationNl": "Ik ben bang" }
+            {
+              "itemId": "item-zin-naar-buiten",
+              "translationNl": "Ik wil naar buiten"
+            },
+            {
+              "itemId": "item-oefenen-ik-wil-naar-huis",
+              "translationNl": "Ik wil naar huis"
+            }
           ]
         },
         {
           "type": "app",
-          "line": { "itemId": "item-gesprek-naar-buiten-spelen-welk-dier", "translationNl": "Welk dier wil je zoeken?" }
+          "line": {
+            "itemId": "item-oefenen-wat-is-er",
+            "translationNl": "Wat is er?"
+          }
         },
         {
           "type": "choice",
           "options": [
-            { "itemId": "item-dieren-hond", "translationNl": "Hond" },
-            { "itemId": "item-dieren-kat", "translationNl": "Kat" }
+            {
+              "itemId": "item-zin-blij",
+              "translationNl": "Ik wil binnen spelen"
+            },
+            {
+              "itemId": "item-zin-bang",
+              "translationNl": "Ik ben bang"
+            }
           ]
         },
-        { "type": "app", "line": { "itemId": "item-gesprek-naar-buiten-spelen-kom-mee", "translationNl": "Leuk, kom mee!" } }
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-gesprek-naar-buiten-spelen-welk-dier",
+            "translationNl": "Welk dier wil je zoeken?"
+          }
+        },
+        {
+          "type": "choice",
+          "options": [
+            {
+              "itemId": "item-dieren-hond",
+              "translationNl": "Hond"
+            },
+            {
+              "itemId": "item-dieren-kat",
+              "translationNl": "Kat"
+            }
+          ]
+        },
+        {
+          "type": "app",
+          "line": {
+            "itemId": "item-gesprek-naar-buiten-spelen-kom-mee",
+            "translationNl": "Ok, kom naar binnen"
+          }
+        }
       ]
     }
   ]
