@@ -1604,7 +1604,7 @@
     "persona": "man",
     "fileName": "item-zin-goedemorgen__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
+    "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-28T21:33:24.129427Z",
     "denoised": true,
     "voiceConverted": true
@@ -1704,7 +1704,7 @@
     "persona": "man",
     "fileName": "item-zin-verdrietig__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
+    "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-28T21:33:37.084263Z",
     "denoised": true,
     "voiceConverted": true
@@ -1804,8 +1804,8 @@
     "persona": "man",
     "fileName": "item-zin-tijd-om-te-eten__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
-    "recordedAt": "2026-08-28T21:33:35.386832Z",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:12.111801Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1814,8 +1814,8 @@
     "persona": "man",
     "fileName": "item-zin-handen-wassen__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
-    "recordedAt": "2026-08-28T21:33:25.942324Z",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:10.817934Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1824,8 +1824,8 @@
     "persona": "man",
     "fileName": "item-zin-we-gaan-naar-buiten__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
-    "recordedAt": "2026-08-28T21:33:39.675800Z",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:13.273365Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1884,8 +1884,8 @@
     "persona": "man",
     "fileName": "item-oefenen-geef-me-brood__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
-    "recordedAt": "2026-08-28T21:32:47.435319Z",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:09.845939Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -1894,7 +1894,7 @@
     "persona": "man",
     "fileName": "item-oefenen-geef-me-water__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
+    "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-28T21:32:48.282264Z",
     "denoised": true,
     "voiceConverted": true
@@ -2074,8 +2074,8 @@
     "persona": "man",
     "fileName": "item-kleuren-rod__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
-    "recordedAt": "2026-08-28T21:32:14.095999Z",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:08.880137Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -2084,8 +2084,8 @@
     "persona": "man",
     "fileName": "item-kleuren-blauw__man.webm",
     "mimeType": "audio/webm;codecs=opus",
-    "reviewStatus": "AFGEKEURD",
-    "recordedAt": "2026-08-28T21:32:09.938284Z",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:07.897484Z",
     "denoised": true,
     "voiceConverted": true
   },
@@ -3134,7 +3134,7 @@
     "fileName": "item-kleuren-blauw__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:02:46.075622Z",
+    "recordedAt": "2026-08-31T14:23:32.774149Z",
     "denoised": true
   },
   "item-kleuren-bruin__vrouw": {
@@ -3179,7 +3179,7 @@
     "fileName": "item-kleuren-rod__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:02:50.151415Z",
+    "recordedAt": "2026-08-31T14:23:33.700419Z",
     "denoised": true
   },
   "item-kleuren-wit__vrouw": {
@@ -3503,7 +3503,7 @@
     "fileName": "item-oefenen-geef-me-brood__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:03:22.377451Z",
+    "recordedAt": "2026-08-31T14:23:34.576969Z",
     "denoised": true
   },
   "item-oefenen-geef-me-water__vrouw": {
@@ -3899,7 +3899,7 @@
     "fileName": "item-zin-handen-wassen__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:04:00.940976Z",
+    "recordedAt": "2026-08-31T14:23:35.498975Z",
     "denoised": true
   },
   "item-zin-honger__vrouw": {
@@ -3989,7 +3989,7 @@
     "fileName": "item-zin-tijd-om-te-eten__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:04:10.433770Z",
+    "recordedAt": "2026-08-31T14:23:36.720460Z",
     "denoised": true
   },
   "item-zin-tot-straks__vrouw": {
@@ -4034,7 +4034,7 @@
     "fileName": "item-zin-we-gaan-naar-buiten__vrouw.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T09:04:14.756232Z",
+    "recordedAt": "2026-08-31T14:23:37.868743Z",
     "denoised": true
   },
   "item-zin-welterusten__vrouw": {
@@ -5051,7 +5051,7 @@
     "fileName": "item-kleuren-blauw__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:17:15.898627Z",
+    "recordedAt": "2026-08-31T14:23:57.580896Z",
     "denoised": true
   },
   "item-kleuren-bruin__jongen": {
@@ -5096,7 +5096,7 @@
     "fileName": "item-kleuren-rod__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:17:20.103978Z",
+    "recordedAt": "2026-08-31T14:23:58.527789Z",
     "denoised": true
   },
   "item-kleuren-wit__jongen": {
@@ -5420,7 +5420,7 @@
     "fileName": "item-oefenen-geef-me-brood__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:17:53.510862Z",
+    "recordedAt": "2026-08-31T14:23:59.432738Z",
     "denoised": true
   },
   "item-oefenen-geef-me-water__jongen": {
@@ -5816,7 +5816,7 @@
     "fileName": "item-zin-handen-wassen__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:18:32.710178Z",
+    "recordedAt": "2026-08-31T14:24:00.347864Z",
     "denoised": true
   },
   "item-zin-honger__jongen": {
@@ -5906,7 +5906,7 @@
     "fileName": "item-zin-tijd-om-te-eten__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:18:42.491241Z",
+    "recordedAt": "2026-08-31T14:24:01.576112Z",
     "denoised": true
   },
   "item-zin-tot-straks__jongen": {
@@ -5951,7 +5951,7 @@
     "fileName": "item-zin-we-gaan-naar-buiten__jongen.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T18:18:46.849512Z",
+    "recordedAt": "2026-08-31T14:24:02.722456Z",
     "denoised": true
   },
   "item-zin-welterusten__jongen": {
@@ -6968,7 +6968,7 @@
     "fileName": "item-kleuren-blauw__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:55:19.897395Z",
+    "recordedAt": "2026-08-31T14:24:21.812293Z",
     "denoised": true
   },
   "item-kleuren-bruin__meisje": {
@@ -7013,7 +7013,7 @@
     "fileName": "item-kleuren-rod__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:55:24.223021Z",
+    "recordedAt": "2026-08-31T14:24:22.750779Z",
     "denoised": true
   },
   "item-kleuren-wit__meisje": {
@@ -7337,7 +7337,7 @@
     "fileName": "item-oefenen-geef-me-brood__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:56:00.102529Z",
+    "recordedAt": "2026-08-31T14:24:23.668045Z",
     "denoised": true
   },
   "item-oefenen-geef-me-water__meisje": {
@@ -7733,7 +7733,7 @@
     "fileName": "item-zin-handen-wassen__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:56:41.237332Z",
+    "recordedAt": "2026-08-31T14:24:24.584037Z",
     "denoised": true
   },
   "item-zin-honger__meisje": {
@@ -7823,7 +7823,7 @@
     "fileName": "item-zin-tijd-om-te-eten__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:56:51.202304Z",
+    "recordedAt": "2026-08-31T14:24:25.787004Z",
     "denoised": true
   },
   "item-zin-tot-straks__meisje": {
@@ -7868,7 +7868,7 @@
     "fileName": "item-zin-we-gaan-naar-buiten__meisje.webm",
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
-    "recordedAt": "2026-08-28T21:56:55.717331Z",
+    "recordedAt": "2026-08-31T14:24:26.899232Z",
     "denoised": true
   },
   "item-zin-welterusten__meisje": {
@@ -8359,6 +8359,117 @@
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-31T13:42:59.268245Z",
+    "denoised": true
+  },
+  "item-gesprek-hallo-hoe-gaat-het-blij__man": {
+    "itemId": "item-gesprek-hallo-hoe-gaat-het-blij",
+    "persona": "man",
+    "fileName": "item-gesprek-hallo-hoe-gaat-het-blij__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:03.717948Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-gesprek-s-ochtends-blij__man": {
+    "itemId": "item-gesprek-s-ochtends-blij",
+    "persona": "man",
+    "fileName": "item-gesprek-s-ochtends-blij__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:07.040539Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-gesprek-naar-buiten-spelen-binnen-spelen__man": {
+    "itemId": "item-gesprek-naar-buiten-spelen-binnen-spelen",
+    "persona": "man",
+    "fileName": "item-gesprek-naar-buiten-spelen-binnen-spelen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:04.682392Z",
+    "denoised": true,
+    "voiceConverted": true
+  },
+  "item-gesprek-hallo-hoe-gaat-het-blij__vrouw": {
+    "itemId": "item-gesprek-hallo-hoe-gaat-het-blij",
+    "persona": "vrouw",
+    "fileName": "item-gesprek-hallo-hoe-gaat-het-blij__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:29.847811Z",
+    "denoised": true
+  },
+  "item-gesprek-naar-buiten-spelen-binnen-spelen__vrouw": {
+    "itemId": "item-gesprek-naar-buiten-spelen-binnen-spelen",
+    "persona": "vrouw",
+    "fileName": "item-gesprek-naar-buiten-spelen-binnen-spelen__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:30.770019Z",
+    "denoised": true
+  },
+  "item-gesprek-s-ochtends-blij__vrouw": {
+    "itemId": "item-gesprek-s-ochtends-blij",
+    "persona": "vrouw",
+    "fileName": "item-gesprek-s-ochtends-blij__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:31.973567Z",
+    "denoised": true
+  },
+  "item-gesprek-s-ochtends-blij__jongen": {
+    "itemId": "item-gesprek-s-ochtends-blij",
+    "persona": "jongen",
+    "fileName": "item-gesprek-s-ochtends-blij__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:56.757422Z",
+    "denoised": true
+  },
+  "item-gesprek-hallo-hoe-gaat-het-blij__jongen": {
+    "itemId": "item-gesprek-hallo-hoe-gaat-het-blij",
+    "persona": "jongen",
+    "fileName": "item-gesprek-hallo-hoe-gaat-het-blij__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:54.547851Z",
+    "denoised": true
+  },
+  "item-gesprek-naar-buiten-spelen-binnen-spelen__jongen": {
+    "itemId": "item-gesprek-naar-buiten-spelen-binnen-spelen",
+    "persona": "jongen",
+    "fileName": "item-gesprek-naar-buiten-spelen-binnen-spelen__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:23:55.526753Z",
+    "denoised": true
+  },
+  "item-gesprek-hallo-hoe-gaat-het-blij__meisje": {
+    "itemId": "item-gesprek-hallo-hoe-gaat-het-blij",
+    "persona": "meisje",
+    "fileName": "item-gesprek-hallo-hoe-gaat-het-blij__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:24:18.760404Z",
+    "denoised": true
+  },
+  "item-gesprek-s-ochtends-blij__meisje": {
+    "itemId": "item-gesprek-s-ochtends-blij",
+    "persona": "meisje",
+    "fileName": "item-gesprek-s-ochtends-blij__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:24:20.986089Z",
+    "denoised": true
+  },
+  "item-gesprek-naar-buiten-spelen-binnen-spelen__meisje": {
+    "itemId": "item-gesprek-naar-buiten-spelen-binnen-spelen",
+    "persona": "meisje",
+    "fileName": "item-gesprek-naar-buiten-spelen-binnen-spelen__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-08-31T14:24:19.753361Z",
     "denoised": true
   }
 }
