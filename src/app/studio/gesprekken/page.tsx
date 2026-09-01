@@ -358,6 +358,7 @@ export default function StudioGesprekkenPage() {
 
                 {step.type === "app" ? (
                   <ConversationLineEditor
+                    key={step.line.itemId ?? `app-${stepIndex}`}
                     line={step.line}
                     persona={activePersona}
                     manifest={manifest}
@@ -372,6 +373,7 @@ export default function StudioGesprekkenPage() {
                       <div key={optionIndex} className="flex items-start gap-2 border-l-2 border-border-subtle pl-3">
                         <div className="flex-1">
                           <ConversationLineEditor
+                            key={option.itemId ?? `option-${stepIndex}-${optionIndex}`}
                             line={option}
                             persona={activePersona}
                             manifest={manifest}
@@ -444,7 +446,12 @@ function ConversationLineEditor({ line, persona, manifest, spellings, onTextChan
       />
       {line.itemId ? (
         <div className="flex flex-wrap items-center gap-3">
-          <SpellingInput itemId={line.itemId} value={spellings[line.itemId] ?? ""} onSaved={(value) => onSpellingSaved(line.itemId!, value)} />
+          <SpellingInput
+            key={line.itemId}
+            itemId={line.itemId}
+            value={spellings[line.itemId] ?? ""}
+            onSaved={(value) => onSpellingSaved(line.itemId!, value)}
+          />
           <RecorderControl
             itemId={line.itemId}
             persona={persona}
