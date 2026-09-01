@@ -85,7 +85,7 @@
           "type": "app",
           "line": {
             "itemId": "item-zin-goedemorgen",
-            "translationNl": "Goedemorgen!"
+            "translationNl": "Goedemorgen! Hoe is het ermee?"
           }
         },
         {
@@ -93,7 +93,7 @@
           "options": [
             {
               "itemId": "item-gesprek-s-ochtends-blij",
-              "translationNl": "Ik ben blij"
+              "translationNl": "Hoe is het ermee?"
             },
             {
               "itemId": "item-zin-verdrietig",
@@ -105,14 +105,14 @@
           "type": "app",
           "line": {
             "itemId": "item-zin-handen-wassen",
-            "translationNl": "Was je handen"
+            "translationNl": "Heb je al geluncht?"
           }
         },
         {
           "type": "app",
           "line": {
             "itemId": "item-zin-tijd-om-te-eten",
-            "translationNl": "Tijd om te eten!"
+            "translationNl": "Ok erbij zitten om te lunchen"
           }
         },
         {
@@ -132,7 +132,7 @@
           "type": "app",
           "line": {
             "itemId": "item-zin-kleren-aandoen",
-            "translationNl": "Trek je kleren aan"
+            "translationNl": "Klaar met eten? Was je handen en trek je jas aan"
           }
         },
         {
@@ -140,11 +140,11 @@
           "options": [
             {
               "itemId": "item-kleuren-rod",
-              "translationNl": "Rood"
+              "translationNl": "Witte jas?"
             },
             {
               "itemId": "item-kleuren-blauw",
-              "translationNl": "Blauw"
+              "translationNl": "Gele jas?"
             }
           ]
         },
@@ -167,7 +167,7 @@
           "type": "app",
           "line": {
             "itemId": "item-oefenen-waar-ga-je-heen",
-            "translationNl": "Waar wil je heen?"
+            "translationNl": "Hallo, Wat is er?"
           }
         },
         {
@@ -199,7 +199,7 @@
             },
             {
               "itemId": "item-zin-bang",
-              "translationNl": "Ik ben bang"
+              "translationNl": "Ik wil tekenfilms kijken"
             }
           ]
         },
