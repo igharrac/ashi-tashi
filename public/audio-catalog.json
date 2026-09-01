@@ -1503,7 +1503,7 @@
     }
   },
   "item-zin-naar-buiten": {
-    "phoneticSpelling": "Righ afegh s barra",
+    "phoneticSpelling": "Righ afag s barra",
     "recordings": {
       "man": "/audio/recordings/item-zin-naar-buiten__man.webm",
       "vrouw": "/audio/recordings/item-zin-naar-buiten__vrouw.webm",
@@ -1539,7 +1539,7 @@
     }
   },
   "item-zin-bang": {
-    "phoneticSpelling": "R akshmegh s ajensou",
+    "phoneticSpelling": "Righ ad farjeg i rosoem",
     "recordings": {
       "man": "/audio/recordings/item-zin-bang__man.webm",
       "vrouw": "/audio/recordings/item-zin-bang__vrouw.webm",
@@ -1638,12 +1638,21 @@
     }
   },
   "item-zin-we-gaan-naar-buiten": {
-    "phoneticSpelling": "Elhamdulillah. yallah s barra",
+    "phoneticSpelling": "yallah s barra",
     "recordings": {
       "man": "/audio/recordings/item-zin-we-gaan-naar-buiten__man.webm",
       "vrouw": "/audio/recordings/item-zin-we-gaan-naar-buiten__vrouw.webm",
       "jongen": "/audio/recordings/item-zin-we-gaan-naar-buiten__jongen.webm",
       "meisje": "/audio/recordings/item-zin-we-gaan-naar-buiten__meisje.webm"
+    }
+  },
+  "item-zin-kleren-aandoen": {
+    "phoneticSpelling": "Safi teshbaat? Sird iefessen t lest lkabot nek",
+    "recordings": {
+      "man": "/audio/recordings/item-zin-kleren-aandoen__man.webm",
+      "vrouw": "/audio/recordings/item-zin-kleren-aandoen__vrouw.webm",
+      "jongen": "/audio/recordings/item-zin-kleren-aandoen__jongen.webm",
+      "meisje": "/audio/recordings/item-zin-kleren-aandoen__meisje.webm"
     }
   },
   "item-oefenen-naar-boven-lopen": {
@@ -1746,7 +1755,7 @@
     }
   },
   "item-oefenen-waar-ga-je-heen": {
-    "phoneticSpelling": "Assalamoe aleikom, matte nit?",
+    "phoneticSpelling": "Assalamoe aleikom, May laan?",
     "recordings": {
       "man": "/audio/recordings/item-oefenen-waar-ga-je-heen__man.webm",
       "vrouw": "/audio/recordings/item-oefenen-waar-ga-je-heen__vrouw.webm",
@@ -1764,7 +1773,7 @@
     }
   },
   "item-oefenen-wat-is-er": {
-    "phoneticSpelling": "May zraan?",
+    "phoneticSpelling": "May jraan?",
     "recordings": {
       "man": "/audio/recordings/item-oefenen-wat-is-er__man.webm",
       "vrouw": "/audio/recordings/item-oefenen-wat-is-er__vrouw.webm",
@@ -1800,7 +1809,7 @@
     }
   },
   "item-oefenen-ik-wil-naar-huis": {
-    "phoneticSpelling": "Righ adough s teddert",
+    "phoneticSpelling": "Righ adugh s teddert",
     "recordings": {
       "man": "/audio/recordings/item-oefenen-ik-wil-naar-huis__man.webm",
       "vrouw": "/audio/recordings/item-oefenen-ik-wil-naar-huis__vrouw.webm",
@@ -1854,7 +1863,7 @@
     }
   },
   "item-kleuren-rod": {
-    "phoneticSpelling": "Oerta meklieuwgh",
+    "phoneticSpelling": "Lkabot ammelaal",
     "recordings": {
       "man": "/audio/recordings/item-kleuren-rod__man.webm",
       "vrouw": "/audio/recordings/item-kleuren-rod__vrouw.webm",
@@ -1863,7 +1872,7 @@
     }
   },
   "item-kleuren-blauw": {
-    "phoneticSpelling": "Chwia",
+    "phoneticSpelling": "Lkabot awraaghhwia",
     "recordings": {
       "man": "/audio/recordings/item-kleuren-blauw__man.webm",
       "vrouw": "/audio/recordings/item-kleuren-blauw__vrouw.webm",
@@ -1905,14 +1914,6 @@
       "vrouw": "/audio/recordings/item-kleuren-oranje__vrouw.webm",
       "jongen": "/audio/recordings/item-kleuren-oranje__jongen.webm",
       "meisje": "/audio/recordings/item-kleuren-oranje__meisje.webm"
-    }
-  },
-  "item-zin-kleren-aandoen": {
-    "phoneticSpelling": "Les ihruun",
-    "recordings": {
-      "vrouw": "/audio/recordings/item-zin-kleren-aandoen__vrouw.webm",
-      "jongen": "/audio/recordings/item-zin-kleren-aandoen__jongen.webm",
-      "meisje": "/audio/recordings/item-zin-kleren-aandoen__meisje.webm"
     }
   },
   "item-oefenen-voorzetsels-waar-is-de-bal": {
@@ -2015,7 +2016,7 @@
     }
   },
   "item-gesprek-naar-buiten-spelen-welk-dier": {
-    "phoneticSpelling": "Isk Inghay laz nagd faad?",
+    "phoneticSpelling": "Metta lhayawaan tinijt",
     "recordings": {
       "man": "/audio/recordings/item-gesprek-naar-buiten-spelen-welk-dier__man.webm",
       "vrouw": "/audio/recordings/item-gesprek-naar-buiten-spelen-welk-dier__vrouw.webm",
@@ -2024,7 +2025,7 @@
     }
   },
   "item-gesprek-naar-buiten-spelen-kom-mee": {
-    "phoneticSpelling": "Kchomd s ajensou",
+    "phoneticSpelling": "Wacha, Kchomd s ajensou",
     "recordings": {
       "man": "/audio/recordings/item-gesprek-naar-buiten-spelen-kom-mee__man.webm",
       "vrouw": "/audio/recordings/item-gesprek-naar-buiten-spelen-kom-mee__vrouw.webm",
