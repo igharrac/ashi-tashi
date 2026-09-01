@@ -81,15 +81,21 @@ export default function HomePage() {
 
             {/* Verborgen op mobiel: het Figma mobile-frame (node 2:229) toont deze
                 rij niet — minder tekst/drukte op kleine schermen (hfst. 9). */}
-            <div className="hidden w-full max-w-sm items-start justify-center gap-6 border-t border-border-subtle pt-6 text-sm text-ashi-navy/70 lg:flex lg:justify-start">
+            <div className="hidden w-full max-w-sm items-center justify-start gap-6 pt-2 text-base font-semibold text-ashi-navy lg:flex">
               <span>🛡️ 100% Veilig</span>
               <span>🌍 Tashelhit</span>
               <span>😊 Plezier</span>
             </div>
           </div>
 
-          <div className="relative order-1 flex flex-1 justify-center lg:order-2">
-            <MascotIllustration variant="cloud" />
+          <div className="relative order-1 flex flex-1 items-center justify-center py-6 lg:order-2">
+            {/* Zachte gloed achter de mascotte-kaart, zodat de kolom minder leeg oogt
+                op bredere schermen i.p.v. één kleine kaart in veel witruimte. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute h-72 w-72 rounded-full bg-ashi-teal/10 blur-3xl lg:h-80 lg:w-80"
+            />
+            <MascotIllustration variant="cloud" className="relative" />
 
             {/* Decoratieve micro-interacties, overgenomen uit het Figma-ontwerp,
                 nu in de vaste huisstijlkleuren i.p.v. de thema-afhankelijke tinten. */}
@@ -102,7 +108,7 @@ export default function HomePage() {
             <span aria-hidden="true" className="absolute -left-6 top-1/3 text-2xl text-ashi-coral">
               ✨
             </span>
-            <div className="absolute -bottom-4 right-6 flex items-center gap-2 rounded-full bg-ashi-teal/15 px-4 py-2 text-sm font-bold text-ashi-teal shadow-sm">
+            <div className="absolute -bottom-8 right-2 flex items-center gap-2 rounded-full bg-ashi-teal/15 px-4 py-2 text-sm font-bold text-ashi-teal shadow-sm">
               <span aria-hidden="true">🎵</span> Tashelhit liedjes!
             </div>
           </div>

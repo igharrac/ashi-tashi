@@ -73,7 +73,7 @@ export function HeroDecorations() {
       <img
         aria-hidden="true"
         src="/brand/accents/blob-yellow.svg"
-        className="pointer-events-none absolute hidden opacity-95 lg:-left-4 lg:top-1 lg:block lg:w-20"
+        className="pointer-events-none absolute hidden opacity-95 lg:left-0 lg:top-1 lg:block lg:w-20"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
@@ -91,7 +91,7 @@ export function HeroDecorations() {
       <img
         aria-hidden="true"
         src="/brand/accents/ring-yellow.svg"
-        className="pointer-events-none absolute hidden opacity-80 lg:left-[23.5rem] lg:top-8 lg:block lg:w-8"
+        className="pointer-events-none absolute hidden opacity-80 lg:right-64 lg:top-2 lg:block lg:w-8"
       />
       {/* eslint-disable-next-line @next/next/no-img-element -- lokale decoratieve SVG's (public/brand/accents) */}
       <img
