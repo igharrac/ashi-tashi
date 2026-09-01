@@ -1,0 +1,56 @@
+{
+  "item-kleuren-blauw__man": {
+    "itemId": "item-kleuren-blauw",
+    "persona": "man",
+    "fileName": "item-kleuren-blauw__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-09-01T11:33:18.747Z",
+    "denoised": true
+  },
+  "item-kleuren-rod__man": {
+    "itemId": "item-kleuren-rod",
+    "persona": "man",
+    "fileName": "item-kleuren-rod__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-09-01T11:33:12.808Z",
+    "denoised": true
+  },
+  "item-oefenen-waar-ga-je-heen__man": {
+    "itemId": "item-oefenen-waar-ga-je-heen",
+    "persona": "man",
+    "fileName": "item-oefenen-waar-ga-je-heen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-09-01T11:35:37.005Z",
+    "denoised": true
+  },
+  "item-zin-bang__man": {
+    "itemId": "item-zin-bang",
+    "persona": "man",
+    "fileName": "item-zin-bang__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-09-01T11:37:44.024Z",
+    "denoised": true
+  },
+  "item-zin-kleren-aandoen__man": {
+    "itemId": "item-zin-kleren-aandoen",
+    "persona": "man",
+    "fileName": "item-zin-kleren-aandoen__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-09-01T11:02:34.865Z",
+    "denoised": true
+  },
+  "item-zin-we-gaan-naar-buiten__man": {
+    "itemId": "item-zin-we-gaan-naar-buiten",
+    "persona": "man",
+    "fileName": "item-zin-we-gaan-naar-buiten__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-09-01T11:33:31.624Z",
+    "denoised": true
+  }
+}
