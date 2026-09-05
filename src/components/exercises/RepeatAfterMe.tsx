@@ -5,6 +5,7 @@ import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
+import { NavFlankedRow } from "@/components/ui/NavFlankedRow";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { playWordAudio } from "@/lib/playWordAudio";
@@ -14,7 +15,6 @@ import type { RecordingPersona } from "@/lib/recordableItems";
 import { LENIENT_PRONUNCIATION_ATTEMPTS } from "@/domain/pronunciationLeniency";
 import { playSuccessChime } from "@/lib/playSuccessChime";
 import { AttemptStars } from "./AttemptStars";
-import { AnswerReveal } from "./AnswerReveal";
 
 interface RepeatAfterMeProps {
   item: VocabularyItemView;
@@ -25,6 +25,10 @@ interface RepeatAfterMeProps {
   lenientPronunciationMode?: boolean;
   /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx), geldt overal. */
   autoplayAudio: boolean;
+  /** Vorige/volgende-navigatie, geflankeerd om de foto (of, bij een los woord zonder foto, om de woordtekst) — zie NavFlankedRow. Optioneel, bv. niet nodig in WordDetailModal. */
+  onPrevious?: () => void;
+  previousDisabled?: boolean;
+  onNext?: () => void;
 }
 
 /**
@@ -45,6 +49,9 @@ export function RepeatAfterMe({
   preferredPersona,
   lenientPronunciationMode = true,
   autoplayAudio,
+  onPrevious,
+  previousDisabled,
+  onNext,
 }: RepeatAfterMeProps) {
   const speech = useSpeechCheck(
     item.translationNl,
@@ -93,19 +100,32 @@ export function RepeatAfterMe({
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      {item.itemKind === "zin" && (
-        <ZoomableImage
-          pictogramUrl={item.pictogramUrl}
-          emoji={item.imageEmoji}
-          alt={item.imageAlt}
-          sizeClassName="h-32 w-32 text-6xl"
-        />
-      )}
+      {item.itemKind === "zin" ? (
+        <NavFlankedRow onPrevious={onPrevious} previousDisabled={previousDisabled} onNext={onNext}>
+          <ZoomableImage
+            pictogramUrl={item.pictogramUrl}
+            emoji={item.imageEmoji}
+            alt={item.imageAlt}
+            sizeClassName="h-32 w-32 text-6xl"
+          />
+        </NavFlankedRow>
+      ) : null}
       <p className="text-lg font-medium text-gray-700">
         {item.contextNl ?? (item.itemKind === "zin" ? "Zeg de zin na:" : "Zeg het woord na:")}
       </p>
-      <p className="text-2xl font-bold text-primary-600">{spelling ?? item.translationNl}</p>
-      {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
+      {item.itemKind === "zin" ? (
+        <>
+          <p className="text-2xl font-bold text-primary-600">{spelling ?? item.translationNl}</p>
+          {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
+        </>
+      ) : (
+        <NavFlankedRow onPrevious={onPrevious} previousDisabled={previousDisabled} onNext={onNext}>
+          <div className="flex flex-col items-center gap-1">
+            <p className="text-2xl font-bold text-primary-600">{spelling ?? item.translationNl}</p>
+            {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
+          </div>
+        </NavFlankedRow>
+      )}
 
       {useRealValidation ? (
         <>
@@ -137,12 +157,6 @@ export function RepeatAfterMe({
                   >
                     {speech.feedbackMessage}
                   </p>
-                  <AnswerReveal
-                    item={item}
-                    onContinue={() => onDone(false)}
-                    preferredPersona={preferredPersona}
-                    autoplayAudio={autoplayAudio}
-                  />
                 </>
               )}
             </div>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
+import { NavFlankedRow } from "@/components/ui/NavFlankedRow";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
@@ -12,7 +13,6 @@ import type { RecordingPersona } from "@/lib/recordableItems";
 import { LENIENT_PRONUNCIATION_ATTEMPTS } from "@/domain/pronunciationLeniency";
 import { playSuccessChime } from "@/lib/playSuccessChime";
 import { AttemptStars } from "./AttemptStars";
-import { AnswerReveal } from "./AnswerReveal";
 
 interface SpeakFromPictureProps {
   item: VocabularyItemView;
@@ -21,8 +21,12 @@ interface SpeakFromPictureProps {
   preferredPersona?: RecordingPersona | null;
   /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
   lenientPronunciationMode?: boolean;
-  /** Kindinstelling child.autoplayAudio — doorgegeven aan AnswerReveal (autoplay bij "Ik weet het niet"), geldt overal. */
+  /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx), geldt overal. */
   autoplayAudio: boolean;
+  /** Vorige/volgende-navigatie, geflankeerd om de foto (zie NavFlankedRow) — optioneel, bv. niet nodig in WordDetailModal. */
+  onPrevious?: () => void;
+  previousDisabled?: boolean;
+  onNext?: () => void;
 }
 
 /**
@@ -43,6 +47,9 @@ export function SpeakFromPicture({
   preferredPersona,
   lenientPronunciationMode = true,
   autoplayAudio,
+  onPrevious,
+  previousDisabled,
+  onNext,
 }: SpeakFromPictureProps) {
   const speech = useSpeechCheck(
     item.translationNl,
@@ -78,7 +85,9 @@ export function SpeakFromPicture({
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
+      <NavFlankedRow onPrevious={onPrevious} previousDisabled={previousDisabled} onNext={onNext}>
+        <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
+      </NavFlankedRow>
       <p className="text-lg font-medium text-gray-700">Wat zie je? Zeg het hardop!</p>
 
       {useRealValidation ? (
@@ -106,12 +115,10 @@ export function SpeakFromPicture({
                 {speech.feedbackMessage}
               </p>
               <Button onClick={speech.attempt}>{lenientPronunciationMode ? "Nog een keer" : "Probeer opnieuw"}</Button>
-              <AnswerReveal
-                item={item}
-                onContinue={() => onDone(false)}
-                preferredPersona={preferredPersona}
-                autoplayAudio={autoplayAudio}
-              />
+              <p className="text-sm text-ink-muted">
+                Het was: <span className="font-bold text-forest-600">{spelling ?? item.translationNl}</span>
+                {spelling && <span className="ml-1">({item.translationNl})</span>}
+              </p>
             </div>
           )}
         </>

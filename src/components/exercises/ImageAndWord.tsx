@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
+import { NavFlankedRow } from "@/components/ui/NavFlankedRow";
 import { ReviewNotice } from "@/components/ui/ReviewNotice";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { playWordAudio } from "@/lib/playWordAudio";
@@ -16,6 +17,10 @@ interface ImageAndWordProps {
   preferredPersona?: RecordingPersona | null;
   /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx), geldt overal. */
   autoplayAudio: boolean;
+  /** Vorige/volgende-navigatie, geflankeerd om de foto (zie NavFlankedRow) — optioneel, bv. niet nodig in WordDetailModal. */
+  onPrevious?: () => void;
+  previousDisabled?: boolean;
+  onNext?: () => void;
 }
 
 /**
@@ -29,7 +34,7 @@ interface ImageAndWordProps {
  * gewoon doorgaan zonder alsnog gedwongen te worden een knop in te drukken
  * (hfst. 22: nooit blokkeren).
  */
-export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio }: ImageAndWordProps) {
+export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio, onPrevious, previousDisabled, onNext }: ImageAndWordProps) {
   const spelling = useWordSpelling(item.id);
 
   useEffect(() => {
@@ -48,7 +53,9 @@ export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio }: 
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
+      <NavFlankedRow onPrevious={onPrevious} previousDisabled={previousDisabled} onNext={onNext}>
+        <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
+      </NavFlankedRow>
       <p className="text-2xl font-bold text-primary-600" lang={spelling ? undefined : "nl"}>
         {spelling ?? item.translationNl}
       </p>

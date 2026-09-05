@@ -6,6 +6,7 @@ import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
+import { NavFlankedRow } from "@/components/ui/NavFlankedRow";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import { playWordAudio } from "@/lib/playWordAudio";
@@ -15,7 +16,6 @@ import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilari
 import { LENIENT_PRONUNCIATION_ATTEMPTS, leniencyDoneMessage, leniencyRetryMessage } from "@/domain/pronunciationLeniency";
 import { playSuccessChime } from "@/lib/playSuccessChime";
 import { AttemptStars } from "./AttemptStars";
-import { AnswerReveal } from "./AnswerReveal";
 
 interface ListenAndSpeakProps {
   item: VocabularyItemView;
@@ -27,6 +27,10 @@ interface ListenAndSpeakProps {
   lenientPronunciationMode?: boolean;
   /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx), geldt overal. */
   autoplayAudio: boolean;
+  /** Vorige/volgende-navigatie, geflankeerd om de foto (zie NavFlankedRow) — optioneel, bv. niet nodig in WordDetailModal. */
+  onPrevious?: () => void;
+  previousDisabled?: boolean;
+  onNext?: () => void;
 }
 
 type Status = "idle" | "requesting" | "recording" | "assessing" | "correct" | "retry" | "saved-for-review";
@@ -61,6 +65,9 @@ export function ListenAndSpeak({
   preferredPersona,
   lenientPronunciationMode = true,
   autoplayAudio,
+  onPrevious,
+  previousDisabled,
+  onNext,
 }: ListenAndSpeakProps) {
   const spelling = useWordSpelling(item.id);
   const [status, setStatus] = useState<Status>("idle");
@@ -223,7 +230,9 @@ export function ListenAndSpeak({
     <div className="flex flex-col items-center gap-6 text-center">
       <p className="text-lg font-medium text-gray-700">Luister en zeg het woord na.</p>
 
-      <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
+      <NavFlankedRow onPrevious={onPrevious} previousDisabled={previousDisabled} onNext={onNext}>
+        <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
+      </NavFlankedRow>
 
       {(status === "idle" || status === "retry") && microphoneOptIn && (
         <div className="flex flex-row items-center justify-center gap-4">
@@ -312,12 +321,10 @@ export function ListenAndSpeak({
             </p>
           )}
           {!useRealCapture && <Button onClick={handleRecord}>Probeer opnieuw</Button>}
-          <AnswerReveal
-            item={item}
-            onContinue={() => onDone(false)}
-            preferredPersona={preferredPersona}
-            autoplayAudio={autoplayAudio}
-          />
+          <p className="text-sm text-ink-muted">
+            Het was: <span className="font-bold text-forest-600">{spelling ?? item.translationNl}</span>
+            {spelling && <span className="ml-1">({item.translationNl})</span>}
+          </p>
         </div>
       )}
     </div>

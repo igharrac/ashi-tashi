@@ -336,84 +336,69 @@ export default function LessonPage() {
         </p>
       )}
 
-      {/* Vorige/overslaan als lichte pijl-iconen naast de oefening zelf
-          i.p.v. subtiel bovenin naast de voortgangsbalk (op verzoek) —
-          bewust zonder rand/achtergrond (dezelfde "ghost"-stijl als het
-          afspeel-icoon in de statusbalk hierboven), maar wel groot genoeg
-          (volle hoogte van de oefenkaart) om als duidelijk klikbaar te
-          herkennen zonder zwaar oog te ogen. */}
-      <div className="flex items-center gap-1">
-        <button
-          type="button"
-          onClick={goToPrevious}
-          disabled={index === 0}
-          aria-label="Vorige oefening"
-          className="flex h-11 w-9 shrink-0 items-center justify-center self-center rounded-full text-2xl text-ink-muted
-            transition-colors hover:bg-cream hover:text-clay-500
-            focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500 disabled:cursor-not-allowed disabled:opacity-30"
-        >
-          <span aria-hidden="true">‹</span>
-        </button>
+      {/* Vorige/overslaan-navigatie zit nu ín elke oefening zelf, geflankeerd
+          om de foto (of woordtekst) via NavFlankedRow — zo blijven de
+          knoppen verticaal gecentreerd op dat vaste element, ongeacht hoe
+          hoog de feedback/knoppen eronder wisselend uitvallen. */}
+      <div className="min-w-0 flex-1">
+        {currentExercise.type === "AFBEELDING_EN_WOORD" && (
+          <ImageAndWord
+            key={currentExercise.id}
+            item={currentExercise.vocabularyItem}
+            onDone={() => handleAnswer(currentExercise, true)}
+            preferredPersona={child.preferredVoicePersona}
+            autoplayAudio={child.autoplayAudio}
+            onPrevious={goToPrevious}
+            previousDisabled={index === 0}
+            onNext={handleSkip}
+          />
+        )}
 
-        <div className="min-w-0 flex-1">
-          {currentExercise.type === "AFBEELDING_EN_WOORD" && (
-            <ImageAndWord
-              key={currentExercise.id}
-              item={currentExercise.vocabularyItem}
-              onDone={() => handleAnswer(currentExercise, true)}
-              preferredPersona={child.preferredVoicePersona}
-              autoplayAudio={child.autoplayAudio}
-            />
-          )}
+        {currentExercise.type === "LUISTEREN_EN_HERKENNEN" && (
+          <ListenAndSpeak
+            key={currentExercise.id}
+            item={currentExercise.vocabularyItem}
+            childId={child.id}
+            microphoneOptIn={child.microphoneOptIn}
+            onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+            preferredPersona={child.preferredVoicePersona}
+            lenientPronunciationMode={child.lenientPronunciationMode}
+            autoplayAudio={child.autoplayAudio}
+            onPrevious={goToPrevious}
+            previousDisabled={index === 0}
+            onNext={handleSkip}
+          />
+        )}
 
-          {currentExercise.type === "LUISTEREN_EN_HERKENNEN" && (
-            <ListenAndSpeak
-              key={currentExercise.id}
-              item={currentExercise.vocabularyItem}
-              childId={child.id}
-              microphoneOptIn={child.microphoneOptIn}
-              onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
-              preferredPersona={child.preferredVoicePersona}
-              lenientPronunciationMode={child.lenientPronunciationMode}
-              autoplayAudio={child.autoplayAudio}
-            />
-          )}
+        {currentExercise.type === "NAZEGGEN" && (
+          <RepeatAfterMe
+            key={currentExercise.id}
+            item={currentExercise.vocabularyItem}
+            microphoneOptIn={child.microphoneOptIn}
+            onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+            preferredPersona={child.preferredVoicePersona}
+            lenientPronunciationMode={child.lenientPronunciationMode}
+            autoplayAudio={child.autoplayAudio}
+            onPrevious={goToPrevious}
+            previousDisabled={index === 0}
+            onNext={handleSkip}
+          />
+        )}
 
-          {currentExercise.type === "NAZEGGEN" && (
-            <RepeatAfterMe
-              key={currentExercise.id}
-              item={currentExercise.vocabularyItem}
-              microphoneOptIn={child.microphoneOptIn}
-              onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
-              preferredPersona={child.preferredVoicePersona}
-              lenientPronunciationMode={child.lenientPronunciationMode}
-              autoplayAudio={child.autoplayAudio}
-            />
-          )}
-
-          {currentExercise.type === "ZELFSTANDIG_SPREKEN" && (
-            <SpeakFromPicture
-              key={currentExercise.id}
-              item={currentExercise.vocabularyItem}
-              microphoneOptIn={child.microphoneOptIn}
-              onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
-              preferredPersona={child.preferredVoicePersona}
-              lenientPronunciationMode={child.lenientPronunciationMode}
-              autoplayAudio={child.autoplayAudio}
-            />
-          )}
-        </div>
-
-        <button
-          type="button"
-          onClick={handleSkip}
-          aria-label="Deze oefening overslaan"
-          className="flex h-11 w-9 shrink-0 items-center justify-center self-center rounded-full text-2xl text-ink-muted
-            transition-colors hover:bg-cream hover:text-clay-500
-            focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
-        >
-          <span aria-hidden="true">›</span>
-        </button>
+        {currentExercise.type === "ZELFSTANDIG_SPREKEN" && (
+          <SpeakFromPicture
+            key={currentExercise.id}
+            item={currentExercise.vocabularyItem}
+            microphoneOptIn={child.microphoneOptIn}
+            onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+            preferredPersona={child.preferredVoicePersona}
+            lenientPronunciationMode={child.lenientPronunciationMode}
+            autoplayAudio={child.autoplayAudio}
+            onPrevious={goToPrevious}
+            previousDisabled={index === 0}
+            onNext={handleSkip}
+          />
+        )}
       </div>
     </main>
   );
