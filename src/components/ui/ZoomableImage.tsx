@@ -61,7 +61,7 @@ export function ZoomableImage({ pictogramUrl, emoji, alt, sizeClassName = "h-40 
         )}
         <span
           aria-hidden="true"
-          className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-forest-500 bg-white text-forest-500 shadow-sm"
+          className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border border-forest-500 bg-white text-forest-500 shadow-sm"
         >
           <ZoomIcon className="h-3.5 w-3.5" />
         </span>
