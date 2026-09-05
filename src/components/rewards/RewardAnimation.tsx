@@ -28,8 +28,9 @@ interface RewardAnimationProps {
  * - WORD_SUCCESS / STREAK_SUCCESS: korte pop-animatie (scale+rotate+fade,
  *   ~0,6-0,7s) — vervangt het 🎉 bij een goed antwoord.
  * - ITEM_UNLOCK / COLLECTIBLE: fade + pop + lichte bounce (~0,7s).
- * - CATEGORY_COMPLETE: trophy (pop) + rays (doorlopend draaiend) + een
- *   zachte blob-achtergrond, voor het "les/gesprek voltooid"-scherm.
+ * - CATEGORY_COMPLETE: trophy (pop) op een gecentreerde, pulserende
+ *   cirkel-achtergrond (CSS, geen los SVG-asset), voor het "les/gesprek
+ *   voltooid"-scherm. Op verzoek geen rays meer (te druk/asymmetrisch).
  *
  * Respecteert prefers-reduced-motion via Tailwinds motion-safe:/
  * motion-reduce:-varianten (geen extra config nodig) — bij "verminder
@@ -54,21 +55,14 @@ export function RewardAnimation({ type, collectibleId, sizeClassName = "h-24 w-2
 
   if (type === "CATEGORY_COMPLETE") {
     return (
-      <div className={`relative ${sizeClassName}`} aria-hidden="true">
-        <img
-          src={CATEGORY_COMPLETE_ICONS.blob}
-          alt=""
-          className="absolute -inset-2 opacity-30 motion-safe:animate-reward-blob-breathe motion-reduce:animate-reward-fade"
-        />
-        <img
-          src={CATEGORY_COMPLETE_ICONS.rays}
-          alt=""
-          className="absolute inset-0 opacity-80 motion-safe:animate-reward-ray-rotate motion-reduce:animate-reward-fade"
+      <div className={`relative flex items-center justify-center ${sizeClassName}`} aria-hidden="true">
+        <span
+          className="absolute inset-0 rounded-full bg-accent-200/70 motion-safe:animate-reward-blob-breathe motion-reduce:animate-reward-fade"
         />
         <img
           src={CATEGORY_COMPLETE_ICONS.trophy}
           alt=""
-          className="absolute inset-3 motion-safe:animate-reward-unlock motion-reduce:animate-reward-fade"
+          className="relative h-[68%] w-[68%] motion-safe:animate-reward-unlock motion-reduce:animate-reward-fade"
         />
       </div>
     );

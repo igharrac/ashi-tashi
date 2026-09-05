@@ -11,12 +11,18 @@ interface CategoryCompleteScreenProps {
 }
 
 const CONFETTI_DOTS = [
-  "left-8 top-10 bg-accent-400",
-  "right-10 top-16 bg-secondary-300",
-  "left-12 bottom-24 bg-accent-300",
-  "right-14 bottom-28 bg-secondary-400",
-  "left-1/2 top-6 bg-accent-500",
-  "right-1/3 bottom-12 bg-secondary-300",
+  "left-6 top-8 h-3 w-3 bg-accent-400",
+  "left-1/4 top-6 h-2 w-2 bg-secondary-300",
+  "left-1/2 top-10 h-3 w-3 bg-accent-500",
+  "right-1/4 top-8 h-2 w-2 bg-secondary-400",
+  "right-6 top-14 h-3 w-3 bg-accent-300",
+  "left-10 top-1/3 h-2 w-2 bg-secondary-300",
+  "right-10 top-1/3 h-3 w-3 bg-accent-400",
+  "left-8 bottom-28 h-3 w-3 bg-secondary-400",
+  "left-1/3 bottom-16 h-2 w-2 bg-accent-500",
+  "left-1/2 bottom-10 h-3 w-3 bg-secondary-300",
+  "right-1/3 bottom-16 h-2 w-2 bg-accent-300",
+  "right-8 bottom-24 h-3 w-3 bg-secondary-400",
 ];
 
 /**
@@ -49,8 +55,8 @@ export function CategoryCompleteScreen({ title, subtitle, children }: CategoryCo
         {CONFETTI_DOTS.map((pos, i) => (
           <span
             key={pos}
-            className={`absolute h-3 w-3 rounded-sm motion-safe:animate-reward-dots-float ${pos}`}
-            style={{ animationDelay: `${i * 0.15}s` }}
+            className={`absolute rounded-sm motion-safe:animate-reward-dots-float ${pos}`}
+            style={{ animationDelay: `${i * 0.12}s` }}
           />
         ))}
       </div>
