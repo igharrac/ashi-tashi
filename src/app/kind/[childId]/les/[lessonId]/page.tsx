@@ -17,7 +17,7 @@ import { RepeatAfterMe } from "@/components/exercises/RepeatAfterMe";
 import { SpeakFromPicture } from "@/components/exercises/SpeakFromPicture";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { AutoplayIndicator } from "@/components/ui/AutoplayIndicator";
-import { RewardAnimation } from "@/components/rewards/RewardAnimation";
+import { CategoryCompleteScreen } from "@/components/rewards/CategoryCompleteScreen";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { applySpeakFirstMode } from "@/domain/lessonMode";
@@ -222,11 +222,7 @@ export default function LessonPage() {
     // kunnen "voltooien" via handleSkip -> goToNext.
     keyboardHandlersRef.current = null;
     return (
-      <main className="flex flex-col items-center gap-6 pt-8 text-center">
-        <RewardAnimation type="CATEGORY_COMPLETE" sizeClassName="h-28 w-28" />
-        <h1 className="text-2xl font-bold text-primary-600">Les voltooid!</h1>
-        <p className="text-gray-600">Goed gedaan, {child.displayName}!</p>
-
+      <CategoryCompleteScreen title="Les voltooid!" subtitle={`Goed gedaan, ${child.displayName}!`}>
         {finished.newBadges.length > 0 && (
           <div className="flex flex-wrap justify-center gap-4">
             {finished.newBadges.map((slug) => {
@@ -246,7 +242,7 @@ export default function LessonPage() {
 
         <div className="flex flex-col items-center gap-3">
           <Link href={`/kind/${child.id}/route`}>
-            <Button>Naar leerroute</Button>
+            <Button variant="secondary">Naar leerroute</Button>
           </Link>
           {matchGameCategorySlug && (
             <Link href={`/kind/${child.id}/ontdekken/spel?categorie=${matchGameCategorySlug}`}>
@@ -254,7 +250,7 @@ export default function LessonPage() {
             </Link>
           )}
         </div>
-      </main>
+      </CategoryCompleteScreen>
     );
   }
 

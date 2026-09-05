@@ -18,6 +18,7 @@ import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { AutoplayIndicator } from "@/components/ui/AutoplayIndicator";
 import { RewardAnimation } from "@/components/rewards/RewardAnimation";
+import { CategoryCompleteScreen } from "@/components/rewards/CategoryCompleteScreen";
 import type { ConversationLine } from "@/lib/conversations";
 
 interface TranscriptEntry {
@@ -114,14 +115,11 @@ export default function ConversationPage() {
 
   if (finished) {
     return (
-      <main className="flex flex-col items-center gap-6 pt-8 text-center">
-        <RewardAnimation type="CATEGORY_COMPLETE" sizeClassName="h-28 w-28" />
-        <h1 className="text-2xl font-bold text-primary-600">Gesprek voltooid!</h1>
-        <p className="text-gray-600">Goed gedaan, {child.displayName}!</p>
+      <CategoryCompleteScreen title="Gesprek voltooid!" subtitle={`Goed gedaan, ${child.displayName}!`}>
         <Link href={`/kind/${child.id}/route`}>
-          <Button>Naar leerroute</Button>
+          <Button variant="secondary">Naar leerroute</Button>
         </Link>
-      </main>
+      </CategoryCompleteScreen>
     );
   }
 
