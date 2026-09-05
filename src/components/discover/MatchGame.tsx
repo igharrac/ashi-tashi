@@ -6,6 +6,7 @@ import { playWordAudio } from "@/lib/playWordAudio";
 import { shuffleArray } from "@/domain/matchGame";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { Button } from "@/components/ui/Button";
+import { RewardAnimation } from "@/components/rewards/RewardAnimation";
 
 interface MatchGameProps {
   /** Items voor dit ene rondje (al gekozen door de aanroepende pagina, zie ontdekken/spel/page.tsx). */
@@ -72,9 +73,7 @@ export function MatchGame({ items, onPlayAgain, preferredPersona }: MatchGamePro
   if (isComplete) {
     return (
       <div className="flex flex-col items-center gap-4 py-10 text-center">
-        <p className="text-5xl" aria-hidden="true">
-          🎉
-        </p>
+        <RewardAnimation type="CATEGORY_COMPLETE" sizeClassName="h-24 w-24" />
         <p className="text-xl font-bold text-forest-500">Alle woorden gevonden!</p>
         <Button onClick={onPlayAgain}>Nog een rondje</Button>
       </div>

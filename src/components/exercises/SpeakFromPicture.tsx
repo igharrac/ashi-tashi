@@ -5,6 +5,7 @@ import type { VocabularyItemView } from "@/types/domain";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { NavFlankedRow } from "@/components/ui/NavFlankedRow";
+import { RewardAnimation } from "@/components/rewards/RewardAnimation";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
@@ -145,9 +146,7 @@ export function SpeakFromPicture({
           {speech.status === "correct" && lenientPronunciationMode && (
             <AttemptStars attempts={LENIENT_PRONUNCIATION_ATTEMPTS} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
           )}
-          <p aria-hidden="true" className="text-4xl">
-            🎉
-          </p>
+          <RewardAnimation type="WORD_SUCCESS" sizeClassName="h-16 w-16" />
           <p aria-live="polite" className="text-lg font-medium text-success-500">
             {speech.status === "correct" ? speech.feedbackMessage : fallbackMessage}
           </p>

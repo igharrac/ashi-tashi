@@ -17,6 +17,7 @@ import { RepeatAfterMe } from "@/components/exercises/RepeatAfterMe";
 import { SpeakFromPicture } from "@/components/exercises/SpeakFromPicture";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { AutoplayIndicator } from "@/components/ui/AutoplayIndicator";
+import { RewardAnimation } from "@/components/rewards/RewardAnimation";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { applySpeakFirstMode } from "@/domain/lessonMode";
@@ -222,9 +223,7 @@ export default function LessonPage() {
     keyboardHandlersRef.current = null;
     return (
       <main className="flex flex-col items-center gap-6 pt-8 text-center">
-        <p className="text-6xl" aria-hidden="true">
-          🎉
-        </p>
+        <RewardAnimation type="CATEGORY_COMPLETE" sizeClassName="h-28 w-28" />
         <h1 className="text-2xl font-bold text-primary-600">Les voltooid!</h1>
         <p className="text-gray-600">Goed gedaan, {child.displayName}!</p>
 

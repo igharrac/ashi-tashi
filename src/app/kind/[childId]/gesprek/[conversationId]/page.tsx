@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { AutoplayIndicator } from "@/components/ui/AutoplayIndicator";
+import { RewardAnimation } from "@/components/rewards/RewardAnimation";
 import type { ConversationLine } from "@/lib/conversations";
 
 interface TranscriptEntry {
@@ -114,9 +115,7 @@ export default function ConversationPage() {
   if (finished) {
     return (
       <main className="flex flex-col items-center gap-6 pt-8 text-center">
-        <p className="text-6xl" aria-hidden="true">
-          🎉
-        </p>
+        <RewardAnimation type="CATEGORY_COMPLETE" sizeClassName="h-28 w-28" />
         <h1 className="text-2xl font-bold text-primary-600">Gesprek voltooid!</h1>
         <p className="text-gray-600">Goed gedaan, {child.displayName}!</p>
         <Link href={`/kind/${child.id}/route`}>
@@ -358,9 +357,7 @@ function ChoiceAttempt({ line, microphoneOptIn, preferredPersona, onDone }: Choi
           )}
           {speech.status === "correct" && (
             <div className="flex flex-col items-center gap-4">
-              <p aria-hidden="true" className="text-4xl">
-                🎉
-              </p>
+              <RewardAnimation type="WORD_SUCCESS" sizeClassName="h-16 w-16" />
               <p aria-live="polite" className="text-lg font-medium text-success-500">
                 {speech.feedbackMessage}
               </p>

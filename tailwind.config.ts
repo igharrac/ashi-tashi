@@ -147,6 +147,64 @@ const config: Config = {
         forest: "0 10px 15px -3px rgb(var(--color-primary-700) / 0.3)",
         soft: "0 20px 25px -5px rgb(var(--color-primary-700) / 0.1)",
       },
+      // Motion voor de reward-animatiebibliotheek (RewardAnimation.tsx,
+      // zie ook public/rewards/README.md) — timing/curves rechtstreeks
+      // overgenomen uit de aangeleverde reward-library-spec. `motion-safe:`/
+      // `motion-reduce:` (Tailwind-kernvarianten, geen extra config nodig)
+      // schakelen per klasse tussen de volle animatie en een kale fade.
+      keyframes: {
+        "reward-pop": {
+          "0%": { opacity: "0", transform: "scale(.75) rotate(-4deg)" },
+          "60%": { opacity: "1", transform: "scale(1.08) rotate(3deg)" },
+          "100%": { opacity: "1", transform: "scale(1) rotate(0deg)" },
+        },
+        "reward-unlock": {
+          "0%": { opacity: "0", transform: "scale(.6) translateY(16px)" },
+          "55%": { opacity: "1", transform: "scale(1.1) translateY(-8px)" },
+          "78%": { transform: "scale(.95) translateY(3px)" },
+          "100%": { opacity: "1", transform: "scale(1) translateY(0)" },
+        },
+        "reward-fade": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "reward-ray-rotate": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+        "reward-blob-breathe": {
+          "0%, 100%": { transform: "scale(.92) rotate(0deg)" },
+          "50%": { transform: "scale(1.08) rotate(6deg)" },
+        },
+        "reward-ring-pulse": {
+          "0%, 100%": { transform: "scale(.85)", opacity: ".55" },
+          "50%": { transform: "scale(1.15)", opacity: "1" },
+        },
+        "reward-squiggle-wave": {
+          "0%, 100%": { transform: "translateY(0) rotate(-2deg)" },
+          "50%": { transform: "translateY(-6px) rotate(2deg)" },
+        },
+        "reward-dots-float": {
+          "0%, 100%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(-8px) scale(1.12)" },
+        },
+        "reward-rain-fade": {
+          "0%": { opacity: "0", transform: "translateY(-8px)" },
+          "35%": { opacity: "1" },
+          "100%": { opacity: "0", transform: "translateY(10px)" },
+        },
+      },
+      animation: {
+        "reward-pop": "reward-pop 0.6s ease-out",
+        "reward-unlock": "reward-unlock 0.7s cubic-bezier(.34,1.56,.64,1)",
+        "reward-fade": "reward-fade 0.5s ease-out",
+        "reward-ray-rotate": "reward-ray-rotate 2.2s linear infinite",
+        "reward-blob-breathe": "reward-blob-breathe 2.6s ease-in-out infinite",
+        "reward-ring-pulse": "reward-ring-pulse 1.6s ease-in-out infinite",
+        "reward-squiggle-wave": "reward-squiggle-wave 1.8s ease-in-out infinite",
+        "reward-dots-float": "reward-dots-float 1.4s ease-in-out infinite",
+        "reward-rain-fade": "reward-rain-fade 1.8s ease-in-out infinite",
+      },
     },
   },
   plugins: [],
