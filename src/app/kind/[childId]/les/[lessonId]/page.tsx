@@ -16,7 +16,7 @@ import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
 import { RepeatAfterMe } from "@/components/exercises/RepeatAfterMe";
 import { SpeakFromPicture } from "@/components/exercises/SpeakFromPicture";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { ReplayAudioButton } from "@/components/ui/ReplayAudioButton";
+import { AutoplayIndicator } from "@/components/ui/AutoplayIndicator";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { applySpeakFirstMode } from "@/domain/lessonMode";
@@ -29,7 +29,7 @@ import type { ExerciseView } from "@/types/domain";
  */
 export default function LessonPage() {
   const params = useParams<{ childId: string; lessonId: string }>();
-  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, ready } = useAppStore();
+  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, setAutoplayAudio, ready } = useAppStore();
 
   // Dieren blijft op zijn handmatig samengestelde thema (met zinnetjes-
   // afsluiting); alle andere categorieën met genoeg opnames krijgen een
@@ -306,10 +306,10 @@ export default function LessonPage() {
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Statusbalk: terug, voortgang, en een klein "nog een keer
-          afspelen"-icoon (op verzoek losgetrokken van de mic-knop in de
-          oefening zelf — zie ReplayAudioButton.tsx) dat in élke status van
-          de oefening bereikbaar blijft, ook tijdens luisteren/feedback. */}
+      {/* Statusbalk: terug, voortgang, en een klein icoon dat toont/omschakelt
+          of geluid automatisch afspeelt (rode streep = uit) — puur een
+          schakelaar, geen afspeelknop. Nog een keer horen kan via de
+          "Afspelen"-knop bij de oefening zelf, zie AudioButton hieronder. */}
       <div className="flex items-center gap-1">
         <Link
           href={`/kind/${child.id}/route`}
@@ -324,11 +324,9 @@ export default function LessonPage() {
           <ProgressBar current={index} total={currentQueue.length} />
         </div>
 
-        <ReplayAudioButton
-          itemId={currentExercise.vocabularyItem.id}
-          text={currentExercise.vocabularyItem.latinSpelling}
-          fallbackSpokenText={currentExercise.vocabularyItem.translationNl}
-          preferredPersona={child.preferredVoicePersona}
+        <AutoplayIndicator
+          enabled={child.autoplayAudio}
+          onToggle={(enabled) => setAutoplayAudio(child.id, enabled)}
         />
       </div>
 

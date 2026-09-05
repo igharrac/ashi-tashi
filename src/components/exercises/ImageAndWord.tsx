@@ -58,13 +58,21 @@ export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio }: 
         </p>
       )}
       <ReviewNotice note={item.reviewNote ?? "Review vereist"} />
-      <AudioButton
-        text={item.latinSpelling}
-        itemId={item.id}
-        fallbackSpokenText={item.translationNl}
-        preferredPersona={preferredPersona}
-        slow
-      />
+      <div className="flex gap-3">
+        <AudioButton
+          text={item.latinSpelling}
+          itemId={item.id}
+          fallbackSpokenText={item.translationNl}
+          preferredPersona={preferredPersona}
+        />
+        <AudioButton
+          text={item.latinSpelling}
+          itemId={item.id}
+          fallbackSpokenText={item.translationNl}
+          preferredPersona={preferredPersona}
+          slow
+        />
+      </div>
       <Button onClick={onDone}>Verder</Button>
     </div>
   );

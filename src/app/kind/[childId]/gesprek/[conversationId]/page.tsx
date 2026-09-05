@@ -16,7 +16,7 @@ import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { ReplayAudioButton } from "@/components/ui/ReplayAudioButton";
+import { AutoplayIndicator } from "@/components/ui/AutoplayIndicator";
 import type { ConversationLine } from "@/lib/conversations";
 
 interface TranscriptEntry {
@@ -36,7 +36,7 @@ interface TranscriptEntry {
  */
 export default function ConversationPage() {
   const params = useParams<{ childId: string; conversationId: string }>();
-  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, ready } = useAppStore();
+  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, setAutoplayAudio, ready } = useAppStore();
 
   const [conversationsContent, setConversationsContent] = useState<ConversationsContent | null>(null);
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
@@ -127,14 +127,12 @@ export default function ConversationPage() {
   }
 
   const currentStep = conversation.steps[stepIndex]!;
-  // Voor het "nog een keer afspelen"-icoon in de statusbalk: bij een
-  // app-regel is dat gewoon de huidige regel; bij een keuzemoment pas
-  // zodra het kind al gekozen heeft (daarvoor zijn er 2-3 opties met elk
-  // hun eigen "Beluister"-knop, dan is er geen eenduidige "huidige audio").
-  const headerReplayLine: ConversationLine | null = currentStep.type === "app" ? currentStep.line : pickedLine;
 
   return (
     <main className="mx-auto flex max-w-lg flex-col gap-4 overflow-x-hidden px-4 py-6">
+      {/* Statusbalk: terug, voortgang, en een schakelaar voor automatisch
+          afspelen (rode streep = uit) — geen afspeelknop zelf, zie de
+          "Opnieuw"/"Afspelen"-knoppen bij de regel/keuze hieronder. */}
       <div className="flex items-center gap-1">
         <Link
           href={`/kind/${child.id}/route`}
@@ -149,14 +147,10 @@ export default function ConversationPage() {
           <ProgressBar current={stepIndex} total={conversation.steps.length} />
         </div>
 
-        {headerReplayLine && (
-          <ReplayAudioButton
-            itemId={headerReplayLine.itemId}
-            text={headerReplayLine.translationNl}
-            fallbackSpokenText={headerReplayLine.translationNl}
-            preferredPersona={child.preferredVoicePersona}
-          />
-        )}
+        <AutoplayIndicator
+          enabled={child.autoplayAudio}
+          onToggle={(enabled) => setAutoplayAudio(child.id, enabled)}
+        />
       </div>
 
       <div className="flex items-center gap-2 text-lg font-bold text-forest-700">
@@ -205,6 +199,7 @@ export default function ConversationPage() {
             key={`${stepIndex}-attempt`}
             line={pickedLine}
             microphoneOptIn={child.microphoneOptIn}
+            preferredPersona={child.preferredVoicePersona}
             onDone={() => {
               recordExerciseAttempt(child!.id, {
                 vocabularyItemId: pickedLine.itemId,
@@ -240,7 +235,17 @@ function AppLineStep({ line, preferredPersona, onDone }: AppLineStepProps) {
     <div className="flex flex-col items-center gap-3 rounded-xl2 border-2 border-primary-100 bg-white p-4">
       <p className="text-xl font-bold text-primary-600">{spelling ?? line.translationNl}</p>
       {spelling && <p className="text-sm text-ink-muted">{line.translationNl}</p>}
-      <Button onClick={onDone}>Verder →</Button>
+      <div className="flex items-center gap-3">
+        <AudioButton
+          text={spelling ?? line.translationNl}
+          itemId={line.itemId}
+          fallbackSpokenText={line.translationNl}
+          preferredPersona={preferredPersona}
+          label="Opnieuw"
+          iconOnly
+        />
+        <Button onClick={onDone}>Verder →</Button>
+      </div>
     </div>
   );
 }
@@ -280,6 +285,7 @@ function ChoiceStep({ options, preferredPersona, onPick }: ChoiceStepProps) {
 interface ChoiceAttemptProps {
   line: ConversationLine;
   microphoneOptIn: boolean;
+  preferredPersona: ReturnType<typeof useAppStore>["state"]["children"][number]["preferredVoicePersona"];
   onDone: () => void;
 }
 
@@ -289,7 +295,7 @@ interface ChoiceAttemptProps {
  * meteen als klaar (passAfterAttempts: 1), ongeacht de coulante-modus-
  * instelling van het kind elders in de app.
  */
-function ChoiceAttempt({ line, microphoneOptIn, onDone }: ChoiceAttemptProps) {
+function ChoiceAttempt({ line, microphoneOptIn, preferredPersona, onDone }: ChoiceAttemptProps) {
   const speech = useSpeechCheck(line.translationNl, { passAfterAttempts: 1 });
   const spelling = useWordSpelling(line.itemId);
   const [fallbackStatus, setFallbackStatus] = useState<"idle" | "recording" | "feedback">("idle");
@@ -324,9 +330,19 @@ function ChoiceAttempt({ line, microphoneOptIn, onDone }: ChoiceAttemptProps) {
         <>
           {(speech.status === "idle" || speech.status === "retry") && (
             <div className="flex flex-col items-center gap-4">
-              <Button onClick={speech.attempt} className="flex items-center gap-2">
-                <span aria-hidden="true">🎙️</span> Zeg het na
-              </Button>
+              <div className="flex flex-row items-center justify-center gap-4">
+                <AudioButton
+                  text={spelling ?? line.translationNl}
+                  itemId={line.itemId}
+                  fallbackSpokenText={line.translationNl}
+                  preferredPersona={preferredPersona}
+                  label="Afspelen"
+                  iconOnly
+                />
+                <Button onClick={speech.attempt} className="flex items-center gap-2">
+                  <span aria-hidden="true">🎙️</span> Zeg het na
+                </Button>
+              </div>
               {speech.status === "retry" && (
                 <p aria-live="polite" className="text-lg font-medium text-forest-600">
                   {speech.feedbackMessage}

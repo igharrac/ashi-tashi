@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { VocabularyItemView } from "@/types/domain";
+import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
@@ -223,16 +224,31 @@ export function ListenAndSpeak({
       <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
 
       {(status === "idle" || status === "retry") && microphoneOptIn && (
-        <Button
-          onClick={useRealCapture ? handleRecord : handleFallbackRecord}
-          className="flex items-center gap-2 whitespace-nowrap !px-5"
-        >
-          <span aria-hidden="true">🎙️</span> Zeg het woord
-        </Button>
+        <div className="flex flex-row items-center justify-center gap-4">
+          <AudioButton
+            text={item.latinSpelling}
+            itemId={item.id}
+            fallbackSpokenText={item.translationNl}
+            preferredPersona={preferredPersona}
+            iconOnly
+          />
+          <Button
+            onClick={useRealCapture ? handleRecord : handleFallbackRecord}
+            className="flex items-center gap-2 whitespace-nowrap !px-5"
+          >
+            <span aria-hidden="true">🎙️</span> Zeg het woord
+          </Button>
+        </div>
       )}
 
       {status === "idle" && !microphoneOptIn && (
         <div className="flex flex-col items-center gap-3">
+          <AudioButton
+            text={item.latinSpelling}
+            itemId={item.id}
+            fallbackSpokenText={item.translationNl}
+            preferredPersona={preferredPersona}
+          />
           <p className="max-w-xs text-sm text-gray-500">Microfoon staat uit. Zeg het woord toch hardop en ga dan verder.</p>
           <Button onClick={() => onDone(true)}>Ik heb het gezegd</Button>
         </div>

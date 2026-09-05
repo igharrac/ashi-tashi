@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
+import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
@@ -113,9 +114,18 @@ export function RepeatAfterMe({
               {/* Twee gelijkwaardige, altijd beschikbare keuzes i.p.v. één
                   primaire "Neem op"-knop — afspelen mag zo vaak als nodig,
                   ook vóór poging 2 en 3. */}
-              <Button onClick={speech.attempt} className="flex items-center gap-2 whitespace-nowrap !px-5">
-                <span aria-hidden="true">🎙️</span> Zeg het woord
-              </Button>
+              <div className="flex flex-row items-center justify-center gap-4">
+                <AudioButton
+                  text={item.latinSpelling}
+                  itemId={item.id}
+                  fallbackSpokenText={item.translationNl}
+                  preferredPersona={preferredPersona}
+                  iconOnly
+                />
+                <Button onClick={speech.attempt} className="flex items-center gap-2 whitespace-nowrap !px-5">
+                  <span aria-hidden="true">🎙️</span> Zeg het woord
+                </Button>
+              </div>
               {lenientPronunciationMode && speech.attempts > 0 && (
                 <AttemptStars attempts={speech.attempts} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
               )}

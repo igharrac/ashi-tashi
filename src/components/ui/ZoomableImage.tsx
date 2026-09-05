@@ -43,7 +43,7 @@ export function ZoomableImage({ pictogramUrl, emoji, alt, sizeClassName = "h-40 
         )}
         <span
           aria-hidden="true"
-          className="absolute bottom-1 right-1 flex h-6 w-6 items-center justify-center rounded-full bg-forest-500/90 text-xs text-white"
+          className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-forest-500 text-xs text-white shadow-sm"
         >
           🔍
         </span>

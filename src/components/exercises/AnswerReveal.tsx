@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
+import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
 import { playWordAudio } from "@/lib/playWordAudio";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
@@ -11,7 +12,7 @@ interface AnswerRevealProps {
   item: VocabularyItemView;
   onContinue: () => void;
   preferredPersona?: RecordingPersona | null;
-  /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx) — bepaalt of het antwoord vanzelf klinkt bij onthullen; handmatig nog eens horen kan via het luidsprekertje bovenin (ReplayAudioButton), geldt overal. */
+  /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx) — bepaalt of het antwoord vanzelf klinkt bij onthullen; handmatig nog eens horen kan via de "Afspelen"-knop hieronder. */
   autoplayAudio: boolean;
 }
 
@@ -54,6 +55,12 @@ export function AnswerReveal({ item, onContinue, preferredPersona, autoplayAudio
       <p className="text-sm text-ink-muted">Het antwoord:</p>
       <p className="text-xl font-bold text-forest-600">{spelling ?? item.translationNl}</p>
       {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
+      <AudioButton
+        text={item.latinSpelling}
+        itemId={item.id}
+        fallbackSpokenText={item.translationNl}
+        preferredPersona={preferredPersona}
+      />
       <Button onClick={onContinue}>Verder</Button>
     </div>
   );
