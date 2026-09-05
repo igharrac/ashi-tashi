@@ -25,6 +25,7 @@ export default function ChildProfilePage() {
     setSpeakFirstMode,
     setLenientPronunciationMode,
     setMicrophoneOptIn,
+    setAutoplayAudio,
     setPreferredVoicePersona,
     setExperienceLevel,
     logout,
@@ -65,6 +66,7 @@ export default function ChildProfilePage() {
             onMicrophoneOptInChange={(enabled) => setMicrophoneOptIn(child.id, enabled)}
             onSpeakFirstModeChange={(enabled) => setSpeakFirstMode(child.id, enabled)}
             onLenientPronunciationModeChange={(enabled) => setLenientPronunciationMode(child.id, enabled)}
+            onAutoplayAudioChange={(enabled) => setAutoplayAudio(child.id, enabled)}
             onPreferredVoicePersonaChange={(persona) => setPreferredVoicePersona(child.id, persona)}
             onExperienceLevelChange={(level) => setExperienceLevel(child.id, level)}
           />

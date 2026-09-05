@@ -11,6 +11,7 @@ export interface SettingsPanelContentProps {
   onMicrophoneOptInChange: (enabled: boolean) => void;
   onSpeakFirstModeChange: (enabled: boolean) => void;
   onLenientPronunciationModeChange: (enabled: boolean) => void;
+  onAutoplayAudioChange: (enabled: boolean) => void;
   onPreferredVoicePersonaChange: (persona: RecordingPersona | null) => void;
   onExperienceLevelChange: (level: ExperienceLevel) => void;
 }
@@ -27,6 +28,7 @@ export function SettingsPanelContent({
   onMicrophoneOptInChange,
   onSpeakFirstModeChange,
   onLenientPronunciationModeChange,
+  onAutoplayAudioChange,
   onPreferredVoicePersonaChange,
   onExperienceLevelChange,
 }: SettingsPanelContentProps) {
@@ -60,6 +62,16 @@ export function SettingsPanelContent({
           child.lenientPronunciationMode
             ? "Aan: een spreekoefening is klaar zodra het woord 3x is ingesproken, ongeacht of de uitspraak precies matcht."
             : "Uit: het kind moet net zo vaak proberen tot de uitspraak echt herkend wordt (onbeperkt proberen)."
+        }
+      />
+      <Toggle
+        checked={child.autoplayAudio}
+        onChange={onAutoplayAudioChange}
+        label="Geluid speelt automatisch af"
+        description={
+          child.autoplayAudio
+            ? "Aan: het woord/de zin klinkt vanzelf zodra een nieuwe oefening verschijnt. Nog een keer horen kan altijd via het luidsprekertje bovenin de oefening."
+            : "Uit: geen geluid vanzelf — tik op het luidsprekertje bovenin de oefening om het te horen."
         }
       />
 

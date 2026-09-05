@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
-import { AutoplayToggle } from "@/components/ui/AutoplayToggle";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
+import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { playWordAudio } from "@/lib/playWordAudio";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
@@ -22,9 +22,8 @@ interface RepeatAfterMeProps {
   preferredPersona?: RecordingPersona | null;
   /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
   lenientPronunciationMode?: boolean;
-  /** Kindinstelling child.autoplayAudio — bediend via het luidsprekertje (AutoplayToggle.tsx), geldt overal. */
+  /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx), geldt overal. */
   autoplayAudio: boolean;
-  onToggleAutoplayAudio: (enabled: boolean) => void;
 }
 
 /**
@@ -45,7 +44,6 @@ export function RepeatAfterMe({
   preferredPersona,
   lenientPronunciationMode = true,
   autoplayAudio,
-  onToggleAutoplayAudio,
 }: RepeatAfterMeProps) {
   const speech = useSpeechCheck(
     item.translationNl,
@@ -68,7 +66,7 @@ export function RepeatAfterMe({
   }, [fallbackStatus]);
 
   // Autoplay bij het verschijnen van dit woord (mount, dankzij key={item.id}
-  // bij de aanroeper) — mits de kindinstelling aan staat (AutoplayToggle.tsx).
+  // bij de aanroeper) — mits de kindinstelling aan staat (SettingsPanelContent.tsx).
   useEffect(() => {
     if (autoplayAudio) {
       void playWordAudio({
@@ -94,32 +92,13 @@ export function RepeatAfterMe({
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      {item.itemKind === "zin" &&
-        (item.pictogramUrl ? (
-          // eslint-disable-next-line @next/next/no-img-element -- extern ARASAAC-plaatje (CC BY-NC-SA), geen lokale kopie, dus geen next/image-optimalisatie mogelijk
-          <img
-            src={item.pictogramUrl}
-            alt={item.imageAlt}
-            className="h-32 w-32 rounded-xl2 bg-primary-50 object-contain p-2"
-            onError={(event) => {
-              // Als het externe plaatje ooit niet laadt, valt het kind
-              // meteen terug op de emoji i.p.v. een kapot plaatje te zien —
-              // mag nergens vastlopen.
-              event.currentTarget.style.display = "none";
-              const fallback = event.currentTarget.nextElementSibling as HTMLElement | null;
-              if (fallback) fallback.style.display = "flex";
-            }}
-          />
-        ) : null)}
       {item.itemKind === "zin" && (
-        <div
-          role="img"
-          aria-label={item.imageAlt}
-          className="flex h-32 w-32 items-center justify-center rounded-xl2 bg-primary-50 text-6xl"
-          style={item.pictogramUrl ? { display: "none" } : undefined}
-        >
-          {item.imageEmoji}
-        </div>
+        <ZoomableImage
+          pictogramUrl={item.pictogramUrl}
+          emoji={item.imageEmoji}
+          alt={item.imageAlt}
+          sizeClassName="h-32 w-32 text-6xl"
+        />
       )}
       <p className="text-lg font-medium text-gray-700">
         {item.contextNl ?? (item.itemKind === "zin" ? "Zeg de zin na:" : "Zeg het woord na:")}
@@ -134,20 +113,9 @@ export function RepeatAfterMe({
               {/* Twee gelijkwaardige, altijd beschikbare keuzes i.p.v. één
                   primaire "Neem op"-knop — afspelen mag zo vaak als nodig,
                   ook vóór poging 2 en 3. */}
-              <div className="flex flex-row items-center justify-center gap-4">
-                <AutoplayToggle
-                  text={item.latinSpelling}
-                  itemId={item.id}
-                  fallbackSpokenText={item.translationNl}
-                  preferredPersona={preferredPersona}
-                  enabled={autoplayAudio}
-                  onToggle={onToggleAutoplayAudio}
-                  iconOnly
-                />
-                <Button onClick={speech.attempt} className="flex items-center gap-2 whitespace-nowrap !px-5">
-                  <span aria-hidden="true">🎙️</span> Zeg het woord
-                </Button>
-              </div>
+              <Button onClick={speech.attempt} className="flex items-center gap-2 whitespace-nowrap !px-5">
+                <span aria-hidden="true">🎙️</span> Zeg het woord
+              </Button>
               {lenientPronunciationMode && speech.attempts > 0 && (
                 <AttemptStars attempts={speech.attempts} total={LENIENT_PRONUNCIATION_ATTEMPTS} />
               )}
@@ -164,7 +132,6 @@ export function RepeatAfterMe({
                     onContinue={() => onDone(false)}
                     preferredPersona={preferredPersona}
                     autoplayAudio={autoplayAudio}
-                    onToggleAutoplayAudio={onToggleAutoplayAudio}
                   />
                 </>
               )}

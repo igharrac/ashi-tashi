@@ -32,6 +32,7 @@ export function AppShell({ child, children }: AppShellProps) {
     setSpeakFirstMode,
     setLenientPronunciationMode,
     setMicrophoneOptIn,
+    setAutoplayAudio,
     setPreferredVoicePersona,
     setExperienceLevel,
   } = useAppStore();
@@ -61,6 +62,7 @@ export function AppShell({ child, children }: AppShellProps) {
                 onMicrophoneOptInChange={(enabled) => setMicrophoneOptIn(child.id, enabled)}
                 onSpeakFirstModeChange={(enabled) => setSpeakFirstMode(child.id, enabled)}
                 onLenientPronunciationModeChange={(enabled) => setLenientPronunciationMode(child.id, enabled)}
+                onAutoplayAudioChange={(enabled) => setAutoplayAudio(child.id, enabled)}
                 onPreferredVoicePersonaChange={(persona) => setPreferredVoicePersona(child.id, persona)}
                 onExperienceLevelChange={(level) => setExperienceLevel(child.id, level)}
               />

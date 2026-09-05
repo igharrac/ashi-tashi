@@ -3,9 +3,9 @@
 import { useEffect } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
-import { AutoplayToggle } from "@/components/ui/AutoplayToggle";
 import { Button } from "@/components/ui/Button";
 import { ReviewNotice } from "@/components/ui/ReviewNotice";
+import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { playWordAudio } from "@/lib/playWordAudio";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
 import type { RecordingPersona } from "@/lib/recordableItems";
@@ -14,9 +14,8 @@ interface ImageAndWordProps {
   item: VocabularyItemView;
   onDone: () => void;
   preferredPersona?: RecordingPersona | null;
-  /** Kindinstelling child.autoplayAudio — bediend via het luidsprekertje (AutoplayToggle.tsx), geldt overal. */
+  /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx), geldt overal. */
   autoplayAudio: boolean;
-  onToggleAutoplayAudio: (enabled: boolean) => void;
 }
 
 /**
@@ -30,7 +29,7 @@ interface ImageAndWordProps {
  * gewoon doorgaan zonder alsnog gedwongen te worden een knop in te drukken
  * (hfst. 22: nooit blokkeren).
  */
-export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio, onToggleAutoplayAudio }: ImageAndWordProps) {
+export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio }: ImageAndWordProps) {
   const spelling = useWordSpelling(item.id);
 
   useEffect(() => {
@@ -49,13 +48,7 @@ export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio, on
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <div
-        role="img"
-        aria-label={item.imageAlt}
-        className="flex h-40 w-40 items-center justify-center rounded-xl2 bg-primary-50 text-7xl"
-      >
-        {item.imageEmoji}
-      </div>
+      <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
       <p className="text-2xl font-bold text-primary-600" lang={spelling ? undefined : "nl"}>
         {spelling ?? item.translationNl}
       </p>
@@ -65,23 +58,13 @@ export function ImageAndWord({ item, onDone, preferredPersona, autoplayAudio, on
         </p>
       )}
       <ReviewNotice note={item.reviewNote ?? "Review vereist"} />
-      <div className="flex gap-3">
-        <AutoplayToggle
-          text={item.latinSpelling}
-          itemId={item.id}
-          fallbackSpokenText={item.translationNl}
-          preferredPersona={preferredPersona}
-          enabled={autoplayAudio}
-          onToggle={onToggleAutoplayAudio}
-        />
-        <AudioButton
-          text={item.latinSpelling}
-          itemId={item.id}
-          fallbackSpokenText={item.translationNl}
-          preferredPersona={preferredPersona}
-          slow
-        />
-      </div>
+      <AudioButton
+        text={item.latinSpelling}
+        itemId={item.id}
+        fallbackSpokenText={item.translationNl}
+        preferredPersona={preferredPersona}
+        slow
+      />
       <Button onClick={onDone}>Verder</Button>
     </div>
   );

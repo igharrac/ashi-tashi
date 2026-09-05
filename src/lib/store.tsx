@@ -115,7 +115,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
       microphoneOptIn: true,
       // Standaard aan: de eerste keer dat een nieuwe vraag/plaatje
       // verschijnt, wordt de opname automatisch afgespeeld (zie
-      // AutoplayToggle.tsx). De ouder/het kind kan dit per luidsprekertje
+      // SettingsPanelContent.tsx). De ouder/het kind kan dit daar
       // uitzetten; dat geldt dan voor het hele profiel.
       autoplayAudio: true,
       // Bewuste keuze bij het aanmaken van het profiel (aparte stap in
@@ -228,7 +228,7 @@ export function AppStoreProvider({ children }: { children: React.ReactNode }) {
     }));
   }, []);
 
-  // Bediend via het luidsprekertje (AutoplayToggle.tsx) — geldt voor het
+  // Bediend via de instellingen (SettingsPanelContent.tsx) — geldt voor het
   // hele profiel, niet per oefening (op verzoek: "dit moet overal gelden").
   const setAutoplayAudio = useCallback<AppStore["setAutoplayAudio"]>((childId, enabled) => {
     setState((prev) => ({

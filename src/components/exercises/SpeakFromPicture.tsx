@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { Button } from "@/components/ui/Button";
 import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
+import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { mockPronunciationProvider } from "@/providers/pronunciation/mockPronunciationProvider";
 import { useSpeechCheck } from "@/hooks/useSpeechCheck";
 import { useWordSpelling } from "@/hooks/useWordSpelling";
@@ -20,9 +21,8 @@ interface SpeakFromPictureProps {
   preferredPersona?: RecordingPersona | null;
   /** Standaard aan (kindinstelling): klaar na 3x inspreken, ongeacht of het matchte. Zie pronunciationLeniency.ts. */
   lenientPronunciationMode?: boolean;
-  /** Kindinstelling child.autoplayAudio — doorgegeven aan AnswerReveal (het luidsprekertje bij "Ik weet het niet"), geldt overal. */
+  /** Kindinstelling child.autoplayAudio — doorgegeven aan AnswerReveal (autoplay bij "Ik weet het niet"), geldt overal. */
   autoplayAudio: boolean;
-  onToggleAutoplayAudio: (enabled: boolean) => void;
 }
 
 /**
@@ -43,7 +43,6 @@ export function SpeakFromPicture({
   preferredPersona,
   lenientPronunciationMode = true,
   autoplayAudio,
-  onToggleAutoplayAudio,
 }: SpeakFromPictureProps) {
   const speech = useSpeechCheck(
     item.translationNl,
@@ -79,13 +78,7 @@ export function SpeakFromPicture({
 
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <div
-        role="img"
-        aria-label={item.imageAlt}
-        className="flex h-40 w-40 items-center justify-center rounded-xl2 bg-primary-50 text-7xl"
-      >
-        {item.imageEmoji}
-      </div>
+      <ZoomableImage pictogramUrl={item.pictogramUrl} emoji={item.imageEmoji} alt={item.imageAlt} sizeClassName="h-40 w-40 text-7xl" />
       <p className="text-lg font-medium text-gray-700">Wat zie je? Zeg het hardop!</p>
 
       {useRealValidation ? (
@@ -118,7 +111,6 @@ export function SpeakFromPicture({
                 onContinue={() => onDone(false)}
                 preferredPersona={preferredPersona}
                 autoplayAudio={autoplayAudio}
-                onToggleAutoplayAudio={onToggleAutoplayAudio}
               />
             </div>
           )}

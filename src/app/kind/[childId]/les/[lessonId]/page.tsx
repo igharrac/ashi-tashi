@@ -16,6 +16,7 @@ import { ListenAndSpeak } from "@/components/exercises/ListenAndSpeak";
 import { RepeatAfterMe } from "@/components/exercises/RepeatAfterMe";
 import { SpeakFromPicture } from "@/components/exercises/SpeakFromPicture";
 import { ProgressBar } from "@/components/ui/ProgressBar";
+import { ReplayAudioButton } from "@/components/ui/ReplayAudioButton";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { applySpeakFirstMode } from "@/domain/lessonMode";
@@ -28,7 +29,7 @@ import type { ExerciseView } from "@/types/domain";
  */
 export default function LessonPage() {
   const params = useParams<{ childId: string; lessonId: string }>();
-  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, setAutoplayAudio, ready } = useAppStore();
+  const { getChild, recordExerciseAttempt, completeLesson, setLessonProgress, ready } = useAppStore();
 
   // Dieren blijft op zijn handmatig samengestelde thema (met zinnetjes-
   // afsluiting); alle andere categorieën met genoeg opnames krijgen een
@@ -301,11 +302,15 @@ export default function LessonPage() {
 
   return (
     <main
-      className="mx-auto flex w-full max-w-2xl flex-col gap-4 px-4 py-6 sm:px-6"
+      className="mx-auto flex w-full max-w-2xl flex-col gap-4 overflow-x-hidden px-4 py-6 sm:px-6"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="flex items-center gap-3">
+      {/* Statusbalk: terug, voortgang, en een klein "nog een keer
+          afspelen"-icoon (op verzoek losgetrokken van de mic-knop in de
+          oefening zelf — zie ReplayAudioButton.tsx) dat in élke status van
+          de oefening bereikbaar blijft, ook tijdens luisteren/feedback. */}
+      <div className="flex items-center gap-1">
         <Link
           href={`/kind/${child.id}/route`}
           aria-label="Terug naar de leerroute (je voortgang wordt bewaard)"
@@ -318,6 +323,13 @@ export default function LessonPage() {
         <div className="flex-1">
           <ProgressBar current={index} total={currentQueue.length} />
         </div>
+
+        <ReplayAudioButton
+          itemId={currentExercise.vocabularyItem.id}
+          text={currentExercise.vocabularyItem.latinSpelling}
+          fallbackSpokenText={currentExercise.vocabularyItem.translationNl}
+          preferredPersona={child.preferredVoicePersona}
+        />
       </div>
 
       {currentExercise.vocabularyItem.itemKind === "zin" && lesson.id !== DAILY_SENTENCES_LESSON_ID && (
@@ -326,19 +338,20 @@ export default function LessonPage() {
         </p>
       )}
 
-      {/* Vorige/overslaan als duidelijke pijlknoppen naast de oefening zelf
+      {/* Vorige/overslaan als lichte pijl-iconen naast de oefening zelf
           i.p.v. subtiel bovenin naast de voortgangsbalk (op verzoek) —
-          secundair qua stijl (dunne rand, gedempte kleur) t.o.v. de primaire
-          "Zeg het woord"/"Afspelen"-knoppen in de oefening, maar wel groot
-          genoeg om als duidelijk klikbaar te herkennen. */}
-      <div className="flex items-center gap-2 sm:gap-4">
+          bewust zonder rand/achtergrond (dezelfde "ghost"-stijl als het
+          afspeel-icoon in de statusbalk hierboven), maar wel groot genoeg
+          (volle hoogte van de oefenkaart) om als duidelijk klikbaar te
+          herkennen zonder zwaar oog te ogen. */}
+      <div className="flex items-center gap-1">
         <button
           type="button"
           onClick={goToPrevious}
           disabled={index === 0}
           aria-label="Vorige oefening"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-border-subtle
-            bg-white text-xl text-ink-muted transition-colors hover:border-clay-400 hover:text-clay-500
+          className="flex h-11 w-9 shrink-0 items-center justify-center self-center rounded-full text-2xl text-ink-muted
+            transition-colors hover:bg-cream hover:text-clay-500
             focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500 disabled:cursor-not-allowed disabled:opacity-30"
         >
           <span aria-hidden="true">‹</span>
@@ -352,7 +365,6 @@ export default function LessonPage() {
               onDone={() => handleAnswer(currentExercise, true)}
               preferredPersona={child.preferredVoicePersona}
               autoplayAudio={child.autoplayAudio}
-              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
 
@@ -366,7 +378,6 @@ export default function LessonPage() {
               preferredPersona={child.preferredVoicePersona}
               lenientPronunciationMode={child.lenientPronunciationMode}
               autoplayAudio={child.autoplayAudio}
-              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
 
@@ -379,7 +390,6 @@ export default function LessonPage() {
               preferredPersona={child.preferredVoicePersona}
               lenientPronunciationMode={child.lenientPronunciationMode}
               autoplayAudio={child.autoplayAudio}
-              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
 
@@ -392,7 +402,6 @@ export default function LessonPage() {
               preferredPersona={child.preferredVoicePersona}
               lenientPronunciationMode={child.lenientPronunciationMode}
               autoplayAudio={child.autoplayAudio}
-              onToggleAutoplayAudio={(enabled) => setAutoplayAudio(child.id, enabled)}
             />
           )}
         </div>
@@ -401,8 +410,8 @@ export default function LessonPage() {
           type="button"
           onClick={handleSkip}
           aria-label="Deze oefening overslaan"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-2 border-border-subtle
-            bg-white text-xl text-ink-muted transition-colors hover:border-clay-400 hover:text-clay-500
+          className="flex h-11 w-9 shrink-0 items-center justify-center self-center rounded-full text-2xl text-ink-muted
+            transition-colors hover:bg-cream hover:text-clay-500
             focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
         >
           <span aria-hidden="true">›</span>
