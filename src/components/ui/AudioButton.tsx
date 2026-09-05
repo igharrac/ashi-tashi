@@ -81,7 +81,7 @@ export function AudioButton({
   if (iconOnly) {
     return (
       <Button
-        variant={slow ? "secondary" : "primary"}
+        variant={slow ? "secondary" : "outline"}
         size="icon"
         onClick={handlePlay}
         aria-label={accessibleLabel}

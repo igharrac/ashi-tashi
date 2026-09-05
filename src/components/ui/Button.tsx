@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes } from "react";
 
-type Variant = "primary" | "secondary" | "ghost";
+type Variant = "primary" | "secondary" | "outline" | "ghost";
 type Size = "md" | "sm" | "icon";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -12,6 +12,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const VARIANT_CLASSES: Record<Variant, string> = {
   primary: "bg-forest-500 hover:bg-forest-600 text-white shadow-forest",
   secondary: "bg-white border-2 border-forest-500 text-forest-500 hover:bg-forest-50",
+  /** Outline-stijl: transparante achtergrond, gekleurde rand en gekleurd icoon/tekst — voor secundaire acties zoals de replay-knop naast een primaire knop (i.p.v. zelf ook als primary te ogen). */
+  outline: "bg-transparent border-2 border-forest-500 text-forest-500 hover:bg-forest-50",
   ghost: "bg-transparent text-clay-500 hover:bg-mint-100/40",
 };
 
