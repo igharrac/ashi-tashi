@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { VocabularyItemView } from "@/types/domain";
 import { AudioButton } from "@/components/ui/AudioButton";
 import { Button } from "@/components/ui/Button";
@@ -12,26 +12,23 @@ interface AnswerRevealProps {
   item: VocabularyItemView;
   onContinue: () => void;
   preferredPersona?: RecordingPersona | null;
-  /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx) — bepaalt of het antwoord vanzelf klinkt bij onthullen; handmatig nog eens horen kan via de "Afspelen"-knop hieronder. */
+  /** Kindinstelling child.autoplayAudio (zie SettingsPanelContent.tsx) — bepaalt of het antwoord vanzelf klinkt zodra dit verschijnt; handmatig nog eens horen kan via de knop hieronder. */
   autoplayAudio: boolean;
 }
 
 /**
- * Escape-knop voor spraakoefeningen die niet lukken (hfst. 22: een kind mag
- * nooit vastlopen). Toont het antwoord — fonetische spelling (of Nederlands
- * zolang die er nog niet is) + de audio — en laat het kind gewoon door.
- * Telt mee als "nog niet gelukt" (komt aan het eind van de les terug,
- * hfst. 13.13) i.p.v. stiekem als "goed".
+ * Compacte antwoord-weergave voor spraakoefeningen die niet lukken (hfst.
+ * 22: een kind mag nooit vastlopen) — toont het woord + vertaling meteen
+ * (op verzoek geen aparte "ik weet het niet"-knop meer, dat voelde als een
+ * onnodige extra stap) en laat het kind gewoon door. Telt mee als "nog niet
+ * gelukt" (komt aan het eind van de les terug, hfst. 13.13) i.p.v.
+ * stiekem als "goed".
  */
 export function AnswerReveal({ item, onContinue, preferredPersona, autoplayAudio }: AnswerRevealProps) {
-  const [revealed, setRevealed] = useState(false);
   const spelling = useWordSpelling(item.id);
 
-  // Zodra het antwoord onthuld wordt, telt dat als "nieuwe audio die
-  // verschijnt" (net als een nieuwe vraag/plaatje) — dus ook hier geldt de
-  // autoplay-instelling (SettingsPanelContent.tsx, geldt overal).
   useEffect(() => {
-    if (revealed && autoplayAudio) {
+    if (autoplayAudio) {
       void playWordAudio({
         itemId: item.id,
         text: item.latinSpelling,
@@ -40,27 +37,21 @@ export function AnswerReveal({ item, onContinue, preferredPersona, autoplayAudio
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [revealed]);
-
-  if (!revealed) {
-    return (
-      <Button variant="ghost" size="sm" onClick={() => setRevealed(true)}>
-        Ik weet het niet — laat het antwoord zien
-      </Button>
-    );
-  }
+  }, []);
 
   return (
-    <div className="flex flex-col items-center gap-3 rounded-xl2 bg-mint-100/40 p-4">
-      <p className="text-sm text-ink-muted">Het antwoord:</p>
-      <p className="text-xl font-bold text-forest-600">{spelling ?? item.translationNl}</p>
-      {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
-      <AudioButton
-        text={item.latinSpelling}
-        itemId={item.id}
-        fallbackSpokenText={item.translationNl}
-        preferredPersona={preferredPersona}
-      />
+    <div className="flex flex-col items-center gap-2">
+      <div className="flex items-center gap-2">
+        <p className="text-base font-semibold text-forest-600">{spelling ?? item.translationNl}</p>
+        {spelling && <p className="text-sm text-ink-muted">({item.translationNl})</p>}
+        <AudioButton
+          text={item.latinSpelling}
+          itemId={item.id}
+          fallbackSpokenText={item.translationNl}
+          preferredPersona={preferredPersona}
+          iconOnly
+        />
+      </div>
       <Button onClick={onContinue}>Verder</Button>
     </div>
   );

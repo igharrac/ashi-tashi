@@ -9,6 +9,7 @@ import { MicLevelIndicator } from "@/components/ui/MicLevelIndicator";
 import { ZoomableImage } from "@/components/ui/ZoomableImage";
 import { getReferenceAudioForItem } from "@/lib/referenceAudio";
 import { playWordAudio } from "@/lib/playWordAudio";
+import { useWordSpelling } from "@/hooks/useWordSpelling";
 import type { RecordingPersona } from "@/lib/recordableItems";
 import { audioSimilarityProvider } from "@/providers/pronunciation/audioSimilarityProvider";
 import { LENIENT_PRONUNCIATION_ATTEMPTS, leniencyDoneMessage, leniencyRetryMessage } from "@/domain/pronunciationLeniency";
@@ -61,6 +62,7 @@ export function ListenAndSpeak({
   lenientPronunciationMode = true,
   autoplayAudio,
 }: ListenAndSpeakProps) {
+  const spelling = useWordSpelling(item.id);
   const [status, setStatus] = useState<Status>("idle");
   const [feedbackMessage, setFeedbackMessage] = useState<string | null>(null);
   const [attempts, setAttempts] = useState(0);
@@ -282,6 +284,10 @@ export function ListenAndSpeak({
           </p>
           <p aria-live="polite" className="text-lg font-medium text-success-500">
             {feedbackMessage}
+          </p>
+          <p className="text-sm text-ink-muted">
+            Het was: <span className="font-bold text-forest-600">{spelling ?? item.translationNl}</span>
+            {spelling && <span className="ml-1">({item.translationNl})</span>}
           </p>
           {isDebugMode && debugInfo && (
             <p className="max-w-xs break-words rounded bg-gray-100 px-2 py-1 font-mono text-xs text-gray-500">
