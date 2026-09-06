@@ -65,16 +65,21 @@ export async function POST(request: Request) {
 
 export async function PATCH(request: Request) {
   const body = (await request.json().catch(() => null)) as
-    | { kind?: "category"; slug?: string; titleNl?: string; emoji?: string }
+    | { kind?: "category"; slug?: string; titleNl?: string; emoji?: string; startsWithQuestionScreen?: boolean }
     | { kind?: "sentence"; id?: string; translationNl?: string; contextNl?: string; emoji?: string }
     | null;
 
   if (!body) return NextResponse.json({ error: "Ongeldige aanvraag." }, { status: 400 });
 
   if (body.kind === "category") {
-    const { slug, titleNl, emoji } = body as { slug?: string; titleNl?: string; emoji?: string };
+    const { slug, titleNl, emoji, startsWithQuestionScreen } = body as {
+      slug?: string;
+      titleNl?: string;
+      emoji?: string;
+      startsWithQuestionScreen?: boolean;
+    };
     if (typeof slug !== "string") return NextResponse.json({ error: "Slug is verplicht." }, { status: 400 });
-    const result = await updateCategory(slug, { titleNl, emoji });
+    const result = await updateCategory(slug, { titleNl, emoji, startsWithQuestionScreen });
     if (result === null) return NextResponse.json({ error: "Categorie niet gevonden." }, { status: 404 });
     if (isMutationError(result)) return NextResponse.json(result, { status: 400 });
     return NextResponse.json({ category: result });

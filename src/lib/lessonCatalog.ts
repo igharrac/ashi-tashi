@@ -153,6 +153,7 @@ function buildPracticeLessonForCategory(categorySlug: string, practiceContent: P
     titleNl: category.titleNl,
     targetMinutes: Math.max(3, Math.round(exercises.length * 0.5)),
     exercises,
+    startsWithQuestionScreen: category.startsWithQuestionScreen,
   };
 }
 

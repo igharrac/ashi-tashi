@@ -93,7 +93,7 @@ export async function addCategory(
 
 export async function updateCategory(
   slug: string,
-  patch: { titleNl?: string; emoji?: string },
+  patch: { titleNl?: string; emoji?: string; startsWithQuestionScreen?: boolean },
 ): Promise<PracticeSentenceCategory | null | CategoryMutationError> {
   const content = await readPracticeContent();
   const category = content.categories.find((c) => c.slug === slug);
@@ -108,6 +108,9 @@ export async function updateCategory(
     const trimmed = patch.emoji.trim();
     if (!trimmed) return { error: "Emoji is verplicht." };
     category.emoji = trimmed;
+  }
+  if (patch.startsWithQuestionScreen !== undefined) {
+    category.startsWithQuestionScreen = patch.startsWithQuestionScreen;
   }
 
   await writePracticeContent(content);

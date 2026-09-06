@@ -60,6 +60,8 @@ export interface LessonView {
   titleNl: string;
   targetMinutes: number;
   exercises: ExerciseView[];
+  /** Alleen gezet voor Oefenen-categorielessen met startsWithQuestionScreen aan (studio-instelbaar) — zie lessonCatalog.ts/QuestionIntroCard. */
+  startsWithQuestionScreen?: boolean;
 }
 
 export interface ThemeView {

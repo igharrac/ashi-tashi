@@ -18,6 +18,8 @@ import { SpeakFromPicture } from "@/components/exercises/SpeakFromPicture";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { AutoplayIndicator } from "@/components/ui/AutoplayIndicator";
 import { CategoryCompleteScreen } from "@/components/rewards/CategoryCompleteScreen";
+import { QuestionIntroCard } from "@/components/ui/QuestionIntroCard";
+import { CheckpointScreen } from "@/components/rewards/CheckpointScreen";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { applySpeakFirstMode } from "@/domain/lessonMode";
@@ -111,6 +113,22 @@ export default function LessonPage() {
   const [wrongCounts, setWrongCounts] = useState<Record<string, number>>({});
   const [finished, setFinished] = useState<{ points: number; newBadges: string[] } | null>(null);
 
+  // Kort tussenschermpje ("een level binnen een level", op verzoek) na
+  // woord 6 in langere lessen (12+ woorden) — precies één keer per
+  // lessessie, ook bij hervatten na tussentijds afsluiten (dan telt een
+  // hersteld index > 6 als "al gehad", geen dubbele toon).
+  const checkpointShownRef = useRef(false);
+  const [showCheckpoint, setShowCheckpoint] = useState(false);
+  useEffect(() => {
+    if (checkpointShownRef.current || !queue) return;
+    if (queue.length >= 12 && index === 6) {
+      checkpointShownRef.current = true;
+      setShowCheckpoint(true);
+    } else if (index > 6) {
+      checkpointShownRef.current = true;
+    }
+  }, [queue, index]);
+
   useEffect(() => {
     if (!childForInit || !lesson || finished || queue === null) return;
     setLessonProgress(childForInit.id, { lessonId: lesson.id, index });
@@ -150,6 +168,11 @@ export default function LessonPage() {
   // binnen de onderstaande geneste functies (goToNext e.d.) kan volgen.
   const currentQueue: ExerciseView[] = queue;
   const currentExercise = currentQueue[index];
+  // Openingsvraag-item (bv. "Waar is de bal?" bij Voorzetsels) — alleen het
+  // allereerste item van een categorie met startsWithQuestionScreen aan
+  // (studio-instelbaar, zie opnames/page.tsx) krijgt de grotere, decoratieve
+  // QuestionIntroCard-omlijsting i.p.v. de standaard oefenweergave.
+  const isQuestionIntro = Boolean(lesson.startsWithQuestionScreen) && index === 0;
 
   function handleAnswer(exercise: ExerciseView, isCorrect: boolean) {
     recordExerciseAttempt(child!.id, {
@@ -271,6 +294,13 @@ export default function LessonPage() {
     );
   }
 
+  if (showCheckpoint) {
+    keyboardHandlersRef.current = null;
+    return (
+      <CheckpointScreen completed={index} total={currentQueue.length} onContinue={() => setShowCheckpoint(false)} />
+    );
+  }
+
   // Nu pas vullen: alleen op dit scherm (echte les, geen laad/klaar/leeg-
   // toestand) doen pijltoetsen/swipes ook echt iets.
   keyboardHandlersRef.current = { onPrevious: goToPrevious, onSkip: handleSkip };
@@ -365,20 +395,25 @@ export default function LessonPage() {
           />
         )}
 
-        {currentExercise.type === "NAZEGGEN" && (
-          <RepeatAfterMe
-            key={currentExercise.id}
-            item={currentExercise.vocabularyItem}
-            microphoneOptIn={child.microphoneOptIn}
-            onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
-            preferredPersona={child.preferredVoicePersona}
-            lenientPronunciationMode={child.lenientPronunciationMode}
-            autoplayAudio={child.autoplayAudio}
-            onPrevious={goToPrevious}
-            previousDisabled={index === 0}
-            onNext={handleSkip}
-          />
-        )}
+        {currentExercise.type === "NAZEGGEN" &&
+          (() => {
+            const repeatAfterMe = (
+              <RepeatAfterMe
+                key={currentExercise.id}
+                item={currentExercise.vocabularyItem}
+                microphoneOptIn={child.microphoneOptIn}
+                onDone={(isCorrect) => handleAnswer(currentExercise, isCorrect)}
+                preferredPersona={child.preferredVoicePersona}
+                lenientPronunciationMode={child.lenientPronunciationMode}
+                autoplayAudio={child.autoplayAudio}
+                onPrevious={goToPrevious}
+                previousDisabled={index === 0}
+                onNext={handleSkip}
+                emphasize={isQuestionIntro}
+              />
+            );
+            return isQuestionIntro ? <QuestionIntroCard>{repeatAfterMe}</QuestionIntroCard> : repeatAfterMe;
+          })()}
 
         {currentExercise.type === "ZELFSTANDIG_SPREKEN" && (
           <SpeakFromPicture

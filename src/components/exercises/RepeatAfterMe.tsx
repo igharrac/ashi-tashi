@@ -30,6 +30,8 @@ interface RepeatAfterMeProps {
   onPrevious?: () => void;
   previousDisabled?: boolean;
   onNext?: () => void;
+  /** Groter lettertype voor het openingsvraag-item van een categorie met startsWithQuestionScreen (studio-instelbaar) — zie QuestionIntroCard in de lespagina. */
+  emphasize?: boolean;
 }
 
 /**
@@ -53,6 +55,7 @@ export function RepeatAfterMe({
   onPrevious,
   previousDisabled,
   onNext,
+  emphasize = false,
 }: RepeatAfterMeProps) {
   const speech = useSpeechCheck(
     item.translationNl,
@@ -111,13 +114,17 @@ export function RepeatAfterMe({
           />
         </NavFlankedRow>
       ) : null}
-      <p className="text-lg font-medium text-gray-700">
+      <p className={emphasize ? "text-2xl font-medium text-gray-700" : "text-lg font-medium text-gray-700"}>
         {item.contextNl ?? (item.itemKind === "zin" ? "Zeg de zin na:" : "Zeg het woord na:")}
       </p>
       {item.itemKind === "zin" ? (
         <>
-          <p className="text-2xl font-bold text-primary-600">{spelling ?? item.translationNl}</p>
-          {spelling && <p className="text-sm text-ink-muted">{item.translationNl}</p>}
+          <p className={emphasize ? "text-4xl font-bold text-primary-600" : "text-2xl font-bold text-primary-600"}>
+            {spelling ?? item.translationNl}
+          </p>
+          {spelling && (
+            <p className={emphasize ? "text-lg text-ink-muted" : "text-sm text-ink-muted"}>{item.translationNl}</p>
+          )}
         </>
       ) : (
         <NavFlankedRow onPrevious={onPrevious} previousDisabled={previousDisabled} onNext={onNext}>

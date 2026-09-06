@@ -28,7 +28,8 @@
     {
       "slug": "oefenen-voorzetsels",
       "titleNl": "Voorzetsels",
-      "emoji": "📍"
+      "emoji": "📍",
+      "startsWithQuestionScreen": true
     }
   ],
   "sentences": [

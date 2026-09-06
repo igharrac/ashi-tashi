@@ -118,7 +118,7 @@ export default function StudioOpnamesPage() {
   const [contentSaving, setContentSaving] = useState(false);
 
   const [editingCategory, setEditingCategory] = useState(false);
-  const [categoryDraft, setCategoryDraft] = useState({ titleNl: "", emoji: "" });
+  const [categoryDraft, setCategoryDraft] = useState({ titleNl: "", emoji: "", startsWithQuestionScreen: false });
   const [addingCategory, setAddingCategory] = useState(false);
   const [newCategoryDraft, setNewCategoryDraft] = useState({ titleNl: "", emoji: "" });
 
@@ -1050,6 +1050,16 @@ export default function StudioOpnamesPage() {
                         focus-visible:outline focus-visible:outline-4 focus-visible:outline-info-500"
                     />
                   </label>
+                  <label className="flex items-center gap-2 text-xs font-medium text-ink-muted">
+                    <input
+                      type="checkbox"
+                      checked={categoryDraft.startsWithQuestionScreen}
+                      onChange={(e) =>
+                        setCategoryDraft((prev) => ({ ...prev, startsWithQuestionScreen: e.target.checked }))
+                      }
+                    />
+                    Start met openingsvraag-scherm (groter, decoratief)
+                  </label>
                   <Button
                     variant="primary"
                     size="sm"
@@ -1080,7 +1090,11 @@ export default function StudioOpnamesPage() {
                     variant="ghost"
                     size="sm"
                     onClick={() => {
-                      setCategoryDraft({ titleNl: activePracticeCategory.titleNl, emoji: activePracticeCategory.emoji });
+                      setCategoryDraft({
+                        titleNl: activePracticeCategory.titleNl,
+                        emoji: activePracticeCategory.emoji,
+                        startsWithQuestionScreen: activePracticeCategory.startsWithQuestionScreen ?? false,
+                      });
                       setEditingCategory(true);
                     }}
                   >

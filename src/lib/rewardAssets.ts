@@ -50,6 +50,7 @@ const DEFAULT_COLLECTIBLE_ICON = "/rewards/06-category-complete/03-big-badge.svg
 
 export const CATEGORY_COMPLETE_ICONS = {
   trophy: "/rewards/06-category-complete/01-trophy.svg",
+  medal: "/rewards/06-category-complete/02-medal.svg",
   rays: "/rewards/07-decorative-motion/03-rays.svg",
   rain: "/rewards/06-category-complete/04-celebration-rain.svg",
   blob: "/rewards/07-decorative-motion/05-organic-blob.svg",

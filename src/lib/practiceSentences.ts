@@ -23,6 +23,14 @@ export interface PracticeSentenceCategory {
   slug: string;
   titleNl: string;
   emoji: string;
+  /**
+   * Studio-instelbaar (opnames/page.tsx): het eerste item van deze
+   * categorie is een openingsvraag (bv. "Waar is de bal?" bij Voorzetsels)
+   * i.p.v. een gewoon los zinnetje — toont dat item met een eigen
+   * QuestionIntroCard-omlijsting (solide achtergrond, groter lettertype,
+   * decoratieve illustraties) in plaats van de standaard oefenweergave.
+   */
+  startsWithQuestionScreen?: boolean;
 }
 
 export interface PracticeSentenceDefinition {
