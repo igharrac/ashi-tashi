@@ -102,6 +102,44 @@ export function RepeatAfterMe({
     setFallbackStatus("feedback");
   }
 
+  // Openingsvraag-item (emphasize): dit is een opdracht/vraag, geen
+  // beoordeelde uitspraakoefening — op verzoek geen "Zeg het woord"-
+  // microfoonknop en geen instructietekst ("Dit is de openingsvraag...")
+  // hier, alleen het (grotere, transparante) plaatje, het woord/de zin,
+  // een optionele afspeelknop en een simpele "Verder"-knop.
+  if (emphasize) {
+    return (
+      <div className="flex flex-col items-center gap-6 text-center">
+        {item.itemKind === "zin" ? (
+          <NavFlankedRow onPrevious={onPrevious} previousDisabled={previousDisabled} onNext={onNext}>
+            <ZoomableImage
+              pictogramUrl={item.pictogramUrl}
+              emoji={item.imageEmoji}
+              alt={item.imageAlt}
+              sizeClassName="h-56 w-56 text-8xl"
+              transparentBackground
+            />
+          </NavFlankedRow>
+        ) : null}
+
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-4xl font-bold text-primary-900">{spelling ?? item.translationNl}</p>
+          {spelling && <p className="text-lg text-ink-muted">{item.translationNl}</p>}
+        </div>
+
+        <AudioButton
+          text={item.latinSpelling}
+          itemId={item.id}
+          fallbackSpokenText={item.translationNl}
+          preferredPersona={preferredPersona}
+          iconOnly
+        />
+
+        <Button onClick={() => onDone(true)}>Verder</Button>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center gap-6 text-center">
       {item.itemKind === "zin" ? (

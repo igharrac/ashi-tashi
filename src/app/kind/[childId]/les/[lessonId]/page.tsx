@@ -327,7 +327,9 @@ export default function LessonPage() {
 
   return (
     <main
-      className="mx-auto flex w-full max-w-2xl flex-col gap-4 overflow-x-hidden px-4 py-6 sm:px-6"
+      className={`mx-auto flex w-full max-w-2xl flex-col gap-4 overflow-x-hidden px-4 py-6 sm:px-6 ${
+        isQuestionIntro ? "min-h-screen bg-secondary-100" : ""
+      }`}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -355,7 +357,7 @@ export default function LessonPage() {
         />
       </div>
 
-      {currentExercise.vocabularyItem.itemKind === "zin" && lesson.id !== DAILY_SENTENCES_LESSON_ID && (
+      {currentExercise.vocabularyItem.itemKind === "zin" && lesson.id !== DAILY_SENTENCES_LESSON_ID && !isQuestionIntro && (
         <p className="text-center text-xs font-bold uppercase tracking-wide text-clay-500">
           🎉 Bijna klaar — nu in een hele zin!
         </p>

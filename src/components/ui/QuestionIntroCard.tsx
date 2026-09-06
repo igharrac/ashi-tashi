@@ -5,34 +5,37 @@ interface QuestionIntroCardProps {
 }
 
 /**
- * Visuele omlijsting voor het openingsvraag-item van een Oefenen-categorie
- * met `startsWithQuestionScreen` aan (studio-instelbaar, zie
- * practiceSentences.ts / opnames/page.tsx) — bijvoorbeeld "Waar is de bal?"
- * bij Voorzetsels. Solide achtergrondkleur + een paar decoratieve
- * illustraties uit de reward-asset-set (public/rewards/07-decorative-motion)
- * zodat de openingsvraag duidelijk als zodanig voelt i.p.v. als een gewone
- * oefening. De grotere tekst zelf regelt RepeatAfterMe's `emphasize`-prop.
+ * Decoratieve omlijsting voor het openingsvraag-item van een
+ * Oefenen-categorie met `startsWithQuestionScreen` aan (studio-instelbaar,
+ * zie practiceSentences.ts / opnames/page.tsx) — bijvoorbeeld "Waar is de
+ * bal?" bij Voorzetsels. Alleen een paar decoratieve illustraties uit de
+ * reward-asset-set (public/rewards/07-decorative-motion); de solide
+ * achtergrondkleur zit op de hele pagina (zie <main> in
+ * les/[lessonId]/page.tsx) zodat het geen apart "kaartje" meer is maar
+ * één ononderbroken kleurvlak — op verzoek: "Ik zou de hele pagina in 1
+ * kleur willen". De grotere tekst zelf regelt RepeatAfterMe's
+ * `emphasize`-prop.
  */
 export function QuestionIntroCard({ children }: QuestionIntroCardProps) {
   return (
-    <div className="relative overflow-hidden rounded-xl3 bg-secondary-100 px-6 py-10">
+    <div className="relative overflow-visible px-2 py-4">
       <img
         src="/rewards/07-decorative-motion/01-ring.svg"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -left-6 -top-6 h-20 w-20 opacity-40"
+        className="pointer-events-none absolute -left-4 -top-4 h-16 w-16 opacity-30 sm:h-20 sm:w-20"
       />
       <img
         src="/rewards/07-decorative-motion/04-dots.svg"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -right-4 top-6 h-16 w-16 opacity-50"
+        className="pointer-events-none absolute -right-2 top-2 h-14 w-14 opacity-40 sm:h-16 sm:w-16"
       />
       <img
         src="/rewards/07-decorative-motion/02-squiggle.svg"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-6 left-1/3 h-14 w-14 opacity-40"
+        className="pointer-events-none absolute -bottom-4 left-1/3 h-12 w-12 opacity-30 sm:h-14 sm:w-14"
       />
       <div className="relative">{children}</div>
     </div>

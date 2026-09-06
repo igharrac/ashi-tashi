@@ -26,6 +26,8 @@ interface ZoomableImageProps {
   alt: string;
   /** Tailwind-klassen voor de kleine weergave in de oefening zelf, bv. "h-40 w-40 text-7xl". */
   sizeClassName?: string;
+  /** Geen achtergrondvulling/padding op de knop — voor gebruik op een al-solide achtergrond (bv. QuestionIntroCard), zodat het plaatje er los/groter uitziet i.p.v. in een kaartje. */
+  transparentBackground?: boolean;
 }
 
 /**
@@ -35,7 +37,13 @@ interface ZoomableImageProps {
  * ontbreken/niet laden) zodat elke oefening dezelfde, geteste logica
  * hergebruikt i.p.v. hem 4x apart te herhalen.
  */
-export function ZoomableImage({ pictogramUrl, emoji, alt, sizeClassName = "h-40 w-40 text-7xl" }: ZoomableImageProps) {
+export function ZoomableImage({
+  pictogramUrl,
+  emoji,
+  alt,
+  sizeClassName = "h-40 w-40 text-7xl",
+  transparentBackground = false,
+}: ZoomableImageProps) {
   const [imageFailed, setImageFailed] = useState(false);
   const [zoomed, setZoomed] = useState(false);
   const showImage = Boolean(pictogramUrl) && !imageFailed;
@@ -46,7 +54,9 @@ export function ZoomableImage({ pictogramUrl, emoji, alt, sizeClassName = "h-40 
         type="button"
         onClick={() => setZoomed(true)}
         aria-label={`${alt} — tik om te vergroten`}
-        className={`relative flex items-center justify-center rounded-xl2 bg-primary-50 p-2 ${sizeClassName}`}
+        className={`relative flex items-center justify-center rounded-xl2 ${
+          transparentBackground ? "" : "bg-primary-50 p-2"
+        } ${sizeClassName}`}
       >
         {showImage ? (
           // eslint-disable-next-line @next/next/no-img-element -- extern ARASAAC-plaatje (CC BY-NC-SA), geen lokale kopie, dus geen next/image-optimalisatie mogelijk
