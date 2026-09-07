@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import type { CategoryDefinition } from "@/lib/contentCatalog";
 import {
   DAILY_SENTENCES_LESSON_ID,
@@ -41,6 +42,7 @@ const FILTER_META: Record<FilterKey, { label: string; emoji: string }> = {
 };
 
 export function StepGrid({ childId, child }: StepGridProps) {
+  const searchParams = useSearchParams();
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [practiceContent, setPracticeContent] = useState<PracticeContent | null>(null);
   const [dailySentenceContent, setDailySentenceContent] = useState<DailySentenceContent | null>(null);
@@ -48,7 +50,13 @@ export function StepGrid({ childId, child }: StepGridProps) {
   const [categories, setCategories] = useState<CategoryDefinition[] | null>(null);
   // Op verzoek: "alles staat door elkaar" — kunnen filteren op Zinnen/
   // Oefenen/Woorden/Gesprekken i.p.v. altijd alle groepen tegelijk zien.
-  const [filter, setFilter] = useState<FilterKey>("alles");
+  // Startfilter mag ook meekomen via ?filter=oefenen (bv. vanuit de
+  // "Klaar met ontdekken"-overgang, zie ontdekken/page.tsx) — alleen als
+  // eerste waarde, verandert niet meer mee als de URL later wijzigt.
+  const [filter, setFilter] = useState<FilterKey>(() => {
+    const requested = searchParams.get("filter");
+    return requested && requested in FILTER_META ? (requested as FilterKey) : "alles";
+  });
 
   useEffect(() => {
     let cancelled = false;

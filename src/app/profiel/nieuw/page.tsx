@@ -122,7 +122,12 @@ export default function NewChildProfilePage() {
         <div className="flex flex-col gap-8">
           <fieldset>
             <legend className="mb-2 text-sm font-medium text-gray-700">Beginniveau (hfst. 5.1)</legend>
-            <p className="mb-2 text-xs text-gray-500">Later gewoon aan te passen via het Profiel-scherm of de instellingen op het reispad.</p>
+            <div className="mb-3 flex items-start gap-2 rounded-xl2 border border-accent-200 bg-accent-50 px-3 py-2">
+              <span aria-hidden="true" className="mt-0.5 text-base">🔄</span>
+              <p className="text-xs text-accent-800">
+                Geen zorgen — je kiest dit niet voor altijd. Niveau en stem pas je later op elk moment aan bij Profiel.
+              </p>
+            </div>
             <div className="flex flex-col gap-2">
               {EXPERIENCE_LEVELS.map((option) => (
                 <label
@@ -161,9 +166,12 @@ export default function NewChildProfilePage() {
         <div className="flex flex-col gap-8">
           <fieldset>
             <legend className="mb-2 text-sm font-medium text-gray-700">Welke stem hoort dit kind bij het luisteren?</legend>
-            <p className="mb-3 text-xs text-gray-500">
-              Een bewuste keuze — later nog aan te passen via het Profiel-scherm of de instellingen op het reispad.
-            </p>
+            <div className="mb-3 flex items-start gap-2 rounded-xl2 border border-accent-200 bg-accent-50 px-3 py-2">
+              <span aria-hidden="true" className="mt-0.5 text-base">🔄</span>
+              <p className="text-xs text-accent-800">
+                Een bewuste keuze, maar geen definitieve — je past deze stem later op elk moment aan bij Profiel.
+              </p>
+            </div>
             <div className="grid grid-cols-2 gap-3" role="group">
               {RECORDING_PERSONAS.map((persona) => (
                 <button

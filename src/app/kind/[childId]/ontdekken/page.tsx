@@ -2,12 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { notFound, useParams } from "next/navigation";
+import { notFound, useParams, useRouter } from "next/navigation";
 import { useAppStore } from "@/lib/store";
 import { AppShell } from "@/components/layout/AppShell";
 import { WordGrid } from "@/components/discover/WordGrid";
 import { WordDetailModal } from "@/components/discover/WordDetailModal";
 import { Button } from "@/components/ui/Button";
+import { CheckpointScreen } from "@/components/rewards/CheckpointScreen";
 import { buildCatalogItems, type CatalogItem, type CategoryDefinition } from "@/lib/contentCatalog";
 import { getUnlockedCategorySlugs } from "@/lib/lessonCatalog";
 import { getItemIdsWithRecordings } from "@/lib/referenceAudio";
@@ -33,11 +34,16 @@ function toVocabularyItemView(item: CatalogItem): VocabularyItemView {
  */
 export default function DiscoverPage() {
   const params = useParams<{ childId: string }>();
+  const router = useRouter();
   const { getChild, ready } = useAppStore();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [recordedIds, setRecordedIds] = useState<Set<string> | null>(null);
   const [activeCategorySlug, setActiveCategorySlug] = useState<string | null>(null);
   const [categories, setCategories] = useState<CategoryDefinition[] | null>(null);
+  // "Klaar met ontdekken"-knop hieronder -> kort CheckpointScreen-momentje
+  // -> automatisch door naar Oefenen op het reispad (op verzoek: "dan zou
+  // je automatisch naar 'Oefenen' moeten via een mooie CheckpointScreen").
+  const [showCheckpoint, setShowCheckpoint] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -82,6 +88,21 @@ export default function DiscoverPage() {
   if (!ready) return <p className="pt-12 text-center text-ink-muted">Even laden…</p>;
   if (!child) return notFound();
 
+  if (showCheckpoint) {
+    return (
+      <CheckpointScreen
+        title="Goed ontdekt!"
+        subtitle={
+          items.length > 0
+            ? `Je hebt ${items.length} woord${items.length === 1 ? "" : "en"} bekeken. Tijd om ze te oefenen.`
+            : "Tijd om te oefenen."
+        }
+        continueLabel="Naar Oefenen →"
+        onContinue={() => router.push(`/kind/${child.id}/route?filter=oefenen`)}
+      />
+    );
+  }
+
   const loading = recordedIds === null || categories === null;
 
   return (
@@ -95,6 +116,11 @@ export default function DiscoverPage() {
               <span aria-hidden="true">🎮</span> Speel: Match het geluid
             </Button>
           </Link>
+        )}
+        {!loading && items.length > 0 && (
+          <Button onClick={() => setShowCheckpoint(true)} className="mt-4 flex items-center gap-2">
+            <span aria-hidden="true">✅</span> Klaar met ontdekken
+          </Button>
         )}
       </div>
 

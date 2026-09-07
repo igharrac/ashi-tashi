@@ -4,8 +4,13 @@ import { Button } from "@/components/ui/Button";
 import { CATEGORY_COMPLETE_ICONS } from "@/lib/rewardAssets";
 
 interface CheckpointScreenProps {
-  completed: number;
-  total: number;
+  /** Voortgang binnen een langere les (12+ woorden) — samen met `total` gebruikt voor de standaard subtitel. */
+  completed?: number;
+  total?: number;
+  /** Aangepaste titel/subtitel voor ander gebruik van hetzelfde scherm, bv. de overgang Ontdekken -> Oefenen. */
+  title?: string;
+  subtitle?: string;
+  continueLabel?: string;
   onContinue: () => void;
 }
 
@@ -17,14 +22,22 @@ const CONFETTI_DOTS = [
 ];
 
 /**
- * Kort, licht tussenschermpje halverwege een langere les (12+ woorden,
- * na woord 6) — "een level binnen een level" (op verzoek). Bewust een veel
- * lichtere solid-kleur (`primary-300`) dan het grote "categorie
- * compleet"-scherm (`primary-700`, zie CategoryCompleteScreen.tsx) en
- * zonder wachttijd vóór de knop: dit moet snel en laagdrempelig aanvoelen
+ * Kort, licht tussenschermpje — "een level binnen een level" (op verzoek).
+ * Bewust een veel lichtere solid-kleur (`primary-300`) dan het grote
+ * "categorie compleet"-scherm (`primary-700`, zie CategoryCompleteScreen.tsx)
+ * en zonder wachttijd vóór de knop: dit moet snel en laagdrempelig aanvoelen
  * — een checkpoint, geen tweede eindpunt.
+ *
+ * Twee gebruiken delen dit scherm: het oorspronkelijke mid-les-checkpoint
+ * (via `completed`/`total`) en de overgang Ontdekken -> Oefenen (via eigen
+ * `title`/`subtitle`/`continueLabel`) — op verzoek: "Wanneer je met
+ * 'ontdekken' klaar bent, dan zou je automatisch naar 'Oefenen' moeten via
+ * een mooie CheckpointScreen screen."
  */
-export function CheckpointScreen({ completed, total, onContinue }: CheckpointScreenProps) {
+export function CheckpointScreen({ completed, total, title, subtitle, continueLabel, onContinue }: CheckpointScreenProps) {
+  const resolvedSubtitle =
+    subtitle ?? (completed !== undefined && total !== undefined ? `Je bent al bij woord ${completed} van ${total}.` : undefined);
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden bg-primary-300 px-6 py-10 text-center">
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
@@ -46,13 +59,11 @@ export function CheckpointScreen({ completed, total, onContinue }: CheckpointScr
         />
       </div>
 
-      <h1 className="text-xl font-bold text-primary-900">Lekker bezig!</h1>
-      <p className="text-primary-800">
-        Je bent al bij woord {completed} van {total}.
-      </p>
+      <h1 className="text-xl font-bold text-primary-900">{title ?? "Lekker bezig!"}</h1>
+      {resolvedSubtitle && <p className="text-primary-800">{resolvedSubtitle}</p>}
 
       <Button variant="secondary" onClick={onContinue}>
-        Verder
+        {continueLabel ?? "Verder"}
       </Button>
     </main>
   );
