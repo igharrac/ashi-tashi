@@ -56,6 +56,25 @@ export const CATEGORY_COMPLETE_ICONS = {
   blob: "/rewards/07-decorative-motion/05-organic-blob.svg",
 };
 
+/**
+ * Illustraties voor het herhalende mid-les-checkpoint (elke 6 woorden, zie
+ * CheckpointScreen.tsx) — cyclet per keer dat het scherm binnen dezelfde les
+ * verschijnt, zodat het 2e/3e checkpoint niet exact hetzelfde plaatje toont
+ * als het 1e (op verzoek: "andere illustratie").
+ */
+export const CHECKPOINT_ICONS = [
+  "/rewards/06-category-complete/02-medal.svg",
+  "/rewards/02-streaks/04-crown.svg",
+  "/rewards/02-streaks/02-three-stars.svg",
+  "/rewards/02-streaks/05-lightning.svg",
+  "/rewards/02-streaks/06-growing-plant.svg",
+  "/rewards/03-unlocks/05-golden-ticket.svg",
+];
+
+export function checkpointIconForOccurrence(occurrence: number): string {
+  return CHECKPOINT_ICONS[occurrence % CHECKPOINT_ICONS.length]!;
+}
+
 export function pickRandom<T>(items: readonly T[]): T {
   return items[Math.floor(Math.random() * items.length)] ?? items[0]!;
 }

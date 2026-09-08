@@ -113,21 +113,19 @@ export default function LessonPage() {
   const [wrongCounts, setWrongCounts] = useState<Record<string, number>>({});
   const [finished, setFinished] = useState<{ points: number; newBadges: string[] } | null>(null);
 
-  // Kort tussenschermpje ("een level binnen een level", op verzoek) na
-  // woord 6 in langere lessen (12+ woorden) — precies één keer per
-  // lessessie, ook bij hervatten na tussentijds afsluiten (dan telt een
-  // hersteld index > 6 als "al gehad", geen dubbele toon).
-  const checkpointShownRef = useRef(false);
+  // Kort tussenschermpje ("een level binnen een level", op verzoek), telkens
+  // na elke 6 woorden in langere lessen (12+ woorden) — dus niet meer maar
+  // één keer per les, zie goToNext hieronder. `pendingIndex` is de index
+  // waar de les naartoe gaat zodra het kind op "Verder" tikt: de index zelf
+  // wordt bewust nog NIET gezet zolang het checkpoint zichtbaar is, anders
+  // mount de volgende oefening alvast (met zijn eigen autoplay) onder het
+  // checkpoint — dat was de vorige bug ("het volgende woordje wordt
+  // tegelijkertijd ook afgespeeld"). `checkpointOccurrenceRef` telt hoe
+  // vaak dit al is getoond binnen de les, voor een ander icoon/geluidje per
+  // keer (zie CheckpointScreen.tsx).
   const [showCheckpoint, setShowCheckpoint] = useState(false);
-  useEffect(() => {
-    if (checkpointShownRef.current || !queue) return;
-    if (queue.length >= 12 && index === 6) {
-      checkpointShownRef.current = true;
-      setShowCheckpoint(true);
-    } else if (index > 6) {
-      checkpointShownRef.current = true;
-    }
-  }, [queue, index]);
+  const [pendingIndex, setPendingIndex] = useState<number | null>(null);
+  const checkpointOccurrenceRef = useRef(-1);
 
   useEffect(() => {
     if (!childForInit || !lesson || finished || queue === null) return;
@@ -208,8 +206,15 @@ export default function LessonPage() {
   }
 
   function goToNext() {
-    if (index + 1 < currentQueue.length) {
-      setIndex((i) => i + 1);
+    const nextIndex = index + 1;
+    if (nextIndex < currentQueue.length) {
+      if (currentQueue.length >= 12 && nextIndex % 6 === 0) {
+        checkpointOccurrenceRef.current += 1;
+        setPendingIndex(nextIndex);
+        setShowCheckpoint(true);
+        return;
+      }
+      setIndex(nextIndex);
       return;
     }
     if (retryQueue.length > 0) {
@@ -297,7 +302,16 @@ export default function LessonPage() {
   if (showCheckpoint) {
     keyboardHandlersRef.current = null;
     return (
-      <CheckpointScreen completed={index} total={currentQueue.length} onContinue={() => setShowCheckpoint(false)} />
+      <CheckpointScreen
+        completed={pendingIndex ?? index}
+        total={currentQueue.length}
+        occurrence={Math.max(checkpointOccurrenceRef.current, 0)}
+        onContinue={() => {
+          if (pendingIndex !== null) setIndex(pendingIndex);
+          setShowCheckpoint(false);
+          setPendingIndex(null);
+        }}
+      />
     );
   }
 
