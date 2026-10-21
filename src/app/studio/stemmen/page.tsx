@@ -37,6 +37,9 @@ export default function StemmenPage() {
   const [publishing, setPublishing] = useState(false);
   const [publishResult, setPublishResult] = useState<{ ok: boolean; message: string; output: string } | null>(null);
   const logRef = useRef<HTMLPreElement>(null);
+  const [liveUrl, setLiveUrl] = useState("");
+  const [live, setLive] = useState<{ status: string; checkedAt?: string; method?: string; liveSha?: string; headSha?: string } | null>(null);
+  const [checking, setChecking] = useState(false);
 
   const refresh = useCallback(async () => {
     try {
@@ -53,6 +56,40 @@ export default function StemmenPage() {
   }, []);
 
   useEffect(() => { void refresh(); }, [refresh]);
+
+  const checkLive = useCallback(async (url: string) => {
+    if (!url) return;
+    setChecking(true);
+    try {
+      const res = await fetch(`/api/studio/stemmen/live?url=${encodeURIComponent(url)}`, { cache: "no-store" });
+      setLive(await res.json());
+    } catch {
+      setLive({ status: "onbereikbaar" });
+    }
+    setChecking(false);
+  }, []);
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem("studio_live_url");
+      if (saved) {
+        setLiveUrl(saved);
+        void checkLive(saved);
+      }
+    } catch { /* localStorage niet beschikbaar */ }
+  }, [checkLive]);
+
+  // Na een geslaagde publicatie: elke 10s checken tot de live site bij is (max ~6 min).
+  useEffect(() => {
+    if (!publishResult?.ok || !liveUrl) return;
+    let n = 0;
+    const t = setInterval(() => {
+      n += 1;
+      if (n > 36) return clearInterval(t);
+      void checkLive(liveUrl);
+    }, 10000);
+    return () => clearInterval(t);
+  }, [publishResult, liveUrl, checkLive]);
   useEffect(() => {
     if (job?.status !== "running") return;
     const t = setInterval(() => void refresh(), 2000);
@@ -208,6 +245,35 @@ export default function StemmenPage() {
             <p className="font-semibold">{publishResult.message}</p>
             {publishResult.output && <pre className="mt-2 max-h-48 overflow-auto rounded bg-black/5 p-2 text-xs">{publishResult.output}</pre>}
           </div>
+        )}
+      </Card>
+      <Card className="flex flex-col gap-3">
+        <h2 className="text-lg font-bold text-forest-500">4. Live-status</h2>
+        <p className="text-sm text-ink-muted">
+          Vergelijkt je laatste commit met wat er op de live site staat. Vul eenmalig het adres van je live app in.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          <input
+            className="min-w-[16rem] flex-1 rounded-lg border-2 border-mint-200 px-3 py-1 text-sm"
+            placeholder="https://jouw-app.vercel.app"
+            value={liveUrl}
+            onChange={(e) => {
+              setLiveUrl(e.target.value);
+              try { window.localStorage.setItem("studio_live_url", e.target.value); } catch { /* negeren */ }
+            }}
+          />
+          <Button variant="outline" size="sm" disabled={checking || !liveUrl} onClick={() => void checkLive(liveUrl)}>
+            {checking ? "Controleren…" : "Ververs status"}
+          </Button>
+        </div>
+        {live && live.status !== "geen-url" && (
+          <p className={`text-sm font-semibold ${live.status === "bij" ? "text-forest-500" : live.status === "onbereikbaar" ? "text-red-700" : "text-clay-500"}`}>
+            {live.status === "bij" && (live.method === "sha" ? "✓ Live is bij — de laatste commit staat online." : "✓ Live lijkt bij (alleen audio/catalogus vergeleken; na de volgende publicatie wordt de exacte commit gecontroleerd).")}
+            {live.status === "achter" && `⏳ Live loopt nog achter${live.liveSha ? ` (live ${live.liveSha}, jouw commit ${live.headSha})` : ""} — Vercel is waarschijnlijk nog bezig (of de deploy is mislukt: kijk dan in Vercel).`}
+            {live.status === "niet-gepusht" && "Er zijn commits die nog niet naar GitHub zijn gepusht."}
+            {live.status === "onbereikbaar" && "Live site niet bereikbaar op dit adres."}
+            {live.checkedAt && <span className="ml-2 text-xs font-normal text-ink-muted">gecontroleerd {new Date(live.checkedAt).toLocaleTimeString("nl-NL")}</span>}
+          </p>
         )}
       </Card>
     </main>
