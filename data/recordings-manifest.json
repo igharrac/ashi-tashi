@@ -8479,7 +8479,8 @@
     "mimeType": "audio/webm;codecs=opus",
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-10-21T12:01:05.992Z",
-    "denoised": true
+    "denoised": true,
+    "voiceConverted": true
   },
   "item-beroepen-politieagent__vrouw": {
     "itemId": "item-beroepen-politieagent",

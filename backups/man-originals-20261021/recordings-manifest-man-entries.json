@@ -1,0 +1,11 @@
+{
+  "item-beroepen-politieagent__man": {
+    "itemId": "item-beroepen-politieagent",
+    "persona": "man",
+    "fileName": "item-beroepen-politieagent__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-10-21T12:01:05.992Z",
+    "denoised": true
+  }
+}
