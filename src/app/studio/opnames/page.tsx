@@ -554,6 +554,11 @@ export default function StudioOpnamesPage() {
           </p>
         </div>
         <div className="flex items-center gap-2">
+          <Link href="/studio/stemmen">
+            <Button variant="ghost" size="sm">
+              Stemmen
+            </Button>
+          </Link>
           <Link href="/studio/gesprekken">
             <Button variant="ghost" size="sm">
               Gesprekken

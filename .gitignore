@@ -10,3 +10,8 @@ tsconfig.tsbuildinfo
 # Opnames van kinderstemmen voor menselijke beoordeling (src/lib/childAttempts.ts)
 # — nooit in git-geschiedenis, blijft lokaal (hfst. 23, 30: privacy van kindgegevens).
 data/child-attempts/
+
+# Tussenoutput stemconversie (studio -> Stemmen)
+.voice-output/
+.env*.local
+__pycache__/
