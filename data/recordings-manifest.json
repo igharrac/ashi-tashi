@@ -8471,5 +8471,41 @@
     "reviewStatus": "GOEDGEKEURD",
     "recordedAt": "2026-08-31T14:24:19.753361Z",
     "denoised": true
+  },
+  "item-beroepen-politieagent__man": {
+    "itemId": "item-beroepen-politieagent",
+    "persona": "man",
+    "fileName": "item-beroepen-politieagent__man.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "recordedAt": "2026-10-21T12:01:05.992Z",
+    "denoised": true
+  },
+  "item-beroepen-politieagent__vrouw": {
+    "itemId": "item-beroepen-politieagent",
+    "persona": "vrouw",
+    "fileName": "item-beroepen-politieagent__vrouw.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "denoised": true,
+    "recordedAt": "2026-10-21T12:03:51.590358Z"
+  },
+  "item-beroepen-politieagent__jongen": {
+    "itemId": "item-beroepen-politieagent",
+    "persona": "jongen",
+    "fileName": "item-beroepen-politieagent__jongen.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "denoised": true,
+    "recordedAt": "2026-10-21T12:07:27.462600Z"
+  },
+  "item-beroepen-politieagent__meisje": {
+    "itemId": "item-beroepen-politieagent",
+    "persona": "meisje",
+    "fileName": "item-beroepen-politieagent__meisje.webm",
+    "mimeType": "audio/webm;codecs=opus",
+    "reviewStatus": "GOEDGEKEURD",
+    "denoised": true,
+    "recordedAt": "2026-10-21T12:07:44.901249Z"
   }
 }

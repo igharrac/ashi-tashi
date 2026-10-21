@@ -294,7 +294,10 @@ def main() -> int:
         backup_dir = backup_man_originals(repo_root, recordings_dir, manifest, todo)
         log(f"Backup van originele man-opnames weggeschreven naar: {backup_dir}")
 
-    device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+    # "mps" (Apple-GPU) geeft bij FreeVC een device-mismatch (speaker-encoder draait op cpu) —
+    # daarom standaard cuda of cpu. Override met env VOICE_DEVICE=cpu|cuda|mps.
+    import os
+    device = os.environ.get("VOICE_DEVICE") or ("cuda" if torch.cuda.is_available() else "cpu")
     log(f"Model laden op device={device} ({VOICE_CONVERSION_MODEL}) ...")
     tts = TTS(model_name=VOICE_CONVERSION_MODEL, progress_bar=True).to(device)
 
